@@ -18,6 +18,7 @@ public class PlayerOne : MonoBehaviour {
     {
         speed = 10.0f;
         rb = GetComponent<Rigidbody>();
+        
        
     }
 
@@ -34,7 +35,8 @@ public class PlayerOne : MonoBehaviour {
     private void Move()
     {
         if (InputManager.Instance.Movement() != Vector3.zero)
-            transform.Translate(InputManager.Instance.Movement() * speed * Time.deltaTime);
+            rb.velocity = InputManager.Instance.Movement() * speed;
+        
         
     }
 
@@ -45,7 +47,9 @@ public class PlayerOne : MonoBehaviour {
 
         if (InputManager.Instance.GrabButtonDown() && isGrounded)
         {
-            transform.Translate(height) ;
+           // transform.Translate(height) ;
+            rb.velocity = height;
+            
 
         }
         

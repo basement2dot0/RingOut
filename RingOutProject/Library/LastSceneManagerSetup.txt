@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/RingMap.unity
+- path: Assets/Scenes/RingMap.unity
   isLoaded: 1
   isActive: 1
