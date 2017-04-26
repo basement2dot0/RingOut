@@ -11,13 +11,14 @@ public class PlayerOne : MonoBehaviour {
     private float jumpHeight = 10.0f;
     private float jumpSpeed;
     private bool isGrounded;
-
+    private PlayerAnim anim;
 
 
     private void Start()
     {
         speed = 10.0f;
         rb = GetComponent<Rigidbody>();
+        anim = GetComponent<PlayerAnim>();
         
        
     }
@@ -36,9 +37,15 @@ public class PlayerOne : MonoBehaviour {
     {
         if (InputManager.Instance.Movement() != Vector3.zero)
         {
-            Vector3 move = new Vector3(InputManager.Instance.GetHorizontal(),0,InputManager.Instance.GetVertical());
-            rb.position += move * speed * Time.deltaTime;
+            rb.rotation = Quaternion.LookRotation(InputManager.Instance.Movement());
+            rb.position += InputManager.Instance.Movement() * speed * Time.deltaTime;
+            anim.WalkAnimation(true);
         }
+        else
+        {
+            anim.WalkAnimation(false);
+        }
+            
     }
 
     private void Jump()
@@ -64,14 +71,13 @@ public class PlayerOne : MonoBehaviour {
             isGrounded = false;
         }
     }
-
 }
 
 public enum State
 {
     Idle,
+    Walking,
     Attacking,
     Defending,
-    Moving,
     Grab
 };
