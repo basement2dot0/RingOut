@@ -35,28 +35,22 @@ public class PlayerOne : MonoBehaviour {
     private void Move()
     {
         if (InputManager.Instance.Movement() != Vector3.zero)
-            rb.velocity = InputManager.Instance.Movement() * speed;
-        
-        
+        {
+            Vector3 move = new Vector3(InputManager.Instance.GetHorizontal(),0,InputManager.Instance.GetVertical());
+            rb.position += move * speed * Time.deltaTime;
+        }
     }
 
     private void Jump()
     {
         jumpSpeed = 5.0f;
         Vector3 height = new Vector3(0,jumpHeight, 0);
-
         if (InputManager.Instance.GrabButtonDown() && isGrounded)
-        {
-           // transform.Translate(height) ;
             rb.velocity = height;
-            
-
-        }
-        
 
     }
 
-    private void OnCollisionStay(Collision collision)
+    private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.tag == "Ground")
         {
