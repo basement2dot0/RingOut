@@ -8,7 +8,7 @@ public class PlayerOne : MonoBehaviour {
     private float speed;
     private Rigidbody rb;
     private State currentState = State.Idle;
-    private float jumpHeight = 10.0f;
+    [SerializeField]
     private float jumpSpeed;
     private bool isGrounded;
     private PlayerAnim anim;
@@ -17,6 +17,7 @@ public class PlayerOne : MonoBehaviour {
     private void Start()
     {
         speed = 10.0f;
+        jumpSpeed = 20.0f;
         rb = GetComponent<Rigidbody>();
         anim = GetComponent<PlayerAnim>();
         
@@ -42,34 +43,34 @@ public class PlayerOne : MonoBehaviour {
             anim.WalkAnimation(true);
         }
         else
-        {
             anim.WalkAnimation(false);
-        }
-            
     }
 
     private void Jump()
     {
-        jumpSpeed = 5.0f;
-        Vector3 height = new Vector3(0,jumpHeight, 0);
-        if (InputManager.Instance.GrabButtonDown() && isGrounded)
-            rb.velocity = height;
-
+        if (InputManager.Instance.Movement() != Vector3.zero && InputManager.Instance.GrabButtonDown() && isGrounded)
+        {
+            Debug.Log("Jump distance activated!");
+            rb.velocity += (Vector3.up * jumpSpeed) + InputManager.Instance.Movement() * speed;
+        }
+        else if (InputManager.Instance.GrabButtonDown() && isGrounded)
+            rb.velocity += Vector3.up * jumpSpeed;
+        
+        if (!isGrounded)
+            rb.velocity += Vector3.down;
     }
 
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.tag == "Ground")
-        {
             isGrounded = true;
-        }
+        
     }
     private void OnCollisionExit(Collision collision)
     {
         if (collision.gameObject.tag == "Ground")
-        {
             isGrounded = false;
-        }
+        
     }
 }
 
