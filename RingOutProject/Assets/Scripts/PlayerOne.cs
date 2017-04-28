@@ -8,16 +8,19 @@ public class PlayerOne : MonoBehaviour {
     private float speed;
     private Rigidbody rb;
     private State currentState = State.Idle;
-    private float jumpHeight = 10.0f;
-    private float jumpSpeed;
+    [SerializeField]
+    private float jumpDistance;
     private bool isGrounded;
-
+    private PlayerAnim anim;
 
 
     private void Start()
     {
         speed = 10.0f;
+        jumpDistance = 20.0f;
         rb = GetComponent<Rigidbody>();
+        anim = GetComponent<PlayerAnim>();
+        
        
     }
 
@@ -34,46 +37,52 @@ public class PlayerOne : MonoBehaviour {
     private void Move()
     {
         if (InputManager.Instance.Movement() != Vector3.zero)
-            transform.Translate(InputManager.Instance.Movement() * speed * Time.deltaTime);
-        
+        {
+            rb.rotation = Quaternion.LookRotation(InputManager.Instance.Movement());
+            rb.position += InputManager.Instance.Movement() * speed * Time.deltaTime;
+            anim.WalkAnimation(true);
+        }
+        else
+            anim.WalkAnimation(false);
     }
 
     private void Jump()
     {
-        jumpSpeed = 5.0f;
-        Vector3 height = new Vector3(0,jumpHeight, 0);
-
-        if (InputManager.Instance.GrabButtonDown() && isGrounded)
+        if (InputManager.Instance.Movement() != Vector3.zero && InputManager.Instance.GrabButtonDown() && isGrounded)
         {
-            transform.Translate(height) ;
-
+            anim.JumpAnimation(AnimationTrigger.set);
+            rb.velocity += (Vector3.up * jumpDistance) + InputManager.Instance.Movement() * speed;
         }
-        
-
+        else if (InputManager.Instance.GrabButtonDown() && isGrounded)
+        {
+            anim.JumpAnimation(AnimationTrigger.set);
+            rb.velocity += Vector3.up * jumpDistance;
+        }
+        if (!isGrounded)
+            rb.velocity += Vector3.down;
     }
 
-    private void OnCollisionStay(Collision collision)
+    private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.tag == "Ground")
         {
             isGrounded = true;
+            anim.JumpAnimation(AnimationTrigger.reset);
         }
     }
     private void OnCollisionExit(Collision collision)
     {
         if (collision.gameObject.tag == "Ground")
-        {
             isGrounded = false;
-        }
+        
     }
-
 }
 
 public enum State
 {
     Idle,
+    Walking,
     Attacking,
     Defending,
-    Moving,
     Grab
 };

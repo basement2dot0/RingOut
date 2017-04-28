@@ -16,10 +16,10 @@ public class InputManager : MonoBehaviour
     }
 
     public float GetHorizontal(){
-        return Input.GetAxisRaw("Horizontal");}
+        return Input.GetAxis("Horizontal");}
 
     public float GetVertical(){
-        return Input.GetAxisRaw("Vertical");}
+        return Input.GetAxis("Vertical");}
 
     public Vector3 Movement(){
         return new Vector3(GetHorizontal(), 0, GetVertical());}
