@@ -9,7 +9,7 @@ public class PlayerOne : MonoBehaviour {
     private Rigidbody rb;
     private State currentState = State.Idle;
     [SerializeField]
-    private float jumpSpeed;
+    private float jumpDistance;
     private bool isGrounded;
     private PlayerAnim anim;
 
@@ -17,7 +17,7 @@ public class PlayerOne : MonoBehaviour {
     private void Start()
     {
         speed = 10.0f;
-        jumpSpeed = 20.0f;
+        jumpDistance = 20.0f;
         rb = GetComponent<Rigidbody>();
         anim = GetComponent<PlayerAnim>();
         
@@ -51,10 +51,10 @@ public class PlayerOne : MonoBehaviour {
         if (InputManager.Instance.Movement() != Vector3.zero && InputManager.Instance.GrabButtonDown() && isGrounded)
         {
             Debug.Log("Jump distance activated!");
-            rb.velocity += (Vector3.up * jumpSpeed) + InputManager.Instance.Movement() * speed;
+            rb.velocity += (Vector3.up * jumpDistance) + InputManager.Instance.Movement() * speed;
         }
         else if (InputManager.Instance.GrabButtonDown() && isGrounded)
-            rb.velocity += Vector3.up * jumpSpeed;
+            rb.velocity += Vector3.up * jumpDistance;
         
         if (!isGrounded)
             rb.velocity += Vector3.down;
