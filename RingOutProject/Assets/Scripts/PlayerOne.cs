@@ -10,6 +10,8 @@ public class PlayerOne : MonoBehaviour {
     private State currentState = State.Idle;
     [SerializeField]
     private float jumpDistance;
+    [SerializeField]
+    private float rotateSpeed;
     private bool isGrounded;
     private PlayerAnim anim;
 
@@ -18,6 +20,7 @@ public class PlayerOne : MonoBehaviour {
     {
         speed = 10.0f;
         jumpDistance = 20.0f;
+        rotateSpeed = 2.0f;
         rb = GetComponent<Rigidbody>();
         anim = GetComponent<PlayerAnim>();
         
@@ -27,6 +30,7 @@ public class PlayerOne : MonoBehaviour {
     private void Update()
     {
         Move();
+        Block();
     }
 
     private void FixedUpdate()
@@ -38,9 +42,15 @@ public class PlayerOne : MonoBehaviour {
     {
         if (InputManager.Instance.Movement() != Vector3.zero)
         {
-            rb.rotation = Quaternion.LookRotation(InputManager.Instance.Movement());
-            rb.position += InputManager.Instance.Movement() * speed * Time.deltaTime;
-            anim.WalkAnimation(true);
+
+            rb.rotation = Quaternion.LookRotation(InputManager.Instance.Movement() * rotateSpeed * Time.deltaTime);
+            if (currentState != State.Defending)
+            {
+                currentState = State.Walking;
+                rb.position += InputManager.Instance.Movement() * speed * Time.deltaTime;
+                anim.WalkAnimation(true);
+
+            }
         }
         else
             anim.WalkAnimation(false);
@@ -50,16 +60,35 @@ public class PlayerOne : MonoBehaviour {
     {
         if (InputManager.Instance.Movement() != Vector3.zero && InputManager.Instance.GrabButtonDown() && isGrounded)
         {
+            currentState = State.Jumping;
             anim.JumpAnimation(AnimationTrigger.set);
             rb.velocity += (Vector3.up * jumpDistance) + InputManager.Instance.Movement() * speed;
         }
         else if (InputManager.Instance.GrabButtonDown() && isGrounded)
         {
+            currentState = State.Jumping;
             anim.JumpAnimation(AnimationTrigger.set);
             rb.velocity += Vector3.up * jumpDistance;
         }
         if (!isGrounded)
-            rb.velocity += Vector3.down;
+           rb.velocity += Vector3.down;
+        
+    }
+
+    private void Block()
+    {
+        if (InputManager.Instance.DefendButtonDown() && isGrounded)
+        {
+            currentState = State.Defending;
+            anim.BlockAnimation(true);
+           
+        }
+        else if (InputManager.Instance.DefendButtonUp())
+        {
+            currentState = State.Idle;
+            anim.BlockAnimation(false);
+
+        }
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -84,5 +113,5 @@ public enum State
     Walking,
     Attacking,
     Defending,
-    Grab
+    Jumping
 };

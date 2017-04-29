@@ -27,6 +27,10 @@ public class PlayerAnim : MonoBehaviour {
         else if (trigger == AnimationTrigger.reset)
             anim.ResetTrigger("Jump");
     }
+    public void BlockAnimation(bool truefalse)
+    {
+        anim.SetBool("isBlocking", truefalse);
+    }
 }
 public enum AnimationTrigger
 {
