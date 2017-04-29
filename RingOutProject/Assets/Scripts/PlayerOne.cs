@@ -5,26 +5,22 @@ using UnityEngine;
 public class PlayerOne : MonoBehaviour {
 
     [SerializeField]
-    private float speed;
+    private float speed =20.0f;
     private Rigidbody rb;
     private State currentState = State.Idle;
     [SerializeField]
-    private float jumpDistance;
+    private float jumpDistance = 20.0f;
     [SerializeField]
-    private float rotateSpeed;
+    private float rotateSpeed = 2.0f;
     private bool isGrounded;
     private PlayerAnim anim;
 
 
     private void Start()
     {
-        speed = 10.0f;
-        jumpDistance = 20.0f;
         rotateSpeed = 2.0f;
         rb = GetComponent<Rigidbody>();
         anim = GetComponent<PlayerAnim>();
-        
-       
     }
 
     private void Update()
