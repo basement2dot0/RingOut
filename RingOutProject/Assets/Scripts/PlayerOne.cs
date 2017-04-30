@@ -5,20 +5,19 @@ using UnityEngine;
 public class PlayerOne : MonoBehaviour {
 
     [SerializeField]
-    private float speed =20.0f;
+    private float speed;
     private Rigidbody rb;
     private State currentState = State.Idle;
     [SerializeField]
-    private float jumpDistance = 20.0f;
+    private float jumpDistance;
     [SerializeField]
-    private float rotateSpeed = 2.0f;
+    private float rotateSpeed ;
     private bool isGrounded;
     private PlayerAnim anim;
 
 
     private void Start()
     {
-        rotateSpeed = 2.0f;
         rb = GetComponent<Rigidbody>();
         anim = GetComponent<PlayerAnim>();
     }
@@ -56,18 +55,24 @@ public class PlayerOne : MonoBehaviour {
     {
         if (InputManager.Instance.Movement() != Vector3.zero && InputManager.Instance.GrabButtonDown() && isGrounded)
         {
+            Debug.Log("Jump FWD");
             currentState = State.Jumping;
             anim.JumpAnimation(AnimationTrigger.set);
-            rb.velocity += (Vector3.up * jumpDistance) + InputManager.Instance.Movement() * speed;
+            rb.velocity = new Vector3(rb.velocity.x + InputManager.Instance.GetHorizontal() *speed, rb.velocity.y + jumpDistance, rb.velocity.z + InputManager.Instance.GetVertical() * speed );
+                //(Vector3.up * jumpDistance) + InputManager.Instance.Movement() * speed;
         }
         else if (InputManager.Instance.GrabButtonDown() && isGrounded)
         {
+            Debug.Log("Neutral  Jump");
             currentState = State.Jumping;
             anim.JumpAnimation(AnimationTrigger.set);
             rb.velocity += Vector3.up * jumpDistance;
         }
         if (!isGrounded)
            rb.velocity += Vector3.down;
+
+
+        
         
     }
 
