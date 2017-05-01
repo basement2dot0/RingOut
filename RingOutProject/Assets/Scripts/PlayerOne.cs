@@ -2,39 +2,48 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerOne : MonoBehaviour {
+public class PlayerOne : MonoBehaviour
+{
 
     [SerializeField]
     private float speed;
     private Rigidbody rb;
     private State currentState = State.Idle;
     [SerializeField]
-    private float jumpDistance;
+    private float rotateSpeed;
     [SerializeField]
-    private float rotateSpeed ;
     private bool isGrounded;
     private PlayerAnim anim;
+    private Jump jump;
 
 
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
         anim = GetComponent<PlayerAnim>();
+        jump = GetComponent<Jump>();
     }
 
     private void Update()
     {
-        Move();
+        //Debug.Log(rb.velocity.ToString());
+       
         Block();
+        Move();
+
     }
 
     private void FixedUpdate()
     {
-        Jump();
+       // Jump();
+       if(isGrounded)
+        jump.JumpInput(rb);
+        
     }
 
     private void Move()
     {
+
         if (InputManager.Instance.Movement() != Vector3.zero)
         {
 
@@ -42,38 +51,31 @@ public class PlayerOne : MonoBehaviour {
             if (currentState != State.Defending)
             {
                 currentState = State.Walking;
-                rb.position += InputManager.Instance.Movement() * speed * Time.deltaTime;
+                rb.position += InputManager.Instance.Movement() * speed * Time.deltaTime ;
+                //transform.Translate(InputManager.Instance.Movement() * speed * Time.deltaTime);
                 anim.WalkAnimation(true);
 
             }
         }
         else
+        {
+
             anim.WalkAnimation(false);
+            //if (rb.velocity.x != 0.0f || rb.velocity.z != 0.0f)
+            //{
+            //    rb.AddForce(Mathf.Clamp(-(rb.velocity.x),-speed,speed),0, Mathf.Clamp(-(rb.velocity.z), -speed, speed));
+            //}
+        }
     }
 
     private void Jump()
     {
-        if (InputManager.Instance.Movement() != Vector3.zero && InputManager.Instance.GrabButtonDown() && isGrounded)
-        {
-            Debug.Log("Jump FWD");
-            currentState = State.Jumping;
-            anim.JumpAnimation(AnimationTrigger.set);
-            rb.velocity = new Vector3(rb.velocity.x + InputManager.Instance.GetHorizontal() *speed, rb.velocity.y + jumpDistance, rb.velocity.z + InputManager.Instance.GetVertical() * speed );
-                //(Vector3.up * jumpDistance) + InputManager.Instance.Movement() * speed;
-        }
-        else if (InputManager.Instance.GrabButtonDown() && isGrounded)
-        {
-            Debug.Log("Neutral  Jump");
-            currentState = State.Jumping;
-            anim.JumpAnimation(AnimationTrigger.set);
-            rb.velocity += Vector3.up * jumpDistance;
-        }
-        if (!isGrounded)
-           rb.velocity += Vector3.down;
+         
+        
 
 
-        
-        
+
+
     }
 
     private void Block()
@@ -82,7 +84,7 @@ public class PlayerOne : MonoBehaviour {
         {
             currentState = State.Defending;
             anim.BlockAnimation(true);
-           
+
         }
         else if (InputManager.Instance.DefendButtonUp())
         {
@@ -104,8 +106,9 @@ public class PlayerOne : MonoBehaviour {
     {
         if (collision.gameObject.tag == "Ground")
             isGrounded = false;
-        
+
     }
+    
 }
 
 public enum State
