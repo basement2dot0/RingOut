@@ -39,7 +39,8 @@ public class PlayerOne : MonoBehaviour
 
     private void FixedUpdate()
     {
-       Jump();
+        Debug.Log(transform.position.y.ToString());
+        Jump();
      //  if(isGrounded)
        // jump.JumpInput(rb);
         
@@ -49,12 +50,14 @@ public class PlayerOne : MonoBehaviour
     {
         if (isGrounded)
         {
+            anim.JumpAnimation(AnimationTrigger.reset);
             if (InputManager.Instance.Movement() != Vector3.zero)
             {
 
                 rb.rotation = Quaternion.LookRotation(InputManager.Instance.Movement() * rotateSpeed * Time.deltaTime);
                 if (currentState != State.Defending)
                 {
+                    currentState = State.Walking;
                     anim.WalkAnimation(true);
                     transform.position += (InputManager.Instance.Movement() * speed) * Time.deltaTime;
                 }
@@ -63,6 +66,8 @@ public class PlayerOne : MonoBehaviour
             else
             {
                 anim.WalkAnimation(false);
+                currentState = State.Idle;
+                rb.velocity += new Vector3(-(rb.velocity.x), 0, -(rb.velocity.z));
             }
         }
     }
@@ -71,12 +76,21 @@ public class PlayerOne : MonoBehaviour
     {
         if(isGrounded)
         {
-            if (InputManager.Instance.GrabButtonDown())
+            if (InputManager.Instance.GrabButtonDown() && InputManager.Instance.Movement() != Vector3.zero)
             {
                 currentState = State.Jumping;
-                rb.AddForce(Vector3.up * jumpHeight);
+                anim.JumpAnimation(AnimationTrigger.set);
+                rb.velocity += new Vector3(0,jumpHeight, 0) + (jumpDistance * transform.forward);
                 //transform.position += (Vector3.up * jumpHeight) * Time.deltaTime;
             }
+            else if (InputManager.Instance.GrabButtonDown())
+            {
+                rb.velocity += Vector3.up * jumpHeight;
+            }
+        }
+        else
+        {
+            rb.velocity += Vector3.down;
         }
 
     }
