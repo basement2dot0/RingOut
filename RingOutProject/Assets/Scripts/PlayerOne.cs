@@ -2,77 +2,96 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerOne : MonoBehaviour {
+public class PlayerOne : MonoBehaviour
+{
 
     [SerializeField]
     private float speed;
+    [SerializeField]
+    private float jumpHeight;
+    [SerializeField]
+    private float jumpDistance;
     private Rigidbody rb;
     private State currentState = State.Idle;
     [SerializeField]
-    private float jumpDistance;
-    [SerializeField]
     private float rotateSpeed;
+    [SerializeField]
     private bool isGrounded;
     private PlayerAnim anim;
+   // private Jump jump;
 
 
     private void Start()
     {
-        speed = 10.0f;
-        jumpDistance = 20.0f;
-        rotateSpeed = 2.0f;
         rb = GetComponent<Rigidbody>();
         anim = GetComponent<PlayerAnim>();
-        
-       
+       // jump = GetComponent<Jump>();
     }
 
     private void Update()
     {
-        Move();
         Block();
+        Move();
+
     }
 
     private void FixedUpdate()
     {
+       
         Jump();
     }
 
     private void Move()
     {
-        if (InputManager.Instance.Movement() != Vector3.zero)
+        
+        if (isGrounded)
         {
-
-            rb.rotation = Quaternion.LookRotation(InputManager.Instance.Movement() * rotateSpeed * Time.deltaTime);
-            if (currentState != State.Defending)
+            anim.JumpAnimation(AnimationTrigger.reset);
+            if (InputManager.Instance.Movement() != Vector3.zero)
             {
-                currentState = State.Walking;
-                rb.position += InputManager.Instance.Movement() * speed * Time.deltaTime;
-                anim.WalkAnimation(true);
 
+                rb.rotation = Quaternion.LookRotation(InputManager.Instance.Movement());
+                if (currentState != State.Defending)
+                {
+                    currentState = State.Walking;
+                    anim.WalkAnimation(true);
+                    transform.position += InputManager.Instance.Movement() * speed * Time.deltaTime;
+                    
+                }
             }
+
+            else
+            {
+                anim.WalkAnimation(false);
+                currentState = State.Idle;
+                
+               
+            }
+            rb.velocity = Vector3.zero;
         }
-        else
-            anim.WalkAnimation(false);
     }
 
     private void Jump()
     {
-        if (InputManager.Instance.Movement() != Vector3.zero && InputManager.Instance.GrabButtonDown() && isGrounded)
+        if(isGrounded)
         {
-            currentState = State.Jumping;
-            anim.JumpAnimation(AnimationTrigger.set);
-            rb.velocity += (Vector3.up * jumpDistance) + InputManager.Instance.Movement() * speed;
+            if (InputManager.Instance.GrabButtonDown() && InputManager.Instance.Movement() != Vector3.zero)
+            {
+                currentState = State.Jumping;
+                anim.JumpAnimation(AnimationTrigger.set);
+                rb.velocity += new Vector3(0,jumpHeight, 0) + (jumpDistance * InputManager.Instance.Movement());
+            }
+            else if (InputManager.Instance.GrabButtonDown())
+            {
+                currentState = State.Jumping;
+                anim.JumpAnimation(AnimationTrigger.set);
+                rb.velocity += Vector3.up * jumpHeight;
+            }
         }
-        else if (InputManager.Instance.GrabButtonDown() && isGrounded)
-        {
-            currentState = State.Jumping;
-            anim.JumpAnimation(AnimationTrigger.set);
-            rb.velocity += Vector3.up * jumpDistance;
-        }
-        if (!isGrounded)
-           rb.velocity += Vector3.down;
+        else
+            rb.velocity += Vector3.down;
         
+
     }
 
     private void Block()
@@ -81,7 +100,7 @@ public class PlayerOne : MonoBehaviour {
         {
             currentState = State.Defending;
             anim.BlockAnimation(true);
-           
+
         }
         else if (InputManager.Instance.DefendButtonUp())
         {
@@ -103,8 +122,9 @@ public class PlayerOne : MonoBehaviour {
     {
         if (collision.gameObject.tag == "Ground")
             isGrounded = false;
-        
+
     }
+    
 }
 
 public enum State
