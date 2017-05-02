@@ -30,8 +30,6 @@ public class PlayerOne : MonoBehaviour
 
     private void Update()
     {
-        //Debug.Log(rb.velocity.ToString());
-       
         Block();
         Move();
 
@@ -39,27 +37,26 @@ public class PlayerOne : MonoBehaviour
 
     private void FixedUpdate()
     {
-        Debug.Log(transform.position.y.ToString());
+       
         Jump();
-     //  if(isGrounded)
-       // jump.JumpInput(rb);
-        
     }
 
     private void Move()
     {
+        
         if (isGrounded)
         {
             anim.JumpAnimation(AnimationTrigger.reset);
             if (InputManager.Instance.Movement() != Vector3.zero)
             {
 
-                rb.rotation = Quaternion.LookRotation(InputManager.Instance.Movement() * rotateSpeed * Time.deltaTime);
+                rb.rotation = Quaternion.LookRotation(InputManager.Instance.Movement());
                 if (currentState != State.Defending)
                 {
                     currentState = State.Walking;
                     anim.WalkAnimation(true);
-                    transform.position += (InputManager.Instance.Movement() * speed) * Time.deltaTime;
+                    transform.position += InputManager.Instance.Movement() * speed * Time.deltaTime;
+                    
                 }
             }
 
@@ -67,8 +64,10 @@ public class PlayerOne : MonoBehaviour
             {
                 anim.WalkAnimation(false);
                 currentState = State.Idle;
-                rb.velocity += new Vector3(-(rb.velocity.x), 0, -(rb.velocity.z));
+                
+               
             }
+            rb.velocity = Vector3.zero;
         }
     }
 
@@ -80,18 +79,18 @@ public class PlayerOne : MonoBehaviour
             {
                 currentState = State.Jumping;
                 anim.JumpAnimation(AnimationTrigger.set);
-                rb.velocity += new Vector3(0,jumpHeight, 0) + (jumpDistance * transform.forward);
-                //transform.position += (Vector3.up * jumpHeight) * Time.deltaTime;
+                rb.velocity += new Vector3(0,jumpHeight, 0) + (jumpDistance * InputManager.Instance.Movement());
             }
             else if (InputManager.Instance.GrabButtonDown())
             {
+                currentState = State.Jumping;
+                anim.JumpAnimation(AnimationTrigger.set);
                 rb.velocity += Vector3.up * jumpHeight;
             }
         }
         else
-        {
             rb.velocity += Vector3.down;
-        }
+        
 
     }
 
