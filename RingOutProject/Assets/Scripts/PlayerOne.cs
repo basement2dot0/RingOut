@@ -7,6 +7,10 @@ public class PlayerOne : MonoBehaviour
 
     [SerializeField]
     private float speed;
+    [SerializeField]
+    private float jumpHeight;
+    [SerializeField]
+    private float jumpDistance;
     private Rigidbody rb;
     private State currentState = State.Idle;
     [SerializeField]
@@ -14,14 +18,14 @@ public class PlayerOne : MonoBehaviour
     [SerializeField]
     private bool isGrounded;
     private PlayerAnim anim;
-    private Jump jump;
+   // private Jump jump;
 
 
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
         anim = GetComponent<PlayerAnim>();
-        jump = GetComponent<Jump>();
+       // jump = GetComponent<Jump>();
     }
 
     private void Update()
@@ -35,46 +39,45 @@ public class PlayerOne : MonoBehaviour
 
     private void FixedUpdate()
     {
-       // Jump();
-       if(isGrounded)
-        jump.JumpInput(rb);
+       Jump();
+     //  if(isGrounded)
+       // jump.JumpInput(rb);
         
     }
 
     private void Move()
     {
-
-        if (InputManager.Instance.Movement() != Vector3.zero)
+        if (isGrounded)
         {
-
-            rb.rotation = Quaternion.LookRotation(InputManager.Instance.Movement() * rotateSpeed * Time.deltaTime);
-            if (currentState != State.Defending)
+            if (InputManager.Instance.Movement() != Vector3.zero)
             {
-                currentState = State.Walking;
-                rb.position += InputManager.Instance.Movement() * speed * Time.deltaTime ;
-                //transform.Translate(InputManager.Instance.Movement() * speed * Time.deltaTime);
-                anim.WalkAnimation(true);
 
+                rb.rotation = Quaternion.LookRotation(InputManager.Instance.Movement() * rotateSpeed * Time.deltaTime);
+                if (currentState != State.Defending)
+                {
+                    anim.WalkAnimation(true);
+                    transform.position += (InputManager.Instance.Movement() * speed) * Time.deltaTime;
+                }
             }
-        }
-        else
-        {
 
-            anim.WalkAnimation(false);
-            //if (rb.velocity.x != 0.0f || rb.velocity.z != 0.0f)
-            //{
-            //    rb.AddForce(Mathf.Clamp(-(rb.velocity.x),-speed,speed),0, Mathf.Clamp(-(rb.velocity.z), -speed, speed));
-            //}
+            else
+            {
+                anim.WalkAnimation(false);
+            }
         }
     }
 
     private void Jump()
     {
-         
-        
-
-
-
+        if(isGrounded)
+        {
+            if (InputManager.Instance.GrabButtonDown())
+            {
+                currentState = State.Jumping;
+                rb.AddForce(Vector3.up * jumpHeight);
+                //transform.position += (Vector3.up * jumpHeight) * Time.deltaTime;
+            }
+        }
 
     }
 
