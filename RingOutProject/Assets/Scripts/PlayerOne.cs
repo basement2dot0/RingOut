@@ -67,7 +67,7 @@ public class PlayerOne : MonoBehaviour
                 
                
             }
-            rb.velocity = Vector3.zero;
+            rb.velocity = Vector3.zero; //remove any velocity applied to player when grounded to prevent unwanted sliding
         }
     }
 
