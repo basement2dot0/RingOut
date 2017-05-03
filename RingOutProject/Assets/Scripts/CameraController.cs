@@ -9,7 +9,7 @@ class CameraController : MonoBehaviour
 {
     private void Update()
     {
-        Debug.Log(Camera.main.fieldOfView.ToString());
+       // Debug.Log(Camera.main.fieldOfView.ToString());
         // -------------------Code for Zooming Out------------
         if (Vector3.Distance(leftTarget.position,rightTarget.position) > 30 )
         {

@@ -30,6 +30,8 @@ public class PlayerOne : MonoBehaviour
 
     private void Update()
     {
+        Debug.Log(currentState.ToString());
+        
         Block();
         Move();
 
@@ -47,6 +49,7 @@ public class PlayerOne : MonoBehaviour
         if (isGrounded)
         {
             anim.JumpAnimation(AnimationTrigger.reset);
+            
             if (InputManager.Instance.Movement() != Vector3.zero)
             {
 
@@ -60,10 +63,11 @@ public class PlayerOne : MonoBehaviour
                 }
             }
 
-            else
+            else if(InputManager.Instance.Movement() == Vector3.zero && currentState != State.Defending)
             {
-                anim.WalkAnimation(false);
                 currentState = State.Idle;
+                anim.WalkAnimation(false);
+                
                 
                
             }
@@ -96,17 +100,20 @@ public class PlayerOne : MonoBehaviour
 
     private void Block()
     {
-        if (InputManager.Instance.DefendButtonDown() && isGrounded)
+        if (isGrounded)
         {
-            currentState = State.Defending;
-            anim.BlockAnimation(true);
+            if (InputManager.Instance.DefendButtonDown())
+            {
+                currentState = State.Defending;
+                anim.BlockAnimation(true);
 
-        }
-        else if (InputManager.Instance.DefendButtonUp())
-        {
-            currentState = State.Idle;
-            anim.BlockAnimation(false);
+            }
+            else if (InputManager.Instance.DefendButtonUp())
+            {
+                currentState = State.Idle;
+                anim.BlockAnimation(false);
 
+            }
         }
     }
 
