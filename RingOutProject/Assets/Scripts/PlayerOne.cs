@@ -30,7 +30,7 @@ public class PlayerOne : MonoBehaviour
 
     private void Update()
     {
-        Debug.Log(currentState.ToString());
+        //Debug.Log(currentState.ToString());
         
         Block();
         Move();
