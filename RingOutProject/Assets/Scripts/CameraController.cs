@@ -10,43 +10,21 @@ class CameraController : MonoBehaviour
     [SerializeField]
     private Transform leftTarget;
     [SerializeField]
-    public Transform rightTarget;
+    private Transform rightTarget;
     [SerializeField]
-    private BoxCollider StageCollider;
-    [SerializeField]
-    [Range(0, 100)]
-    private float fovOut;
-    [SerializeField]
-    [Range(0, 100)]
-    private float fovIn;
-
-    private void Start()
-    {
-        StageCollider = GameObject.FindGameObjectWithTag("StageBounds").GetComponent<BoxCollider>();
-    }
+    private GameObject center;
 
     private void Update()
     {
-        ZoomIn();
-        ZoomOut();
-    }
 
-    private void ZoomIn()
-    {
-        //Debug.Log("Player One:" + leftTarget.position.ToString() + ", StageColliderMin:" + StageCollider.bounds.min.ToString());
-        if(leftTarget.position.z > 0.0f)
-        {
-            if (Camera.main.fieldOfView > 20)
-                Camera.main.fieldOfView -= 2;
-        }
+        CenterFocus();
     }
-
-    private void ZoomOut()
+    
+    void CenterFocus()
     {
-        if(leftTarget.position.z < 0.0f)
-        {
-            if (Camera.main.fieldOfView <= 70)
-                Camera.main.fieldOfView += 2;
-        }
+        center.transform.position = (leftTarget.transform.position + rightTarget.transform.position) / 2;
+        Camera.main.transform.LookAt(center.transform);
+
     }
 }
+

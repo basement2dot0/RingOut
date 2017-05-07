@@ -58,8 +58,10 @@ public class PlayerOne : MonoBehaviour
                 {
                     currentState = State.Walking;
                     anim.WalkAnimation(true);
+                    
                     transform.position += InputManager.Instance.Movement() * speed * Time.deltaTime;
                     
+
                 }
             }
 
