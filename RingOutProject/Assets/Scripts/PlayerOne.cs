@@ -31,7 +31,7 @@ public class PlayerOne : MonoBehaviour
     private void Update()
     {
         //Debug.Log(currentState.ToString());
-        
+        anim.FreeFallAnimation(isGrounded);
         Block();
         Move();
 
@@ -56,19 +56,19 @@ public class PlayerOne : MonoBehaviour
                 rb.rotation = Quaternion.LookRotation(InputManager.Instance.Movement());
                 if (currentState != State.Defending)
                 {
-                    currentState = State.Walking;
-                    anim.WalkAnimation(true);
                     
                     transform.position += InputManager.Instance.Movement() * speed * Time.deltaTime;
-                    
+                    currentState = State.Walking;
+                    anim.WalkAnimation(true);
 
                 }
             }
 
             else if(InputManager.Instance.Movement() == Vector3.zero && currentState != State.Defending)
             {
-                currentState = State.Idle;
                 anim.WalkAnimation(false);
+                currentState = State.Idle;
+                
                 
                 
                
@@ -79,8 +79,9 @@ public class PlayerOne : MonoBehaviour
 
     private void Jump()
     {
-        if(isGrounded)
+        if(isGrounded && currentState != State.Defending)
         {
+           
             if (InputManager.Instance.GrabButtonDown() && InputManager.Instance.Movement() != Vector3.zero)
             {
                 currentState = State.Jumping;
