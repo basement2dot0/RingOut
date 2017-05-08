@@ -7,30 +7,35 @@ public class PlayerOne : MonoBehaviour
 
     [SerializeField]
     private float speed;
+
     [SerializeField]
     private float jumpHeight;
+
     [SerializeField]
     private float jumpDistance;
+
     private Rigidbody rb;
+
+    [SerializeField]
     private State currentState = State.Idle;
+
     [SerializeField]
     private float rotateSpeed;
+
     [SerializeField]
     private bool isGrounded;
+
     private PlayerAnim anim;
-   // private Jump jump;
 
 
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
         anim = GetComponent<PlayerAnim>();
-       // jump = GetComponent<Jump>();
     }
 
     private void Update()
     {
-        //Debug.Log(currentState.ToString());
         anim.FreeFallAnimation(isGrounded);
         Block();
         Move();
@@ -56,11 +61,9 @@ public class PlayerOne : MonoBehaviour
                 rb.rotation = Quaternion.LookRotation(InputManager.Instance.Movement());
                 if (currentState != State.Defending)
                 {
-                    
                     transform.position += InputManager.Instance.Movement() * speed * Time.deltaTime;
                     currentState = State.Walking;
                     anim.WalkAnimation(true);
-
                 }
             }
 
@@ -68,10 +71,6 @@ public class PlayerOne : MonoBehaviour
             {
                 anim.WalkAnimation(false);
                 currentState = State.Idle;
-                
-                
-                
-               
             }
             rb.velocity = Vector3.zero; //remove any velocity applied to player when grounded to prevent unwanted sliding
         }
@@ -109,13 +108,11 @@ public class PlayerOne : MonoBehaviour
             {
                 currentState = State.Defending;
                 anim.BlockAnimation(true);
-
             }
             else if (InputManager.Instance.DefendButtonUp())
             {
                 currentState = State.Idle;
                 anim.BlockAnimation(false);
-
             }
         }
     }

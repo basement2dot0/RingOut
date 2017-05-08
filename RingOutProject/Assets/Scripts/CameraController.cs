@@ -9,22 +9,27 @@ class CameraController : MonoBehaviour
 {
     [SerializeField]
     private Transform leftTarget;
+
     [SerializeField]
     private Transform rightTarget;
+
     [SerializeField]
     private GameObject center;
 
     private void Update()
     {
 
-        CenterFocus();
+        CenterFocus(this.center);
     }
     
-    void CenterFocus()
+    /// <summary>
+    /// Keeps the camera constantly focused on the Center GameObject
+    /// </summary>
+    private void CenterFocus(GameObject center)
     {
+        center = this.center;
         center.transform.position = (leftTarget.transform.position + rightTarget.transform.position) / 2;
         Camera.main.transform.LookAt(center.transform);
-
     }
 }
 
