@@ -4,9 +4,12 @@ using UnityEngine;
 
 public class Combat : MonoBehaviour
 {
-    private void OnTriggerStay(Collider other)
+    private bool canPunch;
+    private bool Punching;
+    private Collider hitBox;
+    private void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.tag == "Target")
+        if(other.gameObject.tag == "PlayerTwo")
         {
             Debug.Log("OW!");
         }
