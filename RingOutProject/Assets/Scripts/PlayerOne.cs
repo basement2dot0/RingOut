@@ -27,6 +27,9 @@ public class PlayerOne : MonoBehaviour
 
     private PlayerAnim anim;
 
+    [SerializeField]
+    private BoxCollider hitBox;
+
 
     private void Start()
     {
@@ -39,6 +42,7 @@ public class PlayerOne : MonoBehaviour
         anim.FreeFallAnimation(isGrounded);
         Block();
         Move();
+        
 
     }
 
@@ -46,6 +50,7 @@ public class PlayerOne : MonoBehaviour
     {
        
         Jump();
+        
     }
 
     private void Move()
@@ -117,6 +122,27 @@ public class PlayerOne : MonoBehaviour
         }
     }
 
+    private void OpenHitBox()
+    {
+        hitBox.enabled = true;
+    }
+    private void CloseHitBox()
+    {
+        hitBox.enabled = false;
+    }
+    private void Attack()
+    {
+        if (InputManager.Instance.AttackButtonDown() && currentState != State.Attacking)
+        {
+            currentState = State.Attacking;
+            anim.AttackAnimation(true);
+
+        }
+        else if (InputManager.Instance.AttackButtonUP())
+        {
+            anim.AttackAnimation(false);
+        }
+    }
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.tag == "Ground")

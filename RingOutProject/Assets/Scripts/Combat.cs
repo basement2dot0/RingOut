@@ -4,14 +4,25 @@ using UnityEngine;
 
 public class Combat : MonoBehaviour
 {
-    private bool canPunch;
-    private bool Punching;
-    private Collider hitBox;
+    private bool hitBoxOpen;
+    [SerializeField]
+    private BoxCollider hitBox;
+    
+
+    private void Awake()
+    {
+        hitBox.enabled = false;
+    }
     private void OnTriggerEnter(Collider other)
     {
         if(other.gameObject.tag == "PlayerTwo")
         {
-            Debug.Log("OW!");
+            DoDmg(5);
         }
     }
+    private void DoDmg(int amount)
+    {
+        Debug.Log("Hit for " + amount.ToString() + "!");
+    }
+    
 }

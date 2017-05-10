@@ -35,6 +35,10 @@ public class PlayerAnim : MonoBehaviour {
     {
         anim.SetBool("isBlocking", truefalse);
     }
+    public void AttackAnimation(bool truefalse)
+    {
+        anim.SetBool("isAttacking", truefalse);
+    }
 }
 public enum AnimationTrigger
 {
