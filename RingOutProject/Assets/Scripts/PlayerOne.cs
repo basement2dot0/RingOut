@@ -28,7 +28,10 @@ public class PlayerOne : MonoBehaviour
     private PlayerAnim anim;
 
     [SerializeField]
-    private BoxCollider hitBox;
+    private BoxCollider PunchHitBox;
+    [SerializeField]
+    private BoxCollider KickHitBox;
+
 
 
     private void Start()
@@ -42,8 +45,7 @@ public class PlayerOne : MonoBehaviour
         anim.FreeFallAnimation(isGrounded);
         Block();
         Move();
-        
-
+        Attack();
     }
 
     private void FixedUpdate()
@@ -52,10 +54,9 @@ public class PlayerOne : MonoBehaviour
         Jump();
         
     }
-
+   
     private void Move()
     {
-        
         if (isGrounded)
         {
             anim.JumpAnimation(AnimationTrigger.reset);
@@ -79,6 +80,7 @@ public class PlayerOne : MonoBehaviour
             }
             rb.velocity = Vector3.zero; //remove any velocity applied to player when grounded to prevent unwanted sliding
         }
+        
     }
 
     private void Jump()
@@ -100,7 +102,10 @@ public class PlayerOne : MonoBehaviour
             }
         }
         else
-            rb.velocity += Vector3.down;
+        {
+            rb.velocity += Vector3.down * 150 * Time.deltaTime;
+        }
+            
         
 
     }
@@ -122,20 +127,33 @@ public class PlayerOne : MonoBehaviour
         }
     }
 
-    private void OpenHitBox()
+    private void OpenPunchHitBox()
     {
-        hitBox.enabled = true;
+        PunchHitBox.enabled = true;
     }
-    private void CloseHitBox()
+    private void ClosePunchHitBox()
     {
-        hitBox.enabled = false;
+        PunchHitBox.enabled = false;
     }
+    private void OpenKickHitBox() { KickHitBox.enabled = true; }
+    private void CloseKickHitBox() { KickHitBox.enabled = false; }
     private void Attack()
     {
-        if (InputManager.Instance.AttackButtonDown() && currentState != State.Attacking)
+        //May need an inputDelay
+        if (InputManager.Instance.AttackButtonDown())
         {
-            currentState = State.Attacking;
-            anim.AttackAnimation(true);
+           currentState = State.Attacking;
+            if (!isGrounded)
+            {
+                anim.AttackAnimation(true);
+                rb.velocity += (Vector3.down + transform.forward) * 50.0f;
+            }
+            else
+            {
+                anim.AttackAnimation(true);
+                rb.velocity += transform.forward * 50.0f;
+            }
+                
 
         }
         else if (InputManager.Instance.AttackButtonUP())
