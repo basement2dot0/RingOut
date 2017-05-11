@@ -16,13 +16,9 @@ public class Combat : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         if(other.gameObject.tag == "PlayerTwo")
-        {
-            DoDmg(5);
-        }
+            other.gameObject.GetComponent<PlayerOne>().Hit(transform.transform.forward);
+        
     }
-    private void DoDmg(int amount)
-    {
-        Debug.Log("Hit for " + amount.ToString() + "!");
-    }
+   
     
 }

@@ -4,7 +4,7 @@ using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody))]
 [RequireComponent(typeof(PlayerAnim))]
-public class PlayerOne : MonoBehaviour
+public class PlayerTwo : MonoBehaviour
 {
     //Universal Player variables
     [SerializeField]
@@ -42,8 +42,6 @@ public class PlayerOne : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         anim = GetComponent<PlayerAnim>();
-        lastInput = 0.0f;
-        
         
     }
     private void Update()
@@ -68,19 +66,19 @@ public class PlayerOne : MonoBehaviour
         {
             anim.JumpAnimation(AnimationTrigger.reset);
             
-            if (InputManager.Instance.Movement() != Vector3.zero)
+            if (InputManagerTwo.Instance.Movement() != Vector3.zero)
             {
 
-                rb.rotation = Quaternion.LookRotation(InputManager.Instance.Movement());
+                rb.rotation = Quaternion.LookRotation(InputManagerTwo.Instance.Movement());
                 if (currentState != State.Defending)
                 {
-                    transform.position += InputManager.Instance.Movement() * speed * Time.deltaTime;
+                    transform.position += InputManagerTwo.Instance.Movement() * speed * Time.deltaTime;
                     currentState = State.Walking;
                     anim.WalkAnimation(true);
                 }
             }
 
-            else if(InputManager.Instance.Movement() == Vector3.zero && currentState != State.Defending)
+            else if(InputManagerTwo.Instance.Movement() == Vector3.zero && currentState != State.Defending)
             {
                 anim.WalkAnimation(false);
                 currentState = State.Idle;
@@ -94,13 +92,13 @@ public class PlayerOne : MonoBehaviour
         if(isGrounded && currentState != State.Defending)
         {
            
-            if (InputManager.Instance.GrabButtonDown() && InputManager.Instance.Movement() != Vector3.zero)
+            if (InputManagerTwo.Instance.GrabButtonDown() && InputManagerTwo.Instance.Movement() != Vector3.zero)
             {
                 currentState = State.Jumping;
                 anim.JumpAnimation(AnimationTrigger.set);
                 rb.velocity += new Vector3(0,jumpHeight, 0) + (jumpDistance * InputManager.Instance.Movement());
             }
-            else if (InputManager.Instance.GrabButtonDown())
+            else if (InputManagerTwo.Instance.GrabButtonDown())
             {
                 currentState = State.Jumping;
                 anim.JumpAnimation(AnimationTrigger.set);
@@ -131,19 +129,16 @@ public class PlayerOne : MonoBehaviour
     private void CloseKickHitBox() { KickHitBox.enabled = false; }
     private void Attack()
     {
-        Debug.Log("Delay: " + inputDelay);
-        Debug.Log("Last Input: " + (Time.deltaTime - lastInput).ToString());
-        if ((Time.deltaTime - lastInput) >= inputDelay)
+        if (InputManagerTwo.Instance.AttackButtonDown())
         {
-            if (InputManager.Instance.AttackButtonDown())
-            {
-                Debug.Log("ATTACK!");
-                currentState = State.Attacking;
-                anim.AttackAnimation(true);
-                lastInput = Time.deltaTime;
-            }
+                if ((lastInput - Time.deltaTime) >= inputDelay)
+                {
+                    currentState = State.Attacking;
+                    anim.AttackAnimation(true);
+                    lastInput = Time.deltaTime;
+                }
         }
-        else if (InputManager.Instance.AttackButtonUP())
+        else if (InputManagerTwo.Instance.AttackButtonUP())
             anim.AttackAnimation(false);
         
     }
@@ -151,12 +146,12 @@ public class PlayerOne : MonoBehaviour
     {
         if (isGrounded)
         {
-            if (InputManager.Instance.DefendButtonDown())
+            if (InputManagerTwo.Instance.DefendButtonDown())
             {
                 currentState = State.Defending;
                 anim.BlockAnimation(true);
             }
-            else if (InputManager.Instance.DefendButtonUp())
+            else if (InputManagerTwo.Instance.DefendButtonUp())
             {
                 currentState = State.Idle;
                 anim.BlockAnimation(false);

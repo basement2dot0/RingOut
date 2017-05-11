@@ -39,6 +39,10 @@ public class PlayerAnim : MonoBehaviour {
     {
         anim.SetBool("isAttacking", truefalse);
     }
+    public void HitAnimation(bool truefalse)
+    {
+        anim.SetBool("isHit", truefalse);
+    }
 }
 public enum AnimationTrigger
 {
