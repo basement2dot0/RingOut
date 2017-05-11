@@ -133,6 +133,8 @@ public class PlayerOne : MonoBehaviour
     private void Attack()
     {
         float sinceLastInput = (Time.time - lastInput);
+        if (isGrounded)
+        {
             if (InputManager.Instance.AttackButtonDown() && sinceLastInput >= inputDelay)
             {
                 currentState = State.Attacking;
@@ -140,8 +142,17 @@ public class PlayerOne : MonoBehaviour
                 lastInput = Time.time;
             }
             else if (InputManager.Instance.AttackButtonUP())
-            anim.AttackAnimation(false);
-        
+                anim.AttackAnimation(false);
+        }
+        else
+        {
+            if (InputManager.Instance.AttackButtonDown())
+            {
+                currentState = State.Attacking;
+                anim.AttackAnimation(true);
+                lastInput = Time.time;
+            }
+        }
     }
     private void Block()
     {
