@@ -8,12 +8,14 @@ public class Combat : MonoBehaviour
     [SerializeField]
     private BoxCollider hitBox;
     private PlayerOne playerone;
+    private Vector3 punchForce;
     
 
     private void Awake()
     {
         hitBox.enabled = false;
             playerone = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerOne>();
+        punchForce = Vector3.one * 5;
     }
     private void OnTriggerEnter(Collider other)
     {

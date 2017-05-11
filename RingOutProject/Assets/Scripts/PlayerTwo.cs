@@ -12,7 +12,7 @@ public class PlayerTwo : MonoBehaviour
     private Rigidbody rb;
     private PlayerAnim anim;
     private bool isGrounded;
-    
+
     //Movement Controls
     [SerializeField]
     private float speed;
@@ -44,30 +44,33 @@ public class PlayerTwo : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         anim = GetComponent<PlayerAnim>();
-        
+
     }
     private void Update()
     {
-        anim.FreeFallAnimation(isGrounded);
-        Block();
-        Move();
-        Attack();
+        if (currentState != State.Hit)
+        {
+            anim.FreeFallAnimation(isGrounded);
+            Block();
+            Move();
+            Attack();
+        }
     }
     private void FixedUpdate()
     {
-       
+
         Jump();
-        
+
     }
 
-    
+
     //Movement Logic
     private void Move()
     {
         if (isGrounded)
         {
             anim.JumpAnimation(AnimationTrigger.reset);
-            
+
             if (InputManagerTwo.Instance.Movement() != Vector3.zero)
             {
 
@@ -80,25 +83,25 @@ public class PlayerTwo : MonoBehaviour
                 }
             }
 
-            else if(InputManagerTwo.Instance.Movement() == Vector3.zero && currentState != State.Defending)
+            else if (InputManagerTwo.Instance.Movement() == Vector3.zero && currentState != State.Defending)
             {
                 anim.WalkAnimation(false);
                 currentState = State.Idle;
             }
             rb.velocity = Vector3.zero; //remove any velocity applied to player when grounded to prevent unwanted sliding
         }
-        
+
     }
     private void Jump()
     {
-        if(isGrounded && currentState != State.Defending)
+        if (isGrounded && currentState != State.Defending)
         {
-           
+
             if (InputManagerTwo.Instance.GrabButtonDown() && InputManagerTwo.Instance.Movement() != Vector3.zero)
             {
                 currentState = State.Jumping;
                 anim.JumpAnimation(AnimationTrigger.set);
-                rb.velocity += new Vector3(0,jumpHeight, 0) + (jumpDistance * InputManager.Instance.Movement());
+                rb.velocity += new Vector3(0, jumpHeight, 0) + (jumpDistance * InputManager.Instance.Movement());
             }
             else if (InputManagerTwo.Instance.GrabButtonDown())
             {
@@ -109,20 +112,20 @@ public class PlayerTwo : MonoBehaviour
         }
         else
             rb.velocity += Vector3.down * 150 * Time.deltaTime;
-        
-            
-        
+
+
+
 
     }
-    
-    
+
+
     //Combat Logic
     private void OpenPunchHitBox()
     {
         PunchHitBox.enabled = true;
         rb.velocity += (Vector3.down + transform.forward) * punchVelocity;
     }
-    private void ClosePunchHitBox(){PunchHitBox.enabled = false;}
+    private void ClosePunchHitBox() { PunchHitBox.enabled = false; }
     private void OpenKickHitBox()
     {
         KickHitBox.enabled = true;
@@ -133,16 +136,16 @@ public class PlayerTwo : MonoBehaviour
     {
         if (InputManagerTwo.Instance.AttackButtonDown())
         {
-                if ((lastInput - Time.deltaTime) >= inputDelay)
-                {
-                    currentState = State.Attacking;
-                    anim.AttackAnimation(true);
-                    lastInput = Time.deltaTime;
-                }
+            if ((lastInput - Time.deltaTime) >= inputDelay)
+            {
+                currentState = State.Attacking;
+                anim.AttackAnimation(true);
+                lastInput = Time.deltaTime;
+            }
         }
         else if (InputManagerTwo.Instance.AttackButtonUP())
             anim.AttackAnimation(false);
-        
+
     }
     private void Block()
     {
@@ -162,17 +165,18 @@ public class PlayerTwo : MonoBehaviour
     }
     public void Hit(Vector3 opponentDirection)
     {
+        Debug.Log(Time.timeScale.ToString());
         if (currentState != State.Defending)
         {
             currentState = State.Hit;
-            rb.AddForce(opponentDirection * launchDistance );
+            Time.timeScale = 0.0f;
+            rb.AddForce(opponentDirection * launchDistance);
             anim.HitAnimation(true);
         }
-        
+        else
+            Debug.Log("BLOCKED!");
         
     }
-
-    
     //Ground Check
     private void OnCollisionEnter(Collision collision)
     {

@@ -133,14 +133,8 @@ public class PlayerOne : MonoBehaviour
     private void Attack()
     {
         float sinceLastInput = (Time.time - lastInput);
-        //Debug.Log("Delay: " + inputDelay);
-        Debug.Log("Time: "+ Time.time.ToString());
-        Debug.Log("Last Input: " + lastInput.ToString());
-        Debug.Log("Total: " + sinceLastInput.ToString());
-        
             if (InputManager.Instance.AttackButtonDown() && sinceLastInput >= inputDelay)
             {
-                Debug.Log("ATTACK!");
                 currentState = State.Attacking;
                 anim.AttackAnimation(true);
                 lastInput = Time.time;

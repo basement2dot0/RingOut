@@ -11,6 +11,9 @@ class CameraController : MonoBehaviour
     private PlayerOne leftTarget;
 
     [SerializeField]
+    private float fov;
+
+    [SerializeField]
     private PlayerTwo rightTarget;
 
     [SerializeField]
@@ -21,17 +24,29 @@ class CameraController : MonoBehaviour
     [SerializeField]
     private float defaultZoom;
 
+    private float lastFrameTime;
+    private float myDeltaTime;
+
     private void Awake()
     {
         leftTarget = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerOne>();
         rightTarget = GameObject.FindGameObjectWithTag("PlayerTwo").GetComponent<PlayerTwo>();
         defaultZoom = Camera.main.fieldOfView;
-        zoomIn = 20.0f;
+        lastFrameTime = Time.realtimeSinceStartup;
+        fov = 10;
+        zoomIn = 50.0f;
     }
     private void Update()
     {
+        Debug.Log(Camera.main.fieldOfView.ToString());
         CenterFocus();
         
+    }
+
+    private void LateUpdate()
+    {
+        myDeltaTime = Time.realtimeSinceStartup - lastFrameTime;
+        lastFrameTime = Time.realtimeSinceStartup;
     }
 
     /// <summary>
@@ -43,14 +58,19 @@ class CameraController : MonoBehaviour
         {
             center.transform.position = leftTarget.transform.position;
             Camera.main.transform.LookAt(center.transform);
-            Camera.main.fieldOfView = zoomIn; 
+            Camera.main.fieldOfView = (defaultZoom + zoomIn); 
 
         }
         if (rightTarget.currentState == State.Hit)
         {
             center.transform.position = rightTarget.transform.position;
             Camera.main.transform.LookAt(center.transform);
-            Camera.main.fieldOfView = zoomIn;
+            if(Camera.main.fieldOfView >= fov)
+                Camera.main.fieldOfView = fov;
+            Time.timeScale = 1;
+            
+            
+            
         }
         else
         {
