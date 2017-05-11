@@ -22,8 +22,10 @@ public class PlayerTwo : MonoBehaviour
     private float jumpDistance;
     [SerializeField]
     private float rotateSpeed;
-    
+
     //Combat Controls
+    [SerializeField]
+    private float launchDistance;
     [SerializeField]
     private BoxCollider PunchHitBox;
     [SerializeField]
@@ -163,7 +165,7 @@ public class PlayerTwo : MonoBehaviour
         if (currentState != State.Defending)
         {
             currentState = State.Hit;
-            rb.AddForce(opponentDirection * 100.0f);
+            rb.AddForce(opponentDirection * launchDistance );
             anim.HitAnimation(true);
         }
         

@@ -7,17 +7,23 @@ public class Combat : MonoBehaviour
     private bool hitBoxOpen;
     [SerializeField]
     private BoxCollider hitBox;
+    private PlayerOne playerone;
     
 
     private void Awake()
     {
         hitBox.enabled = false;
+            playerone = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerOne>();
     }
     private void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.tag == "PlayerTwo")
-            other.gameObject.GetComponent<PlayerOne>().Hit(transform.transform.forward);
-        
+        PlayerTwo opponenet;
+        if (other.gameObject.tag == "PlayerTwo")
+        {
+            opponenet = other.gameObject.GetComponent<PlayerTwo>();
+            opponenet.Hit(playerone.transform.forward);
+        }
+
     }
    
     

@@ -49,9 +49,10 @@ public class PlayerOne : MonoBehaviour
     private void Update()
     {
         anim.FreeFallAnimation(isGrounded);
+        Attack();
         Block();
         Move();
-        Attack();
+        
     }
     private void FixedUpdate()
     {
@@ -72,7 +73,7 @@ public class PlayerOne : MonoBehaviour
             {
 
                 rb.rotation = Quaternion.LookRotation(InputManager.Instance.Movement());
-                if (currentState != State.Defending)
+                if (currentState != State.Defending || currentState != State.Attacking)
                 {
                     transform.position += InputManager.Instance.Movement() * speed * Time.deltaTime;
                     currentState = State.Walking;
@@ -131,19 +132,20 @@ public class PlayerOne : MonoBehaviour
     private void CloseKickHitBox() { KickHitBox.enabled = false; }
     private void Attack()
     {
-        Debug.Log("Delay: " + inputDelay);
-        Debug.Log("Last Input: " + (Time.deltaTime - lastInput).ToString());
-        if ((Time.deltaTime - lastInput) >= inputDelay)
-        {
-            if (InputManager.Instance.AttackButtonDown())
+        float sinceLastInput = (Time.time - lastInput);
+        //Debug.Log("Delay: " + inputDelay);
+        Debug.Log("Time: "+ Time.time.ToString());
+        Debug.Log("Last Input: " + lastInput.ToString());
+        Debug.Log("Total: " + sinceLastInput.ToString());
+        
+            if (InputManager.Instance.AttackButtonDown() && sinceLastInput >= inputDelay)
             {
                 Debug.Log("ATTACK!");
                 currentState = State.Attacking;
                 anim.AttackAnimation(true);
-                lastInput = Time.deltaTime;
+                lastInput = Time.time;
             }
-        }
-        else if (InputManager.Instance.AttackButtonUP())
+            else if (InputManager.Instance.AttackButtonUP())
             anim.AttackAnimation(false);
         
     }
