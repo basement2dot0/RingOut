@@ -73,7 +73,7 @@ public class PlayerOne : MonoBehaviour
             {
 
                 rb.rotation = Quaternion.LookRotation(InputManager.Instance.Movement());
-                if (currentState != State.Defending || currentState != State.Attacking)
+                if (currentState != State.Defending)
                 {
                     transform.position += InputManager.Instance.Movement() * speed * Time.deltaTime;
                     currentState = State.Walking;
@@ -81,7 +81,7 @@ public class PlayerOne : MonoBehaviour
                 }
             }
 
-            else if(InputManager.Instance.Movement() == Vector3.zero && currentState != State.Defending)
+             if(InputManager.Instance.Movement() == Vector3.zero && currentState != State.Defending)
             {
                 anim.WalkAnimation(false);
                 currentState = State.Idle;
@@ -132,17 +132,22 @@ public class PlayerOne : MonoBehaviour
     private void CloseKickHitBox() { KickHitBox.enabled = false; }
     private void Attack()
     {
-        float sinceLastInput = (Time.time - lastInput);
+       // float sinceLastInput = (Time.time - lastInput);
         if (isGrounded)
         {
-            if (InputManager.Instance.AttackButtonDown() && sinceLastInput >= inputDelay)
+            if (InputManager.Instance.AttackButtonDown() && (Time.time - lastInput) >= inputDelay)
             {
-                currentState = State.Attacking;
-                anim.AttackAnimation(true);
-                lastInput = Time.time;
+                if (currentState != State.Defending)
+                {
+                    lastInput = Time.time;
+                    currentState = State.Attacking;
+                    anim.AttackAnimation(true);
+                    
+                }
             }
-            else if (InputManager.Instance.AttackButtonUP())
+            else
                 anim.AttackAnimation(false);
+
         }
         else
         {
@@ -152,7 +157,10 @@ public class PlayerOne : MonoBehaviour
                 anim.AttackAnimation(true);
                 lastInput = Time.time;
             }
+            else
+                anim.AttackAnimation(false);
         }
+        
     }
     private void Block()
     {

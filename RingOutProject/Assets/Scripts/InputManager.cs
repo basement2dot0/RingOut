@@ -25,7 +25,7 @@ public class InputManager : MonoBehaviour
         return new Vector3(GetHorizontal(), 0, GetVertical());}
 
     public bool AttackButtonDown(){
-        return Input.GetButtonDown("Fire1");}
+        return Input.GetButton("Fire1");}
 
     public bool AttackButtonUP(){
         return Input.GetButtonUp("Fire1");}
