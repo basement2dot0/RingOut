@@ -4,11 +4,29 @@ using UnityEngine;
 
 public class Combat : MonoBehaviour
 {
-    private void OnTriggerStay(Collider other)
+    private bool hitBoxOpen;
+    [SerializeField]
+    private BoxCollider hitBox;
+    private PlayerOne playerone;
+    private Vector3 punchForce;
+    
+
+    private void Awake()
     {
-        if(other.gameObject.tag == "Target")
-        {
-            Debug.Log("OW!");
-        }
+        hitBox.enabled = false;
+            playerone = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerOne>();
+        punchForce = Vector3.one * 5;
     }
+    private void OnTriggerEnter(Collider other)
+    {
+        PlayerTwo opponenet;
+        if (other.gameObject.tag == "PlayerTwo")
+        {
+            opponenet = other.gameObject.GetComponent<PlayerTwo>();
+            opponenet.Hit(playerone.transform.forward);
+        }
+
+    }
+   
+    
 }
