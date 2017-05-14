@@ -22,6 +22,8 @@ public class PlayerOne : MonoBehaviour
     private float jumpDistance;
     [SerializeField]
     private float rotateSpeed;
+    [SerializeField]
+    private float jumpDelay;
     
     //Combat Controls
     [SerializeField]
@@ -35,14 +37,17 @@ public class PlayerOne : MonoBehaviour
     [SerializeField]
     private float inputDelay;
     private float lastInput;
+    private float lastJump;
 
 
     //Unity Methods
-    private void Start()
+    private void Awake()
     {
         rb = GetComponent<Rigidbody>();
         anim = GetComponent<PlayerAnim>();
-        lastInput = 0.0f;
+        //lastInput = (inputDelay + 1.0f);
+        //lastJump = (jumpDelay);
+
         
         
     }
@@ -90,19 +95,35 @@ public class PlayerOne : MonoBehaviour
         }
         
     }
+    private bool CanJumpForward()
+    {
+        if ((Time.time - lastJump) >= jumpDelay && InputManager.Instance.GrabButtonDown() && InputManager.Instance.Movement() != Vector3.zero)
+            return true;
+        else
+            return false;
+    }
+    private bool CanJump()
+    {
+        if ((Time.time - lastJump) >= jumpDelay && InputManager.Instance.GrabButtonDown())
+            return true;
+        else
+            return false;
+    }
     private void Jump()
     {
         if(isGrounded && currentState != State.Defending)
         {
            
-            if (InputManager.Instance.GrabButtonDown() && InputManager.Instance.Movement() != Vector3.zero)
+            if (CanJumpForward() )
             {
+                lastJump = Time.time;
                 currentState = State.Jumping;
                 anim.JumpAnimation(AnimationTrigger.set);
                 rb.velocity += new Vector3(0,jumpHeight, 0) + (jumpDistance * InputManager.Instance.Movement());
             }
-            else if (InputManager.Instance.GrabButtonDown())
+            else if (CanJump() )
             {
+                lastJump = Time.time;
                 currentState = State.Jumping;
                 anim.JumpAnimation(AnimationTrigger.set);
                 rb.velocity += Vector3.up * jumpHeight;
@@ -127,7 +148,7 @@ public class PlayerOne : MonoBehaviour
     private void OpenKickHitBox()
     {
         KickHitBox.enabled = true;
-        rb.velocity += transform.forward * kickVelocity;
+        rb.velocity += (Vector3.down + transform.forward )* kickVelocity;
     }
     private void CloseKickHitBox() { KickHitBox.enabled = false; }
     private void Attack()
