@@ -1,24 +1,24 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿//using System.Collections;
+//using System.Collections.Generic;
+//using UnityEngine;
 
-public class CombatSystem : MonoBehaviour {
+//public class CombatSystem : MonoBehaviour {
 
-    private static CombatSystem instance;
+//    private static CombatSystem instance;
 
-    public static CombatSystem Instance
-    {
-        get
-        {
-            if(instance == null)
-            {
-                instance = new CombatSystem();
-            }
-            return instance;
-        }
-     }
+//    public static CombatSystem Instance
+//    {
+//        get
+//        {
+//            if(instance == null)
+//            {
+//                instance = new CombatSystem();
+//            }
+//            return instance;
+//        }
+//     }
 
-    private List<PlayerOne> combatActors;
+//    private List<PlayerOne> combatActors;
 
     
-}
+//}

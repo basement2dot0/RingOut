@@ -4,43 +4,57 @@ using UnityEngine;
 
 public class InputManager : MonoBehaviour
 {
-    private static InputManager instance;
-    public static InputManager Instance
-    {
-        get
-        {
-          if(instance == null)
-                instance = new InputManager();
-            return instance;
-        }
+   
+    public int controlNo;
+    //public int ControlNo
+    //{ get { return controlNo; } set { controlNo = value; } }
+    //private static InputManager instance;
+    //public static InputManager Instance
+    //{
+    //    get
+    //    {
+    //      if(instance == null)
+    //            instance = new InputManager();
+    //        return instance;
+    //    }
+    //}
+
+    public float GetHorizontal(int playerID)
+    {  
+    return  Input.GetAxis("Horizontal" + playerID.ToString());
     }
 
-    public float GetHorizontal(){
-        return Input.GetAxis("Horizontal");}
+    public float GetVertical(int playerID){
+        return Input.GetAxis("Vertical" + playerID.ToString());
+    }
 
-    public float GetVertical(){
-        return Input.GetAxis("Vertical");}
+    public Vector3 Movement(int playerID)
+    {
+        return new Vector3(GetHorizontal(playerID), 0, GetVertical(playerID));
+    }
 
-    public Vector3 Movement(){
-        return new Vector3(GetHorizontal(), 0, GetVertical());}
+    public bool AttackButtonDown(int playerID)
+    {
+        return Input.GetButton("Attack" + playerID.ToString());
+    }
 
-    public bool AttackButtonDown(){
-        return Input.GetButton("Fire1");}
+    public bool AttackButtonUP(int playerID)
+    {
+        return Input.GetButtonUp("Attack" + playerID.ToString());
+    }
 
-    public bool AttackButtonUP(){
-        return Input.GetButtonUp("Fire1");}
+    public bool DefendButtonDown(int playerID)
+    {
+        return Input.GetButtonDown("Block" + playerID.ToString());
+    }
 
-    public bool DefendButtonDown(){
-        return Input.GetButtonDown("Fire2");}
+    public bool DefendButtonUp(int playerID)
+    {
+        return Input.GetButtonUp("Block" + playerID.ToString());
+    }
 
-    public bool DefendButtonUp(){
-        return Input.GetButtonUp("Fire2");}
-
-    public bool GrabButtonDown(){
-        return Input.GetButtonDown("Jump");}
-
-    public bool GrabButtonUp(){
-        return Input.GetButtonUp("Fire3");}
-
-
+    public bool JumpButtonDown(int playerID)
+    {
+        return Input.GetButtonDown("Jump" + playerID.ToString());
+    }
 }
