@@ -7,24 +7,40 @@ public class MomentumBar : MonoBehaviour
   
     private Slider momentumBar;
     [SerializeField]
-    private bool isPlayerOne; 
+    private bool isPlayerOne;
+
+    private Dmg damage;
     private void Awake()
     {
         momentumBar = GameObject.FindGameObjectWithTag("Slider").GetComponent<Slider>();
+        damage = GameObject.FindGameObjectWithTag("Player").GetComponent<Dmg>();
         
     }
 
-    public void OnHit(float amount)
+    public void OnHit()
     {
         if (isPlayerOne)
         {
-            momentumBar.value += Mathf.Lerp(momentumBar.value, momentumBar.minValue,amount);
-
-
+            if ((momentumBar.value + damage.CurrentDamage(damage.MinDamage, damage.MaxDamage)) > momentumBar.maxValue)
+            {
+                momentumBar.value = momentumBar.maxValue;
+            }
+            else
+            {
+                momentumBar.value += damage.CurrentDamage(damage.MinDamage, damage.MaxDamage);
+            }
         }
         else
         {
-            momentumBar.value -= Mathf.Lerp(momentumBar.value, momentumBar.maxValue, amount);
+            if ((momentumBar.value - damage.CurrentDamage(damage.MinDamage, damage.MaxDamage)) < momentumBar.minValue)
+            {
+                momentumBar.value = momentumBar.minValue;
+            }
+            else
+            {
+                momentumBar.value -= damage.CurrentDamage(damage.MinDamage, damage.MaxDamage);
+            }
         }
+        
     }
 }

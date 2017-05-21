@@ -20,8 +20,8 @@ public class Dmg : MonoBehaviour {
     public float MaxDamage { get { return maxDamage; }}
 
     // Use this for initialization
-    void Start () {
-        damageType = DamageType.NONE;
+    void Start ()
+    {
         Initialize();
     }
 	
@@ -46,7 +46,7 @@ public class Dmg : MonoBehaviour {
                 minDamage = 15.0f;
                 maxDamage = 20.0f;
                 currentDamage = CurrentDamage(minDamage, maxDamage);
-                Debug.Log(currentDamage.ToString());
+                
                 break;
             default:
                 Debug.LogError("Please Select a Damage Type");
@@ -54,10 +54,12 @@ public class Dmg : MonoBehaviour {
         }
     }
 
-    private float CurrentDamage(float minDmg, float maxDmg)
+    public float CurrentDamage(float minDmg, float maxDmg)
     {
         float dmg = Random.Range(minDamage,maxDmg);
+        Debug.Log(currentDamage.ToString());
         return dmg;
+       
     }
 }
 public enum DamageType
