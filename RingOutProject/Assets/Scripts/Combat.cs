@@ -7,14 +7,14 @@
 //    private bool hitBoxOpen;
 //    [SerializeField]
 //    private BoxCollider hitBox;
-//    private PlayerOne playerone;
+//    private Player playerone;
 //    private Vector3 punchForce;
-    
+
 
 //    private void Awake()
 //    {
 //        hitBox.enabled = false;
-//            playerone = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerOne>();
+//        playerone = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerOne>();
 //        punchForce = Vector3.one * 5;
 //    }
 //    private void OnTriggerEnter(Collider other)
@@ -27,6 +27,6 @@
 //        }
 
 //    }
-   
-    
+
+
 //}
