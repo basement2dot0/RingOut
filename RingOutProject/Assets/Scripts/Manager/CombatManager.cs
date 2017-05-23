@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using UnityEngine;
+using System.Text;
 
 public enum Action
 {
@@ -21,10 +22,10 @@ public class CombatManager : MonoBehaviour
     private Action comboAttack = Action.NONE;
     private Animator anim;
     private string lastString;
-    private List<string> ci;
+    private Dictionary<string,string> registeredCombos;
     private string[] combos;
     private InputManager inputManager;
-   
+    private StringBuilder activeCombo;
 
     private void Awake()
     {
@@ -35,49 +36,20 @@ public class CombatManager : MonoBehaviour
     }
     private void Start()
     {
-        ci = new List<string>();
+        activeCombo = new StringBuilder();
         combos = new string[2];
-        combos[0] = "PunchPunchPunch";
-        combos[1] = "KickKickKick";
+        registeredCombos = new Dictionary<string, string>();
+        registeredCombos.Add("ComboOne", "PPP");
     }
     private void Update()
     {
 
         ActionSelect();
-        ComboStrings(combos);
+        //CheckForCombo();
+        //ComboStrings(combos);
     }
     
-    public bool ComboStrings(string[] combos)
-    {
-        int combinationStart = -1;
-        for (int i = 0; i < ci.Count; i++)
-        {
-            if (combinationStart >= 0)
-            {
-                if (i - combinationStart >= combos.Length)
-                {
-                    Debug.Log("Combo Successful!");
-                    return true;
-                }
-
-                if (ci[i] != combos[i - combinationStart])
-                {
-                    Debug.Log("Combo Unsuccessful.");
-                    combinationStart = -1;
-                }
-            }
-            else
-            {
-                if (i + combos.Length >= ci.Count)
-                    return false;
-
-                if (ci[i] == combos[0])
-                    combinationStart = i;
-            }
-        }
-        Debug.Log("HELLO WORLD!");
-        return true;
-    }
+    
     public void PlayerInput()
     {
 
@@ -87,7 +59,7 @@ public class CombatManager : MonoBehaviour
                 Comboing("Block");
                 break;
             case Action.PUNCH:
-                Comboing("Punch");
+                Comboing("P");
                 break;
             case Action.KICK:
                 Comboing("Kick");
@@ -111,7 +83,8 @@ public class CombatManager : MonoBehaviour
         else if (ComboTime.CanCombo())
         {
             lastString = comboString;
-            //ComboStrings(ci);
+            //ComboStrings(combos);
+            CheckForCombo();
             currentCombo = 0;
             combo.Clear();
 
@@ -125,7 +98,7 @@ public class CombatManager : MonoBehaviour
             ComboTime.LastInput = Time.deltaTime;
             comboAttack = Action.PUNCH;
             PlayerInput();
-            ci.Add("Punch");
+            activeCombo.Append("P");
             Debug.Log("Punch");
             return;
         }
@@ -135,33 +108,25 @@ public class CombatManager : MonoBehaviour
             ComboTime.LastInput = Time.deltaTime;
             comboAttack = Action.BLOCK;
             PlayerInput();
-            ci.Add("Block");
+            activeCombo.Append("Block");
             Debug.Log("Block");
             return;
         }
     }
 
+    private void CheckForCombo()
+    {
+        foreach (var item in registeredCombos.Keys)
+        {
+            var comboButton = registeredCombos[item];
+            if (activeCombo.ToString().Contains(comboButton))
+            {
+                Debug.Log("Combo Executed" + item.ToString());
+            }
+        }
+    }
+
 }
 
-public static class ComboTime
-{
-    private static float inputTime = 0.5f;
-    private static float lastInput;
 
-    public static float LastInput
-    {
-        get { return lastInput; }
-        set { lastInput = value; }
-
-    }
-    public static float InputTime
-    {
-        get { return inputTime; }
-
-    }
-    public static bool CanCombo()
-    {
-        return ((lastInput - Time.deltaTime) <= inputTime) ? true : false;
-    }
-}
 

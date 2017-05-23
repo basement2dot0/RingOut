@@ -567,14 +567,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02ee1c8ea29d6a44280cf3dd0dd83d7e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  leftTarget: {fileID: 0}
-  fov: 0
-  rightTarget: {fileID: 0}
-  center: {fileID: 1018077341}
-  zoomIn: 0
-  defaultZoom: 0
-  lastFrameTime: 0
-  myDeltaTime: 0
 --- !u!1 &103069226
 GameObject:
   m_ObjectHideFlags: 0
@@ -897,7 +889,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 178569177}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a9525cdb9297dd64280ea7b9878073d7, type: 3}
   m_Name: 
@@ -980,6 +972,17 @@ MonoBehaviour:
   minDamage: 1
   maxDamage: 10
   currentDamage: 0
+--- !u!114 &178569187
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 178569177}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 83101c7b9b75a1d44aff4a6c3229fc22, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &200438909
 GameObject:
   m_ObjectHideFlags: 0
@@ -4146,10 +4149,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a77d4946cb84e646ac5b84e58a057bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hitBoxOpen: 0
-  hitBox: {fileID: 1640421258}
-  playerone: {fileID: 0}
-  punchForce: {x: 0, y: 0, z: 0}
 --- !u!65 &1640421258
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4264,11 +4263,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29b812145d5ace14fac665c4944f21c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Rounds: 0
-  Match: 0
-  playerOne: {fileID: 0}
-  playerTwo: {fileID: 0}
-  ringOutText: {fileID: 15143244}
 --- !u!114 &1693390987
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5610,10 +5604,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a77d4946cb84e646ac5b84e58a057bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hitBoxOpen: 0
-  hitBox: {fileID: 2047502292}
-  playerone: {fileID: 0}
-  punchForce: {x: 0, y: 0, z: 0}
 --- !u!1 &2071135796
 GameObject:
   m_ObjectHideFlags: 0
