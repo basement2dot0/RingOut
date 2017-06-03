@@ -26,6 +26,7 @@ public class PlayerAnim : MonoBehaviour {
     /// <param name="trigger"></param>
     public void JumpAnimation(AnimationTrigger trigger)
     {
+        
         if (trigger == AnimationTrigger.set)
             anim.SetTrigger("Jump");
         else if (trigger == AnimationTrigger.reset)

@@ -6,20 +6,18 @@ public class MomentumBar : MonoBehaviour
 {
   
     private Slider momentumBar;
-    [SerializeField]
-    private bool isPlayerOne;
-
-    private Dmg damage;
+    public bool IsPlayerOne { get; set; }
+    private Damage damage;
     private void Awake()
     {
         momentumBar = GameObject.FindGameObjectWithTag("Slider").GetComponent<Slider>();
-        damage = GameObject.FindGameObjectWithTag("Player").GetComponent<Dmg>();
+        damage = GameObject.FindGameObjectWithTag("Player").GetComponent<Damage>();
         
     }
 
     public void OnHit()
     {
-        if (isPlayerOne)
+        if (IsPlayerOne)
         {
             if ((momentumBar.value + damage.CurrentDamage(damage.MinDamage, damage.MaxDamage)) > momentumBar.maxValue)
             {

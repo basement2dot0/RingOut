@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -6,6 +7,8 @@ using UnityEngine;
 [RequireComponent(typeof(PlayerAnim))]
 public class Player : MonoBehaviour
 {
+    //Momentum Bar
+    private MomentumBar momentumBar;
     //Universal Player variables
     [SerializeField]
     public State currentState = State.Idle;
@@ -46,12 +49,13 @@ public class Player : MonoBehaviour
     //Unity Methods
     private void Awake()
     {
+
         rb = GetComponent<Rigidbody>();
         anim = GetComponent<PlayerAnim>();
         //lastInput = (inputDelay + 1.0f);
         //lastJump = (jumpDelay);
         inputManager = GetComponent<InputManager>();
-
+        momentumBar = GameObject.FindGameObjectWithTag("Canvas").GetComponent<MomentumBar>();
 
 
     }
@@ -65,6 +69,9 @@ public class Player : MonoBehaviour
         //Attack();
         //Block();
         Move();
+        //OpenPunchHitBox();
+
+
 
     }
     private void FixedUpdate()
@@ -74,6 +81,20 @@ public class Player : MonoBehaviour
 
     }
 
+    private void OnEnable()
+    {
+        EventManager.Instance.DamageHandler += DamageTaken;
+    }
+
+    public void DamageTaken()
+    {
+        OpenPunchHitBox();
+    }
+
+    private void OnDisable()
+    {
+        EventManager.Instance.DamageHandler -= DamageTaken;
+    }
 
     //Movement Logic
     private void Move()
@@ -118,6 +139,35 @@ public class Player : MonoBehaviour
             isGrounded = false;
 
     }
+    public void OpenPunchHitBox()
+    {
+        BoxCollider hitBox = GameObject.FindGameObjectWithTag("Hitbox").GetComponent<BoxCollider>();
+        hitBox.enabled = true;
+        if(id ==1)
+        {
+            momentumBar.IsPlayerOne = true;
+        }
+        else
+        {
+            momentumBar.IsPlayerOne = false;
+            Debug.Log("Player one = false!");
+        }
+        PunchHitBox.enabled = true;
+        
+        rb.velocity += (Vector3.down + transform.forward) * punchVelocity;
+    }
+    private void ClosePunchHitBox()
+    {
+        BoxCollider hitBox = GameObject.FindGameObjectWithTag("Hitbox").GetComponent<BoxCollider>();
+        hitBox.enabled = false;
+    }
+    private void OpenKickHitBox()
+    {
+        KickHitBox.enabled = true;
+        rb.velocity += (Vector3.down + transform.forward) * kickVelocity;
+    }
+    private void CloseKickHitBox() { KickHitBox.enabled = false; }
+
 
 }
 //    private bool CanJumpForward()

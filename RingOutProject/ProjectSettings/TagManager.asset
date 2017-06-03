@@ -9,6 +9,7 @@ TagManager:
   - PlayerTwo
   - Canvas
   - Slider
+  - Hitbox
   layers:
   - Default
   - TransparentFX
