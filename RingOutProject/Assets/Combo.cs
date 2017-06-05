@@ -37,13 +37,13 @@ public class Combo : MonoBehaviour
         {
             Debug.Log("Attack Three!");
             //call players unique property
-             anim.Play("Punch");
+             anim.Play("Attack3");
         }
         else if (AttackTwo.CheckCombo())
         {
             Debug.Log("Attack Two!");
             //call players unique property
-            anim.Play("Punch");
+            anim.Play("Attack2");
         }
         else  if (AttackOne.CheckCombo())
         {

@@ -24,12 +24,12 @@ public class MomentumBar : MonoBehaviour
     private void Awake()
     {
         players = new Player[2];
-        foreach (var item in GameObject.FindGameObjectsWithTag("Player"))
+        foreach (var player in GameObject.FindGameObjectsWithTag("Player"))
         {
-            if (item.GetComponent<Player>().ID == 1)
-                players[0] = item.GetComponent<Player>();
+            if (player.GetComponent<Player>().ID == 1)
+                players[0] = player.GetComponent<Player>();
             else
-                players[1] = item.GetComponent<Player>();
+                players[1] = player.GetComponent<Player>();
 
         }
         momentumBar = GameObject.FindGameObjectWithTag("Slider").GetComponent<Slider>();
@@ -38,12 +38,12 @@ public class MomentumBar : MonoBehaviour
         momentumBar.value = startingValue;
         hypeText = gameObject.transform.GetChild(0).GetComponent<Text>();
         playersTheme = new AudioManager[2]; 
-        foreach (var item in GameObject.FindGameObjectsWithTag("Player"))
+        foreach (var theme in GameObject.FindGameObjectsWithTag("Player"))
         {
-            if(item.GetComponent<Player>().ID == 1)
-            playersTheme[0] =item.GetComponent<AudioManager>();
+            if(theme.GetComponent<Player>().ID == 1)
+            playersTheme[0] =theme.GetComponent<AudioManager>();
             else
-                playersTheme[1] = item.GetComponent<AudioManager>();
+                playersTheme[1] = theme.GetComponent<AudioManager>();
 
         }
     }

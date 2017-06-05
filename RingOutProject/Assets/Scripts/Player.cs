@@ -54,7 +54,7 @@ public class Player : MonoBehaviour
     //Unity Methods
     private void Awake()
     {
-
+        speed = 20.0f;
         rb = GetComponent<Rigidbody>();
         anim = GetComponent<PlayerAnim>();
         //lastInput = (inputDelay + 1.0f);
@@ -72,7 +72,7 @@ public class Player : MonoBehaviour
     {
         anim.FreeFallAnimation(isGrounded);
         //Attack();
-        //Block();
+        Block();
         Move();
         //OpenPunchHitBox();
 
@@ -172,7 +172,22 @@ public class Player : MonoBehaviour
         rb.velocity += (Vector3.down + transform.forward) * kickVelocity;
     }
     private void CloseKickHitBox() { KickHitBox.enabled = false; }
-
+    private void Block()
+    {
+        if (isGrounded)
+        {
+            if (inputManager.DefendButtonDown(id))
+            {
+                currentState = State.Defending;
+                anim.BlockAnimation(true);
+            }
+            else if (inputManager.DefendButtonUp(id))
+            {
+                currentState = State.Idle;
+                anim.BlockAnimation(false);
+            }
+        }
+    }
 
 }
 //    private bool CanJumpForward()
@@ -263,22 +278,7 @@ public class Player : MonoBehaviour
 //        }
 
 //    }
-//    private void Block()
-//    {
-//        if (isGrounded)
-//        {
-//            if (InputManager.Instance.DefendButtonDown())
-//            {
-//                currentState = State.Defending;
-//                anim.BlockAnimation(true);
-//            }
-//            else if (InputManager.Instance.DefendButtonUp())
-//            {
-//                currentState = State.Idle;
-//                anim.BlockAnimation(false);
-//            }
-//        }
-//    }
+
 //    public void Hit(Vector3 opponentDirection)
 //    {
 //        if (currentState != State.Defending)
