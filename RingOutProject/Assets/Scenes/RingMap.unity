@@ -1141,7 +1141,7 @@ MonoBehaviour:
   currentState: 0
   isHyped: 0
   id: 0
-  speed: 0
+  speed: 20
   jumpHeight: 0
   jumpDistance: 0
   rotateSpeed: 0
