@@ -34,13 +34,13 @@ public class Damage : MonoBehaviour {
                 minDamage = 1.0f;
                 maxDamage = 10.0f;
                 currentDamage = CurrentDamage(minDamage, maxDamage);
-                Debug.Log(currentDamage.ToString());
+               // Debug.Log(currentDamage.ToString());
                 break;
             case DamageType.MEDIUM:
                 minDamage = 10.0f;
                 maxDamage = 15.0f;
                 currentDamage = CurrentDamage(minDamage, maxDamage);
-                Debug.Log(currentDamage.ToString());
+               // Debug.Log(currentDamage.ToString());
                 break;
             case DamageType.HEAVY:
                 minDamage = 15.0f;

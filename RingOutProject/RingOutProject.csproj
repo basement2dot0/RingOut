@@ -81,6 +81,7 @@
     <Compile Include="Assets\Combo.cs" />
     <Compile Include="Assets\ComboSystem.cs" />
     <Compile Include="Assets\MomentumBar.cs" />
+    <Compile Include="Assets\Scripts\AudioManager.cs" />
     <Compile Include="Assets\Scripts\CameraController.cs" />
     <Compile Include="Assets\Scripts\Combat.cs" />
     <Compile Include="Assets\Scripts\CombatSystem.cs" />

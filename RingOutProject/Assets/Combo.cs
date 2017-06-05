@@ -23,7 +23,7 @@ public class Combo : MonoBehaviour
         
         if (Hadouken.CheckCombo())
         {
-            Debug.Log(inputManager.controlNo + " HADOUKEN!");
+            //Debug.Log(inputManager.controlNo + " HADOUKEN!");
             anim.Play("Punch");
         }
 	}

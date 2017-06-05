@@ -5,10 +5,12 @@ using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody))]
 [RequireComponent(typeof(PlayerAnim))]
+
 public class Player : MonoBehaviour
 {
     //Momentum Bar
     private MomentumBar momentumBar;
+    
     //Universal Player variables
     [SerializeField]
     public State currentState = State.Idle;
@@ -18,6 +20,8 @@ public class Player : MonoBehaviour
     [SerializeField]
     private int id;
     private InputManager inputManager;
+
+    public int ID { get { return id; } }
 
     //Movement Controls
     [SerializeField]
@@ -154,7 +158,7 @@ public class Player : MonoBehaviour
         }
         PunchHitBox.enabled = true;
         
-        rb.velocity += (Vector3.down + transform.forward) * punchVelocity;
+      
     }
     private void ClosePunchHitBox()
     {
