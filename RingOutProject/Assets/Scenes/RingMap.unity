@@ -927,17 +927,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentState: 0
-  id: 1
-  speed: 30
-  jumpHeight: 60
-  jumpDistance: 30
-  rotateSpeed: 2
-  jumpDelay: 1.05
-  PunchHitBox: {fileID: 1640421258}
-  KickHitBox: {fileID: 2047502292}
-  punchVelocity: 1000
-  kickVelocity: 50
-  inputDelay: 0.2
+  isHyped: 0
+  id: 0
+  speed: 0
+  jumpHeight: 0
+  jumpDistance: 0
+  rotateSpeed: 0
+  jumpDelay: 0
+  PunchHitBox: {fileID: 1488483005}
+  KickHitBox: {fileID: 0}
+  punchVelocity: 0
+  kickVelocity: 0
+  inputDelay: 0
 --- !u!114 &178569183
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -961,8 +962,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damageType: 0
-  minDamage: 1
-  maxDamage: 10
+  minDamage: 0
+  maxDamage: 0
   currentDamage: 0
 --- !u!114 &178569185
 MonoBehaviour:
@@ -975,7 +976,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 744a0b4a517cc56439d2d2d01ba47b38, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hypeMusic: {fileID: 8300000, guid: 950516567dae312438df94108c549e28, type: 3}
+  hypeMusic: {fileID: 0}
 --- !u!114 &178569186
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -998,7 +999,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
-  m_Volume: 0.5
+  m_Volume: 0.1
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -1154,17 +1155,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentState: 0
-  id: 2
-  speed: 30
-  jumpHeight: 60
-  jumpDistance: 30
-  rotateSpeed: 2
-  jumpDelay: 1.05
-  PunchHitBox: {fileID: 1640421258}
-  KickHitBox: {fileID: 2047502292}
-  punchVelocity: 1000
-  kickVelocity: 50
-  inputDelay: 0.2
+  isHyped: 0
+  id: 0
+  speed: 0
+  jumpHeight: 0
+  jumpDistance: 0
+  rotateSpeed: 0
+  jumpDelay: 0
+  PunchHitBox: {fileID: 0}
+  KickHitBox: {fileID: 0}
+  punchVelocity: 0
+  kickVelocity: 0
+  inputDelay: 0
 --- !u!114 &248489524
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1227,9 +1229,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4aa7dbd31235e942bcd2f1364dc48ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damageType: 2
-  minDamage: 15
-  maxDamage: 20
+  damageType: 0
+  minDamage: 0
+  maxDamage: 0
   currentDamage: 0
 --- !u!114 &248489531
 MonoBehaviour:
@@ -1265,7 +1267,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.1
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -2248,7 +2250,7 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 100
   m_WholeNumbers: 0
-  m_Value: 99
+  m_Value: 100
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -2813,6 +2815,26 @@ Prefab:
     - target: {fileID: 100130, guid: 43c5628f6495b064486907bb44ce4409, type: 3}
       propertyPath: m_Name
       value: PlayerTwo
+      objectReference: {fileID: 0}
+    - target: {fileID: 400070, guid: 43c5628f6495b064486907bb44ce4409, type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 400130, guid: 43c5628f6495b064486907bb44ce4409, type: 3}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 400116, guid: 43c5628f6495b064486907bb44ce4409, type: 3}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 43c5628f6495b064486907bb44ce4409, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400060, guid: 43c5628f6495b064486907bb44ce4409, type: 3}
+      propertyPath: m_RootOrder
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 43c5628f6495b064486907bb44ce4409, type: 3}
@@ -4698,6 +4720,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isHyped: 0
+  startingValue: 0
+  HypeTimer: 0
+  hypeText: {fileID: 0}
 --- !u!1001 &1700700884
 Prefab:
   m_ObjectHideFlags: 0

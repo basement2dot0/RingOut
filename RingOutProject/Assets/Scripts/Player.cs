@@ -17,6 +17,7 @@ public class Player : MonoBehaviour
     private Rigidbody rb;
     private PlayerAnim anim;
     private bool isGrounded;
+    public bool isHyped;
     [SerializeField]
     private int id;
     private InputManager inputManager;
