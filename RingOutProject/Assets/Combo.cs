@@ -5,26 +5,30 @@ using UnityEngine;
 public class Combo : MonoBehaviour
 {
 
-    private ComboSystem Hadouken;
+    private ComboSystem Punch;
     private InputManager inputManager;
     private Damage damage;
     private Animator anim;
+    private Player player;
     private void Awake()
     {
         inputManager = GetComponent<InputManager>();
         damage = GetComponent<Damage>();
-        Hadouken = new ComboSystem(new string[] { "Jump" + inputManager.controlNo });
-
+        Punch = new ComboSystem(new string[] { "Jump" + inputManager.controlNo });
         anim = GetComponent<Animator>();
-
+        player = GetComponent<Player>();
     }
 
     void Update ()
     {
-        if (Hadouken.CheckCombo())
+        if (Punch.CheckCombo() && player.isHyped)
         {
-            //Debug.Log(inputManager.controlNo + " HADOUKEN!");
-            anim.Play("Punch");
+            Debug.Log("HYPE ATTACK!" + inputManager.controlNo);
+            anim.Play("HypeAttack");
         }
-	}
+        else if (Punch.CheckCombo())
+        {
+            Debug.Log("Punch" + inputManager.controlNo);
+        }
+    }
 }

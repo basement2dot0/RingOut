@@ -927,6 +927,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentState: 0
+  isHyped: 0
   id: 1
   speed: 30
   jumpHeight: 60
@@ -1154,6 +1155,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentState: 0
+  isHyped: 0
   id: 2
   speed: 30
   jumpHeight: 60
@@ -4699,7 +4701,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isHyped: 0
   startingValue: 0
-  HypeTimer: 2.5
+  HypeTimer: 6
   hypeText: {fileID: 0}
 --- !u!1001 &1700700884
 Prefab:

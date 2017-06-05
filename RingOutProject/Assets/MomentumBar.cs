@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.UI;
 public class MomentumBar : MonoBehaviour
 {
-  
+    private Player[] players; 
     private Slider momentumBar;
     public bool IsPlayerOne { get; set; }
     [SerializeField]
@@ -23,6 +23,15 @@ public class MomentumBar : MonoBehaviour
 
     private void Awake()
     {
+        players = new Player[2];
+        foreach (var item in GameObject.FindGameObjectsWithTag("Player"))
+        {
+            if (item.GetComponent<Player>().ID == 1)
+                players[0] = item.GetComponent<Player>();
+            else
+                players[1] = item.GetComponent<Player>();
+
+        }
         momentumBar = GameObject.FindGameObjectWithTag("Slider").GetComponent<Slider>();
         damage = GameObject.FindGameObjectWithTag("Player").GetComponent<Damage>();
         startingValue = 50.0f;
@@ -54,12 +63,14 @@ public class MomentumBar : MonoBehaviour
         {
             playersTheme[0].PlayHypeMusic();
             hypeText.text = "Player One is HYPED!";
+            players[0].isHyped = true;
             isHyped = true;
         }
-        if (momentumBar.value == momentumBar.minValue && !isHyped)
+        else if (momentumBar.value == momentumBar.minValue && !isHyped)
         {
             playersTheme[1].PlayHypeMusic();
             hypeText.text = "Player Two is HYPED!";
+            players[1].isHyped = true;
             isHyped = true;
         }
     }
@@ -97,6 +108,8 @@ public class MomentumBar : MonoBehaviour
     {
         if(momentumBar.value == startingValue)
         {
+            players[0].isHyped = false;
+            players[1].isHyped = false;
             isHyped = false;
             hypeText.text = "";
             playersTheme[0].StopHypeMusic();
