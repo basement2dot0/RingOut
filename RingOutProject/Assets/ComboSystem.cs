@@ -4,6 +4,13 @@ using UnityEngine;
 
 public class ComboSystem
 {
+
+    /// <summary>
+    /// Note: we will need to increase the allowed time for accepted button inputs for a combo to be true.
+    /// </summary>
+    /// 
+
+
     public string[] buttons;
     public int index;
     public float inBetweenTime;
