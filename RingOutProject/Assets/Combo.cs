@@ -9,18 +9,18 @@ public class Combo : MonoBehaviour
     private InputManager inputManager;
     private Damage damage;
     private Animator anim;
-
     private void Awake()
     {
         inputManager = GetComponent<InputManager>();
         damage = GetComponent<Damage>();
         Hadouken = new ComboSystem(new string[] { "Jump" + inputManager.controlNo });
+
         anim = GetComponent<Animator>();
+
     }
 
     void Update ()
     {
-        
         if (Hadouken.CheckCombo())
         {
             //Debug.Log(inputManager.controlNo + " HADOUKEN!");

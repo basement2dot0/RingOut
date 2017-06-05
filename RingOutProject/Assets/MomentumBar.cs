@@ -12,10 +12,22 @@ public class MomentumBar : MonoBehaviour
     private bool isHyped; 
     private Damage damage;
     private AudioManager[] playersTheme;
+    [SerializeField]
+    private float startingValue;
+    [SerializeField]
+    private float HypeTimer;
+    [SerializeField]
+    private Text hypeText;
+
+    public bool IsHyped { get {return isHyped; } }
+
     private void Awake()
     {
         momentumBar = GameObject.FindGameObjectWithTag("Slider").GetComponent<Slider>();
         damage = GameObject.FindGameObjectWithTag("Player").GetComponent<Damage>();
+        startingValue = 50.0f;
+        momentumBar.value = startingValue;
+        hypeText = gameObject.transform.GetChild(0).GetComponent<Text>();
         playersTheme = new AudioManager[2]; 
         foreach (var item in GameObject.FindGameObjectsWithTag("Player"))
         {
@@ -29,6 +41,10 @@ public class MomentumBar : MonoBehaviour
     private void Update()
     {
         IsMaxed();
+        if (isHyped)
+        {
+            ResetMomentumBar();
+        }
     }
 
     private void IsMaxed()
@@ -37,11 +53,13 @@ public class MomentumBar : MonoBehaviour
         if (momentumBar.value == momentumBar.maxValue && !isHyped)
         {
             playersTheme[0].PlayHypeMusic();
+            hypeText.text = "Player One is HYPED!";
             isHyped = true;
         }
         if (momentumBar.value == momentumBar.minValue && !isHyped)
         {
             playersTheme[1].PlayHypeMusic();
+            hypeText.text = "Player Two is HYPED!";
             isHyped = true;
         }
     }
@@ -74,4 +92,18 @@ public class MomentumBar : MonoBehaviour
         }
         
     }
+
+    public void ResetMomentumBar()
+    {
+        if(momentumBar.value == startingValue)
+        {
+            isHyped = false;
+            hypeText.text = "";
+            playersTheme[0].StopHypeMusic();
+            playersTheme[1].StopHypeMusic();
+
+        }
+        momentumBar.value = Mathf.MoveTowards(momentumBar.value, startingValue, Time.deltaTime * HypeTimer);
+        
+     }
 }
