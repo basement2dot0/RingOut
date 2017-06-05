@@ -37,10 +37,6 @@ public class ComboSystem
                         index = 0;
                         return true;
                     }
-                    if(index >= 2)
-                    {
-                        Debug.Log("Third Hit!");
-                    }
                     else
                     {
                         return false;

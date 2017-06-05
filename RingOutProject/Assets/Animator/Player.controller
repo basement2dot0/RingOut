@@ -686,7 +686,7 @@ AnimatorState:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: Punch
+  m_Name: Attack
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
@@ -953,7 +953,7 @@ AnimatorStateMachine:
     m_Position: {x: 804, y: -60, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 1102286845277305528}
-    m_Position: {x: 420, y: 228, z: 0}
+    m_Position: {x: 432, y: 240, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 1102299304924819200}
     m_Position: {x: 840, y: 144, z: 0}
