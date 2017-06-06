@@ -12,7 +12,7 @@ public class Combo : MonoBehaviour
     private ComboSystem AttackThree;
     private InputManager inputManager;
     private Damage damage;
-    private Animator anim;
+    private PlayerAnim anim;
     private Player player;
 
     //frame data
@@ -24,17 +24,17 @@ public class Combo : MonoBehaviour
     private float AttackThreeFrameLength;
 
     private float delay;
-    
+    private float lastInput;
+
     private void Awake()
     {
         inputManager = GetComponent<InputManager>();
-        damage = GetComponent<Damage>();
-        AttackOne = new ComboSystem(new string[] { "Jump" + inputManager.controlNo });
-        AttackTwo = new ComboSystem(new string[] { "Jump" + inputManager.controlNo, "Jump" + inputManager.controlNo });
-        AttackThree = new ComboSystem(new string[] { "Jump" + inputManager.controlNo, "Jump" + inputManager.controlNo, "Jump" + inputManager.controlNo });
-
+        //damage = GetComponent<Damage>();
+        //AttackOne = new ComboSystem(new string[] { "Jump" + inputManager.controlNo });
+        //AttackTwo = new ComboSystem(new string[] { "Jump" + inputManager.controlNo, "Jump" + inputManager.controlNo });
+        //AttackThree = new ComboSystem(new string[] { "Jump" + inputManager.controlNo, "Jump" + inputManager.controlNo, "Jump" + inputManager.controlNo });
         
-        anim = GetComponent<Animator>();
+        anim = GetComponent<PlayerAnim>();
         player = GetComponent<Player>();
     }
 
@@ -45,38 +45,27 @@ public class Combo : MonoBehaviour
     }
     private void CheckForCombo()
     {
-        if (AttackOne.CheckCombo() && player.isHyped)
+        if (player.isHyped && inputManager.AttackButtonDown(player.ID))
         {
             Debug.Log("HYPE ATTACK!" + inputManager.controlNo);
-            anim.Play("HypeAttack");
+            anim.PlayHypeAttack(true);
+            player.currentState = State.Attacking;
         }
-        else if ((Time.deltaTime - AttackOneFrameLength) <= delay && AttackThree.CheckCombo())
+        if (inputManager.AttackButtonDown(player.ID) && (Time.deltaTime - lastInput) >= delay)
         {
-            Debug.Log("Attack Three!");
+            Debug.Log("Attack!");
             //call players unique property
-            anim.Play("Attack3");
-            delay = FrameDelay(AttackThreeFrameLength);
+            anim.PlayAttack(true);
+            player.currentState = State.Attacking;
+            lastInput = Time.deltaTime;
         }
-        else if ((Time.deltaTime - AttackOneFrameLength) <= delay && AttackTwo.CheckCombo())
+        else if (inputManager.AttackButtonUP(player.ID))
         {
-            Debug.Log("Attack Two!");
-            //call players unique property
-            anim.Play("Attack2");
-            delay = FrameDelay(AttackTwoFrameLength);
+            anim.PlayAttack(false);
+            player.currentState = State.Idle;
         }
-        else if ((Time.deltaTime - AttackThreeFrameLength) <= delay && AttackOne.CheckCombo())
-        {
-            //call players unique property
-            Debug.Log("Punch" + inputManager.controlNo);
-            anim.Play("Attack");
-            delay = FrameDelay(AttackOneFrameLength);
-        }
+
     }
 
-    private float FrameDelay(float delay)
-    {
-
-        Debug.Log("Frame Delayed:" + delay.ToString());
-        return delay;
-    }
+    
 }

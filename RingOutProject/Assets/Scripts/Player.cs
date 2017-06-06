@@ -179,12 +179,12 @@ public class Player : MonoBehaviour
             if (inputManager.DefendButtonDown(id))
             {
                 currentState = State.Defending;
-                anim.BlockAnimation(true);
+                anim.PlayBlock(true);
             }
             else if (inputManager.DefendButtonUp(id))
             {
                 currentState = State.Idle;
-                anim.BlockAnimation(false);
+                anim.PlayBlock(false);
             }
         }
     }

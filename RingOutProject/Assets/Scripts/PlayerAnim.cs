@@ -32,11 +32,15 @@ public class PlayerAnim : MonoBehaviour {
         else if (trigger == AnimationTrigger.reset)
             anim.ResetTrigger("Jump");
     }
-    public void BlockAnimation(bool truefalse)
+    public void PlayBlock(bool truefalse)
     {
         anim.SetBool("isBlocking", truefalse);
     }
-    public void AttackAnimation(bool truefalse)
+    public void PlayAttack(bool truefalse)
+    {
+        anim.SetBool("isAttacking", truefalse);
+    }
+    public void PlayHypeAttack(bool truefalse)
     {
         anim.SetBool("isAttacking", truefalse);
     }
