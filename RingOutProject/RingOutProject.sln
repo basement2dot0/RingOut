@@ -1,7 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2017
+# Visual Studio 15
+VisualStudioVersion = 15.0.26430.6
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RingOutProject", "RingOutProject.csproj", "{9CC7D33F-27F5-7095-45DC-3670B068D300}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CombatAttacks.Tests", "..\CombatAttacks.Tests\CombatAttacks.Tests.csproj", "{44DFF072-5A90-4448-9C92-C3473396BAC0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -13,6 +17,10 @@ Global
 		{9CC7D33F-27F5-7095-45DC-3670B068D300}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9CC7D33F-27F5-7095-45DC-3670B068D300}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9CC7D33F-27F5-7095-45DC-3670B068D300}.Release|Any CPU.Build.0 = Release|Any CPU
+		{44DFF072-5A90-4448-9C92-C3473396BAC0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{44DFF072-5A90-4448-9C92-C3473396BAC0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{44DFF072-5A90-4448-9C92-C3473396BAC0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{44DFF072-5A90-4448-9C92-C3473396BAC0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
