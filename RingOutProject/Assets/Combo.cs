@@ -13,7 +13,7 @@ public class Combo : MonoBehaviour
         inputManager = GetComponent<InputManager>();
         anim = GetComponent<PlayerAnim>();
         player = GetComponent<Player>();
-        comboR = new WaitForSeconds(comboRate);
+
     }
     void Update ()
     {
@@ -35,10 +35,9 @@ public class Combo : MonoBehaviour
         }
         if (inputManager.AttackButtonDown(player.ID) )
         {
-            player.currentState = State.Attacking;
             anim.PlayAttack(true);
             StartCoroutine("CloseAttack");
-            
+            player.currentState = State.Attacking;
         }
         
 

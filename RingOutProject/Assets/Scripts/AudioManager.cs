@@ -5,18 +5,17 @@ using UnityEngine;
 [RequireComponent(typeof(AudioSource))]
 public class AudioManager : MonoBehaviour
 {
-    private AudioSource audio;
     public AudioClip hypeMusic;
-    
+
+    [SerializeField]
+    private AudioSource audio;
+
     private void Awake()
     {
         audio = GetComponent<AudioSource>();
-       
+
     }
-    private void Start()
-    {
-        
-    }
+
     public void PlayHypeMusic()
     {
         audio.clip = hypeMusic;
@@ -33,7 +32,7 @@ public class AudioManager : MonoBehaviour
 
     public void SpecialFX() { }
     public void JumpFX() { }
-    
+
 
 
 }
