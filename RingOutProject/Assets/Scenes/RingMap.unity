@@ -562,11 +562,17 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 83150256}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 02ee1c8ea29d6a44280cf3dd0dd83d7e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  leftTarget: {fileID: 178569182}
+  fov: 0
+  rightTarget: {fileID: 248489523}
+  center: {fileID: 1018077341}
+  zoomIn: 0
+  defaultZoom: 0
 --- !u!1 &103069226
 GameObject:
   m_ObjectHideFlags: 0
@@ -863,7 +869,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 178569177}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4093a1b11abdd93439c97bc74797d96d, type: 3}
+  m_Script: {fileID: 11500000, guid: ebcc302b74c68f24db390d5e6a1ccfd5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   controlNo: 1
@@ -913,16 +919,10 @@ MonoBehaviour:
   currentState: 0
   isHyped: 0
   id: 0
-  speed: 10
-  jumpHeight: 0
-  jumpDistance: 0
-  rotateSpeed: 0
-  jumpDelay: 0
   PunchHitBox: {fileID: 1488483005}
   KickHitBox: {fileID: 0}
   punchVelocity: 0
   kickVelocity: 0
-  inputDelay: 0
 --- !u!114 &178569183
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -934,7 +934,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1fb5c26d8bcec12488f50b2489e45df0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHitCount: 4
 --- !u!114 &178569184
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1054,6 +1053,22 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
+--- !u!114 &178569188
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 178569177}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f61eefd077f15864e8b5e09f7f3af87d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 0
+  rotateSpeed: 0
+  jumpHeight: 0
+  jumpDistance: 0
+  jumpDelay: 0
 --- !u!1 &200438909
 GameObject:
   m_ObjectHideFlags: 0
@@ -1143,16 +1158,10 @@ MonoBehaviour:
   currentState: 0
   isHyped: 0
   id: 0
-  speed: 20
-  jumpHeight: 0
-  jumpDistance: 0
-  rotateSpeed: 0
-  jumpDelay: 0
   PunchHitBox: {fileID: 0}
   KickHitBox: {fileID: 0}
   punchVelocity: 0
   kickVelocity: 0
-  inputDelay: 0
 --- !u!114 &248489524
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1164,7 +1173,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1fb5c26d8bcec12488f50b2489e45df0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHitCount: 0
 --- !u!114 &248489525
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1173,7 +1181,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 248489522}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4093a1b11abdd93439c97bc74797d96d, type: 3}
+  m_Script: {fileID: 11500000, guid: ebcc302b74c68f24db390d5e6a1ccfd5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   controlNo: 2
@@ -1324,6 +1332,22 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
+--- !u!114 &248489534
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 248489522}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f61eefd077f15864e8b5e09f7f3af87d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 0
+  rotateSpeed: 0
+  jumpHeight: 0
+  jumpDistance: 0
+  jumpDelay: 0
 --- !u!1 &255401743 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 100002, guid: 0e4fedea6dc14584386c0bfec87c0114, type: 3}
