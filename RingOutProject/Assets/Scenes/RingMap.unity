@@ -567,7 +567,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02ee1c8ea29d6a44280cf3dd0dd83d7e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  leftTarget: {fileID: 178569182}
+  leftTarget: {fileID: 178569183}
   fov: 0
   rightTarget: {fileID: 248489523}
   center: {fileID: 1018077341}
@@ -869,10 +869,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 178569177}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ebcc302b74c68f24db390d5e6a1ccfd5, type: 3}
+  m_Script: {fileID: 11500000, guid: 1fb5c26d8bcec12488f50b2489e45df0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  controlNo: 1
 --- !u!4 &178569179 stripped
 Transform:
   m_PrefabParentObject: {fileID: 400132, guid: 43c5628f6495b064486907bb44ce4409, type: 3}
@@ -913,16 +912,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 178569177}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 875ddbe7f17bfe7438a625319ef49f71, type: 3}
+  m_Script: {fileID: 11500000, guid: f1fceb841f4cedb4a91a0af3fd08891d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentState: 0
-  isHyped: 0
-  id: 0
-  PunchHitBox: {fileID: 1488483005}
-  KickHitBox: {fileID: 0}
-  punchVelocity: 0
-  kickVelocity: 0
+  controlNo: 1
 --- !u!114 &178569183
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -931,9 +924,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 178569177}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1fb5c26d8bcec12488f50b2489e45df0, type: 3}
+  m_Script: {fileID: 11500000, guid: dc520a8477fd7c94c8fb5939478d9878, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentState: 0
+  id: 0
+  anim: {fileID: 0}
+  isGrounded: 0
+  isHyped: 0
+  PunchHitBox: {fileID: 0}
+  KickHitBox: {fileID: 0}
+  punchVelocity: 0
+  kickVelocity: 0
 --- !u!114 &178569184
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -942,13 +944,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 178569177}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a4aa7dbd31235e942bcd2f1364dc48ec, type: 3}
+  m_Script: {fileID: 11500000, guid: 4212a16f552a81b4da4165d637412dea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damageType: 0
-  minDamage: 0
-  maxDamage: 0
-  currentDamage: 0
 --- !u!114 &178569185
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -970,9 +968,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 178569177}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 66e76ae1312969a4c81189f46b9fb7f1, type: 3}
+  m_Script: {fileID: 11500000, guid: beb519ca6e9e8654183fd1dea30cd15f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speed: 0
+  rotateSpeed: 0
+  jumpHeight: 0
+  jumpDistance: 0
+  jumpDelay: 0
 --- !u!82 &178569187
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1053,22 +1056,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
---- !u!114 &178569188
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 178569177}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f61eefd077f15864e8b5e09f7f3af87d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 0
-  rotateSpeed: 0
-  jumpHeight: 0
-  jumpDistance: 0
-  jumpDelay: 0
 --- !u!1 &200438909
 GameObject:
   m_ObjectHideFlags: 0
@@ -1152,12 +1139,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 248489522}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 875ddbe7f17bfe7438a625319ef49f71, type: 3}
+  m_Script: {fileID: 11500000, guid: dc520a8477fd7c94c8fb5939478d9878, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   currentState: 0
-  isHyped: 0
   id: 0
+  anim: {fileID: 0}
+  isGrounded: 0
+  isHyped: 0
   PunchHitBox: {fileID: 0}
   KickHitBox: {fileID: 0}
   punchVelocity: 0
@@ -1181,7 +1170,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 248489522}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ebcc302b74c68f24db390d5e6a1ccfd5, type: 3}
+  m_Script: {fileID: 11500000, guid: f1fceb841f4cedb4a91a0af3fd08891d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   controlNo: 2
@@ -1221,24 +1210,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 248489522}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a4aa7dbd31235e942bcd2f1364dc48ec, type: 3}
+  m_Script: {fileID: 11500000, guid: beb519ca6e9e8654183fd1dea30cd15f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damageType: 0
-  minDamage: 0
-  maxDamage: 0
-  currentDamage: 0
---- !u!114 &248489531
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 248489522}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 66e76ae1312969a4c81189f46b9fb7f1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  speed: 0
+  rotateSpeed: 0
+  jumpHeight: 50
+  jumpDistance: 0
+  jumpDelay: 0
 --- !u!114 &248489532
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1340,14 +1319,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 248489522}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f61eefd077f15864e8b5e09f7f3af87d, type: 3}
+  m_Script: {fileID: 11500000, guid: 4212a16f552a81b4da4165d637412dea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0
-  rotateSpeed: 0
-  jumpHeight: 0
-  jumpDistance: 0
-  jumpDelay: 0
 --- !u!1 &255401743 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 100002, guid: 0e4fedea6dc14584386c0bfec87c0114, type: 3}
@@ -2625,7 +2599,6 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 1018077343}
-  - component: {fileID: 1018077342}
   m_Layer: 0
   m_Name: CenterBounds
   m_TagString: Untagged
@@ -2633,17 +2606,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1018077342
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1018077341}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c196036e69a54d546baafcc9af2cc7f0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &1018077343
 Transform:
   m_ObjectHideFlags: 0
@@ -4421,7 +4383,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1488483003}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f911323556086c2429d321dc8eb7e3b1, type: 3}
+  m_Script: {fileID: 11500000, guid: acbfae8db91cf3247a7409cb45b6bc6d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1529430847
@@ -4616,6 +4578,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29b812145d5ace14fac665c4944f21c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Rounds: 0
+  Match: 0
+  ringOutText: {fileID: 15143244}
 --- !u!114 &1693390987
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4701,13 +4666,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 1693390985}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fad7ddb7412282c479f7b8bfad39c180, type: 3}
+  m_Script: {fileID: 11500000, guid: 97f1e643d6abcfe4581cb8364419fd6d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   isHyped: 0
   startingValue: 0
-  HypeTimer: 0
-  hypeText: {fileID: 0}
+  HypeTimer: 5
+  hypeText: {fileID: 15143244}
 --- !u!1001 &1700700884
 Prefab:
   m_ObjectHideFlags: 0
