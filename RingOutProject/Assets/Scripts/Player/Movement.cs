@@ -37,10 +37,11 @@ public class Movement : MonoBehaviour {
     // Update is called once per frame
     void Update ()
     {
-        Move();
-	}
+        
+    }
     private void FixedUpdate()
     {
+        Move();
         Jump();
     }
 
@@ -54,8 +55,9 @@ public class Movement : MonoBehaviour {
                 rb.rotation = Quaternion.LookRotation(inputManager.Movement(player.ID));
                 if (player.CurrentState != State.DEFENDING)
                 {
-                    transform.position += inputManager.Movement(player.ID) * speed * Time.deltaTime;
                     player.CurrentState = State.WALKING;
+                    transform.position += inputManager.Movement(player.ID) * speed * Time.deltaTime;
+                    
                     //anim.IsWalking(true);
                 }
             }

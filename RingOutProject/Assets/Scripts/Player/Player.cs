@@ -57,9 +57,14 @@ public class Player : MonoBehaviour{
     private void FixedUpdate()
     {
         anim.IsFalling(isGrounded);
+        if(id == 2)
         CheckState();
     }
-
+    private void Update()
+    {
+        if(id == 1)
+      CheckState();
+    }
     //Grounded Check
     private void OnCollisionEnter(Collision collision)
     {
@@ -83,6 +88,7 @@ public class Player : MonoBehaviour{
     }
     private void CheckState()
     {
+        
         switch (currentState)
         {
             case State.IDLE:
@@ -93,8 +99,8 @@ public class Player : MonoBehaviour{
                 anim.IsWalking(true);
                 break;
             case State.ATTACKING:
-                anim.IsAttacking(true);
-                StartCoroutine("DelayNextAttack");
+               //anim.IsAttacking(true);
+                
                 break;
             case State.DEFENDING:
                 anim.IsBlocking(true);

@@ -32,10 +32,10 @@ public class Combo : MonoBehaviour
         }
         if (inputManager.AttackButtonDown(player.ID) )
         {
-            Debug.Log("Attacking");
-            //anim.IsAttacking(true);
             player.CurrentState = State.ATTACKING;
-            //StartCoroutine("CloseAttack");
+            Debug.Log("Attacking");
+            anim.IsAttacking(true);
+            
         }
         else if (!inputManager.AttackButtonDown(player.ID))
         {

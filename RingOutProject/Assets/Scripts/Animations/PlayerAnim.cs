@@ -19,6 +19,12 @@ public class PlayerAnim : MonoBehaviour {
     public void IsWalking(bool truefalse)
     {
         anim.SetBool("isWalking", truefalse);
+        
+    }
+    private IEnumerator CloseAttack()
+    {
+        yield return null;
+        anim.SetBool("isAttacking",false);
     }
     public void Jump(AnimationTrigger trigger)
     {
@@ -35,7 +41,9 @@ public class PlayerAnim : MonoBehaviour {
     public void IsAttacking(bool truefalse)
     {
         anim.SetBool("isAttacking", truefalse);
-        
+        if(truefalse)
+        StartCoroutine("CloseAttack");
+
     }
     public void AttackIsHyped(bool truefalse)
     {
