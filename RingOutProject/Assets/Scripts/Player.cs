@@ -72,8 +72,11 @@ public class Player : MonoBehaviour
     {
         anim.FreeFallAnimation(isGrounded);
         //Attack();
-        Block();
+
+
+
         Move();
+        Block();
         //OpenPunchHitBox();
 
 
@@ -102,6 +105,7 @@ public class Player : MonoBehaviour
     }
 
     //Movement Logic
+    //Movement Logic
     private void Move()
     {
         if (isGrounded)
@@ -129,7 +133,22 @@ public class Player : MonoBehaviour
         }
 
     }
-    //Ground Check
+    private void Block()
+    {
+        if (isGrounded)
+        {
+            if (inputManager.DefendButtonDown(id))
+            {
+                currentState = State.Defending;
+                anim.PlayBlock(true);
+            }
+            else if (inputManager.DefendButtonUp(id))
+            {
+                currentState = State.Idle;
+                anim.PlayBlock(false);
+            }
+        }
+    }    //Ground Check
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.tag == "Ground")
@@ -172,22 +191,7 @@ public class Player : MonoBehaviour
         rb.velocity += (Vector3.down + transform.forward) * kickVelocity;
     }
     private void CloseKickHitBox() { KickHitBox.enabled = false; }
-    private void Block()
-    {
-        if (isGrounded)
-        {
-            if (inputManager.DefendButtonDown(id))
-            {
-                currentState = State.Defending;
-                anim.PlayBlock(true);
-            }
-            else if (inputManager.DefendButtonUp(id))
-            {
-                currentState = State.Idle;
-                anim.PlayBlock(false);
-            }
-        }
-    }
+    
 
 }
 //    private bool CanJumpForward()
