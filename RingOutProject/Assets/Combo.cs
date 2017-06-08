@@ -4,40 +4,16 @@ using UnityEngine;
 
 public class Combo : MonoBehaviour
 {
-    
-    private ComboSystem AttackOne;
-
-    private ComboSystem AttackTwo;
-
-    private ComboSystem AttackThree;
     private InputManager inputManager;
-    private Damage damage;
     private PlayerAnim anim;
     private Player player;
-
-    //frame data
-    [SerializeField]
-    private float AttackOneFrameLength;
-    [SerializeField]
-    private float AttackTwoFrameLength;
-    [SerializeField]
-    private float AttackThreeFrameLength;
-
-    private float delay;
-    private float lastInput;
 
     private void Awake()
     {
         inputManager = GetComponent<InputManager>();
-        //damage = GetComponent<Damage>();
-        //AttackOne = new ComboSystem(new string[] { "Jump" + inputManager.controlNo });
-        //AttackTwo = new ComboSystem(new string[] { "Jump" + inputManager.controlNo, "Jump" + inputManager.controlNo });
-        //AttackThree = new ComboSystem(new string[] { "Jump" + inputManager.controlNo, "Jump" + inputManager.controlNo, "Jump" + inputManager.controlNo });
-        
         anim = GetComponent<PlayerAnim>();
         player = GetComponent<Player>();
     }
-
     void Update ()
     {
         CheckForCombo();
@@ -51,21 +27,25 @@ public class Combo : MonoBehaviour
             anim.PlayHypeAttack(true);
             player.currentState = State.Attacking;
         }
-        if (inputManager.AttackButtonDown(player.ID) && (Time.deltaTime - lastInput) >= delay)
+        if (inputManager.AttackButtonDown(player.ID))
         {
+            player.currentState = State.Attacking;
             Debug.Log("Attack!");
             //call players unique property
-            anim.PlayAttack(true);
-            player.currentState = State.Attacking;
-            lastInput = Time.deltaTime;
+            anim.PlayAttack();
+
+            
         }
-        else if (inputManager.AttackButtonUP(player.ID))
+        else if (inputManager.AttackButtonUp(player.ID))
         {
-            anim.PlayAttack(false);
+
             player.currentState = State.Idle;
+            anim.StopAttack();
+            
         }
 
     }
+    
 
     
 }

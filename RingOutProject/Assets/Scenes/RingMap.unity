@@ -934,6 +934,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1fb5c26d8bcec12488f50b2489e45df0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxHitCount: 4
 --- !u!114 &178569184
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -972,9 +973,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66e76ae1312969a4c81189f46b9fb7f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AttackOneFrameLength: 0.23
-  AttackTwoFrameLength: 0.2
-  AttackThreeFrameLength: 0.4
 --- !u!82 &178569187
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1165,6 +1163,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1fb5c26d8bcec12488f50b2489e45df0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxHitCount: 0
 --- !u!114 &248489525
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1231,9 +1230,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66e76ae1312969a4c81189f46b9fb7f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AttackOneFrameLength: 0.2
-  AttackTwoFrameLength: 0.2
-  AttackThreeFrameLength: 0.4
 --- !u!114 &248489532
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3197,7 +3193,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400132, guid: 43c5628f6495b064486907bb44ce4409, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 51
+      value: 42.3
       objectReference: {fileID: 0}
     - target: {fileID: 400132, guid: 43c5628f6495b064486907bb44ce4409, type: 3}
       propertyPath: m_LocalPosition.z

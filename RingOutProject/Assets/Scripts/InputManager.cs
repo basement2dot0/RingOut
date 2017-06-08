@@ -35,10 +35,10 @@ public class InputManager : MonoBehaviour
 
     public bool AttackButtonDown(int playerID)
     {
-        return Input.GetButton("Attack" + playerID.ToString());
+        return Input.GetButtonDown("Attack" + playerID.ToString());
     }
-
-    public bool AttackButtonUP(int playerID)
+    
+    public bool AttackButtonUp(int playerID)
     {
         return Input.GetButtonUp("Attack" + playerID.ToString());
     }

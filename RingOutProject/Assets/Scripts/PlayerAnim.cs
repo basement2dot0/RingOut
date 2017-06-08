@@ -5,6 +5,9 @@ using UnityEngine;
 public class PlayerAnim : MonoBehaviour {
 
    private Animator anim;
+    private int attackCounter;
+    [SerializeField]
+    private int maxHitCount;
    
     private void Start()
     {
@@ -19,7 +22,7 @@ public class PlayerAnim : MonoBehaviour {
     {
         anim.SetBool("isWalking", truefalse);
     }
-
+    
     /// <summary>
     /// Takes an animation trigger or Set or Reset
     /// </summary>
@@ -36,9 +39,23 @@ public class PlayerAnim : MonoBehaviour {
     {
         anim.SetBool("isBlocking", truefalse);
     }
-    public void PlayAttack(bool truefalse)
+    public void PlayAttack()
     {
-        anim.SetBool("isAttacking", truefalse);
+        anim.SetBool("isAttacking", true);
+        if (attackCounter < maxHitCount)
+        {
+            attackCounter++;
+        }
+        anim.SetInteger("attackCounter", attackCounter);
+    }
+    public void StopAttack()
+    {
+        anim.SetBool("isAttacking", false);
+        if(attackCounter >= maxHitCount)
+        {
+            attackCounter = 0;
+        }
+        anim.SetInteger("attackCounter", attackCounter);
     }
     public void PlayHypeAttack(bool truefalse)
     {
