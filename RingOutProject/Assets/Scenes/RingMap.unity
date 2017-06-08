@@ -973,6 +973,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66e76ae1312969a4c81189f46b9fb7f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  delay: 0.5
+  comboRate: 0.5
 --- !u!82 &178569187
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1230,6 +1232,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66e76ae1312969a4c81189f46b9fb7f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  delay: 0
+  comboRate: 0
 --- !u!114 &248489532
 MonoBehaviour:
   m_ObjectHideFlags: 0

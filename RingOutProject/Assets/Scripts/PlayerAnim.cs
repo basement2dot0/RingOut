@@ -39,23 +39,14 @@ public class PlayerAnim : MonoBehaviour {
     {
         anim.SetBool("isBlocking", truefalse);
     }
-    public void PlayAttack()
+    public void PlayAttack(bool truefalse)
     {
-        anim.SetBool("isAttacking", true);
-        if (attackCounter < maxHitCount)
-        {
-            attackCounter++;
-        }
-        anim.SetInteger("attackCounter", attackCounter);
+        anim.SetBool("isAttacking", truefalse);
+        
     }
     public void StopAttack()
     {
         anim.SetBool("isAttacking", false);
-        if(attackCounter >= maxHitCount)
-        {
-            attackCounter = 0;
-        }
-        anim.SetInteger("attackCounter", attackCounter);
     }
     public void PlayHypeAttack(bool truefalse)
     {

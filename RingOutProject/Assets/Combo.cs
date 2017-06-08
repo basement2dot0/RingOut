@@ -7,17 +7,23 @@ public class Combo : MonoBehaviour
     private InputManager inputManager;
     private PlayerAnim anim;
     private Player player;
-
+    
     private void Awake()
     {
         inputManager = GetComponent<InputManager>();
         anim = GetComponent<PlayerAnim>();
         player = GetComponent<Player>();
+        comboR = new WaitForSeconds(comboRate);
     }
     void Update ()
     {
         CheckForCombo();
-
+        
+    }
+    private IEnumerator CloseAttack()
+    {
+        yield return null;
+        anim.PlayAttack(false);
     }
     private void CheckForCombo()
     {
@@ -27,25 +33,16 @@ public class Combo : MonoBehaviour
             anim.PlayHypeAttack(true);
             player.currentState = State.Attacking;
         }
-        if (inputManager.AttackButtonDown(player.ID))
+        if (inputManager.AttackButtonDown(player.ID) )
         {
             player.currentState = State.Attacking;
-            Debug.Log("Attack!");
-            //call players unique property
-            anim.PlayAttack();
-
+            anim.PlayAttack(true);
+            StartCoroutine("CloseAttack");
             
         }
-        else if (inputManager.AttackButtonUp(player.ID))
-        {
+        
 
-            player.currentState = State.Idle;
-            anim.StopAttack();
-            
-        }
+        
 
     }
-    
-
-    
 }
