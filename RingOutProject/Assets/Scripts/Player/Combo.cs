@@ -13,43 +13,31 @@ public class Combo : MonoBehaviour
         inputManager = GetComponent<InputManager>();
         anim = GetComponent<PlayerAnim>();
         player = GetComponent<Player>();
-
     }
     void Update ()
     {
         Attack();
         Block();
-        
     }
     
     private void Attack()
     {
         if (player.isHyped && inputManager.AttackButtonDown(player.ID))
-        {
-            Debug.Log("HYPE ATTACK!");
             anim.AttackIsHyped(true);
-            player.CurrentState = State.ATTACKING;
-        }
         if (inputManager.AttackButtonDown(player.ID) )
-        {
-            player.CurrentState = State.ATTACKING;
-            Debug.Log("Attacking");
             anim.IsAttacking(true);
-            
-        }
         else if (!inputManager.AttackButtonDown(player.ID))
-        {
-            player.CurrentState = State.IDLE;
-        }
+            anim.IsIdle(true);
     }
+
     private void Block()
     {
         if (player.IsGrounded)
         {
             if (inputManager.DefendButton(player.ID))
-                player.CurrentState = State.DEFENDING;
+                anim.IsBlocking(true);
             else if (!inputManager.DefendButton(player.ID))
-                player.CurrentState = State.IDLE;
+                anim.IsIdle(true);
         }
     }
 }

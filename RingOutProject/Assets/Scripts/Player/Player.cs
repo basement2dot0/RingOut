@@ -5,11 +5,16 @@ using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody))]
 [RequireComponent(typeof(PlayerAnim))]
+[RequireComponent(typeof(Combo))]
+[RequireComponent(typeof(Damage))]
+[RequireComponent(typeof(AudioManager))]
+[RequireComponent(typeof(Movement))]
+[RequireComponent(typeof(PlayerAnim))]
 public class Player : MonoBehaviour{
     
     //Momentum Bar
     private MomentumBar momentumBar;
-    
+
     //Universal Player variables
     [SerializeField]
     private State currentState = State.IDLE;
@@ -49,7 +54,7 @@ public class Player : MonoBehaviour{
     //Unity Methods
     private void Awake()
     {
-        delay = new WaitForSeconds(0.5f);
+       
         anim = GetComponent<PlayerAnim>();
         id = GetComponent<InputManager>().ControlNo;
         momentumBar = GameObject.FindGameObjectWithTag("Canvas").GetComponent<MomentumBar>();
@@ -57,21 +62,16 @@ public class Player : MonoBehaviour{
     private void FixedUpdate()
     {
         anim.IsFalling(isGrounded);
-        if(id == 2)
-        CheckState();
+        
     }
-    private void Update()
-    {
-        if(id == 1)
-      CheckState();
-    }
+    
     //Grounded Check
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.tag == "Ground")
         {
             isGrounded = true;
-            //anim.Jump(AnimationTrigger.reset);
+            anim.Jump(AnimationTrigger.reset);
         }
     }
     private void OnCollisionExit(Collision collision)
@@ -81,26 +81,16 @@ public class Player : MonoBehaviour{
 
     }
 
-    private IEnumerator DelayNextAttack()
-    {
-        yield return delay;
-        anim.IsAttacking(false);
-    }
     private void CheckState()
     {
-        
         switch (currentState)
         {
             case State.IDLE:
-                anim.IsWalking(false);
+                //anim.IsWalking(false);
                 anim.IsBlocking(false);
                 break;
             case State.WALKING:
                 anim.IsWalking(true);
-                break;
-            case State.ATTACKING:
-               //anim.IsAttacking(true);
-                
                 break;
             case State.DEFENDING:
                 anim.IsBlocking(true);
@@ -108,14 +98,11 @@ public class Player : MonoBehaviour{
             case State.JUMPING:
                 anim.Jump(AnimationTrigger.set);
                 break;
-            case State.HIT:
-                break;
-            default:
+           default:
                 anim.Jump(AnimationTrigger.reset);
                 break;
         }
     }
-
     #region HitBoxLogic
     private void OnEnable()
     {

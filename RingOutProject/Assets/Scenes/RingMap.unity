@@ -1891,7 +1891,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 400132, guid: 43c5628f6495b064486907bb44ce4409, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 400132, guid: 43c5628f6495b064486907bb44ce4409, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1944,7 +1944,7 @@ Prefab:
     - target: {fileID: 13700000, guid: 43c5628f6495b064486907bb44ce4409, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 10e54fc8cf991294db3413f296de65c2, type: 2}
+      objectReference: {fileID: 2100000, guid: 546298dd5eab7f640b495315e1eb6ba8, type: 2}
     - target: {fileID: 100130, guid: 43c5628f6495b064486907bb44ce4409, type: 3}
       propertyPath: m_Name
       value: Player2
