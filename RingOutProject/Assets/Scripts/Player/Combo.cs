@@ -37,7 +37,10 @@ public class Combo : MonoBehaviour
             if (inputManager.DefendButton(player.ID))
                 anim.IsBlocking(true);
             else if (!inputManager.DefendButton(player.ID))
+            {
+                anim.IsBlocking(false);
                 anim.IsIdle(true);
+            }
         }
     }
 }
