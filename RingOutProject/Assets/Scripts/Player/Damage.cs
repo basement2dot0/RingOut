@@ -54,7 +54,7 @@ public class Damage : MonoBehaviour {
     public float CurrentDamage(float minDmg, float maxDmg)
     {
         float dmg = Random.Range(minDamage,maxDmg);
-        Debug.Log(currentDamage.ToString());
+        Debug.Log("Dmg Output:"+currentDamage.ToString());
         return dmg;
     }
 }

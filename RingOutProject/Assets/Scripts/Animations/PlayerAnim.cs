@@ -20,8 +20,7 @@ public class PlayerAnim : MonoBehaviour {
     }
     public void IsWalking(bool truefalse)
     {
-        if (truefalse)
-            player.CurrentState = State.WALKING;
+        
         anim.SetBool("isWalking", truefalse);
         
     }
@@ -34,7 +33,7 @@ public class PlayerAnim : MonoBehaviour {
     {
         if (trigger == AnimationTrigger.set)
         {
-            player.CurrentState = State.JUMPING;
+            
             anim.SetTrigger("Jump");
         }
         else if (trigger == AnimationTrigger.reset)
@@ -42,31 +41,23 @@ public class PlayerAnim : MonoBehaviour {
     }
     public void IsBlocking(bool truefalse)
     {
-        if(truefalse)
-            player.CurrentState = State.DEFENDING;
         anim.SetBool("isBlocking", truefalse);
     }
-    public void IsAttacking(bool truefalse)
+    public void IsAttacking()
     {
-        anim.SetBool("isAttacking", truefalse);
-        if (truefalse)
+        anim.SetBool("isAttacking", true);
+        if (anim.GetBool("isAttacking"))
         {
-            player.CurrentState = State.ATTACKING;
+            
             StartCoroutine("CloseAttack");
         }
        
 
     }
-    public void IsIdle(bool truefalse)
-    {
-        if (truefalse)
-            player.CurrentState = State.IDLE;
-        anim.SetBool("isIdle", truefalse);
-    }
+   
     public void AttackIsHyped(bool truefalse)
     {
-        if (truefalse)
-            player.CurrentState = State.ATTACKING;
+        
 
         anim.SetBool("isAttacking", truefalse);
     }

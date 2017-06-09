@@ -43,6 +43,7 @@ public class Movement : MonoBehaviour {
     }
     private void FixedUpdate()
     {
+        
         Jump();
     }
 
@@ -58,14 +59,14 @@ public class Movement : MonoBehaviour {
                 if (player.CurrentState != State.DEFENDING)
                 {
                     anim.IsWalking(true);
+                    player.CurrentState = State.WALKING;
                     transform.position += inputManager.Movement(player.ID) * speed * Time.deltaTime;
-                    
                 }
             }
             if (inputManager.Movement(player.ID) == Vector3.zero && player.CurrentState != State.DEFENDING)
             {
                 anim.IsWalking(false);
-                anim.IsIdle(true);
+                player.CurrentState = State.IDLE;
             }
             rb.velocity = Vector3.zero; //remove any velocity applied to player when grounded to prevent unwanted sliding
         }
@@ -79,14 +80,15 @@ public class Movement : MonoBehaviour {
             if (CanJumpForward())
             {
                 lastJump = Time.time;
-                
+                player.CurrentState = State.JUMPING;
                 anim.Jump(AnimationTrigger.set);
                 rb.velocity += new Vector3(0, jumpHeight, 0) + (jumpDistance * inputManager.Movement(player.ID));
             }
             else if (CanJump())
             {
                 lastJump = Time.time;
-                
+                player.CurrentState = State.JUMPING;
+                anim.Jump(AnimationTrigger.set);
                 rb.velocity += Vector3.up * jumpHeight;
             }
         }

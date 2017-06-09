@@ -59,10 +59,10 @@ public class Player : MonoBehaviour{
         id = GetComponent<InputManager>().ControlNo;
         momentumBar = GameObject.FindGameObjectWithTag("Canvas").GetComponent<MomentumBar>();
     }
-    private void FixedUpdate()
+    private void Update()
     {
         anim.IsFalling(isGrounded);
-        
+
     }
     
     //Grounded Check

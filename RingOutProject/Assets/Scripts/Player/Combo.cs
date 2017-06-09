@@ -25,9 +25,7 @@ public class Combo : MonoBehaviour
         if (player.isHyped && inputManager.AttackButtonDown(player.ID))
             anim.AttackIsHyped(true);
         if (inputManager.AttackButtonDown(player.ID) )
-            anim.IsAttacking(true);
-        else if (!inputManager.AttackButtonDown(player.ID))
-            anim.IsIdle(true);
+            anim.IsAttacking();
     }
 
     private void Block()
@@ -37,10 +35,7 @@ public class Combo : MonoBehaviour
             if (inputManager.DefendButton(player.ID))
                 anim.IsBlocking(true);
             else if (!inputManager.DefendButton(player.ID))
-            {
                 anim.IsBlocking(false);
-                anim.IsIdle(true);
-            }
         }
     }
 }

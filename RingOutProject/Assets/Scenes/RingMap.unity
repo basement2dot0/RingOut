@@ -973,8 +973,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 0
   rotateSpeed: 0
-  jumpHeight: 0
-  jumpDistance: 0
+  jumpHeight: 100
+  jumpDistance: 50
   jumpDelay: 0
 --- !u!82 &178569187
 AudioSource:
@@ -2768,9 +2768,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 0
   rotateSpeed: 0
-  jumpHeight: 0
-  jumpDistance: 0
-  jumpDelay: 0
+  jumpHeight: 100
+  jumpDistance: 100
+  jumpDelay: 1
 --- !u!114 &580722870
 MonoBehaviour:
   m_ObjectHideFlags: 0
