@@ -33,9 +33,17 @@ public class Combo : MonoBehaviour
         if (player.IsGrounded)
         {
             if (inputManager.DefendButton(player.ID))
+            {
+                player.CurrentState = State.DEFENDING;
                 anim.IsBlocking(true);
+            }
+                
             else if (!inputManager.DefendButton(player.ID))
+            {
                 anim.IsBlocking(false);
+                player.CurrentState = State.IDLE;
+            }
+                
         }
     }
 }

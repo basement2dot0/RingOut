@@ -973,6 +973,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 0
   rotateSpeed: 0
+  gravity: 200
   jumpHeight: 100
   jumpDistance: 50
   jumpDelay: 0
@@ -1279,6 +1280,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 0
   rotateSpeed: 0
+  gravity: 0
   jumpHeight: 0
   jumpDistance: 0
   jumpDelay: 0
@@ -2768,6 +2770,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 0
   rotateSpeed: 0
+  gravity: 0
   jumpHeight: 100
   jumpDistance: 100
   jumpDelay: 1

@@ -16,6 +16,8 @@ public class Movement : MonoBehaviour {
     private float speed;
     [SerializeField]
     private float rotateSpeed;
+    [SerializeField]
+    private float gravity;
 
     //Jump Controls
     private float lastJump;
@@ -93,7 +95,7 @@ public class Movement : MonoBehaviour {
             }
         }
         else
-            rb.velocity += Vector3.down * 150 * Time.deltaTime;
+            rb.velocity +=( inputManager.Movement(player.ID)+Vector3.down) * gravity * Time.deltaTime;
     }
     private bool CanJumpForward()
     {

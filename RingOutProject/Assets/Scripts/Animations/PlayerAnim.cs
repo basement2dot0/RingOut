@@ -42,6 +42,7 @@ public class PlayerAnim : MonoBehaviour {
     public void IsBlocking(bool truefalse)
     {
         anim.SetBool("isBlocking", truefalse);
+       
     }
     public void IsAttacking()
     {
