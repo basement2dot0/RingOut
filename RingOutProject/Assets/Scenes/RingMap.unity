@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.68407565, g: 0.81861436, b: 1.0299861, a: 1}
+  m_IndirectSpecularColor: {r: 0.68415695, g: 0.8187356, b: 1.0301371, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -932,7 +932,7 @@ MonoBehaviour:
   anim: {fileID: 0}
   isGrounded: 0
   isHyped: 0
-  PunchHitBox: {fileID: 0}
+  PunchHitBox: {fileID: 1488483005}
   KickHitBox: {fileID: 0}
   punchVelocity: 0
   kickVelocity: 0
