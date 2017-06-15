@@ -4,19 +4,30 @@ using UnityEngine;
 
 public class collideWithOpponent : MonoBehaviour
 {
-    Player player;
     private MomentumBar momentumBar;
+    private Player player;
     private void Awake()
     {
-        player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
+        player = GetComponentInParent<Player>();
         momentumBar = GameObject.FindGameObjectWithTag("Canvas").GetComponent<MomentumBar>();
     }
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Hitbox"))
+      if(other.name == "Player2")
         {
-            player.DamageTaken();
+            
+            Debug.Log(other.name);
             momentumBar.OnHit();
+            if (player.isHyped)
+            {
+                player.opponent.DamageTaken(player.transform.forward);
+                player.opponent.GetComponent<PlayerAnim>().IsHit(true);
+            }
+            else
+            {
+                //insert normal hit reaction animation here here
+            }
+
         }
     }
 }

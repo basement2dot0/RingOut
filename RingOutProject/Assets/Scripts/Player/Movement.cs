@@ -41,7 +41,8 @@ public class Movement : MonoBehaviour {
     // Update is called once per frame
     void Update ()
     {
-        Move();
+        
+            Move();
     }
     private void FixedUpdate()
     {
