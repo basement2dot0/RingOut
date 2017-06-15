@@ -13,19 +13,23 @@ public class collideWithOpponent : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-      if(other.name == "Player2")
+        if(other.name == "BlockArea")
         {
-            
-            Debug.Log(other.name);
-            momentumBar.OnHit();
+            //negate momentum bar here
+            //play block hit animation here
+            player.opponent.GetComponent<PlayerAnim>().Hit(AnimationTrigger.set);
+        }
+        else if(other.name == player.opponent.name)
+        {
             if (player.isHyped)
             {
                 player.opponent.DamageTaken(player.transform.forward);
-                player.opponent.GetComponent<PlayerAnim>().IsHit(true);
+                player.opponent.GetComponent<PlayerAnim>().IsHypeHit(true);
             }
             else
             {
-                //insert normal hit reaction animation here here
+                momentumBar.OnHit();
+                player.opponent.GetComponent<PlayerAnim>().Hit(AnimationTrigger.set);
             }
 
         }
