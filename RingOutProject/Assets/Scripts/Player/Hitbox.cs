@@ -7,23 +7,24 @@ public class Hitbox : MonoBehaviour
     [SerializeField]
     private BoxCollider attackHitBox;
     [SerializeField]
-    private BoxCollider torso;
+    public BoxCollider torso;
     [SerializeField]
-    private BoxCollider legs;
-    private Rigidbody rb;
     private Vector3 hitDireciton;
+    [SerializeField]
+    private BoxCollider blockArea;
 
 
 
     private Player player;
     //Momentum Bar
     private MomentumBar momentumBar;
-    private PlayerAnim anim;
     private void Awake()
     {
         momentumBar = GameObject.FindGameObjectWithTag("Canvas").GetComponent<MomentumBar>();
         player = GetComponentInParent<Player>();
-        rb = GetComponent<Rigidbody>();
+        torso.name += player.ID.ToString();
+        blockArea.name += player.ID.ToString();
+        
     }
     private void Update()
     {
@@ -32,12 +33,10 @@ public class Hitbox : MonoBehaviour
     #region HitBoxLogic
     public void DamageTaken(Vector3 direction)
     {
+
         player.CurrentState = State.HIT;
         player.IsHit = true;
         hitDireciton = direction;
-        //rb.velocity = direction * 100f;
-        //player.transform.position += direction* 20 * Time.time;
-        //rb.AddForce(direction * 1000.0f);
     }
     private void OnHit()
     {
@@ -54,9 +53,17 @@ public class Hitbox : MonoBehaviour
         else
             momentumBar.IsPlayerOne = false;
     }
-    public void CloseHitBox()
+    private void CloseHitBox()
     {
         attackHitBox.enabled = false;
+    }
+    private void OpenBlockArea()
+    {
+        blockArea.enabled = true;
+    }
+    private void CloseBlockArea()
+    {
+        blockArea.enabled = false;
     }
     #endregion
 

@@ -73,7 +73,16 @@ public class PlayerAnim : MonoBehaviour {
         else if (trigger == AnimationTrigger.reset)
             anim.ResetTrigger("isHit");
     }
-   
+    public void BlockHit(AnimationTrigger trigger)
+    {
+        if (trigger == AnimationTrigger.set)
+        {
+
+            anim.SetTrigger("isBlockHit");
+        }
+        else if (trigger == AnimationTrigger.reset)
+            anim.ResetTrigger("isBlockHit");
+    }
     public void IsHypeHit(bool truefalse)
     {
         anim.SetBool("HypeHit", truefalse);
