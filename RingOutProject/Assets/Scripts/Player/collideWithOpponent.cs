@@ -36,7 +36,8 @@ public class collideWithOpponent : MonoBehaviour
             
         }
         else if(other.name == "Body" + player.opponent.GetComponent<Player>().ID.ToString())
-        {if (!isBlock)
+        {
+            if(!isBlock)
             {
                 if (player.isHyped)
                 {

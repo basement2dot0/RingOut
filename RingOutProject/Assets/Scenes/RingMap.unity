@@ -1084,7 +1084,7 @@ MonoBehaviour:
   attackHitBox: {fileID: 292710549}
   torso: {fileID: 1439664474}
   hitDireciton: {x: 0, y: 0, z: 0}
-  blockArea: {fileID: 0}
+  blockArea: {fileID: 464285977}
 --- !u!1 &200438909
 GameObject:
   m_ObjectHideFlags: 0
@@ -1272,7 +1272,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 292710546}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.098, y: 1.011, z: 0.876}
+  m_LocalPosition: {x: -0.009, y: 1.011, z: 0.876}
   m_LocalScale: {x: 0.31527916, y: 0.31486934, z: 0.37500048}
   m_Children: []
   m_Father: {fileID: 2126280171}
@@ -1352,8 +1352,8 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 385790652}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.04, y: 1.0599998, z: 0.045}
-  m_LocalScale: {x: 0.33004197, y: 0.557538, z: 0.30168802}
+  m_LocalPosition: {x: 0.043, y: 1.154, z: 0.22}
+  m_LocalScale: {x: 0.45476693, y: 0.3895815, z: 0.18689252}
   m_Children: []
   m_Father: {fileID: 1975847261}
   m_RootOrder: 2
@@ -1382,8 +1382,8 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 464285975}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.04, y: 1.0599998, z: 0.045}
-  m_LocalScale: {x: 0.33004197, y: 0.557538, z: 0.30168802}
+  m_LocalPosition: {x: 0.04, y: 1.0599998, z: 0.112}
+  m_LocalScale: {x: 0.33004197, y: 0.557538, z: 0.24104223}
   m_Children: []
   m_Father: {fileID: 2126280171}
   m_RootOrder: 2
@@ -1678,8 +1678,8 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 565131598}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.04, y: 1.06, z: -0.02}
-  m_LocalScale: {x: 0.33004117, y: 0.5575377, z: 0.30168805}
+  m_LocalPosition: {x: 0.04, y: 1.06, z: 0.006}
+  m_LocalScale: {x: 0.41860595, y: 0.5575377, z: 0.4218781}
   m_Children: []
   m_Father: {fileID: 1975847261}
   m_RootOrder: 0
@@ -2149,7 +2149,7 @@ MonoBehaviour:
   anim: {fileID: 0}
   isGrounded: 0
   isHyped: 0
-  isDefending: 0
+  isDefending: 1
   opponent: {fileID: 0}
 --- !u!114 &791634484
 MonoBehaviour:
@@ -4208,7 +4208,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 400132, guid: 43c5628f6495b064486907bb44ce4409, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 6.3
       objectReference: {fileID: 0}
     - target: {fileID: 400132, guid: 43c5628f6495b064486907bb44ce4409, type: 3}
       propertyPath: m_LocalPosition.y
