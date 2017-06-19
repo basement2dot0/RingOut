@@ -58,9 +58,7 @@ public class PlayerAnim : MonoBehaviour {
    
     public void AttackIsHyped(bool truefalse)
     {
-        
-
-        anim.SetBool("isAttacking", truefalse);
+       anim.SetBool("isHypeAttack", truefalse);
     }
     public void IsHit(bool truefalse)
     {
