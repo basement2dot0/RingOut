@@ -9,9 +9,8 @@ public class Movement : MonoBehaviour {
     private Player player;
     private InputManager inputManager;
     private PlayerAnim playerAnim;
-    private Animator anim;
     
-
+    
     //Movement Controls
     [SerializeField]
     private float speed;
@@ -37,16 +36,14 @@ public class Movement : MonoBehaviour {
         inputManager = GetComponent<InputManager>();
         speed = 20.0f;
         playerAnim = GetComponent<PlayerAnim>();
-        anim = GetComponent<Animator>();
+        
     }
     
     // Update is called once per frame
     void Update ()
     {
-        if (!anim.GetBool("isAttacking"))
-        {
             Move();
-        }
+        
     }
     private void FixedUpdate()
     {
