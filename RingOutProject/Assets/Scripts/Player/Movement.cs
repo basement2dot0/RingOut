@@ -8,9 +8,9 @@ public class Movement : MonoBehaviour {
     private Rigidbody rb;
     private Player player;
     private InputManager inputManager;
-    private PlayerAnim anim;
+    private PlayerAnim playerAnim;
     
-
+    
     //Movement Controls
     [SerializeField]
     private float speed;
@@ -35,18 +35,17 @@ public class Movement : MonoBehaviour {
         player = GetComponent<Player>();
         inputManager = GetComponent<InputManager>();
         speed = 20.0f;
-        anim = GetComponent<PlayerAnim>();
+        playerAnim = GetComponent<PlayerAnim>();
+        
     }
     
     // Update is called once per frame
     void Update ()
     {
-        
             Move();
     }
     private void FixedUpdate()
     {
-        
         Jump();
     }
 
@@ -55,20 +54,20 @@ public class Movement : MonoBehaviour {
     {
         if (player.IsGrounded)
         {
-            anim.Jump(AnimationTrigger.reset);
+            playerAnim.Jump(AnimationTrigger.reset);
             if (inputManager.Movement(player.ID) != Vector3.zero)
             {
                 rb.rotation = Quaternion.LookRotation(inputManager.Movement(player.ID));
                 if (player.CurrentState != State.DEFENDING)
                 {
-                    anim.IsWalking(true);
+                    playerAnim.IsWalking(true);
                     player.CurrentState = State.WALKING;
                     transform.position += inputManager.Movement(player.ID) * speed * Time.deltaTime;
                 }
             }
             if (inputManager.Movement(player.ID) == Vector3.zero && player.CurrentState != State.DEFENDING)
             {
-                anim.IsWalking(false);
+                playerAnim.IsWalking(false);
                 player.CurrentState = State.IDLE;
             }
             rb.velocity = Vector3.zero; //remove any velocity applied to player when grounded to prevent unwanted sliding
@@ -84,14 +83,14 @@ public class Movement : MonoBehaviour {
             {
                 lastJump = Time.time;
                 player.CurrentState = State.JUMPING;
-                anim.Jump(AnimationTrigger.set);
+                playerAnim.Jump(AnimationTrigger.set);
                 rb.velocity += new Vector3(0, jumpHeight, 0) + (jumpDistance * inputManager.Movement(player.ID));
             }
             else if (CanJump())
             {
                 lastJump = Time.time;
                 player.CurrentState = State.JUMPING;
-                anim.Jump(AnimationTrigger.set);
+                playerAnim.Jump(AnimationTrigger.set);
                 rb.velocity += Vector3.up * jumpHeight;
             }
         }

@@ -18,6 +18,8 @@ public class MomentumBar : MonoBehaviour
     private float HypeTimer;
     [SerializeField]
     private Text hypeText;
+    [SerializeField]
+    private bool isTimer;
 
     public bool IsHyped { get {return isHyped; } }
 
@@ -56,42 +58,48 @@ public class MomentumBar : MonoBehaviour
 
     private void IsMaxed()
     {
-        if (momentumBar.value == momentumBar.maxValue && !isHyped)
-        {
-            playersTheme[0].PlayHypeMusic();
-            hypeText.text = "Player One is HYPED!";
-            players[0].isHyped = true;
-            isHyped = true;
+            if (momentumBar.value == momentumBar.maxValue && !isHyped)
+            {
+                playersTheme[0].PlayHypeMusic();
+                hypeText.text = "Player One is HYPED!";
+                players[0].isHyped = true;
+                isHyped = true;
+                isTimer = true;
         }
-        else if (momentumBar.value == momentumBar.minValue && !isHyped)
-        {
-            playersTheme[1].PlayHypeMusic();
-            hypeText.text = "Player Two is HYPED!";
-            players[1].isHyped = true;
-            isHyped = true;
+            else if (momentumBar.value == momentumBar.minValue && !isHyped)
+            {
+                playersTheme[1].PlayHypeMusic();
+                hypeText.text = "Player Two is HYPED!";
+                players[1].isHyped = true;
+                isHyped = true;
+                isTimer = true;
         }
+     
     }
     public void OnHit()
     {
-        if (IsPlayerOne)
+        if (!isTimer)
         {
-            if ((momentumBar.value + damage.CurrentDamage(damage.MinDamage, damage.MaxDamage)) > momentumBar.maxValue)
-                momentumBar.value = momentumBar.maxValue;
+            if (IsPlayerOne)
+            {
+                if ((momentumBar.value + damage.CurrentDamage(damage.MinDamage, damage.MaxDamage)) > momentumBar.maxValue)
+                    momentumBar.value = momentumBar.maxValue;
+                else
+                    momentumBar.value += damage.CurrentDamage(damage.MinDamage, damage.MaxDamage);
+            }
             else
-                momentumBar.value += damage.CurrentDamage(damage.MinDamage, damage.MaxDamage);
-        }
-        else
-        {
-            if ((momentumBar.value - damage.CurrentDamage(damage.MinDamage, damage.MaxDamage)) < momentumBar.minValue)
-                momentumBar.value = momentumBar.minValue;
-            else
-                momentumBar.value -= damage.CurrentDamage(damage.MinDamage, damage.MaxDamage);
+            {
+                if ((momentumBar.value - damage.CurrentDamage(damage.MinDamage, damage.MaxDamage)) < momentumBar.minValue)
+                    momentumBar.value = momentumBar.minValue;
+                else
+                    momentumBar.value -= damage.CurrentDamage(damage.MinDamage, damage.MaxDamage);
+            }
         }
     }
     public void ResetMomentumBar()
     {
         if(momentumBar.value == startingValue)
-        {
+        { 
             players[0].isHyped = false;
             players[1].isHyped = false;
             isHyped = false;
@@ -100,5 +108,9 @@ public class MomentumBar : MonoBehaviour
             playersTheme[1].StopHypeMusic();
         }
         momentumBar.value = Mathf.MoveTowards(momentumBar.value, startingValue, Time.deltaTime * HypeTimer);
+        if(momentumBar.value == startingValue)
+        {
+            isTimer = false;
+        }
     }
 }
