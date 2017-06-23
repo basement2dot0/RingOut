@@ -4,19 +4,56 @@ using UnityEngine;
 
 public class collideWithOpponent : MonoBehaviour
 {
-    Player player;
     private MomentumBar momentumBar;
+    private Player player;
+    private WaitForSeconds disableHitboxTime;
+    [SerializeField]
+    public float wait;
     private void Awake()
     {
-        player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
+        disableHitboxTime = new WaitForSeconds(wait);
+        player = GetComponentInParent<Player>();
         momentumBar = GameObject.FindGameObjectWithTag("Canvas").GetComponent<MomentumBar>();
+    }
+    bool isBlock;
+    private void TempDisableTorsoHitBox()
+    {
+        isBlock = true;
+        
+        
     }
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Hitbox"))
+     
+        
+        if(other.name == "BlockArea"+player.opponent.GetComponent<Player>().ID.ToString())
         {
-            player.DamageTaken();
-            momentumBar.OnHit();
+            
+            //negate momentum bar here
+            Debug.Log(other.name);
+            player.opponent.GetComponent<PlayerAnim>().BlockHit(AnimationTrigger.set);
+            TempDisableTorsoHitBox();
+            
+        }
+        else if(other.name == "Body" + player.opponent.GetComponent<Player>().ID.ToString())
+        {
+            if(!isBlock)
+            {
+                if (player.isHyped)
+                {
+                    player.opponent.DamageTaken(player.transform.forward);
+                    player.opponent.GetComponent<PlayerAnim>().IsHypeHit(true);
+                   
+                }
+                else
+                {
+                    Debug.Log(other.name);
+                    momentumBar.OnHit();
+                    player.opponent.GetComponent<PlayerAnim>().Hit(AnimationTrigger.set);
+                    
+                }
+            }
+            isBlock = false;
         }
     }
 }

@@ -78,6 +78,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Blocking.cs" />
     <Compile Include="Assets\Scripts\Animations\PlayerAnim.cs" />
     <Compile Include="Assets\Scripts\Archived\ComboSystem.cs" />
     <Compile Include="Assets\Scripts\Audio\AudioManager.cs" />
@@ -89,6 +90,7 @@
     <Compile Include="Assets\Scripts\Managers\UIManager.cs" />
     <Compile Include="Assets\Scripts\Player\Combo.cs" />
     <Compile Include="Assets\Scripts\Player\Damage.cs" />
+    <Compile Include="Assets\Scripts\Player\Hitbox.cs" />
     <Compile Include="Assets\Scripts\Player\HumanInput.cs" />
     <Compile Include="Assets\Scripts\Player\Movement.cs" />
     <Compile Include="Assets\Scripts\Player\Player.cs" />

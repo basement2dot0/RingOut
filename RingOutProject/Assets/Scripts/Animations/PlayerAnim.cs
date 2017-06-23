@@ -29,6 +29,11 @@ public class PlayerAnim : MonoBehaviour {
         yield return null;
         anim.SetBool("isAttacking",false);
     }
+    private IEnumerator CloseHypeAttack()
+    {
+        yield return null;
+        anim.SetBool("isHypeAttack", false);
+    }
     public void Jump(AnimationTrigger trigger)
     {
         if (trigger == AnimationTrigger.set)
@@ -58,13 +63,36 @@ public class PlayerAnim : MonoBehaviour {
    
     public void AttackIsHyped(bool truefalse)
     {
-        
-
-        anim.SetBool("isAttacking", truefalse);
+       anim.SetBool("isHypeAttack", truefalse);
+        if (anim.GetBool("isHypeAttack"))
+        {
+            StartCoroutine("CloseHypeAttack");
+        }
     }
-    public void IsHit(bool truefalse)
+
+    public void Hit(AnimationTrigger trigger)
     {
-        anim.SetBool("isHit", truefalse);
+        if (trigger == AnimationTrigger.set)
+        {
+
+            anim.SetTrigger("isHit");
+        }
+        else if (trigger == AnimationTrigger.reset)
+            anim.ResetTrigger("isHit");
+    }
+    public void BlockHit(AnimationTrigger trigger)
+    {
+        if (trigger == AnimationTrigger.set)
+        {
+
+            anim.SetTrigger("isBlockHit");
+        }
+        else if (trigger == AnimationTrigger.reset)
+            anim.ResetTrigger("isBlockHit");
+    }
+    public void IsHypeHit(bool truefalse)
+    {
+        anim.SetBool("HypeHit", truefalse);
     }
 }
 public enum AnimationTrigger

@@ -43,7 +43,6 @@ public class Movement : MonoBehaviour {
     void Update ()
     {
             Move();
-        
     }
     private void FixedUpdate()
     {
