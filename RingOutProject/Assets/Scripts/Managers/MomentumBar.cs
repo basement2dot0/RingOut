@@ -52,8 +52,14 @@ public class MomentumBar : MonoBehaviour
     private void Update()
     {
         IsMaxed();
-        if (isHyped)
+        if (players[0].isHyped || players[1].isHyped)
+        {
             ResetMomentumBar();
+            if (!players[0].isHyped && !players[1].isHyped)
+                momentumBar.value = startingValue;
+            
+        }
+        
     }
 
     private void IsMaxed()
@@ -98,6 +104,8 @@ public class MomentumBar : MonoBehaviour
     }
     public void ResetMomentumBar()
     {
+        
+
         if(momentumBar.value == startingValue)
         { 
             players[0].isHyped = false;
@@ -107,7 +115,8 @@ public class MomentumBar : MonoBehaviour
             playersTheme[0].StopHypeMusic();
             playersTheme[1].StopHypeMusic();
         }
-        momentumBar.value = Mathf.MoveTowards(momentumBar.value, startingValue, Time.deltaTime * HypeTimer);
+        
+            momentumBar.value = Mathf.MoveTowards(momentumBar.value, startingValue, Time.deltaTime * HypeTimer);
         if(momentumBar.value == startingValue)
         {
             isTimer = false;

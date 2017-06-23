@@ -23,8 +23,10 @@ public class Combo : MonoBehaviour
     private void Attack()
     {
         if (player.isHyped && inputManager.AttackButtonDown(player.ID))
+        {
             anim.AttackIsHyped(true);
-        else if (inputManager.AttackButtonDown(player.ID) )
+        }
+        else if (inputManager.AttackButtonDown(player.ID))
             anim.IsAttacking();
         
     }

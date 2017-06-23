@@ -2149,7 +2149,7 @@ MonoBehaviour:
   anim: {fileID: 0}
   isGrounded: 0
   isHyped: 0
-  isDefending: 1
+  isDefending: 0
   opponent: {fileID: 0}
 --- !u!114 &791634484
 MonoBehaviour:
