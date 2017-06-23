@@ -36,6 +36,9 @@ public class Player : MonoBehaviour{
     public State CurrentState { get { return currentState; } set { currentState = value; } }
 
     public bool IsHit { get; internal set; }
+    [SerializeField]
+    private bool isDefending;
+    public bool IsDefending { get { return isDefending; } internal set { isDefending = value; } }
 
     [SerializeField]
     public Hitbox opponent;
