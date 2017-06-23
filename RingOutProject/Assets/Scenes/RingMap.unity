@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.68415695, g: 0.8187356, b: 1.0301371, a: 1}
+  m_IndirectSpecularColor: {r: 0.68407565, g: 0.81861436, b: 1.0299861, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -1072,6 +1072,20 @@ MonoBehaviour:
   minDamage: 0
   maxDamage: 0
   currentDamage: 0
+--- !u!114 &178569190
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 178569177}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 17d640319c813c145a6e452d707d485c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackHitBox: {fileID: 1488483005}
+  torso: {fileID: 1439664474}
+  legs: {fileID: 1722641136}
 --- !u!1 &200438909
 GameObject:
   m_ObjectHideFlags: 0
@@ -2949,6 +2963,20 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
+--- !u!114 &580722878
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 580722866}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 17d640319c813c145a6e452d707d485c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackHitBox: {fileID: 297558137}
+  torso: {fileID: 206694963}
+  legs: {fileID: 472922122}
 --- !u!1 &644343919
 GameObject:
   m_ObjectHideFlags: 0
