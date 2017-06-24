@@ -19,13 +19,20 @@ public class Combo : MonoBehaviour
         Attack();
         Block();
     }
+    private bool hasAttacked;
     
     private void Attack()
     {
+        
         if (player.isHyped && inputManager.AttackButtonDown(player.ID))
+        {
             anim.AttackIsHyped(true);
-        else if (inputManager.AttackButtonDown(player.ID) )
+            //StartCoroutine("setHypeFalse");
+           
+        }
+        else if (inputManager.AttackButtonDown(player.ID))
             anim.IsAttacking();
+
         
     }
 

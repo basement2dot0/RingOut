@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -27,6 +28,7 @@ public class Movement : MonoBehaviour {
     private float jumpDistance;
     [SerializeField]
     private float jumpDelay;
+    private Hitbox hitbox;
     
     // Use this for initialization
     void Awake ()
@@ -36,6 +38,7 @@ public class Movement : MonoBehaviour {
         inputManager = GetComponent<InputManager>();
         speed = 20.0f;
         playerAnim = GetComponent<PlayerAnim>();
+        hitbox = GetComponent<Hitbox>();
         
     }
     
@@ -43,7 +46,18 @@ public class Movement : MonoBehaviour {
     void Update ()
     {
             Move();
+        RingOut(hitbox.hitDireciton);
     }
+
+    private void RingOut(Vector3 hitDireciton)
+    {
+        if(player.IsHit)
+        {
+            Debug.Log(hitDireciton.ToString());
+            rb.velocity += hitDireciton * 30 * Time.time;
+        }
+    }
+
     private void FixedUpdate()
     {
         Jump();
