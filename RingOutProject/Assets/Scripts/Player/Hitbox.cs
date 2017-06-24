@@ -58,17 +58,24 @@ public class Hitbox : MonoBehaviour
             else
                 momentumBar.IsPlayerOne = false;
         }
-        
-        
+        else
+            StartCoroutine("setHypeFalse");
+
+
     }
-    
+    private WaitForSeconds delay = new WaitForSeconds(.50f);
+    private IEnumerator setHypeFalse()
+    {
+        yield return delay;
+        player.isHyped = false;
+    }
     private void CloseHitBox()
     {
-        
-        
+
+
         attackHitBox.enabled = false;
         
-        
+
 
     }
     private void OpenBlockArea()
