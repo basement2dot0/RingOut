@@ -14,6 +14,7 @@ public class collideWithOpponent : MonoBehaviour
         disableHitboxTime = new WaitForSeconds(wait);
         player = GetComponentInParent<Player>();
         momentumBar = GameObject.FindGameObjectWithTag("Canvas").GetComponent<MomentumBar>();
+        
     }
     bool isBlock;
     private void TempDisableTorsoHitBox()
@@ -41,8 +42,10 @@ public class collideWithOpponent : MonoBehaviour
             {
                 if (player.isHyped)
                 {
+                    Debug.Log("IS HI0T");
                     player.opponent.DamageTaken(player.transform.forward);
                     player.opponent.GetComponent<PlayerAnim>().IsHypeHit(true);
+
                    
                 }
                 else

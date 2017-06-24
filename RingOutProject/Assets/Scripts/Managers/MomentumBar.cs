@@ -52,13 +52,10 @@ public class MomentumBar : MonoBehaviour
     private void Update()
     {
         IsMaxed();
-        if (players[0].isHyped || players[1].isHyped)
-        {
+
+        
             ResetMomentumBar();
-            if (!players[0].isHyped && !players[1].isHyped)
-                momentumBar.value = startingValue;
-            
-        }
+        
         
     }
 
@@ -104,22 +101,33 @@ public class MomentumBar : MonoBehaviour
     }
     public void ResetMomentumBar()
     {
-        
+        if (players[0].isHyped || players[1].isHyped)
+        {
 
-        if(momentumBar.value == startingValue)
-        { 
-            players[0].isHyped = false;
-            players[1].isHyped = false;
+
+            if (momentumBar.value == startingValue)
+            {
+                players[0].isHyped = false;
+                players[1].isHyped = false;
+                isHyped = false;
+                isTimer = false;
+                hypeText.text = "";
+                playersTheme[0].StopHypeMusic();
+                playersTheme[1].StopHypeMusic();
+            }
+
+            momentumBar.value = Mathf.MoveTowards(momentumBar.value, startingValue, Time.deltaTime * HypeTimer);
+            
+        }
+        else if(isHyped && !players[0].isHyped && !players[1].isHyped)
+        {
+            
             isHyped = false;
+            isTimer = false;
             hypeText.text = "";
             playersTheme[0].StopHypeMusic();
             playersTheme[1].StopHypeMusic();
-        }
-        
-            momentumBar.value = Mathf.MoveTowards(momentumBar.value, startingValue, Time.deltaTime * HypeTimer);
-        if(momentumBar.value == startingValue)
-        {
-            isTimer = false;
+            momentumBar.value = startingValue;
         }
     }
 }

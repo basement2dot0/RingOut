@@ -29,11 +29,13 @@ public class PlayerAnim : MonoBehaviour {
         yield return null;
         anim.SetBool("isAttacking",false);
     }
+    
     private IEnumerator CloseHypeAttack()
     {
         yield return null;
-        player.isHyped = false;
         anim.SetBool("isHypeAttack", false);
+       
+        
     }
     public void Jump(AnimationTrigger trigger)
     {

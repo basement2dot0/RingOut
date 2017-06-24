@@ -33,29 +33,43 @@ public class Hitbox : MonoBehaviour
     #region HitBoxLogic
     public void DamageTaken(Vector3 direction)
     {
-
+        Debug.Log("IS HIT");
         player.CurrentState = State.HIT;
-        player.IsHit = true;
-        hitDireciton = direction;
+        //player.IsHit = true;
+        //hitDireciton = direction;
+        player.transform.position += direction * 500000 * Time.deltaTime;
     }
     private void OnHit()
     {
         if (player.IsHit)
         {
+            Debug.Log("IS HIT");    
             player.transform.position += hitDireciton * 500 * Time.deltaTime;
         }
     }
     private void OpenHitBox()
     {
         attackHitBox.enabled = true;
-        if (player.ID == 1)
-            momentumBar.IsPlayerOne = true;
-        else
-            momentumBar.IsPlayerOne = false;
+        if (!player.isHyped)
+        {
+            
+            if (player.ID == 1)
+                momentumBar.IsPlayerOne = true;
+            else
+                momentumBar.IsPlayerOne = false;
+        }
+        
+        
     }
+    
     private void CloseHitBox()
     {
+        
+        
         attackHitBox.enabled = false;
+        
+        
+
     }
     private void OpenBlockArea()
     {

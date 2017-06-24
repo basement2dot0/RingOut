@@ -19,15 +19,25 @@ public class Combo : MonoBehaviour
         Attack();
         Block();
     }
-    
+    private bool hasAttacked;
+    private WaitForSeconds delay = new WaitForSeconds(.50f);
+    private IEnumerator setHypeFalse()
+    {
+        yield return delay;
+        player.isHyped = false;
+    }
     private void Attack()
     {
+        
         if (player.isHyped && inputManager.AttackButtonDown(player.ID))
         {
             anim.AttackIsHyped(true);
+            StartCoroutine("setHypeFalse");
+           
         }
         else if (inputManager.AttackButtonDown(player.ID))
             anim.IsAttacking();
+
         
     }
 
