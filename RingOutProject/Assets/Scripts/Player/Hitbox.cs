@@ -9,7 +9,7 @@ public class Hitbox : MonoBehaviour
     [SerializeField]
     public BoxCollider torso;
     [SerializeField]
-    private Vector3 hitDireciton;
+    public Vector3 hitDireciton;
     [SerializeField]
     private BoxCollider blockArea;
 
@@ -28,25 +28,18 @@ public class Hitbox : MonoBehaviour
     }
     private void Update()
     {
-       // OnHit();
+       
     }
     #region HitBoxLogic
     public void DamageTaken(Vector3 direction)
     {
         Debug.Log("IS HIT");
         player.CurrentState = State.HIT;
-        //player.IsHit = true;
-        //hitDireciton = direction;
-        player.transform.position += direction * 6000 * Time.deltaTime;
+        player.IsHit = true;
+        hitDireciton = direction;
+       
     }
-    private void OnHit()
-    {
-        if (player.IsHit)
-        {
-            Debug.Log("IS HIT");    
-            player.transform.position += hitDireciton * 200 * Time.deltaTime;
-        }
-    }
+    
     private void OpenHitBox()
     {
         attackHitBox.enabled = true;
