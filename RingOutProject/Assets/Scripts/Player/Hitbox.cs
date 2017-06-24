@@ -28,7 +28,7 @@ public class Hitbox : MonoBehaviour
     }
     private void Update()
     {
-        OnHit();
+       // OnHit();
     }
     #region HitBoxLogic
     public void DamageTaken(Vector3 direction)
@@ -37,14 +37,14 @@ public class Hitbox : MonoBehaviour
         player.CurrentState = State.HIT;
         //player.IsHit = true;
         //hitDireciton = direction;
-        player.transform.position += direction * 500000 * Time.deltaTime;
+        player.transform.position += direction * 6000 * Time.deltaTime;
     }
     private void OnHit()
     {
         if (player.IsHit)
         {
             Debug.Log("IS HIT");    
-            player.transform.position += hitDireciton * 500 * Time.deltaTime;
+            player.transform.position += hitDireciton * 200 * Time.deltaTime;
         }
     }
     private void OpenHitBox()
