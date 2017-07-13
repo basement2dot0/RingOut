@@ -112,12 +112,13 @@ public class MomentumBar : MonoBehaviour
                 isHyped = false;
                 isTimer = false;
                 hypeText.text = "";
-                playersTheme[0].StopHypeMusic();
-                playersTheme[1].StopHypeMusic();
+                //playersTheme[0].StopHypeMusic();
+                //playersTheme[1].StopHypeMusic();
             }
 
             momentumBar.value = Mathf.MoveTowards(momentumBar.value, startingValue, Time.deltaTime * HypeTimer);
-            
+            playersTheme[0].FadeHypeMusic();
+            playersTheme[1].FadeHypeMusic();
         }
         else if(isHyped && !players[0].isHyped && !players[1].isHyped)
         {
@@ -125,9 +126,12 @@ public class MomentumBar : MonoBehaviour
             isHyped = false;
             isTimer = false;
             hypeText.text = "";
-            playersTheme[0].StopHypeMusic();
-            playersTheme[1].StopHypeMusic();
+           // playersTheme[0].StopHypeMusic();
+           // playersTheme[1].StopHypeMusic();
             momentumBar.value = startingValue;
+
+            playersTheme[0].FadeHypeMusic();
+            playersTheme[1].FadeHypeMusic();
         }
     }
 }

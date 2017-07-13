@@ -8,6 +8,9 @@ public class AudioManager : MonoBehaviour
     public AudioClip hypeMusic;
 
     [SerializeField]
+    private float fadeDuration;
+
+    [SerializeField]
     private AudioSource audio;
 
     private void Awake()
@@ -20,13 +23,17 @@ public class AudioManager : MonoBehaviour
         audio.clip = hypeMusic;
         audio.PlayOneShot(audio.clip);
     }
-    public void StopHypeMusic()
-    {
-        audio.Stop();
-    }
     public void AttackFX()
     {
 
+    }
+    public void FadeHypeMusic()
+    {
+        audio.volume = Mathf.MoveTowards(audio.volume, 0.0f, Time.deltaTime * fadeDuration);
+        if(audio.volume < 0.1f)
+        {
+            audio.Stop();
+        }
     }
     public void SpecialFX() { }
     public void JumpFX() { }
