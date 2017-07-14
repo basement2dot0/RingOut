@@ -7,15 +7,19 @@ public class AudioManager : MonoBehaviour
 {
     public AudioClip hypeMusic;
 
+
     [SerializeField]
     private float fadeDuration;
 
     [SerializeField]
     private AudioSource audio;
 
+    private float defaultVolume;
+
     private void Awake()
     {
         audio = GetComponent<AudioSource>();
+        defaultVolume = audio.volume;
     }
 
     public void PlayHypeMusic()
@@ -33,7 +37,7 @@ public class AudioManager : MonoBehaviour
         if(audio.volume < 0.1f)
         {
             audio.Stop();
-            audio.volume = 1;
+            audio.volume = defaultVolume;
         }
     }
     public void SpecialFX() { }
