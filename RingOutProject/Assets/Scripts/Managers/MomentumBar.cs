@@ -118,7 +118,7 @@ public class MomentumBar : MonoBehaviour
             momentumBar.value = Mathf.MoveTowards(momentumBar.value, startingValue, Time.deltaTime * HypeTimer);
 
             playersTheme[0].FadeHypeMusic((momentumBar.value - startingValue) / 50);
-            playersTheme[1].FadeHypeMusic((momentumBar.value - startingValue) / 50);
+            playersTheme[1].FadeHypeMusic((momentumBar.value + startingValue) / 50);
         }
         else if(isHyped && !players[0].isHyped && !players[1].isHyped)
         {    
@@ -129,7 +129,7 @@ public class MomentumBar : MonoBehaviour
             momentumBar.value = startingValue;
 
             playersTheme[0].FadeHypeMusic((momentumBar.value - startingValue) / 50);
-            playersTheme[1].FadeHypeMusic((momentumBar.value - startingValue) / 50);
+            playersTheme[1].FadeHypeMusic((momentumBar.value + startingValue) / 50);
         }
     }
 }
