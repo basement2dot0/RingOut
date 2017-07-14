@@ -33,6 +33,7 @@ public class AudioManager : MonoBehaviour
         if(audio.volume < 0.1f)
         {
             audio.Stop();
+            audio.volume = 1;
         }
     }
     public void SpecialFX() { }
