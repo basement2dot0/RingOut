@@ -8,8 +8,8 @@ public class AudioManager : MonoBehaviour
     public AudioClip hypeMusic;
 
 
-    [SerializeField]
-    private float fadeDuration;
+    //[SerializeField]
+    //private float fadeDuration;
 
     [SerializeField]
     private AudioSource audio;
@@ -31,10 +31,11 @@ public class AudioManager : MonoBehaviour
     {
 
     }
-    public void FadeHypeMusic()
+    public void FadeHypeMusic(float fadeSource)
     {
-        audio.volume = Mathf.MoveTowards(audio.volume, 0.0f, Time.deltaTime * fadeDuration);
-        if(audio.volume < 0.1f)
+        audio.volume = fadeSource;
+
+        if(audio.volume == 0f)
         {
             audio.Stop();
             audio.volume = defaultVolume;
