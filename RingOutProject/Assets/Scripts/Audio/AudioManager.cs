@@ -19,7 +19,7 @@ public class AudioManager : MonoBehaviour
     private void Awake()
     {
         audio = GetComponent<AudioSource>();
-        defaultVolume = audio.volume;
+        audio.volume = 1.0f;
     }
 
     public void PlayHypeMusic()
@@ -35,10 +35,10 @@ public class AudioManager : MonoBehaviour
     {
         audio.volume = fadeSource;
 
-        if(audio.volume == 0f)
+        if(audio.volume < 0.01f)
         {
             audio.Stop();
-            audio.volume = defaultVolume;
+            audio.volume = 1.0f;
         }
     }
     public void SpecialFX() { }
