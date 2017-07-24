@@ -15,7 +15,7 @@ public class MomentumBar : MonoBehaviour
     [SerializeField]
     private float startingValue;
     [SerializeField]
-    private float HypeTimer;
+    private float hypeTimer;
     [SerializeField]
     private Text hypeText;
     [SerializeField]
@@ -79,7 +79,7 @@ public class MomentumBar : MonoBehaviour
         }
      
     }
-    public void OnHit()
+    public void UpdateBar()
     {
         if (!isTimer)
         {
@@ -99,6 +99,7 @@ public class MomentumBar : MonoBehaviour
             }
         }
     }
+
     public void ResetMomentumBar()
     {
         if (players[0].isHyped || players[1].isHyped)
@@ -112,22 +113,23 @@ public class MomentumBar : MonoBehaviour
                 isHyped = false;
                 isTimer = false;
                 hypeText.text = "";
-                playersTheme[0].StopHypeMusic();
-                playersTheme[1].StopHypeMusic();
             }
 
             momentumBar.value = Mathf.MoveTowards(momentumBar.value, startingValue, Time.deltaTime * HypeTimer);
-            
+
+            playersTheme[0].FadeHypeMusic((momentumBar.value - startingValue) / 50);
+            playersTheme[1].FadeHypeMusic((momentumBar.value + startingValue) / 50);
         }
         else if(isHyped && !players[0].isHyped && !players[1].isHyped)
-        {
-            
+        {    
             isHyped = false;
             isTimer = false;
             hypeText.text = "";
-            playersTheme[0].StopHypeMusic();
-            playersTheme[1].StopHypeMusic();
+
             momentumBar.value = startingValue;
+
+            playersTheme[0].FadeHypeMusic((momentumBar.value - startingValue) / 50);
+            playersTheme[1].FadeHypeMusic((momentumBar.value + startingValue) / 50);
         }
     }
 }
