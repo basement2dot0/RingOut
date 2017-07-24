@@ -15,7 +15,7 @@ public class MomentumBar : MonoBehaviour
     [SerializeField]
     private float startingValue;
     [SerializeField]
-    private float HypeTimer;
+    private float hypeTimer;
     [SerializeField]
     private Text hypeText;
     [SerializeField]
@@ -79,7 +79,7 @@ public class MomentumBar : MonoBehaviour
         }
      
     }
-    public void OnHit()
+    public void UpdateBar()
     {
         if (!isTimer)
         {
