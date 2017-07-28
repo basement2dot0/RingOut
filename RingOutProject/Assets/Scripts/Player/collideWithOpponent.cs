@@ -51,7 +51,7 @@ public class collideWithOpponent : MonoBehaviour
                 else
                 {
                     Debug.Log(other.name);
-                    momentumBar.OnHit();
+                    momentumBar.UpdateBar();
                     player.opponent.GetComponent<PlayerAnim>().Hit(AnimationTrigger.set);
                     
                 }
