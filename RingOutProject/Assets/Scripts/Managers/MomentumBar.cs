@@ -44,7 +44,7 @@ public class MomentumBar : MonoBehaviour
         foreach (var theme in GameObject.FindGameObjectsWithTag("Player"))
         {
             if(theme.GetComponent<Player>().ID == 1)
-            playersTheme[0] =theme.GetComponent<AudioManager>();
+                playersTheme[0] =theme.GetComponent<AudioManager>();
             else
                 playersTheme[1] = theme.GetComponent<AudioManager>();
         }
@@ -115,7 +115,7 @@ public class MomentumBar : MonoBehaviour
                 hypeText.text = "";
             }
 
-            momentumBar.value = Mathf.MoveTowards(momentumBar.value, startingValue, Time.deltaTime * HypeTimer);
+            momentumBar.value = Mathf.MoveTowards(momentumBar.value, startingValue, Time.deltaTime * hypeTimer);
 
             playersTheme[0].FadeHypeMusic((momentumBar.value - startingValue) / 50);
             playersTheme[1].FadeHypeMusic((momentumBar.value + startingValue) / 50);

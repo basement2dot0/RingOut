@@ -5,6 +5,8 @@ using UnityEngine;
 public class Hitbox : MonoBehaviour
 {
     [SerializeField]
+    private BoxCollider jumpAttackHitBox;
+    [SerializeField]
     private BoxCollider attackHitBox;
     [SerializeField]
     public BoxCollider torso;
@@ -42,7 +44,12 @@ public class Hitbox : MonoBehaviour
     
     private void OpenHitBox()
     {
-        attackHitBox.enabled = true;
+        BoxCollider AttackHitBox = attackHitBox;
+        if (player.IsGrounded)
+            AttackHitBox = attackHitBox;
+        else
+            AttackHitBox = jumpAttackHitBox;
+        AttackHitBox.enabled = true;
         if (!player.isHyped)
         {
             
@@ -57,6 +64,8 @@ public class Hitbox : MonoBehaviour
 
     }
     private WaitForSeconds delay = new WaitForSeconds(.50f);
+    
+
     private IEnumerator setHypeFalse()
     {
         yield return delay;
