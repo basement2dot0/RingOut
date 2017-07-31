@@ -42,7 +42,7 @@ public class collideWithOpponent : MonoBehaviour
             {
                 if (player.isHyped)
                 {
-                    Debug.Log("IS HI0T");
+                    Debug.Log("IS HIT");
                     player.opponent.DamageTaken(player.transform.forward);
                     player.opponent.GetComponent<PlayerAnim>().IsHypeHit(true);
 

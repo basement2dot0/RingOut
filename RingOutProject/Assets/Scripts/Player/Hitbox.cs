@@ -9,24 +9,42 @@ public class Hitbox : MonoBehaviour
     [SerializeField]
     private BoxCollider attackHitBox;
     [SerializeField]
-    public BoxCollider torso;
+    private BoxCollider torso;
     [SerializeField]
-    public Vector3 hitDireciton;
+    private Vector3 hitDireciton;
     [SerializeField]
     private BoxCollider blockArea;
-
-
-
+    //Player Reference
     private Player player;
-    //Momentum Bar
+    //Momentum Bar Reference
     private MomentumBar momentumBar;
+    //delay between active attacks
+    private WaitForSeconds delay = new WaitForSeconds(.50f);
+    private Movement playerMovement;
+
+    public Vector3 HitDireciton
+    {
+        get { return hitDireciton; }
+        set { hitDireciton = value; }
+    }
+    public BoxCollider Torso
+    {
+        get {return torso; }
+        set {torso = value; }
+    }
+
+    
+
+    
+
+
+
     private void Awake()
     {
         momentumBar = GameObject.FindGameObjectWithTag("Canvas").GetComponent<MomentumBar>();
         player = GetComponentInParent<Player>();
         torso.name += player.ID.ToString();
         blockArea.name += player.ID.ToString();
-        
     }
     private void Update()
     {
@@ -39,12 +57,12 @@ public class Hitbox : MonoBehaviour
         player.CurrentState = State.HIT;
         player.IsHit = true;
         hitDireciton = direction;
-       
     }
     
     private void OpenHitBox()
     {
         BoxCollider AttackHitBox = attackHitBox;
+        player.CanMove = false;
         if (player.IsGrounded)
             AttackHitBox = attackHitBox;
         else
@@ -52,7 +70,6 @@ public class Hitbox : MonoBehaviour
         AttackHitBox.enabled = true;
         if (!player.isHyped)
         {
-            
             if (player.ID == 1)
                 momentumBar.IsPlayerOne = true;
             else
@@ -60,25 +77,21 @@ public class Hitbox : MonoBehaviour
         }
         else
             StartCoroutine("setHypeFalse");
-
-
     }
-    private WaitForSeconds delay = new WaitForSeconds(.50f);
-    
-
     private IEnumerator setHypeFalse()
     {
         yield return delay;
         player.isHyped = false;
     }
+    private IEnumerator AllowMovement()
+    {
+        yield return delay;
+        player.CanMove = true;
+    }
     private void CloseHitBox()
     {
-
-
         attackHitBox.enabled = false;
-        
-
-
+        StartCoroutine("AllowMovement");
     }
     private void OpenBlockArea()
     {
@@ -89,8 +102,4 @@ public class Hitbox : MonoBehaviour
         blockArea.enabled = false;
     }
     #endregion
-
-
-
-
 }

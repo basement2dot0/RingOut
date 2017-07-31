@@ -5,8 +5,8 @@ using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody))]
 [RequireComponent(typeof(PlayerAnim))]
-[RequireComponent(typeof(Combo))]
-[RequireComponent(typeof(Damage))]
+[RequireComponent(typeof(Combat))]
+[RequireComponent(typeof(DamageType))]
 [RequireComponent(typeof(AudioManager))]
 [RequireComponent(typeof(Movement))]
 [RequireComponent(typeof(PlayerAnim))]
@@ -30,6 +30,8 @@ public class Player : MonoBehaviour{
 
     private WaitForSeconds delay;
 
+    private bool canMove;
+
     //Public Properties 
     public int ID { get { return id; } }
     public bool IsGrounded { get { return isGrounded; } }
@@ -39,6 +41,12 @@ public class Player : MonoBehaviour{
     [SerializeField]
     private bool isDefending;
     public bool IsDefending { get { return isDefending; } internal set { isDefending = value; } }
+
+    public bool CanMove
+    {
+        get { return canMove; }
+        set { canMove = value; }
+    }
 
     [SerializeField]
     public Hitbox opponent;

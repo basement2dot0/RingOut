@@ -29,7 +29,7 @@ public class Movement : MonoBehaviour {
     [SerializeField]
     private float jumpDelay;
     private Hitbox hitbox;
-    
+   
     // Use this for initialization
     void Awake ()
     {
@@ -45,8 +45,8 @@ public class Movement : MonoBehaviour {
     // Update is called once per frame
     void Update ()
     {
-            Move();
-        RingOut(hitbox.hitDireciton);
+        Move();
+        RingOut(hitbox.HitDireciton);
     }
 
     private void RingOut(Vector3 hitDireciton)
@@ -72,14 +72,14 @@ public class Movement : MonoBehaviour {
             if (inputManager.Movement(player.ID) != Vector3.zero)
             {
                 rb.rotation = Quaternion.LookRotation(inputManager.Movement(player.ID));
-                if (player.CurrentState != State.DEFENDING)
+                if (player.CanMove)
                 {
                     playerAnim.IsWalking(true);
                     player.CurrentState = State.WALKING;
                     transform.position += inputManager.Movement(player.ID) * speed * Time.deltaTime;
                 }
             }
-            if (inputManager.Movement(player.ID) == Vector3.zero && player.CurrentState != State.DEFENDING)
+            if (inputManager.Movement(player.ID) == Vector3.zero)
             {
                 playerAnim.IsWalking(false);
                 player.CurrentState = State.IDLE;
@@ -91,7 +91,7 @@ public class Movement : MonoBehaviour {
     //Jump Logic
     private void Jump()
     {
-        if (player.IsGrounded && player.CurrentState != State.DEFENDING)
+        if (player.IsGrounded && player.CanMove)
         {
             if (CanJumpForward())
             {

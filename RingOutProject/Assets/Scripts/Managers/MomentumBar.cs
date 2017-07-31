@@ -10,7 +10,7 @@ public class MomentumBar : MonoBehaviour
     public bool IsPlayerOne { get; set; }
     [SerializeField]
     private bool isHyped; 
-    private Damage damage;
+    private DamageType damage;
     private AudioManager[] playersTheme;
     [SerializeField]
     private float startingValue;
@@ -36,7 +36,7 @@ public class MomentumBar : MonoBehaviour
 
         }
         momentumBar = GameObject.FindGameObjectWithTag("Slider").GetComponent<Slider>();
-        damage = GameObject.FindGameObjectWithTag("Player").GetComponent<Damage>();
+        damage = GameObject.FindGameObjectWithTag("Player").GetComponent<DamageType>();
         startingValue = 50.0f;
         momentumBar.value = startingValue;
         hypeText = gameObject.transform.GetChild(0).GetComponent<Text>();
@@ -52,11 +52,7 @@ public class MomentumBar : MonoBehaviour
     private void Update()
     {
         IsMaxed();
-
-        
-            ResetMomentumBar();
-        
-        
+        ResetMomentumBar();
     }
 
     private void IsMaxed()
@@ -68,7 +64,7 @@ public class MomentumBar : MonoBehaviour
                 players[0].isHyped = true;
                 isHyped = true;
                 isTimer = true;
-        }
+            }
             else if (momentumBar.value == momentumBar.minValue && !isHyped)
             {
                 playersTheme[1].PlayHypeMusic();
@@ -76,8 +72,7 @@ public class MomentumBar : MonoBehaviour
                 players[1].isHyped = true;
                 isHyped = true;
                 isTimer = true;
-        }
-     
+            }
     }
     public void UpdateBar()
     {

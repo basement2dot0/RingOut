@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Combo : MonoBehaviour
+public class Combat : MonoBehaviour
 {
     /// <summary>
     /// I want to add a jump attack. I was going to add a new method called jump attack and call it in update by doing a if(player.Airborne): attack ; jumpAttack
@@ -32,16 +32,10 @@ public class Combo : MonoBehaviour
     
     private void Attack()
     {
-        
         if (player.isHyped && inputManager.AttackButtonDown(player.ID))
-        {
             anim.AttackIsHyped(true);
-            //StartCoroutine("setHypeFalse");
-        }
         else if (inputManager.AttackButtonDown(player.ID))
             anim.IsAttacking();
-
-        
     }
 
     private void Block()
@@ -50,16 +44,14 @@ public class Combo : MonoBehaviour
         {
             if (inputManager.DefendButton(player.ID))
             {
-                player.CurrentState = State.DEFENDING;
+                player.CanMove = false;
                 anim.IsBlocking(true);
             }
-                
             else if (!inputManager.DefendButton(player.ID))
             {
                 anim.IsBlocking(false);
-                player.CurrentState = State.IDLE;
+                player.CanMove = true;
             }
-                
         }
     }
 
