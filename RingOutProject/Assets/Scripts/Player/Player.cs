@@ -60,24 +60,21 @@ public class Player : MonoBehaviour{
             if(item.GetComponent<Player>() != this)
                 opponent = item.GetComponent<Hitbox>();
         }
-       // Player opponent = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
+        //Player opponent = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
         anim = GetComponent<PlayerAnim>();
         id = GetComponent<InputManager>().ControlNo;
     }
     private void Update()
     {
         anim.IsFalling(isGrounded);
-
     }
     
     //Grounded Check
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.tag == "Ground")
-        {
             isGrounded = true;
-            anim.Jump(AnimationTrigger.reset);
-        }
+        
     }
     private void OnCollisionExit(Collision collision)
     {

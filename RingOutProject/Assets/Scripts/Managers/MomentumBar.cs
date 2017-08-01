@@ -54,7 +54,6 @@ public class MomentumBar : MonoBehaviour
         IsMaxed();
         ResetMomentumBar();
     }
-
     private void IsMaxed()
     {
             if (momentumBar.value == momentumBar.maxValue && !isHyped)
@@ -94,7 +93,6 @@ public class MomentumBar : MonoBehaviour
             }
         }
     }
-
     public void ResetMomentumBar()
     {
         if (players[0].isHyped || players[1].isHyped)

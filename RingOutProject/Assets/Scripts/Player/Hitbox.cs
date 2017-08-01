@@ -96,10 +96,12 @@ public class Hitbox : MonoBehaviour
     private void OpenBlockArea()
     {
         blockArea.enabled = true;
+        player.CanMove = false;
     }
     private void CloseBlockArea()
     {
         blockArea.enabled = false;
+        player.CanMove = true;
     }
     #endregion
 }
