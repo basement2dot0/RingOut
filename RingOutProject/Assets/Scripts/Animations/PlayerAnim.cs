@@ -20,13 +20,14 @@ public class PlayerAnim : MonoBehaviour {
     }
     public void IsWalking(bool truefalse)
     {
-        
+
         anim.SetBool("isWalking", truefalse);
-        
+
     }
+        WaitForSeconds delay = new WaitForSeconds(0.3f);
     private IEnumerator CloseAttack()
     {
-        yield return null;
+        yield return delay;
         anim.SetBool("isAttacking",false);
     }
     

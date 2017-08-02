@@ -55,6 +55,7 @@ public class Player : MonoBehaviour{
     //Unity Methods
     private void Awake()
     {
+        canMove = true;
         foreach (var item in GameObject.FindGameObjectsWithTag("Player"))
         {
             if(item.GetComponent<Player>() != this)
