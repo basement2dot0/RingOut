@@ -9,7 +9,7 @@ using UnityEngine;
 [RequireComponent(typeof(DamageType))]
 [RequireComponent(typeof(AudioManager))]
 [RequireComponent(typeof(Movement))]
-[RequireComponent(typeof(PlayerAnim))]
+[RequireComponent(typeof(AnimationManager))]
 public class Player : MonoBehaviour{
     
     //Universal Player variables
@@ -29,7 +29,7 @@ public class Player : MonoBehaviour{
     public bool isHyped;
 
     private WaitForSeconds delay;
-
+    [SerializeField]
     private bool canMove;
 
     //Public Properties 
@@ -48,9 +48,16 @@ public class Player : MonoBehaviour{
         set { canMove = value; }
     }
 
+    public bool IsWalking { get; internal set; }
+    public bool IsHypeHit { get; internal set; }
+    [SerializeField]
+    public bool IsJumping;
+
     [SerializeField]
     public Hitbox opponent;
-    
+    public Player otherPlayer;
+    internal bool isAttacking;
+
 
     //Unity Methods
     private void Awake()
@@ -58,8 +65,12 @@ public class Player : MonoBehaviour{
         canMove = true;
         foreach (var item in GameObject.FindGameObjectsWithTag("Player"))
         {
-            if(item.GetComponent<Player>() != this)
+
+            if (item.GetComponent<Player>() != this)
+            {
                 opponent = item.GetComponent<Hitbox>();
+                otherPlayer = item.GetComponent<Player>();
+            }
         }
         //Player opponent = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
         anim = GetComponent<PlayerAnim>();

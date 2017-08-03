@@ -27,22 +27,24 @@ public class collideWithOpponent : MonoBehaviour
     {
      
         
-        if(other.name == "BlockArea"+player.opponent.GetComponent<Player>().ID.ToString())
+        if(other.name == "BlockArea"+player.otherPlayer.ID.ToString())
         {
             
             //negate momentum bar here
             Debug.Log(other.name);
-            player.opponent.GetComponent<PlayerAnim>().BlockHit(AnimationTrigger.set);
+            player.otherPlayer.IsHit = true;
+            //player.opponent.GetComponent<PlayerAnim>().BlockHit(AnimationTrigger.set);
             TempDisableTorsoHitBox();
             
         }
-        else if(other.name == "Body" + player.opponent.GetComponent<Player>().ID.ToString())
+        else if(other.name == "Body" + player.otherPlayer.ID.ToString())
         {
             if(!isBlock)
             {
                 if (player.isHyped)
                 {
                     Debug.Log("IS HIT");
+                    player.otherPlayer.IsHypeHit = true;
                     player.opponent.DamageTaken(player.transform.forward);
                     player.opponent.GetComponent<PlayerAnim>().IsHypeHit(true);
 
@@ -52,8 +54,9 @@ public class collideWithOpponent : MonoBehaviour
                 {
                     Debug.Log(other.name);
                     momentumBar.UpdateBar();
-                    player.opponent.GetComponent<PlayerAnim>().Hit(AnimationTrigger.set);
-                    
+                    //player.opponent.GetComponent<PlayerAnim>().Hit(AnimationTrigger.set);
+                    player.otherPlayer.IsHit = true;
+
                 }
             }
             isBlock = false;

@@ -34,5 +34,13 @@ class Physics : MonoBehaviour
     {
         rb.position = position;
     }
+
+    private void Jump()
+    {
+        if (player.IsJumping)
+        {
+
+        }
+    }
 }
 

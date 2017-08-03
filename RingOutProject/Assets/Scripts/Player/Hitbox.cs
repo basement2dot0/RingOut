@@ -54,8 +54,8 @@ public class Hitbox : MonoBehaviour
     public void DamageTaken(Vector3 direction)
     {
         Debug.Log("IS HIT");
-        player.CurrentState = State.HIT;
-        player.IsHit = true;
+        //player.CurrentState = State.HIT;
+        //player.IsHit = true;
         hitDireciton = direction;
     }
     
@@ -83,15 +83,12 @@ public class Hitbox : MonoBehaviour
         yield return delay;
         player.isHyped = false;
     }
-    private IEnumerator AllowMovement()
-    {
-        yield return delay;
-        player.CanMove = true;
-    }
+ 
     private void CloseHitBox()
     {
         attackHitBox.enabled = false;
-        StartCoroutine("AllowMovement");
+        player.CanMove = true;
+
     }
     private void OpenBlockArea()
     {

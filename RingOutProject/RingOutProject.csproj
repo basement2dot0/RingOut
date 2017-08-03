@@ -82,6 +82,7 @@
     <Compile Include="Assets\Scripts\Archived\ComboSystem.cs" />
     <Compile Include="Assets\Scripts\Audio\AudioManager.cs" />
     <Compile Include="Assets\Scripts\Camera\CameraController.cs" />
+    <Compile Include="Assets\Scripts\Managers\AnimationManager.cs" />
     <Compile Include="Assets\Scripts\Managers\EventManager.cs" />
     <Compile Include="Assets\Scripts\Managers\GameManager.cs" />
     <Compile Include="Assets\Scripts\Managers\InputManager.cs" />

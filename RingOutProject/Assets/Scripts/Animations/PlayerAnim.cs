@@ -55,13 +55,15 @@ public class PlayerAnim : MonoBehaviour {
     }
     public void IsAttacking()
     {
+        
+
         anim.SetBool("isAttacking", true);
         if (anim.GetBool("isAttacking"))
         {
-            
+
             StartCoroutine("CloseAttack");
         }
-       
+
 
     }
 
@@ -99,10 +101,5 @@ public class PlayerAnim : MonoBehaviour {
     {
         anim.SetBool("HypeHit", truefalse);
     }
-}
-public enum AnimationTrigger
-{
-    set,
-    reset
 }
 

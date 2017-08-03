@@ -19,7 +19,7 @@ public class HumanInput : InputManager {
     }
     public override bool AttackButtonDown(int playerID)
     {
-        return Input.GetButton("Attack" + playerID.ToString());
+        return Input.GetButtonDown("Attack" + playerID.ToString());
     }
     public override bool DefendButton(int playerID)
     {
