@@ -91,7 +91,7 @@ public class MomentumBar : MonoBehaviour
     }
     public void UpdateBar()
     {
-        if (players[0].IsHit || players[1].IsHit)
+        if (!players[0].IsDefending &&  players[0].IsHit || !players[1].IsDefending && players[1].IsHit)
         {
             if (!isTimer)
             {

@@ -9,15 +9,15 @@ public class CombatTrigger : MonoBehaviour
     [SerializeField]
     private bool isBlock;
     [SerializeField]
-    private string blockArea;
+    private string opponentsBlockArea;
     [SerializeField]
-    private string body;
+    private string opponentsBody;
 
     private void Awake()
     {
         player = GetComponentInParent<Player>();
-        blockArea = "BlockArea" + player.Opponent.ID.ToString();
-        body = "Body" + player.Opponent.ID.ToString();
+        opponentsBlockArea = "BlockArea" + player.Opponent.ID.ToString();
+        opponentsBody = "Body" + player.Opponent.ID.ToString();
     }
     private void OnTriggerEnter(Collider other)
     {
@@ -26,9 +26,12 @@ public class CombatTrigger : MonoBehaviour
 
     private void ActivateTriggers(Collider hitbox)
     {
-        if (hitbox.name.Equals(blockArea))
+        if (hitbox.name == opponentsBlockArea)
+        {
             isBlock = true;
-        else if (hitbox.name.Equals(body))
+            player.Opponent.IsHit = true;
+        }
+        else if (hitbox.name == opponentsBody)
         {
             if (!isBlock)
             {

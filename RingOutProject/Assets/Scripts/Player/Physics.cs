@@ -15,6 +15,7 @@ class Physics : MonoBehaviour
     private float jumpHeight;
     [SerializeField]
     private Hitbox hitbox;
+    [SerializeField]
     private float speed;
     [SerializeField]
     private float knockBackDistance; //This may be better off as a Vector3
@@ -26,14 +27,15 @@ class Physics : MonoBehaviour
             speed = 20.0f;
         inputManager = GetComponent<InputManager>();
         hitbox = GetComponent<Hitbox>();
+        player = GetComponent<Player>();
     }
     private void LateUpdate()
     {
         Gravity();
+        RingOut();
         UpdatePositon();
         UpdateRotation();
         Jump();
-        RingOut();
         KnockedBack();
     }
 
@@ -41,8 +43,10 @@ class Physics : MonoBehaviour
     {
         //need to add conditional if statement somewhere else for when to trigger this knockback
         //player.CanMove = false;
-        if (player.IsKnockedBack)
-            transform.position += player.Opponent.transform.forward * knockBackDistance* Time.time;
+        if (Input.GetKeyDown(KeyCode.M))
+            transform.position += (player.Opponent.transform.forward * knockBackDistance) * Time.time;
+        //once we are knocked down, we can then start a coroutine for when we are allowed to get back up ie. isKnockedDown = false
+
     }
     private void UpdatePositon()
     {
@@ -57,9 +61,8 @@ class Physics : MonoBehaviour
     private void Jump()
     {
         if (player.IsJumping)
-        {
             rb.velocity += Vector3.up * jumpHeight;
-        }
+        
     }
     private void Gravity()
     {
@@ -68,11 +71,11 @@ class Physics : MonoBehaviour
     }
     private void RingOut()
     {
+        Debug.Log(player.Opponent.name +" forward:"+player.Opponent.transform.forward.ToString());
+        Debug.Log(player.name + " Velocity:" + rb.velocity.ToString());
         if (player.IsHypeHit)
-        {
-            //Debug.Log(hitDireciton.ToString());
             rb.velocity += player.Opponent.transform.forward * 30 * Time.time;
-        }
+       
     }
 }
 

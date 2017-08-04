@@ -16,8 +16,8 @@ public class Movement : MonoBehaviour {
    // Use this for initialization
     void Awake ()
     {
-        //rb = GetComponent<Rigidbody>();
         player = GetComponent<Player>();
+        inputManager = GetComponent<InputManager>();
     }
     // Update is called once per frame
     void Update ()

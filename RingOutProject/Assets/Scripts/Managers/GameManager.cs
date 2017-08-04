@@ -9,12 +9,14 @@ public class GameManager : MonoBehaviour
     private float Rounds;
     [SerializeField]
     private float Match;
+    [SerializeField]
     private Player[] players;
     [SerializeField]
     private Text ringOutText;
 
     private void Awake()
     {
+        players = new Player[2];
         foreach (var player in GameObject.FindGameObjectsWithTag("Player"))
         {
             if (player.GetComponent<Player>().ID == 1)

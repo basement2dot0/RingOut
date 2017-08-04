@@ -13,37 +13,43 @@ public class AudioManager : MonoBehaviour
 
     [SerializeField]
     private AudioSource audio;
+    [SerializeField]
+    private float volume
+    {
+        
+        get
+        {
+            if (audio == null)
+             audio = GetComponent<AudioSource>(); 
+           return audio.volume;
+           
+        }
+        set
+        {
+            if(audio == null)
+                audio = GetComponent<AudioSource>();
+            audio.volume = value;
+        }
+    }
 
     private float defaultVolume;
 
     private void Awake()
     {
-        audio = GetComponent<AudioSource>();
-        audio.volume = 1.0f;
+        volume = 1.0f;
     }
-
     public void PlayHypeMusic()
     {
         audio.clip = hypeMusic;
         audio.PlayOneShot(audio.clip);
     }
-    public void AttackFX()
-    {
-
-    }
     public void FadeHypeMusic(float fadeSource)
     {
-        audio.volume = fadeSource;
-
-        if(audio.volume < 0.01f)
+        volume = fadeSource;
+        if(volume < 0.01f)
         {
             audio.Stop();
-            audio.volume = 1.0f;
+            volume = 1.0f;
         }
     }
-    public void SpecialFX() { }
-    public void JumpFX() { }
-
-
-
 }

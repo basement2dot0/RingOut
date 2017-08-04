@@ -52,8 +52,10 @@ public class AnimationManager : MonoBehaviour
     private void Attack()
     {
 
-        anim.SetBool("hypeAttack", player.HypeAttack);
-        anim.SetBool("isAttacking", player.IsAttacking);
+        if(player.IsAttacking)
+            anim.SetTrigger("isAttacking");
+        else
+            anim.ResetTrigger("isAttacking");
     }
     private void HypeAttack()
     {
