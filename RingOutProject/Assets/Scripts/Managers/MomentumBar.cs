@@ -57,8 +57,18 @@ public class MomentumBar : MonoBehaviour
     }
     private void Update()
     {
+        ActivePlayer();
+        UpdateBar();
         IsMaxed();
         ResetMomentumBar();
+    }
+
+    private void ActivePlayer()
+    {
+        if (players[0].IsHit)
+            isPlayerOne = false;
+        else if (players[1].IsHit)
+            isPlayerOne = true;
     }
     private void IsMaxed()
     {
@@ -81,54 +91,46 @@ public class MomentumBar : MonoBehaviour
     }
     public void UpdateBar()
     {
-        if (!isTimer)
+        if (players[0].IsHit || players[1].IsHit)
         {
-            if (IsPlayerOne)
+            if (!isTimer)
             {
-                if ((momentumBar.value + damage.CurrentDamage(damage.MinDamage, damage.MaxDamage)) > momentumBar.maxValue)
-                    momentumBar.value = momentumBar.maxValue;
+                if (isPlayerOne)
+                {
+                    if ((momentumBar.value + damage.CurrentDamage(damage.MinDamage, damage.MaxDamage)) > momentumBar.maxValue)
+                        momentumBar.value = momentumBar.maxValue;
+                    else
+                        momentumBar.value += damage.CurrentDamage(damage.MinDamage, damage.MaxDamage);
+                }
                 else
-                    momentumBar.value += damage.CurrentDamage(damage.MinDamage, damage.MaxDamage);
-            }
-            else
-            {
-                if ((momentumBar.value - damage.CurrentDamage(damage.MinDamage, damage.MaxDamage)) < momentumBar.minValue)
-                    momentumBar.value = momentumBar.minValue;
-                else
-                    momentumBar.value -= damage.CurrentDamage(damage.MinDamage, damage.MaxDamage);
+                {
+                    if ((momentumBar.value - damage.CurrentDamage(damage.MinDamage, damage.MaxDamage)) < momentumBar.minValue)
+                        momentumBar.value = momentumBar.minValue;
+                    else
+                        momentumBar.value -= damage.CurrentDamage(damage.MinDamage, damage.MaxDamage);
+                }
             }
         }
     }
     public void ResetMomentumBar()
     {
-        if (players[0].IsHyped || players[1].IsHyped)
-        {
-
-
-            if (momentumBar.value == startingValue)
-            {
-                players[0].IsHyped = false;
-                players[1].IsHyped = false;
-                isHyped = false;
-                isTimer = false;
-                hypeText.text = "";
-            }
-
-            momentumBar.value = Mathf.MoveTowards(momentumBar.value, startingValue, Time.deltaTime * hypeTimer);
-
-            playersTheme[0].FadeHypeMusic((momentumBar.value - startingValue) / 50);
-            playersTheme[1].FadeHypeMusic((momentumBar.value + startingValue) / 50);
-        }
-        else if(isHyped && !players[0].IsHyped && !players[1].IsHyped)
+        
+        if(isHyped && !players[0].IsHyped && !players[1].IsHyped)
         {    
             isHyped = false;
             isTimer = false;
             hypeText.text = "";
-
             momentumBar.value = startingValue;
-
+            playersTheme[0].FadeHypeMusic((momentumBar.value - startingValue) / 50);
+            playersTheme[1].FadeHypeMusic((momentumBar.value + startingValue) / 50);
+        }
+        else if (players[0].IsHyped || players[1].IsHyped)
+        {
+            momentumBar.value = Mathf.MoveTowards(momentumBar.value, startingValue, Time.deltaTime * hypeTimer);
             playersTheme[0].FadeHypeMusic((momentumBar.value - startingValue) / 50);
             playersTheme[1].FadeHypeMusic((momentumBar.value + startingValue) / 50);
         }
     }
+    
+
 }

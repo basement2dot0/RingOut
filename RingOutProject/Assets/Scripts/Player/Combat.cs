@@ -50,7 +50,10 @@ public class Combat : MonoBehaviour
         if (player.IsGrounded)
         {
             if (player.IsHyped && inputManager.AttackButtonDown(player.ID))
+            {
                 player.HypeAttack = true;
+                StartCoroutine("ResetHype");
+            }
             else if (player.HypeAttack && !player.IsHyped)
                 player.HypeAttack = false;
         }
@@ -58,9 +61,13 @@ public class Combat : MonoBehaviour
     
     private IEnumerator InputDelay()
     {
-        
         yield return delay;
         player.IsAttacking = false;
-        
     }
+    private IEnumerator ResetHype()
+    {
+        yield return delay;
+        player.IsHyped = false;
+    }
+    
 }

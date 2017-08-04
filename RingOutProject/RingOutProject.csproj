@@ -90,7 +90,7 @@
     <Compile Include="Assets\Scripts\Managers\InputManager.cs" />
     <Compile Include="Assets\Scripts\Managers\MomentumBar.cs" />
     <Compile Include="Assets\Scripts\Managers\UIManager.cs" />
-    <Compile Include="Assets\Scripts\Player\collideWithOpponent.cs" />
+    <Compile Include="Assets\Scripts\Player\CombatTrigger.cs" />
     <Compile Include="Assets\Scripts\Player\Combat.cs" />
     <Compile Include="Assets\Scripts\Player\DamageType.cs" />
     <Compile Include="Assets\Scripts\Player\Hitbox.cs" />
@@ -98,7 +98,6 @@
     <Compile Include="Assets\Scripts\Player\Movement.cs" />
     <Compile Include="Assets\Scripts\Player\Physics.cs" />
     <Compile Include="Assets\Scripts\Player\Player.cs" />
-    <Compile Include="Assets\Scripts\Player\State.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Assets\Scripts\Animations\" />

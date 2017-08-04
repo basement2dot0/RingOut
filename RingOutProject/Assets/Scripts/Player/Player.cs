@@ -13,15 +13,11 @@ public class Player : MonoBehaviour{
     
     //Universal Player variables
     [SerializeField]
-    private State currentState = State.IDLE;
-    [SerializeField]
     private int id;
     [SerializeField]
     private bool isGrounded;
     [SerializeField]
     private bool isHyped;
-    [SerializeField]
-    private WaitForSeconds delay;
     [SerializeField]
     private bool isJumping;
     [SerializeField]
@@ -33,26 +29,20 @@ public class Player : MonoBehaviour{
     [SerializeField]
     private bool isAttacking;
     [SerializeField]
-    private Hitbox opponent;
-    [SerializeField]
-    private Player otherPlayer;
+    private Player opponent;
     [SerializeField]
     private bool isWalking;
     [SerializeField]
     private bool isHypeHit;
     [SerializeField]
     private bool hypeAttack;
+    [SerializeField]
+    private bool isKnockedBack;
 
     //Public Properties 
     public int ID { get { return id; } }
-    public Player OtherPlayer { get { return otherPlayer; }}
-    public Hitbox Opponent { get { return opponent; } }
+    public Player Opponent { get { return opponent; }}
     public bool IsGrounded { get { return isGrounded; } }
-    public State CurrentState
-    { get
-        { return currentState; }
-        set { currentState = value; }
-    }
     public bool IsHit
     {
         get { return isHit; }
@@ -98,6 +88,11 @@ public class Player : MonoBehaviour{
         get { return isHyped; }
         set { isHyped = value; }
     }
+    public bool IsKnockedBack
+    {
+        get { return isKnockedBack; }
+        set { isKnockedBack = value; }
+    }
     
     //Unity Methods
     private void Awake()
@@ -105,12 +100,8 @@ public class Player : MonoBehaviour{
         canMove = true;
         foreach (var item in GameObject.FindGameObjectsWithTag("Player"))
         {
-
             if (item.GetComponent<Player>() != this)
-            {
-                opponent = item.GetComponent<Hitbox>();
-                otherPlayer = item.GetComponent<Player>();
-            }
+                opponent = item.GetComponent<Player>();
         }
         id = GetComponent<InputManager>().ControlNo;
     }
