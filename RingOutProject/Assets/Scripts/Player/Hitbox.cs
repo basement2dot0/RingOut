@@ -48,14 +48,14 @@ public class Hitbox : MonoBehaviour
     
     private void OpenHitBox()
     {
-        BoxCollider AttackHitBox = attackHitBox;
+        BoxCollider _attackHitBox = attackHitBox;
         player.CanMove = false;
         if (player.IsGrounded)
-            AttackHitBox = attackHitBox;
+            _attackHitBox = attackHitBox;
         else
-            AttackHitBox = jumpAttackHitBox;
-        AttackHitBox.enabled = true;
-        if (!player.isHyped)
+            _attackHitBox = jumpAttackHitBox;
+        _attackHitBox.enabled = true;
+        if (!player.IsHyped)
         {
             if (player.ID == 1)
                 momentumBar.IsPlayerOne = true;
@@ -68,7 +68,7 @@ public class Hitbox : MonoBehaviour
     private IEnumerator SetHypeFalse()
     {
         yield return delay;
-        player.isHyped = false;
+        player.IsHyped = false;
     }
  
     private void CloseHitBox()

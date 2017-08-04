@@ -9,7 +9,6 @@ public class Movement : MonoBehaviour {
     private Rigidbody rb;
     private Player player;
     private InputManager inputManager;
-    private PlayerAnim playerAnim;
     
     
     //Movement Controls
@@ -35,13 +34,11 @@ public class Movement : MonoBehaviour {
     {
         rb = GetComponent<Rigidbody>();
         player = GetComponent<Player>();
+        if(speed < 0)
+            speed = 20.0f;
         inputManager = GetComponent<InputManager>();
-        speed = 20.0f;
-        playerAnim = GetComponent<PlayerAnim>();
         hitbox = GetComponent<Hitbox>();
-        
     }
-    
     // Update is called once per frame
     void Update ()
     {
@@ -49,16 +46,6 @@ public class Movement : MonoBehaviour {
         Jump();
         RingOut(hitbox.HitDireciton);
     }
-
-    private void RingOut(Vector3 hitDireciton)
-    {
-        if(player.IsHypeHit)
-        {
-            Debug.Log(hitDireciton.ToString());
-            rb.velocity += hitDireciton * 30 * Time.time;
-        }
-    }
-
     private void FixedUpdate()
     {
        if (inputManager.Movement(player.ID) != Vector3.zero)
@@ -86,8 +73,6 @@ public class Movement : MonoBehaviour {
         }
        
     }
-    
-    
     private void Jump()
     {
         if (player.IsGrounded )
@@ -97,51 +82,19 @@ public class Movement : MonoBehaviour {
                 lastJump = Time.time;
                 player.IsJumping = true;
                 rb.velocity += Vector3.up * jumpHeight;
-                StartCoroutine("JumpStuff");
+                StartCoroutine("JumpReset");
             }
         }
         else
             rb.velocity += (inputManager.Movement(player.ID) + Vector3.down) * gravity * Time.deltaTime;
     }
-
-
-
-    private IEnumerator JumpStuff()
+    private void RingOut(Vector3 hitDireciton)
     {
-        yield return null;
-        player.IsJumping = false;
-    }
-
-    private void OldJump()
-    {
-
-        if (player.IsGrounded)
+        if (player.IsHypeHit)
         {
-           
-                if (inputManager.JumpButtonDown(player.ID) && inputManager.Movement(player.ID) != Vector3.zero)
-                {
-                    lastJump = Time.time;
-                    player.IsJumping = true;
-                    rb.velocity += new Vector3(0, jumpHeight, 0) + (jumpDistance * inputManager.Movement(player.ID));
-                }
-                else if (inputManager.JumpButtonDown(player.ID))
-                {
-                    lastJump = Time.time;
-                    player.IsJumping = true;
-                    rb.velocity += Vector3.up * jumpHeight;
-                }
-            
+            //Debug.Log(hitDireciton.ToString());
+            rb.velocity += hitDireciton * 30 * Time.time;
         }
-            else
-             rb.velocity += (inputManager.Movement(player.ID) + Vector3.down) * gravity * Time.deltaTime;
-        
-    }
-    private bool CanJumpForward()
-    {
-        if ((Time.time - lastJump) >= jumpDelay && inputManager.JumpButtonDown(player.ID) && inputManager.Movement(player.ID) != Vector3.zero)
-            return true;
-        else
-            return false;
     }
     private bool CanJump()
     {
@@ -150,6 +103,17 @@ public class Movement : MonoBehaviour {
         else
             return false;
     }
+    //private bool CanJumpForward()
+    //{
+    //    if ((Time.time - lastJump) >= jumpDelay && inputManager.JumpButtonDown(player.ID) && inputManager.Movement(player.ID) != Vector3.zero)
+    //        return true;
+    //    else
+    //        return false;
+    //}
 
-    
+    private IEnumerator JumpReset()
+    {
+        yield return null;
+        player.IsJumping = false;
+    }
 }

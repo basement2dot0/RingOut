@@ -42,5 +42,6 @@ class Physics : MonoBehaviour
 
         }
     }
+    private void Gravity() { }
 }
 

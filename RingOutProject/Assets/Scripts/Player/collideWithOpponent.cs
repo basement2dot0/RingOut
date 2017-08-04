@@ -7,6 +7,7 @@ public class collideWithOpponent : MonoBehaviour
     private MomentumBar momentumBar;
     private Player player;
     private WaitForSeconds disableHitboxTime;
+    private bool isBlock;
     [SerializeField]
     public float wait;
     private void Awake()
@@ -15,7 +16,7 @@ public class collideWithOpponent : MonoBehaviour
         player = GetComponentInParent<Player>();
         momentumBar = GameObject.FindGameObjectWithTag("Canvas").GetComponent<MomentumBar>();
     }
-    bool isBlock;
+    
     private void TempDisableTorsoHitBox()
     {
         isBlock = true;
@@ -35,7 +36,7 @@ public class collideWithOpponent : MonoBehaviour
         {
             if(!isBlock)
             {
-                if (player.isHyped)
+                if (player.IsHyped)
                 {
                    // Debug.Log("IS HIT");
                     player.OtherPlayer.IsHypeHit = true;
@@ -43,7 +44,7 @@ public class collideWithOpponent : MonoBehaviour
                 }
                 else
                 {
-                    Debug.Log(other.name);
+                    //Debug.Log(other.name);
                     momentumBar.UpdateBar();
                     player.OtherPlayer.IsHit = true;
                 }

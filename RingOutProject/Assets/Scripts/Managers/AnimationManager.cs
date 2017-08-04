@@ -19,25 +19,27 @@ public class AnimationManager : MonoBehaviour
     }
     private void Update()
     {
-        if (!player.IsHypeHit)
-            IsFalling();
-
+        IsFalling();
         Walk();
         Jump();
+        HypeAttack();
         Attack();
         Block();
         HypeHit();
-
     }
     private void LateUpdate()
     {
         Hit();
     }
+
     private void IsFalling()
     {
-        anim.SetBool("isGrounded", player.IsGrounded);
-        if (!player.IsGrounded && anim.GetBool("isWalking"))
-            player.IsWalking = false;
+        if (!player.IsHypeHit)
+        {
+            anim.SetBool("isGrounded", player.IsGrounded);
+            if (!player.IsGrounded && anim.GetBool("isWalking"))
+                player.IsWalking = false;
+        }
     }
     private void Walk()
     {
@@ -52,6 +54,10 @@ public class AnimationManager : MonoBehaviour
 
         anim.SetBool("hypeAttack", player.HypeAttack);
         anim.SetBool("isAttacking", player.IsAttacking);
+    }
+    private void HypeAttack()
+    {
+        anim.SetBool("hypeAttack", player.HypeAttack);
     }
     private void Jump()
     {
@@ -73,6 +79,7 @@ public class AnimationManager : MonoBehaviour
         else
             anim.ResetTrigger("isHit");
     }
+
     private IEnumerator ResetJump(bool value)
     {
         yield return delay;
@@ -83,10 +90,4 @@ public class AnimationManager : MonoBehaviour
         yield return null;
         player.IsHit = false;
     }
-    
-}
-public enum AnimationTrigger
-{
-    set,
-    reset
 }

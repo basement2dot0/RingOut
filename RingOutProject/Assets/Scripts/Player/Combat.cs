@@ -5,7 +5,6 @@ using UnityEngine;
 public class Combat : MonoBehaviour
 {
     private InputManager inputManager;
-    private PlayerAnim anim;
     private Player player;
     [SerializeField]
     private float attackDelay;
@@ -15,7 +14,6 @@ public class Combat : MonoBehaviour
     {
         delay = new WaitForSeconds(attackDelay);
         inputManager = GetComponent<InputManager>();
-        anim = GetComponent<PlayerAnim>();
         player = GetComponent<Player>();
     }
     void Update()
@@ -28,11 +26,11 @@ public class Combat : MonoBehaviour
     private void Attack()
     {
         
-        if (!player.isHyped && inputManager.AttackButtonDown(player.ID))
+        if (!player.IsHyped && inputManager.AttackButtonDown(player.ID))
         {
 
             player.IsAttacking = true;
-            StartCoroutine("inputDelay");
+            StartCoroutine("InputDelay");
         }
 
     }
@@ -51,14 +49,14 @@ public class Combat : MonoBehaviour
     {
         if (player.IsGrounded)
         {
-            if (player.isHyped && inputManager.AttackButtonDown(player.ID))
+            if (player.IsHyped && inputManager.AttackButtonDown(player.ID))
                 player.HypeAttack = true;
-            else if (player.HypeAttack && !player.isHyped)
+            else if (player.HypeAttack && !player.IsHyped)
                 player.HypeAttack = false;
         }
     }
     
-    private IEnumerator inputDelay()
+    private IEnumerator InputDelay()
     {
         
         yield return delay;

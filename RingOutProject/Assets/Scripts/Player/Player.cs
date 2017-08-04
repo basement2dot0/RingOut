@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody))]
-[RequireComponent(typeof(PlayerAnim))]
 [RequireComponent(typeof(Combat))]
 [RequireComponent(typeof(DamageType))]
 [RequireComponent(typeof(AudioManager))]
@@ -17,8 +16,6 @@ public class Player : MonoBehaviour{
     private State currentState = State.IDLE;
     [SerializeField]
     private int id;
-    [SerializeField]
-    private PlayerAnim anim;
     [SerializeField]
     private bool isGrounded;
     [SerializeField]
@@ -38,7 +35,7 @@ public class Player : MonoBehaviour{
     [SerializeField]
     private Hitbox opponent;
     [SerializeField]
-    public Player otherPlayer;
+    private Player otherPlayer;
     [SerializeField]
     private bool isWalking;
     [SerializeField]
@@ -91,16 +88,17 @@ public class Player : MonoBehaviour{
         get { return isJumping; }
         set { isJumping = value; }
     }
-
-
     public bool IsAttacking
     {
         get { return isAttacking; }
         set { isAttacking = value; }
     }
+    public bool IsHyped
+    {
+        get { return isHyped; }
+        set { isHyped = value; }
+    }
     
-
-
     //Unity Methods
     private void Awake()
     {
@@ -114,15 +112,12 @@ public class Player : MonoBehaviour{
                 otherPlayer = item.GetComponent<Player>();
             }
         }
-        //Player opponent = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
-        anim = GetComponent<PlayerAnim>();
         id = GetComponent<InputManager>().ControlNo;
     }
     private void Update()
     {
         //anim.IsFalling();
     }
-    
     //Grounded Check
     private void OnCollisionEnter(Collision collision)
     {

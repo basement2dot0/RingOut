@@ -7,7 +7,6 @@ public class MomentumBar : MonoBehaviour
 {
     private Player[] players; 
     private Slider momentumBar;
-    public bool IsPlayerOne { get; set; }
     [SerializeField]
     private bool isHyped; 
     private DamageType damage;
@@ -20,8 +19,15 @@ public class MomentumBar : MonoBehaviour
     private Text hypeText;
     [SerializeField]
     private bool isTimer;
+    [SerializeField]
+    private bool isPlayerOne;
 
     public bool IsHyped { get {return isHyped; } }
+    public bool IsPlayerOne
+    {
+        get { return isPlayerOne; }
+        set { isPlayerOne = value; }
+    }
 
 
     private void Awake()
@@ -60,7 +66,7 @@ public class MomentumBar : MonoBehaviour
             {
                 playersTheme[0].PlayHypeMusic();
                 hypeText.text = "Player One is HYPED!";
-                players[0].isHyped = true;
+                players[0].IsHyped = true;
                 isHyped = true;
                 isTimer = true;
             }
@@ -68,7 +74,7 @@ public class MomentumBar : MonoBehaviour
             {
                 playersTheme[1].PlayHypeMusic();
                 hypeText.text = "Player Two is HYPED!";
-                players[1].isHyped = true;
+                players[1].IsHyped = true;
                 isHyped = true;
                 isTimer = true;
             }
@@ -95,14 +101,14 @@ public class MomentumBar : MonoBehaviour
     }
     public void ResetMomentumBar()
     {
-        if (players[0].isHyped || players[1].isHyped)
+        if (players[0].IsHyped || players[1].IsHyped)
         {
 
 
             if (momentumBar.value == startingValue)
             {
-                players[0].isHyped = false;
-                players[1].isHyped = false;
+                players[0].IsHyped = false;
+                players[1].IsHyped = false;
                 isHyped = false;
                 isTimer = false;
                 hypeText.text = "";
@@ -113,7 +119,7 @@ public class MomentumBar : MonoBehaviour
             playersTheme[0].FadeHypeMusic((momentumBar.value - startingValue) / 50);
             playersTheme[1].FadeHypeMusic((momentumBar.value + startingValue) / 50);
         }
-        else if(isHyped && !players[0].isHyped && !players[1].isHyped)
+        else if(isHyped && !players[0].IsHyped && !players[1].IsHyped)
         {    
             isHyped = false;
             isTimer = false;
