@@ -2252,7 +2252,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 791634477}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1fb5c26d8bcec12488f50b2489e45df0, type: 3}
   m_Name: 
@@ -2369,6 +2369,17 @@ Rigidbody:
 Transform:
   m_PrefabParentObject: {fileID: 400132, guid: 43c5628f6495b064486907bb44ce4409, type: 3}
   m_PrefabInternal: {fileID: 1083316024}
+--- !u!114 &791634491
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 791634477}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d16d9b653240354693f761a9dcd83e2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &808724033
 GameObject:
   m_ObjectHideFlags: 0
@@ -5693,7 +5704,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isHyped: 0
   startingValue: 0
-  hypeTimer: 0
+  hypeTimer: 5
   hypeText: {fileID: 15143244}
   isTimer: 0
 --- !u!1001 &1700700884

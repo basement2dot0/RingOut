@@ -36,8 +36,9 @@ public class Player : MonoBehaviour{
     public int ID { get { return id; } }
     public bool IsGrounded { get { return isGrounded; } }
     public State CurrentState { get { return currentState; } set { currentState = value; } }
-
-    public bool IsHit { get; internal set; }
+    [SerializeField]
+    private bool isHit;
+    public bool IsHit { get { return isHit; } set {isHit = value; } }
     [SerializeField]
     private bool isDefending;
     public bool IsDefending { get { return isDefending; } internal set { isDefending = value; } }
@@ -50,6 +51,8 @@ public class Player : MonoBehaviour{
 
     public bool IsWalking { get; internal set; }
     public bool IsHypeHit { get; internal set; }
+    public bool HypeAttack { get; internal set; }
+
     [SerializeField]
     public bool IsJumping;
 
@@ -78,7 +81,7 @@ public class Player : MonoBehaviour{
     }
     private void Update()
     {
-        anim.IsFalling(isGrounded);
+        //anim.IsFalling();
     }
     
     //Grounded Check

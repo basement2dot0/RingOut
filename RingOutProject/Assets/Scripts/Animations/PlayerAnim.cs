@@ -14,9 +14,9 @@ public class PlayerAnim : MonoBehaviour {
         player = GetComponent<Player>();
         
     }
-    public void IsFalling(bool truefalse)
+    public void IsFalling()
     {
-        anim.SetBool("isGrounded", truefalse);
+        anim.SetBool("isGrounded", player.IsGrounded);
     }
     public void IsWalking(bool truefalse)
     {

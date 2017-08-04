@@ -97,18 +97,15 @@ public class Movement : MonoBehaviour {
     //Jump Logic
     private void Jump()
     {
-        if (player.IsGrounded && CanJump())
+        if (player.IsGrounded )
         {
-            if (inputManager.JumpButtonDown(player.ID))
+            if (inputManager.JumpButtonDown(player.ID)&& CanJump())
             {
                 lastJump = Time.time;
                 player.IsJumping = true;
                 rb.velocity += Vector3.up * jumpHeight;
                 StartCoroutine("JumpStuff");
             }
-            
-
-
         }
         else
             rb.velocity += (inputManager.Movement(player.ID) + Vector3.down) * gravity * Time.deltaTime;

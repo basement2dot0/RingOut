@@ -20,21 +20,22 @@ public class Combat : MonoBehaviour
     }
     void Update()
     {
+        HypeAttack();
         Attack();
         Block();
     }
     
     private void Attack()
     {
-        if (player.isHyped && inputManager.AttackButtonDown(player.ID))
-            anim.AttackIsHyped(true);
-        else if (inputManager.AttackButtonDown(player.ID))
+        
+        if (!player.isHyped && inputManager.AttackButtonDown(player.ID))
         {
+
             player.isAttacking = true;
             StartCoroutine("inputDelay");
         }
 
-        }
+    }
     private void Block()
     {
         if (player.IsGrounded)
@@ -44,6 +45,16 @@ public class Combat : MonoBehaviour
             else if (!inputManager.DefendButton(player.ID))
                 player.IsDefending = false;
             
+        }
+    }
+    private void HypeAttack()
+    {
+        if (player.IsGrounded)
+        {
+            if (player.isHyped && inputManager.AttackButtonDown(player.ID))
+                player.HypeAttack = true;
+            else if (player.HypeAttack && !player.isHyped)
+                player.HypeAttack = false;
         }
     }
     

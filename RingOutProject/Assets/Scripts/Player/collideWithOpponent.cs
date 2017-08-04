@@ -32,7 +32,7 @@ public class collideWithOpponent : MonoBehaviour
             
             //negate momentum bar here
             Debug.Log(other.name);
-            player.otherPlayer.IsHit = true;
+            //player.otherPlayer.IsHit = true;
             //player.opponent.GetComponent<PlayerAnim>().BlockHit(AnimationTrigger.set);
             TempDisableTorsoHitBox();
             
@@ -46,7 +46,7 @@ public class collideWithOpponent : MonoBehaviour
                     Debug.Log("IS HIT");
                     player.otherPlayer.IsHypeHit = true;
                     player.opponent.DamageTaken(player.transform.forward);
-                    player.opponent.GetComponent<PlayerAnim>().IsHypeHit(true);
+                    //player.opponent.GetComponent<PlayerAnim>().IsHypeHit(true);
 
                    
                 }

@@ -9,7 +9,7 @@ public class AnimationManager : MonoBehaviour
     private Animator anim;
     private Player player;
     private WaitForSeconds delay = new WaitForSeconds(0.5f);
-    
+
 
     private void Start()
     {
@@ -19,26 +19,34 @@ public class AnimationManager : MonoBehaviour
     }
     private void Update()
     {
-        IsFalling();
+        if (!player.IsHypeHit)
+            IsFalling();
+
         Walk();
         Jump();
         Attack();
         Block();
+        HypeHit();
+
+    }
+    private void LateUpdate()
+    {
+        Hit();
     }
     private void IsFalling()
     {
         anim.SetBool("isGrounded", player.IsGrounded);
         if (!player.IsGrounded && anim.GetBool("isWalking"))
             player.IsWalking = false;
-        
+
 
     }
     private void Walk()
     {
-       
-      
-            anim.SetBool("isWalking", player.IsWalking);
-        
+
+
+        anim.SetBool("isWalking", player.IsWalking);
+
     }
     private void Block()
     {
@@ -46,33 +54,54 @@ public class AnimationManager : MonoBehaviour
     }
     private void Attack()
     {
+
+        anim.SetBool("hypeAttack", player.HypeAttack);
         anim.SetBool("isAttacking", player.isAttacking);
+
+
+
 
     }
     private void Jump()
     {
-        
-            anim.SetBool("IsJumping",player.IsJumping);
-        StartCoroutine("ResetBool", player.IsJumping);
+
+        anim.SetBool("isJumping", player.IsJumping);
+        StartCoroutine("ResetJump", player.IsJumping);
 
 
+    }
+    private void HypeHit()
+    {
+        anim.SetBool("hypeHit", player.IsHypeHit);
     }
     private void Hit()
     {
         if (player.IsHit)
-            anim.SetTrigger("IsHit");
-        StartCoroutine("ResetBool", player.IsHit);
-        
-    }
+        { 
+            anim.SetTrigger("isHit");
 
-    private IEnumerator ResetBool(bool value)
+        StartCoroutine("Reset");
+        }
+        else
+            anim.ResetTrigger("isHit");
+    }
+    private IEnumerator ResetJump(bool value)
     {
+        yield return delay;
+        value = false;
+    }
+    private IEnumerator Reset( )
+    {
+
         
         yield return null;
-        value = false;
-        
-       
+        player.IsHit = false;
+
+
+
+
     }
+    
 }
 public enum AnimationTrigger
 {
