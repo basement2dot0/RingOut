@@ -14,49 +14,38 @@ public class collideWithOpponent : MonoBehaviour
         disableHitboxTime = new WaitForSeconds(wait);
         player = GetComponentInParent<Player>();
         momentumBar = GameObject.FindGameObjectWithTag("Canvas").GetComponent<MomentumBar>();
-        
     }
     bool isBlock;
     private void TempDisableTorsoHitBox()
     {
         isBlock = true;
-        
-        
     }
     private void OnTriggerEnter(Collider other)
     {
      
         
-        if(other.name == "BlockArea"+player.otherPlayer.ID.ToString())
+        if(other.name == "BlockArea"+player.OtherPlayer.ID.ToString())
         {
-            
             //negate momentum bar here
-            Debug.Log(other.name);
-            //player.otherPlayer.IsHit = true;
-            //player.opponent.GetComponent<PlayerAnim>().BlockHit(AnimationTrigger.set);
+            //Debug.Log(other.name);
             TempDisableTorsoHitBox();
             
         }
-        else if(other.name == "Body" + player.otherPlayer.ID.ToString())
+        else if(other.name == "Body" + player.OtherPlayer.ID.ToString())
         {
             if(!isBlock)
             {
                 if (player.isHyped)
                 {
-                    Debug.Log("IS HIT");
-                    player.otherPlayer.IsHypeHit = true;
-                    player.opponent.DamageTaken(player.transform.forward);
-                    //player.opponent.GetComponent<PlayerAnim>().IsHypeHit(true);
-
-                   
+                   // Debug.Log("IS HIT");
+                    player.OtherPlayer.IsHypeHit = true;
+                    player.Opponent.DamageTaken(player.transform.forward);
                 }
                 else
                 {
                     Debug.Log(other.name);
                     momentumBar.UpdateBar();
-                    //player.opponent.GetComponent<PlayerAnim>().Hit(AnimationTrigger.set);
-                    player.otherPlayer.IsHit = true;
-
+                    player.OtherPlayer.IsHit = true;
                 }
             }
             isBlock = false;

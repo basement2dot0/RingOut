@@ -38,15 +38,10 @@ public class AnimationManager : MonoBehaviour
         anim.SetBool("isGrounded", player.IsGrounded);
         if (!player.IsGrounded && anim.GetBool("isWalking"))
             player.IsWalking = false;
-
-
     }
     private void Walk()
     {
-
-
         anim.SetBool("isWalking", player.IsWalking);
-
     }
     private void Block()
     {
@@ -56,19 +51,13 @@ public class AnimationManager : MonoBehaviour
     {
 
         anim.SetBool("hypeAttack", player.HypeAttack);
-        anim.SetBool("isAttacking", player.isAttacking);
-
-
-
-
+        anim.SetBool("isAttacking", player.IsAttacking);
     }
     private void Jump()
     {
 
         anim.SetBool("isJumping", player.IsJumping);
         StartCoroutine("ResetJump", player.IsJumping);
-
-
     }
     private void HypeHit()
     {
@@ -79,8 +68,7 @@ public class AnimationManager : MonoBehaviour
         if (player.IsHit)
         { 
             anim.SetTrigger("isHit");
-
-        StartCoroutine("Reset");
+            StartCoroutine("Reset");
         }
         else
             anim.ResetTrigger("isHit");
@@ -92,14 +80,8 @@ public class AnimationManager : MonoBehaviour
     }
     private IEnumerator Reset( )
     {
-
-        
         yield return null;
         player.IsHit = false;
-
-
-
-
     }
     
 }

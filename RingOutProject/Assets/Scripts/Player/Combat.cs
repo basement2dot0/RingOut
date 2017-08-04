@@ -31,7 +31,7 @@ public class Combat : MonoBehaviour
         if (!player.isHyped && inputManager.AttackButtonDown(player.ID))
         {
 
-            player.isAttacking = true;
+            player.IsAttacking = true;
             StartCoroutine("inputDelay");
         }
 
@@ -62,7 +62,7 @@ public class Combat : MonoBehaviour
     {
         
         yield return delay;
-        player.isAttacking = false;
+        player.IsAttacking = false;
         
     }
 }

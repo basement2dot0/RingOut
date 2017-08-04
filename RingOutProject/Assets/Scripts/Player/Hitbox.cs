@@ -32,13 +32,6 @@ public class Hitbox : MonoBehaviour
         get {return torso; }
         set {torso = value; }
     }
-
-    
-
-    
-
-
-
     private void Awake()
     {
         momentumBar = GameObject.FindGameObjectWithTag("Canvas").GetComponent<MomentumBar>();
@@ -46,16 +39,10 @@ public class Hitbox : MonoBehaviour
         torso.name += player.ID.ToString();
         blockArea.name += player.ID.ToString();
     }
-    private void Update()
-    {
-       
-    }
     #region HitBoxLogic
     public void DamageTaken(Vector3 direction)
     {
-        Debug.Log("IS HIT");
-        //player.CurrentState = State.HIT;
-        //player.IsHit = true;
+        //Debug.Log("IS HIT");
         hitDireciton = direction;
     }
     
@@ -76,9 +63,9 @@ public class Hitbox : MonoBehaviour
                 momentumBar.IsPlayerOne = false;
         }
         else
-            StartCoroutine("setHypeFalse");
+            StartCoroutine("SetHypeFalse");
     }
-    private IEnumerator setHypeFalse()
+    private IEnumerator SetHypeFalse()
     {
         yield return delay;
         player.isHyped = false;
@@ -88,7 +75,6 @@ public class Hitbox : MonoBehaviour
     {
         attackHitBox.enabled = false;
         player.CanMove = true;
-
     }
     private void OpenBlockArea()
     {

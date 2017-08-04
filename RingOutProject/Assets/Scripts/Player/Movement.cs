@@ -61,32 +61,25 @@ public class Movement : MonoBehaviour {
 
     private void FixedUpdate()
     {
-        //Jump();
-        if (inputManager.Movement(player.ID) != Vector3.zero)
+       if (inputManager.Movement(player.ID) != Vector3.zero)
             rb.rotation = Quaternion.LookRotation(inputManager.Movement(player.ID));
-        
     }
 
-    //Movement Logic
+    
     private void Move()
     {
         
         if (player.IsGrounded && player.CanMove)
         {
-            //playerAnim.Jump(AnimationTrigger.reset);
+            
             if (inputManager.Movement(player.ID) != Vector3.zero)
             {
-               
-                    //playerAnim.IsWalking(true);
-                    //player.CurrentState = State.WALKING;
                     player.IsWalking = true;
                     transform.position += inputManager.Movement(player.ID) * speed * Time.deltaTime;
                     
             }
             if (inputManager.Movement(player.ID) == Vector3.zero)
             {
-                //playerAnim.IsWalking(false);
-                //player.CurrentState = State.IDLE;
                 player.IsWalking = false;
             }
             rb.velocity = Vector3.zero; //remove any velocity applied to player when grounded to prevent unwanted sliding
@@ -94,7 +87,7 @@ public class Movement : MonoBehaviour {
        
     }
     
-    //Jump Logic
+    
     private void Jump()
     {
         if (player.IsGrounded )
@@ -129,14 +122,12 @@ public class Movement : MonoBehaviour {
                 {
                     lastJump = Time.time;
                     player.IsJumping = true;
-                    //playerAnim.Jump(AnimationTrigger.set);
                     rb.velocity += new Vector3(0, jumpHeight, 0) + (jumpDistance * inputManager.Movement(player.ID));
                 }
                 else if (inputManager.JumpButtonDown(player.ID))
                 {
                     lastJump = Time.time;
                     player.IsJumping = true;
-                    //playerAnim.Jump(AnimationTrigger.set);
                     rb.velocity += Vector3.up * jumpHeight;
                 }
             
