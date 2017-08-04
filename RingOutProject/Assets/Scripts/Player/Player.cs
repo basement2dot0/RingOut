@@ -19,7 +19,7 @@ public class Player : MonoBehaviour{
     [SerializeField]
     private bool isGrounded;
     [SerializeField]
-    public bool isHyped;
+    private bool isHyped;
     [SerializeField]
     private WaitForSeconds delay;
     [SerializeField]
