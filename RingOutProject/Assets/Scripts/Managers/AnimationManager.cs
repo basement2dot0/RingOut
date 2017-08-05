@@ -52,8 +52,10 @@ public class AnimationManager : MonoBehaviour
     private void Attack()
     {
 
-        if(player.IsAttacking)
+        if (player.IsAttacking)
+        {
             anim.SetTrigger("isAttacking");
+        }
         else
             anim.ResetTrigger("isAttacking");
     }

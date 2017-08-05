@@ -951,8 +951,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4212a16f552a81b4da4165d637412dea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  resetAttack: 0.5
-  attackDelay: 0.15
+  resetAttack: 0.15
+  attackDelay: 0.1
 --- !u!114 &178569185
 MonoBehaviour:
   m_ObjectHideFlags: 0

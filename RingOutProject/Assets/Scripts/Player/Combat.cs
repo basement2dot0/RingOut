@@ -35,7 +35,7 @@ public class Combat : MonoBehaviour
             {
                 lastAttack = Time.time;
                 player.IsAttacking = true;
-                // StartCoroutine("ResetAttack");
+                //StartCoroutine("ResetAttack");
             }
         }
 
@@ -76,7 +76,7 @@ public class Combat : MonoBehaviour
     }
     private IEnumerator ResetAttack()
     {
-        yield return null;
+        yield return delay;
         player.IsAttacking = false;
     }
     private IEnumerator ResetHype()
