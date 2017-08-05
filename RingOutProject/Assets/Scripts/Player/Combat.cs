@@ -7,12 +7,15 @@ public class Combat : MonoBehaviour
     private InputManager inputManager;
     private Player player;
     [SerializeField]
-    private float attackDelay;
+    private float resetAttack;
     private WaitForSeconds delay;
-    
+
+    private float lastAttack;
+    [SerializeField]
+    private float attackDelay;
     private void Awake()
     {
-        delay = new WaitForSeconds(attackDelay);
+        delay = new WaitForSeconds(resetAttack);
         inputManager = GetComponent<InputManager>();
         player = GetComponent<Player>();
     }
@@ -25,12 +28,15 @@ public class Combat : MonoBehaviour
     
     private void Attack()
     {
-        
-        if (!player.IsHyped && inputManager.AttackButtonDown(player.ID))
-        {
 
-            player.IsAttacking = true;
-            StartCoroutine("InputDelay");
+        if (!player.IsHyped)
+        {
+            if(CanAttack() && inputManager.AttackButtonDown(player.ID))
+            {
+                lastAttack = Time.time;
+                player.IsAttacking = true;
+                // StartCoroutine("ResetAttack");
+            }
         }
 
     }
@@ -50,17 +56,33 @@ public class Combat : MonoBehaviour
         if (player.IsGrounded)
         {
             if (player.IsHyped && inputManager.AttackButtonDown(player.ID))
+            {
                 player.HypeAttack = true;
+                StartCoroutine("ResetHype");
+            }
             else if (player.HypeAttack && !player.IsHyped)
                 player.HypeAttack = false;
         }
     }
-    
-    private IEnumerator InputDelay()
+    private bool CanAttack()
     {
-        
-        yield return delay;
-        player.IsAttacking = false;
-        
+        if ((Time.time - lastAttack) >= attackDelay)
+        {
+            player.IsAttacking = false;
+            return true;
+        }
+        else
+            return false;
     }
+    private IEnumerator ResetAttack()
+    {
+        yield return null;
+        player.IsAttacking = false;
+    }
+    private IEnumerator ResetHype()
+    {
+        yield return delay;
+        player.IsHyped = false;
+    }
+    
 }

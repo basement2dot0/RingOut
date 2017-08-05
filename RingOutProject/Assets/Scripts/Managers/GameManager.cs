@@ -9,20 +9,20 @@ public class GameManager : MonoBehaviour
     private float Rounds;
     [SerializeField]
     private float Match;
-
-    private Player playerOne;
-    private Player playerTwo;
-
+    [SerializeField]
+    private Player[] players;
     [SerializeField]
     private Text ringOutText;
+
     private void Awake()
     {
+        players = new Player[2];
         foreach (var player in GameObject.FindGameObjectsWithTag("Player"))
         {
             if (player.GetComponent<Player>().ID == 1)
-                playerOne = player.GetComponent<Player>();
+                players[0] = player.GetComponent<Player>();
             else
-                playerTwo = player.GetComponent<Player>();
+                players[1] = player.GetComponent<Player>();
         }
     }
     private void Start()
@@ -33,10 +33,8 @@ public class GameManager : MonoBehaviour
     }
     private void Update()
     {
-        if (playerOne.CurrentState == State.HIT || playerTwo.CurrentState == State.HIT)
-        {
+        if (players[0].IsHypeHit|| players[1].IsHypeHit)
             ringOutText.text = "RING OUT!";
-        }
     }
 
 }

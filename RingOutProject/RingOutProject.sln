@@ -1,6 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2017
+# Visual Studio 2015
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RingOutProject", "RingOutProject.csproj", "{9CC7D33F-27F5-7095-45DC-3670B068D300}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CombatAttacks.Tests", "..\CombatAttacks.Tests\CombatAttacks.Tests.csproj", "{44DFF072-5A90-4448-9C92-C3473396BAC0}"
