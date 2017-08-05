@@ -53,9 +53,9 @@ public class Combat : MonoBehaviour
     }
     private void HypeAttack()
     {
-        if (player.IsGrounded)
+        if (CanAttack() && player.IsGrounded)
         {
-            if (player.IsHyped && inputManager.AttackButtonDown(player.ID))
+            if ( player.IsHyped && inputManager.AttackButtonDown(player.ID))
             {
                 player.HypeAttack = true;
                 StartCoroutine("ResetHype");

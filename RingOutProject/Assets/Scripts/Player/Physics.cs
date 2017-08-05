@@ -14,20 +14,28 @@ class Physics : MonoBehaviour
     [SerializeField]
     private float jumpHeight;
     [SerializeField]
-    private Hitbox hitbox;
-    [SerializeField]
     private float speed;
     [SerializeField]
     private float knockBackDistance; //This may be better off as a Vector3
-
+    [SerializeField]
+    private float lastAttack;
+    [SerializeField]
+    private float moveDelay;
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
         if (speed < 0)
             speed = 20.0f;
         inputManager = GetComponent<InputManager>();
-        hitbox = GetComponent<Hitbox>();
         player = GetComponent<Player>();
+    }
+    private void Update()
+    {
+        if (player.IsAttacking)
+        {
+            lastAttack = Time.time;
+            speed = 0.0f;
+        }
     }
     private void LateUpdate()
     {
@@ -50,8 +58,11 @@ class Physics : MonoBehaviour
     }
     private void UpdatePositon()
     {
-        if(player.IsWalking)
-            transform.position += inputManager.Movement(player.ID) * speed * Time.deltaTime;
+
+        if (CanMove() && player.IsWalking)
+                transform.position += inputManager.Movement(player.ID) * speed * Time.deltaTime;
+        
+        
     }
     private void UpdateRotation()
     {
@@ -74,6 +85,21 @@ class Physics : MonoBehaviour
         if (player.IsHypeHit)
             rb.velocity += player.Opponent.transform.forward * 30 * Time.time;
        
+    }
+    private bool CanMove()
+    {
+        
+        if ((Time.time - lastAttack) >= moveDelay)
+        {
+            speed = 20.0f ;
+            return true;
+        }
+        else
+        {
+            speed = 0.0f;
+            return false;
+        }
+            
     }
 }
 
