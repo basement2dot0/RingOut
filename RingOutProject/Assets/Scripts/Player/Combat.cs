@@ -35,7 +35,7 @@ public class Combat : MonoBehaviour
             {
                 lastAttack = Time.time;
                 player.IsAttacking = true;
-                // StartCoroutine("ResetAttack");
+                StartCoroutine("ResetAttack");
             }
         }
 
@@ -53,9 +53,9 @@ public class Combat : MonoBehaviour
     }
     private void HypeAttack()
     {
-        if (player.IsGrounded)
+        if (CanAttack() && player.IsGrounded)
         {
-            if (player.IsHyped && inputManager.AttackButtonDown(player.ID))
+            if ( player.IsHyped && inputManager.AttackButtonDown(player.ID))
             {
                 player.HypeAttack = true;
                 StartCoroutine("ResetHype");
@@ -76,7 +76,7 @@ public class Combat : MonoBehaviour
     }
     private IEnumerator ResetAttack()
     {
-        yield return null;
+        yield return delay;
         player.IsAttacking = false;
     }
     private IEnumerator ResetHype()

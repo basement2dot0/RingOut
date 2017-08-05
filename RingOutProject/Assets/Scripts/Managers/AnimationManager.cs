@@ -29,6 +29,7 @@ public class AnimationManager : MonoBehaviour
     }
     private void LateUpdate()
     {
+        IsKnockedBack();
         Hit();
     }
 
@@ -52,10 +53,16 @@ public class AnimationManager : MonoBehaviour
     private void Attack()
     {
 
-        if(player.IsAttacking)
+        if (player.IsAttacking)
+        {
             anim.SetTrigger("isAttacking");
+        }
         else
             anim.ResetTrigger("isAttacking");
+    }
+    private void IsKnockedBack()
+    {
+        anim.SetBool("isKnockedBack", player.IsKnockedBack);
     }
     private void HypeAttack()
     {
