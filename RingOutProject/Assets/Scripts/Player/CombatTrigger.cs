@@ -12,7 +12,7 @@ public class CombatTrigger : MonoBehaviour
     private string opponentsBlockArea;
     [SerializeField]
     private string opponentsBody;
-    private float lastHit;
+    private static float lastHit;
 
     private void Start()
     {
@@ -20,6 +20,11 @@ public class CombatTrigger : MonoBehaviour
         opponentsBlockArea = "BlockArea" + player.Opponent.ID.ToString();
         opponentsBody = "Body" + player.Opponent.ID.ToString();
     }
+    private void Update()
+    {
+        ResetHitCounter();
+    }
+
     private void OnTriggerEnter(Collider other)
     {
 
@@ -41,24 +46,33 @@ public class CombatTrigger : MonoBehaviour
                 if (player.IsHyped)
                     player.Opponent.IsHypeHit = true;
                 else
-                    player.Opponent.IsHit = true;
+                {
+
+                    if (player.Opponent.HitCounter > 3)
+                    {
+                        player.HitDirection = player.transform.forward;
+                        player.Opponent.IsKnockedBack = true;
+                        player.Opponent.HitCounter = 0;
+                    }
+                    else
+                    {
+
+                        player.Opponent.IsHit = true;
+                        player.Opponent.HitCounter++;
+                        lastHit = Time.time;
+                    }
+                }
             }
             isBlock = false;
         }
     }
-    private void HitCounter()
+
+    private void ResetHitCounter()
     {
-        
-        if (player.Opponent.IsHit)
-        {
-            if (player.Opponent.HitCounter > 3)
-            {
-                player.IsKnockedBack = true;
-
-
-            }
-            player.Opponent.HitCounter++;
-        }
+        if ((Time.time - lastHit) >= 2.5f)
+            player.Opponent.HitCounter = 0;
     }
+    
+    
     
 }

@@ -38,12 +38,19 @@ public class Player : MonoBehaviour{
     private bool hypeAttack;
     [SerializeField]
     private bool isKnockedBack;
+    [SerializeField]
     private int hitCounter;
+    private Vector3 hitDirection;
 
     //Public Properties 
     public int ID { get { return id; } }
     public Player Opponent { get { return opponent; }}
     public bool IsGrounded { get { return isGrounded; } }
+    public Vector3 HitDirection
+    {
+        get { return hitDirection; }
+        set { hitDirection = value; }
+    }
     public int HitCounter
     {
         get { return hitCounter; }

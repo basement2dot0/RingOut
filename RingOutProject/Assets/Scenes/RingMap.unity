@@ -1941,6 +1941,7 @@ MonoBehaviour:
   isHypeHit: 0
   hypeAttack: 0
   isKnockedBack: 0
+  hitCounter: 0
 --- !u!114 &791634484
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2090,7 +2091,7 @@ MonoBehaviour:
   gravity: 300
   jumpHeight: 200
   speed: 20
-  knockBackDistance: 300
+  knockBackDistance: 0.1
   lastAttack: 0
   moveDelay: 1
 --- !u!1 &808724033
@@ -4082,7 +4083,7 @@ Prefab:
     - target: {fileID: 114861536963567374, guid: 98de314580cebfb49b60c7bbb516a311,
         type: 2}
       propertyPath: knockBackDistance
-      value: 500
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1917557264664358, guid: 98de314580cebfb49b60c7bbb516a311, type: 2}
       propertyPath: m_Name
@@ -4096,6 +4097,11 @@ Prefab:
         type: 2}
       propertyPath: m_IsTrigger
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114861536963567374, guid: 98de314580cebfb49b60c7bbb516a311,
+        type: 2}
+      propertyPath: moveDelay
+      value: 0.3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 98de314580cebfb49b60c7bbb516a311, type: 2}

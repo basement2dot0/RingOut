@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,6 +10,7 @@ class Physics : MonoBehaviour
     private Rigidbody rb; 
     private Player player;
     private InputManager inputManager;
+    private Vector3 direction;
     [SerializeField]
     private float gravity;
     [SerializeField]
@@ -21,13 +23,21 @@ class Physics : MonoBehaviour
     private float lastAttack;
     [SerializeField]
     private float moveDelay;
+    private float delay = 0.5f;
+    private WaitForSeconds wait;
+    private Vector3 defaultPosition;
+        
+
     private void Awake()
     {
+        
         rb = GetComponent<Rigidbody>();
         if (speed < 0)
             speed = 20.0f;
         inputManager = GetComponent<InputManager>();
         player = GetComponent<Player>();
+        wait = new WaitForSeconds(delay);
+        defaultPosition = player.transform.eulerAngles;
     }
     private void Update()
     {
@@ -40,22 +50,26 @@ class Physics : MonoBehaviour
     private void LateUpdate()
     {
         Gravity();
-        RingOut();
+
+        KnockedBack();
         UpdatePositon();
         UpdateRotation();
         Jump();
         BounceBack();
-        KnockedBack();
+        RingOut();
+
     }
 
     public void KnockedBack()
     {
-        //need to add conditional if statement somewhere else for when to trigger this knockback
-        //player.CanMove = false;
         if (player.IsKnockedBack)
-            transform.position += (player.Opponent.transform.forward * knockBackDistance) * Time.time;
-        //once we are knocked down, we can then start a coroutine for when we are allowed to get back up ie. isKnockedDown = false
-
+        {
+            player.CanMove = false;
+            float yRotation = 90.0f;
+            player.transform.eulerAngles = new Vector3(player.transform.eulerAngles.x, player.transform.eulerAngles.y, yRotation);
+            player.transform.position += (player.Opponent.HitDirection) * 20.0f * Time.deltaTime;
+            StartCoroutine("GetUp");
+        }
     }
     private void UpdatePositon()
     {
@@ -71,6 +85,7 @@ class Physics : MonoBehaviour
     {
         if (inputManager.Movement(player.ID) != Vector3.zero)
             rb.rotation = Quaternion.LookRotation(inputManager.Movement(player.ID));
+        
     }
     private void Jump()
     {
@@ -95,11 +110,13 @@ class Physics : MonoBehaviour
         if ((Time.time - lastAttack) >= moveDelay)
         {
             speed = 20.0f ;
+            player.CanMove = true;
             return true;
         }
         else
         {
             speed = 0.0f;
+            player.CanMove = false;
             return false;
         }
             
@@ -109,10 +126,19 @@ class Physics : MonoBehaviour
         if(!player.IsGrounded && player.Opponent.IsHit)
         {
             
-            Vector3 position = player.transform.position;
-            player.transform.position = Vector3.Lerp(position, -player.transform.forward * knockBackDistance, Time.deltaTime);
+            Vector3 position = new Vector3(player.Opponent.transform.position.x, 0, player.Opponent.transform.position.z);
+            //player.Opponent.transform.position += (player.Opponent.transform.forward * knockBackDistance) * Time.time;
+            
+            player.Opponent.transform.position += Vector3.Lerp(position, (player.transform.forward) * knockBackDistance, Time.deltaTime);
         }
         
+    }
+
+    private IEnumerator GetUp()
+    {
+        yield return wait;
+        player.IsKnockedBack = false;
+        player.transform.eulerAngles = defaultPosition;
     }
 }
 
