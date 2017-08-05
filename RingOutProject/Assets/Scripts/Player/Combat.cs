@@ -35,7 +35,7 @@ public class Combat : MonoBehaviour
             {
                 lastAttack = Time.time;
                 player.IsAttacking = true;
-                //StartCoroutine("ResetAttack");
+                StartCoroutine("ResetAttack");
             }
         }
 
