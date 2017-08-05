@@ -12,11 +12,13 @@ public class Hitbox : MonoBehaviour
     private BoxCollider torso;
     [SerializeField]
     private BoxCollider blockArea;
+    private BoxCollider ground;
     //Player Reference
     private Player player;
     //Momentum Bar Reference
     private MomentumBar momentumBar;
     //delay between active attacks
+    [SerializeField]
     private WaitForSeconds delay;
 
     public BoxCollider Torso
@@ -33,7 +35,7 @@ public class Hitbox : MonoBehaviour
         torso.name += player.ID.ToString();
         blockArea.name += player.ID.ToString();
     }
-
+    
     #region HitBoxLogic
     private void OpenHitBox()
     {
@@ -43,17 +45,9 @@ public class Hitbox : MonoBehaviour
             attackHitBox.enabled = true;
         }
         else
-            jumpAttackHitBox.enabled = true; 
+            jumpAttackHitBox.enabled = true;
+        StartCoroutine("CloseHitBoxes");
         
-        //if (!player.IsHyped)
-        //{
-        //    if (player.ID == 1)
-        //        momentumBar.IsPlayerOne = true;
-        //    else
-        //        momentumBar.IsPlayerOne = false;
-        //}
-        //else
-        //    StartCoroutine("SetHypeFalse");
     }
     private void CloseHitBox()
     {
@@ -72,10 +66,10 @@ public class Hitbox : MonoBehaviour
         player.CanMove = true;
     }
 
-    //private IEnumerator SetHypeFalse()
-    //{
-    //    yield return delay;
-    //    player.IsHyped = false;
-    //}
+    private IEnumerator CloseHitBoxes()
+    {
+        yield return delay;
+        CloseHitBox();
+    }
     #endregion
 }

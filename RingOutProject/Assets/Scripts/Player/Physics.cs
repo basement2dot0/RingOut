@@ -44,6 +44,7 @@ class Physics : MonoBehaviour
         UpdatePositon();
         UpdateRotation();
         Jump();
+        BounceBack();
         KnockedBack();
     }
 
@@ -51,16 +52,18 @@ class Physics : MonoBehaviour
     {
         //need to add conditional if statement somewhere else for when to trigger this knockback
         //player.CanMove = false;
-        if (Input.GetKeyDown(KeyCode.M))
+        if (player.IsKnockedBack)
             transform.position += (player.Opponent.transform.forward * knockBackDistance) * Time.time;
         //once we are knocked down, we can then start a coroutine for when we are allowed to get back up ie. isKnockedDown = false
 
     }
     private void UpdatePositon()
     {
-
-        if (CanMove() && player.IsWalking)
+        if (CanMove() && player.IsGrounded)
+        {
+            if (player.IsWalking)
                 transform.position += inputManager.Movement(player.ID) * speed * Time.deltaTime;
+        }
         
         
     }
@@ -100,6 +103,16 @@ class Physics : MonoBehaviour
             return false;
         }
             
+    }
+    private void BounceBack()
+    {
+        if(!player.IsGrounded && player.Opponent.IsHit)
+        {
+            
+            Vector3 position = player.transform.position;
+            player.transform.position = Vector3.Lerp(position, -player.transform.forward * knockBackDistance, Time.deltaTime);
+        }
+        
     }
 }
 

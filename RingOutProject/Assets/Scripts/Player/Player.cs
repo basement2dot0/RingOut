@@ -38,11 +38,17 @@ public class Player : MonoBehaviour{
     private bool hypeAttack;
     [SerializeField]
     private bool isKnockedBack;
+    private int hitCounter;
 
     //Public Properties 
     public int ID { get { return id; } }
     public Player Opponent { get { return opponent; }}
     public bool IsGrounded { get { return isGrounded; } }
+    public int HitCounter
+    {
+        get { return hitCounter; }
+        set { hitCounter = value; }
+    }
     public bool IsHit
     {
         get { return isHit; }

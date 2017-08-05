@@ -12,8 +12,9 @@ public class CombatTrigger : MonoBehaviour
     private string opponentsBlockArea;
     [SerializeField]
     private string opponentsBody;
+    private float lastHit;
 
-    private void Awake()
+    private void Start()
     {
         player = GetComponentInParent<Player>();
         opponentsBlockArea = "BlockArea" + player.Opponent.ID.ToString();
@@ -21,7 +22,9 @@ public class CombatTrigger : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
+
         ActivateTriggers(other);
+        
     }
 
     private void ActivateTriggers(Collider hitbox)
@@ -43,4 +46,19 @@ public class CombatTrigger : MonoBehaviour
             isBlock = false;
         }
     }
+    private void HitCounter()
+    {
+        
+        if (player.Opponent.IsHit)
+        {
+            if (player.Opponent.HitCounter > 3)
+            {
+                player.IsKnockedBack = true;
+
+
+            }
+            player.Opponent.HitCounter++;
+        }
+    }
+    
 }
