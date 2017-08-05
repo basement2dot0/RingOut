@@ -7,10 +7,9 @@ public class MomentumBar : MonoBehaviour
 {
     private Player[] players; 
     private Slider momentumBar;
-    public bool IsPlayerOne { get; set; }
     [SerializeField]
     private bool isHyped; 
-    private Damage damage;
+    private DamageType damage;
     private AudioManager[] playersTheme;
     [SerializeField]
     private float startingValue;
@@ -20,8 +19,15 @@ public class MomentumBar : MonoBehaviour
     private Text hypeText;
     [SerializeField]
     private bool isTimer;
+    [SerializeField]
+    private bool isPlayerOne;
 
     public bool IsHyped { get {return isHyped; } }
+    public bool IsPlayerOne
+    {
+        get { return isPlayerOne; }
+        set { isPlayerOne = value; }
+    }
 
 
     private void Awake()
@@ -36,7 +42,7 @@ public class MomentumBar : MonoBehaviour
 
         }
         momentumBar = GameObject.FindGameObjectWithTag("Slider").GetComponent<Slider>();
-        damage = GameObject.FindGameObjectWithTag("Player").GetComponent<Damage>();
+        damage = GameObject.FindGameObjectWithTag("Player").GetComponent<DamageType>();
         startingValue = 50.0f;
         momentumBar.value = startingValue;
         hypeText = gameObject.transform.GetChild(0).GetComponent<Text>();
@@ -44,92 +50,87 @@ public class MomentumBar : MonoBehaviour
         foreach (var theme in GameObject.FindGameObjectsWithTag("Player"))
         {
             if(theme.GetComponent<Player>().ID == 1)
-            playersTheme[0] =theme.GetComponent<AudioManager>();
+                playersTheme[0] =theme.GetComponent<AudioManager>();
             else
                 playersTheme[1] = theme.GetComponent<AudioManager>();
         }
     }
     private void Update()
     {
+        ActivePlayer();
+        UpdateBar();
         IsMaxed();
-
-        
-            ResetMomentumBar();
-        
-        
+        ResetMomentumBar();
     }
 
+    private void ActivePlayer()
+    {
+        if (players[0].IsHit)
+            isPlayerOne = false;
+        else if (players[1].IsHit)
+            isPlayerOne = true;
+    }
     private void IsMaxed()
     {
             if (momentumBar.value == momentumBar.maxValue && !isHyped)
             {
                 playersTheme[0].PlayHypeMusic();
                 hypeText.text = "Player One is HYPED!";
-                players[0].isHyped = true;
+                players[0].IsHyped = true;
                 isHyped = true;
                 isTimer = true;
-        }
+            }
             else if (momentumBar.value == momentumBar.minValue && !isHyped)
             {
                 playersTheme[1].PlayHypeMusic();
                 hypeText.text = "Player Two is HYPED!";
-                players[1].isHyped = true;
+                players[1].IsHyped = true;
                 isHyped = true;
                 isTimer = true;
-        }
-     
+            }
     }
     public void UpdateBar()
     {
-        if (!isTimer)
+        if (!players[0].IsDefending &&  players[0].IsHit || !players[1].IsDefending && players[1].IsHit)
         {
-            if (IsPlayerOne)
+            if (!isTimer)
             {
-                if ((momentumBar.value + damage.CurrentDamage(damage.MinDamage, damage.MaxDamage)) > momentumBar.maxValue)
-                    momentumBar.value = momentumBar.maxValue;
+                if (isPlayerOne)
+                {
+                    if ((momentumBar.value + damage.CurrentDamage(damage.MinDamage, damage.MaxDamage)) > momentumBar.maxValue)
+                        momentumBar.value = momentumBar.maxValue;
+                    else
+                        momentumBar.value += damage.CurrentDamage(damage.MinDamage, damage.MaxDamage);
+                }
                 else
-                    momentumBar.value += damage.CurrentDamage(damage.MinDamage, damage.MaxDamage);
-            }
-            else
-            {
-                if ((momentumBar.value - damage.CurrentDamage(damage.MinDamage, damage.MaxDamage)) < momentumBar.minValue)
-                    momentumBar.value = momentumBar.minValue;
-                else
-                    momentumBar.value -= damage.CurrentDamage(damage.MinDamage, damage.MaxDamage);
+                {
+                    if ((momentumBar.value - damage.CurrentDamage(damage.MinDamage, damage.MaxDamage)) < momentumBar.minValue)
+                        momentumBar.value = momentumBar.minValue;
+                    else
+                        momentumBar.value -= damage.CurrentDamage(damage.MinDamage, damage.MaxDamage);
+                }
             }
         }
     }
-
     public void ResetMomentumBar()
     {
-        if (players[0].isHyped || players[1].isHyped)
-        {
-
-
-            if (momentumBar.value == startingValue)
-            {
-                players[0].isHyped = false;
-                players[1].isHyped = false;
-                isHyped = false;
-                isTimer = false;
-                hypeText.text = "";
-            }
-
-            momentumBar.value = Mathf.MoveTowards(momentumBar.value, startingValue, Time.deltaTime * HypeTimer);
-
-            playersTheme[0].FadeHypeMusic((momentumBar.value - startingValue) / 50);
-            playersTheme[1].FadeHypeMusic((momentumBar.value + startingValue) / 50);
-        }
-        else if(isHyped && !players[0].isHyped && !players[1].isHyped)
+        
+        if(isHyped && !players[0].IsHyped && !players[1].IsHyped)
         {    
             isHyped = false;
             isTimer = false;
             hypeText.text = "";
-
             momentumBar.value = startingValue;
-
+            playersTheme[0].FadeHypeMusic((momentumBar.value - startingValue) / 50);
+            playersTheme[1].FadeHypeMusic((momentumBar.value + startingValue) / 50);
+        }
+        else if (players[0].IsHyped || players[1].IsHyped)
+        {
+            momentumBar.value = Mathf.MoveTowards(momentumBar.value, startingValue, Time.deltaTime * hypeTimer);
             playersTheme[0].FadeHypeMusic((momentumBar.value - startingValue) / 50);
             playersTheme[1].FadeHypeMusic((momentumBar.value + startingValue) / 50);
         }
     }
+    
+
 }

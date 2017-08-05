@@ -58,13 +58,13 @@ class CameraController : MonoBehaviour
     /// </summary>
     private void CenterFocus()
     {
-        if (leftTarget.CurrentState == State.HIT)
+        if (leftTarget.IsHypeHit)
         {
             center.transform.position = leftTarget.transform.position;
             Camera.main.transform.LookAt(center.transform);
             Camera.main.fieldOfView = (defaultZoom + zoomIn);
         }
-        if (rightTarget.CurrentState == State.HIT)
+        if (rightTarget.IsHypeHit)
         {
             center.transform.position = rightTarget.transform.position;
             Camera.main.transform.LookAt(center.transform);

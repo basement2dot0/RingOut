@@ -4,72 +4,130 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody))]
-[RequireComponent(typeof(PlayerAnim))]
-[RequireComponent(typeof(Combo))]
-[RequireComponent(typeof(Damage))]
+[RequireComponent(typeof(Combat))]
+[RequireComponent(typeof(DamageType))]
 [RequireComponent(typeof(AudioManager))]
 [RequireComponent(typeof(Movement))]
-[RequireComponent(typeof(PlayerAnim))]
+[RequireComponent(typeof(AnimationManager))]
 public class Player : MonoBehaviour{
     
     //Universal Player variables
     [SerializeField]
-    private State currentState = State.IDLE;
-
-    [SerializeField]
     private int id;
-
-    [SerializeField]
-    private PlayerAnim anim;
-
     [SerializeField]
     private bool isGrounded;
-
     [SerializeField]
-    public bool isHyped;
-
-    private WaitForSeconds delay;
+    private bool isHyped;
+    [SerializeField]
+    private bool isJumping;
+    [SerializeField]
+    private bool canMove;
+    [SerializeField]
+    private bool isHit;
+    [SerializeField]
+    private bool isDefending;
+    [SerializeField]
+    private bool isAttacking;
+    [SerializeField]
+    private Player opponent;
+    [SerializeField]
+    private bool isWalking;
+    [SerializeField]
+    private bool isHypeHit;
+    [SerializeField]
+    private bool hypeAttack;
+    [SerializeField]
+    private bool isKnockedBack;
+    [SerializeField]
+    private int hitCounter;
+    private Vector3 hitDirection;
 
     //Public Properties 
     public int ID { get { return id; } }
+    public Player Opponent { get { return opponent; }}
     public bool IsGrounded { get { return isGrounded; } }
-    public State CurrentState { get { return currentState; } set { currentState = value; } }
-
-    public bool IsHit { get; internal set; }
-    [SerializeField]
-    private bool isDefending;
-    public bool IsDefending { get { return isDefending; } internal set { isDefending = value; } }
-
-    [SerializeField]
-    public Hitbox opponent;
+    public Vector3 HitDirection
+    {
+        get { return hitDirection; }
+        set { hitDirection = value; }
+    }
+    public int HitCounter
+    {
+        get { return hitCounter; }
+        set { hitCounter = value; }
+    }
+    public bool IsHit
+    {
+        get { return isHit; }
+        set {isHit = value; }
+    }
+    public bool IsDefending
+    {
+        get { return isDefending; }
+        set { isDefending = value; }
+    }
+    public bool CanMove
+    {
+        get { return canMove; }
+        set { canMove = value; }
+    }
+    public bool IsWalking
+    {
+        get { return isWalking; }
+        set { isWalking = value; }
+    }
+    public bool IsHypeHit
+    {
+        get { return isHypeHit; }
+        set { isHypeHit = value; }
+    }
+    public bool HypeAttack
+    {
+        get { return hypeAttack; }
+        set { hypeAttack = value; }
+    }
+    public bool IsJumping
+    {
+        get { return isJumping; }
+        set { isJumping = value; }
+    }
+    public bool IsAttacking
+    {
+        get { return isAttacking; }
+        set { isAttacking = value; }
+    }
+    public bool IsHyped
+    {
+        get { return isHyped; }
+        set { isHyped = value; }
+    }
+    public bool IsKnockedBack
+    {
+        get { return isKnockedBack; }
+        set { isKnockedBack = value; }
+    }
     
-
     //Unity Methods
     private void Awake()
     {
+        canMove = true;
         foreach (var item in GameObject.FindGameObjectsWithTag("Player"))
         {
-            if(item.GetComponent<Player>() != this)
-                opponent = item.GetComponent<Hitbox>();
+            if (item.GetComponent<Player>() != this)
+                opponent = item.GetComponent<Player>();
         }
-       // Player opponent = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
-        anim = GetComponent<PlayerAnim>();
         id = GetComponent<InputManager>().ControlNo;
     }
     private void Update()
     {
-        anim.IsFalling(isGrounded);
-
+        //anim.IsFalling();
     }
-    
     //Grounded Check
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.tag == "Ground")
-        {
             isGrounded = true;
-            anim.Jump(AnimationTrigger.reset);
-        }
+        
     }
     private void OnCollisionExit(Collision collision)
     {
