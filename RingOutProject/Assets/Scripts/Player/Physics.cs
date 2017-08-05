@@ -71,8 +71,6 @@ class Physics : MonoBehaviour
     }
     private void RingOut()
     {
-        Debug.Log(player.Opponent.name +" forward:"+player.Opponent.transform.forward.ToString());
-        Debug.Log(player.name + " Velocity:" + rb.velocity.ToString());
         if (player.IsHypeHit)
             rb.velocity += player.Opponent.transform.forward * 30 * Time.time;
        

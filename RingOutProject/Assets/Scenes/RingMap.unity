@@ -952,7 +952,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   resetAttack: 0.15
-  attackDelay: 0.1
+  attackDelay: 0.15
 --- !u!114 &178569185
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1110,8 +1110,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6f37b2d927e4af48b587a6fa94f3edf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gravity: 300
-  jumpHeight: 150
+  gravity: 500
+  jumpHeight: 200
   hitbox: {fileID: 0}
   speed: 20
   knockBackDistance: 0

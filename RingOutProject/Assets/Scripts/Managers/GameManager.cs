@@ -33,8 +33,13 @@ public class GameManager : MonoBehaviour
     }
     private void Update()
     {
+        if (players[1].IsHypeHit)
+            Debug.Log(players[1].IsHypeHit.ToString());
+
         if (players[0].IsHypeHit|| players[1].IsHypeHit)
             ringOutText.text = "RING OUT!";
+
+
     }
 
 }
