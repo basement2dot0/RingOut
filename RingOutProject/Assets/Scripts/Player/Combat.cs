@@ -8,7 +8,10 @@ public class Combat : MonoBehaviour
     private Player player;
     [SerializeField]
     private float resetAttack;
+    [SerializeField]
     private WaitForSeconds delay;
+    [SerializeField]
+    private WaitForSeconds hypeDelay;
 
     private float lastAttack;
     [SerializeField]
@@ -16,6 +19,7 @@ public class Combat : MonoBehaviour
     private void Awake()
     {
         delay = new WaitForSeconds(resetAttack);
+        hypeDelay = new WaitForSeconds(1.0f);
         inputManager = GetComponent<InputManager>();
         player = GetComponent<Player>();
     }
@@ -81,7 +85,7 @@ public class Combat : MonoBehaviour
     }
     private IEnumerator ResetHype()
     {
-        yield return delay;
+        yield return hypeDelay;
         player.IsHyped = false;
     }
     

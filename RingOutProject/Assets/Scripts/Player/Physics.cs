@@ -41,7 +41,7 @@ class Physics : MonoBehaviour
     }
     private void Update()
     {
-        if (player.IsAttacking)
+        if (!player.IsDefending && player.IsAttacking)
         {
             lastAttack = Time.time;
             speed = 0.0f;
@@ -75,7 +75,7 @@ class Physics : MonoBehaviour
     {
         if (CanMove() && player.IsGrounded)
         {
-            if (player.IsWalking)
+            if (!player.IsDefending && player.IsWalking)
                 transform.position += inputManager.Movement(player.ID) * speed * Time.deltaTime;
         }
         

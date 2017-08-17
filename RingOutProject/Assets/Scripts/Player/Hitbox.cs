@@ -35,7 +35,11 @@ public class Hitbox : MonoBehaviour
         torso.name += player.ID.ToString();
         blockArea.name += player.ID.ToString();
     }
-    
+    private void LateUpdate()
+    {
+        CloseBlockArea();
+    }
+
     #region HitBoxLogic
     private void OpenHitBox()
     {
@@ -62,6 +66,7 @@ public class Hitbox : MonoBehaviour
     }
     private void CloseBlockArea()
     {
+        if(!player.IsDefending)
         blockArea.enabled = false;
         player.CanMove = true;
     }
