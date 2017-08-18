@@ -31,10 +31,10 @@ public class Hitbox : MonoBehaviour
         player = GetComponentInParent<Player>();
         torso.name += player.ID.ToString();
         blockArea.name += player.ID.ToString();
-        torso.gameObject.AddComponent<TorsoTrigger>();
-        blockArea.gameObject.AddComponent<DefenseTrigger>();
-        attackHitBox.gameObject.AddComponent<AttackTrigger>();
-        hypeAttackHitBox.gameObject.AddComponent<HypeAttackTrigger>();
+    //    torso.gameObject.AddComponent<TorsoTrigger>();
+    //    blockArea.gameObject.AddComponent<DefenseTrigger>();
+    //    attackHitBox.gameObject.AddComponent<AttackTrigger>();
+    //    hypeAttackHitBox.gameObject.AddComponent<HypeAttackTrigger>();
     }
     private void LateUpdate()
     {

@@ -12,7 +12,7 @@ using UnityEngine;
         [SerializeField]
         protected string opponentsBody;
 
-        private void Awake()
+        private void Start()
         {
             player = GetComponentInParent<Player>();
             opponentsBlockArea = "BlockArea" + player.Opponent.ID.ToString();

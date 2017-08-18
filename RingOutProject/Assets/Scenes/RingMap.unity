@@ -179,6 +179,24 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 12343444}
   m_Mesh: {fileID: 4300000, guid: 4166897d24ad4374fb11f709b37ddbcc, type: 3}
+--- !u!1 &13796215 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1965047829742888, guid: e27e81d1064d31c439312813ce177b9b,
+    type: 2}
+  m_PrefabInternal: {fileID: 37729620}
+--- !u!114 &13796219
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 13796215}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 74b7dba6c9697514abfd893d1a4865ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  opponentsBlockArea: 
+  opponentsBody: 
 --- !u!1 &14542403
 GameObject:
   m_ObjectHideFlags: 0
@@ -433,6 +451,11 @@ Prefab:
     - target: {fileID: 4679068251662592, guid: e27e81d1064d31c439312813ce177b9b, type: 2}
       propertyPath: m_RootOrder
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114230274608235534, guid: e27e81d1064d31c439312813ce177b9b,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e27e81d1064d31c439312813ce177b9b, type: 2}
@@ -1203,6 +1226,24 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 470058949}
   m_Mesh: {fileID: 4300000, guid: 4166897d24ad4374fb11f709b37ddbcc, type: 3}
+--- !u!1 &536378057 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1965047829742888, guid: e27e81d1064d31c439312813ce177b9b,
+    type: 2}
+  m_PrefabInternal: {fileID: 1211286829}
+--- !u!114 &536378059
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 536378057}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 74b7dba6c9697514abfd893d1a4865ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  opponentsBlockArea: 
+  opponentsBody: 
 --- !u!1 &545453372
 GameObject:
   m_ObjectHideFlags: 0
@@ -2385,6 +2426,67 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1159041858}
   m_Mesh: {fileID: 4300000, guid: 30c29a7d0da4b4445a469ff6c35628c2, type: 3}
+--- !u!1001 &1211286829
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4679068251662592, guid: e27e81d1064d31c439312813ce177b9b, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 9.164051
+      objectReference: {fileID: 0}
+    - target: {fileID: 4679068251662592, guid: e27e81d1064d31c439312813ce177b9b, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 39.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4679068251662592, guid: e27e81d1064d31c439312813ce177b9b, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: -5.8386917
+      objectReference: {fileID: 0}
+    - target: {fileID: 4679068251662592, guid: e27e81d1064d31c439312813ce177b9b, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4679068251662592, guid: e27e81d1064d31c439312813ce177b9b, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4679068251662592, guid: e27e81d1064d31c439312813ce177b9b, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4679068251662592, guid: e27e81d1064d31c439312813ce177b9b, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4679068251662592, guid: e27e81d1064d31c439312813ce177b9b, type: 2}
+      propertyPath: m_RootOrder
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 114230274608235534, guid: e27e81d1064d31c439312813ce177b9b,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1597100668157752, guid: e27e81d1064d31c439312813ce177b9b, type: 2}
+      propertyPath: m_Name
+      value: Marie (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 114431776236592776, guid: e27e81d1064d31c439312813ce177b9b,
+        type: 2}
+      propertyPath: id
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114164805319946532, guid: e27e81d1064d31c439312813ce177b9b,
+        type: 2}
+      propertyPath: controlNo
+      value: 2
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: e27e81d1064d31c439312813ce177b9b, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1 &1239664120
 GameObject:
   m_ObjectHideFlags: 0
@@ -2669,6 +2771,24 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1340429786}
   m_Mesh: {fileID: 4300000, guid: 4166897d24ad4374fb11f709b37ddbcc, type: 3}
+--- !u!1 &1361087398 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1717527357761964, guid: e27e81d1064d31c439312813ce177b9b,
+    type: 2}
+  m_PrefabInternal: {fileID: 1211286829}
+--- !u!114 &1361087400
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1361087398}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e80aa4926738d974d8f40201b5404248, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  opponentsBlockArea: 
+  opponentsBody: 
 --- !u!1 &1387183224
 GameObject:
   m_ObjectHideFlags: 0
@@ -3004,62 +3124,6 @@ Prefab:
 Transform:
   m_PrefabParentObject: {fileID: 400002, guid: 30c29a7d0da4b4445a469ff6c35628c2, type: 3}
   m_PrefabInternal: {fileID: 1462970990}
---- !u!1001 &1499317907
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 4679068251662592, guid: e27e81d1064d31c439312813ce177b9b, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: 9.164051
-      objectReference: {fileID: 0}
-    - target: {fileID: 4679068251662592, guid: e27e81d1064d31c439312813ce177b9b, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 39.8
-      objectReference: {fileID: 0}
-    - target: {fileID: 4679068251662592, guid: e27e81d1064d31c439312813ce177b9b, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: -5.8386917
-      objectReference: {fileID: 0}
-    - target: {fileID: 4679068251662592, guid: e27e81d1064d31c439312813ce177b9b, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4679068251662592, guid: e27e81d1064d31c439312813ce177b9b, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4679068251662592, guid: e27e81d1064d31c439312813ce177b9b, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4679068251662592, guid: e27e81d1064d31c439312813ce177b9b, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4679068251662592, guid: e27e81d1064d31c439312813ce177b9b, type: 2}
-      propertyPath: m_RootOrder
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 1597100668157752, guid: e27e81d1064d31c439312813ce177b9b, type: 2}
-      propertyPath: m_Name
-      value: Marie (1)
-      objectReference: {fileID: 0}
-    - target: {fileID: 114431776236592776, guid: e27e81d1064d31c439312813ce177b9b,
-        type: 2}
-      propertyPath: id
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 114164805319946532, guid: e27e81d1064d31c439312813ce177b9b,
-        type: 2}
-      propertyPath: controlNo
-      value: 2
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 100100000, guid: e27e81d1064d31c439312813ce177b9b, type: 2}
-  m_IsPrefabParent: 0
 --- !u!1 &1529430847
 GameObject:
   m_ObjectHideFlags: 0
@@ -4156,6 +4220,24 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1936236244}
   m_Mesh: {fileID: 4300000, guid: 4166897d24ad4374fb11f709b37ddbcc, type: 3}
+--- !u!1 &1964849306 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1717527357761964, guid: e27e81d1064d31c439312813ce177b9b,
+    type: 2}
+  m_PrefabInternal: {fileID: 37729620}
+--- !u!114 &1964849310
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1964849306}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e80aa4926738d974d8f40201b5404248, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  opponentsBlockArea: 
+  opponentsBody: 
 --- !u!1 &1965505712
 GameObject:
   m_ObjectHideFlags: 0
