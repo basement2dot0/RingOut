@@ -19,7 +19,7 @@ public class Combat : MonoBehaviour
     private void Awake()
     {
         delay = new WaitForSeconds(resetAttack);
-        hypeDelay = new WaitForSeconds(1.0f);
+        hypeDelay = new WaitForSeconds(1.5f);
         inputManager = GetComponent<InputManager>();
         player = GetComponent<Player>();
     }
@@ -52,7 +52,6 @@ public class Combat : MonoBehaviour
                 player.IsDefending = true;
             else if (!inputManager.DefendButton(player.ID))
                 player.IsDefending = false;
-            
         }
     }
     private void HypeAttack()

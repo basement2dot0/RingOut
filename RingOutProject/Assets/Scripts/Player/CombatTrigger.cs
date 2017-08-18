@@ -43,11 +43,6 @@ public class CombatTrigger : MonoBehaviour
         {
             if (!isBlock)
             {
-                if (player.IsHyped)
-                    player.Opponent.IsHypeHit = true;
-                else
-                {
-
                     if (player.Opponent.HitCounter > 3)
                     {
                         player.HitDirection = player.transform.forward;
@@ -61,7 +56,7 @@ public class CombatTrigger : MonoBehaviour
                         player.Opponent.HitCounter++;
                         lastHit = Time.time;
                     }
-                }
+                
             }
             isBlock = false;
         }

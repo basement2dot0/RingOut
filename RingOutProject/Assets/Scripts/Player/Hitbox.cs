@@ -5,7 +5,7 @@ using UnityEngine;
 public class Hitbox : MonoBehaviour
 {
     [SerializeField]
-    private BoxCollider jumpAttackHitBox;
+    private BoxCollider hypeAttackHitBox;
     [SerializeField]
     private BoxCollider attackHitBox;
     [SerializeField]
@@ -49,14 +49,14 @@ public class Hitbox : MonoBehaviour
             attackHitBox.enabled = true;
         }
         else
-            jumpAttackHitBox.enabled = true;
+            hypeAttackHitBox.enabled = true;
         StartCoroutine("CloseHitBoxes");
         
     }
     private void CloseHitBox()
     {
         attackHitBox.enabled = false;
-        jumpAttackHitBox.enabled = false;
+        hypeAttackHitBox.enabled = false;
         player.CanMove = true;
     }
     private void OpenBlockArea()
@@ -70,7 +70,16 @@ public class Hitbox : MonoBehaviour
         blockArea.enabled = false;
         player.CanMove = true;
     }
+    private void OpenHypeHitBox()
+    {
+        if (player.IsGrounded)
+        {
+            player.CanMove = false;
+            hypeAttackHitBox.enabled = true;
+        }
+        
 
+    }
     private IEnumerator CloseHitBoxes()
     {
         yield return delay;
