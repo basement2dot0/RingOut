@@ -84,14 +84,16 @@
     <Compile Include="Assets\Scripts\Archived\PlayerAnim.cs" />
     <Compile Include="Assets\Scripts\Audio\AudioManager.cs" />
     <Compile Include="Assets\Scripts\Camera\CameraController.cs" />
-    <Compile Include="Assets\Scripts\Player\HypeCombatTrigger.cs" />
+    <Compile Include="Assets\Scripts\Managers\TriggerManager.cs" />
+    <Compile Include="Assets\Scripts\Player\DefenseTrigger.cs" />
+    <Compile Include="Assets\Scripts\Player\HypeAttackTrigger.cs" />
     <Compile Include="Assets\Scripts\Managers\AnimationManager.cs" />
     <Compile Include="Assets\Scripts\Managers\EventManager.cs" />
     <Compile Include="Assets\Scripts\Managers\GameManager.cs" />
     <Compile Include="Assets\Scripts\Managers\InputManager.cs" />
     <Compile Include="Assets\Scripts\Managers\MomentumBar.cs" />
     <Compile Include="Assets\Scripts\Player\Combat.cs" />
-    <Compile Include="Assets\Scripts\Player\CombatTrigger.cs" />
+    <Compile Include="Assets\Scripts\Player\AttackTrigger.cs" />
     <Compile Include="Assets\Scripts\Player\DamageType.cs" />
     <Compile Include="Assets\Scripts\Player\Hitbox.cs" />
     <Compile Include="Assets\Scripts\Player\HumanInput.cs" />
@@ -100,6 +102,7 @@
     <Compile Include="Assets\Scripts\Player\Player.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerBounceBack.cs" />
     <Compile Include="Assets\Scripts\Managers\UIManager.cs" />
+    <Compile Include="Assets\Scripts\Player\TorsoTrigger.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="GenerateTargetFrameworkMonikerAttribute" />

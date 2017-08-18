@@ -26,31 +26,24 @@ class Physics : MonoBehaviour
     private float delay = 0.5f;
     private WaitForSeconds wait;
     private Vector3 defaultPosition;
+    private float defaultSpeed = 20.0f;
         
 
     private void Awake()
     {
         
         rb = GetComponent<Rigidbody>();
-        if (speed < 0)
-            speed = 20.0f;
+        InitializeSpeed(speed);
         inputManager = GetComponent<InputManager>();
         player = GetComponent<Player>();
         wait = new WaitForSeconds(delay);
         defaultPosition = player.transform.eulerAngles;
     }
-    private void Update()
-    {
-        if (!player.IsDefending && player.IsAttacking)
-        {
-            lastAttack = Time.time;
-            speed = 0.0f;
-        }
-    }
+  
     private void LateUpdate()
     {
         Gravity();
-
+        AttackMovementRestriction();
         KnockedBack();
         UpdatePositon();
         UpdateRotation();
@@ -60,6 +53,14 @@ class Physics : MonoBehaviour
 
     }
 
+    private void AttackMovementRestriction()
+    {
+        if (!player.IsDefending && player.IsAttacking)
+        {
+            lastAttack = Time.time;
+            speed = 0.0f;
+        }
+    }
     public void KnockedBack()
     {
         if (player.IsKnockedBack)
@@ -123,15 +124,20 @@ class Physics : MonoBehaviour
     }
     private void BounceBack()
     {
-        if(!player.IsGrounded && player.Opponent.IsHit)
+        if(!player.IsGrounded && player.IsHit)
         {
             
-            Vector3 position = new Vector3(player.Opponent.transform.position.x, 0, player.Opponent.transform.position.z);
+            Vector3 position = new Vector3(player.transform.position.x, 0, player.transform.position.z);
             //player.Opponent.transform.position += (player.Opponent.transform.forward * knockBackDistance) * Time.time;
             
-            player.Opponent.transform.position += Vector3.Lerp(position, (player.transform.forward) * knockBackDistance, Time.deltaTime);
+            player.transform.position += Vector3.Lerp(position, -(player.transform.forward) * knockBackDistance, Time.deltaTime);
         }
         
+    }
+    private void PushBack()
+    {
+        if(player.IsPushed)
+        player.Opponent.transform.position += inputManager.Movement(player.Opponent.ID);
     }
 
     private IEnumerator GetUp()
@@ -139,6 +145,12 @@ class Physics : MonoBehaviour
         yield return wait;
         player.IsKnockedBack = false;
         player.transform.eulerAngles = defaultPosition;
+    }
+    private void InitializeSpeed(float _speed)
+    {
+        if (_speed <= 0)
+            _speed = defaultSpeed;
+        speed = _speed;
     }
 }
 

@@ -15,9 +15,7 @@ public class Hitbox : MonoBehaviour
     private BoxCollider ground;
     //Player Reference
     private Player player;
-    //Momentum Bar Reference
-    private MomentumBar momentumBar;
-    //delay between active attacks
+   //delay between active attacks
     [SerializeField]
     private WaitForSeconds delay;
 
@@ -29,11 +27,14 @@ public class Hitbox : MonoBehaviour
 
     private void Awake()
     {
-        momentumBar = GameObject.FindGameObjectWithTag("Canvas").GetComponent<MomentumBar>();
         delay = new WaitForSeconds(.50f);
         player = GetComponentInParent<Player>();
         torso.name += player.ID.ToString();
         blockArea.name += player.ID.ToString();
+        torso.gameObject.AddComponent<TorsoTrigger>();
+        blockArea.gameObject.AddComponent<DefenseTrigger>();
+        attackHitBox.gameObject.AddComponent<AttackTrigger>();
+        hypeAttackHitBox.gameObject.AddComponent<HypeAttackTrigger>();
     }
     private void LateUpdate()
     {
