@@ -464,7 +464,8 @@ Prefab:
       propertyPath: delay
       value: 1.5
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 114532140288503172, guid: e27e81d1064d31c439312813ce177b9b, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: e27e81d1064d31c439312813ce177b9b, type: 2}
   m_IsPrefabParent: 0
 --- !u!1 &62072269
@@ -2344,6 +2345,24 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: -20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &1136653295 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1717527357761964, guid: e27e81d1064d31c439312813ce177b9b,
+    type: 2}
+  m_PrefabInternal: {fileID: 1217546593}
+--- !u!114 &1136653297
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1136653295}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e80aa4926738d974d8f40201b5404248, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  opponentDefenseHitbox: 
+  opponentsHitbox: 
 --- !u!1 &1159041858
 GameObject:
   m_ObjectHideFlags: 0
@@ -2415,7 +2434,7 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1159041858}
   m_Mesh: {fileID: 4300000, guid: 30c29a7d0da4b4445a469ff6c35628c2, type: 3}
---- !u!1001 &1211286829
+--- !u!1001 &1217546593
 Prefab:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -2459,21 +2478,47 @@ Prefab:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114653255188208904, guid: e27e81d1064d31c439312813ce177b9b,
+        type: 2}
+      propertyPath: jumpDelay
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 82472507963535138, guid: e27e81d1064d31c439312813ce177b9b,
+        type: 2}
+      propertyPath: MinDistance
+      value: 0.33415222
+      objectReference: {fileID: 0}
+    - target: {fileID: 114244518097671182, guid: e27e81d1064d31c439312813ce177b9b,
+        type: 2}
+      propertyPath: resetAttack
+      value: 0.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 114244518097671182, guid: e27e81d1064d31c439312813ce177b9b,
+        type: 2}
+      propertyPath: attackDelay
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114827810537158058, guid: e27e81d1064d31c439312813ce177b9b,
+        type: 2}
+      propertyPath: delay
+      value: 1.5
+      objectReference: {fileID: 0}
     - target: {fileID: 1597100668157752, guid: e27e81d1064d31c439312813ce177b9b, type: 2}
       propertyPath: m_Name
       value: Marie (1)
-      objectReference: {fileID: 0}
-    - target: {fileID: 114431776236592776, guid: e27e81d1064d31c439312813ce177b9b,
-        type: 2}
-      propertyPath: id
-      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 114164805319946532, guid: e27e81d1064d31c439312813ce177b9b,
         type: 2}
       propertyPath: controlNo
       value: 2
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 114431776236592776, guid: e27e81d1064d31c439312813ce177b9b,
+        type: 2}
+      propertyPath: id
+      value: 2
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 114532140288503172, guid: e27e81d1064d31c439312813ce177b9b, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: e27e81d1064d31c439312813ce177b9b, type: 2}
   m_IsPrefabParent: 0
 --- !u!1 &1239664120
@@ -2760,24 +2805,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1340429786}
   m_Mesh: {fileID: 4300000, guid: 4166897d24ad4374fb11f709b37ddbcc, type: 3}
---- !u!1 &1361087398 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1717527357761964, guid: e27e81d1064d31c439312813ce177b9b,
-    type: 2}
-  m_PrefabInternal: {fileID: 1211286829}
---- !u!114 &1361087400
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1361087398}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e80aa4926738d974d8f40201b5404248, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  opponentDefenseHitbox: 
-  opponentsHitbox: 
 --- !u!1 &1387183224
 GameObject:
   m_ObjectHideFlags: 0
@@ -2978,6 +3005,25 @@ Prefab:
 Transform:
   m_PrefabParentObject: {fileID: 400002, guid: 4166897d24ad4374fb11f709b37ddbcc, type: 3}
   m_PrefabInternal: {fileID: 1405503340}
+--- !u!1 &1408231299 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1692059107094412, guid: e27e81d1064d31c439312813ce177b9b,
+    type: 2}
+  m_PrefabInternal: {fileID: 1217546593}
+--- !u!114 &1408231301
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1408231299}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: acbfae8db91cf3247a7409cb45b6bc6d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  opponentDefenseHitbox: 
+  opponentsHitbox: 
+  maxHitCounter: 0
 --- !u!114 &1421023585 stripped
 MonoBehaviour:
   m_PrefabParentObject: {fileID: 114431776236592776, guid: e27e81d1064d31c439312813ce177b9b,
@@ -4360,6 +4406,25 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2031345049 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1692059107094412, guid: e27e81d1064d31c439312813ce177b9b,
+    type: 2}
+  m_PrefabInternal: {fileID: 37729620}
+--- !u!114 &2031345051
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2031345049}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: acbfae8db91cf3247a7409cb45b6bc6d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  opponentDefenseHitbox: 
+  opponentsHitbox: 
+  maxHitCounter: 0
 --- !u!1 &2071135796
 GameObject:
   m_ObjectHideFlags: 0
