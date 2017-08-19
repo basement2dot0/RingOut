@@ -5,7 +5,7 @@ using UnityEngine;
 public class Hitbox : MonoBehaviour
 {
     [SerializeField]
-    private BoxCollider jumpAttackHitBox;
+    private BoxCollider hypeAttackHitBox;
     [SerializeField]
     private BoxCollider attackHitBox;
     [SerializeField]
@@ -15,9 +15,7 @@ public class Hitbox : MonoBehaviour
     private BoxCollider ground;
     //Player Reference
     private Player player;
-    //Momentum Bar Reference
-    private MomentumBar momentumBar;
-    //delay between active attacks
+   //delay between active attacks
     [SerializeField]
     private WaitForSeconds delay;
 
@@ -29,13 +27,20 @@ public class Hitbox : MonoBehaviour
 
     private void Awake()
     {
-        momentumBar = GameObject.FindGameObjectWithTag("Canvas").GetComponent<MomentumBar>();
         delay = new WaitForSeconds(.50f);
         player = GetComponentInParent<Player>();
         torso.name += player.ID.ToString();
         blockArea.name += player.ID.ToString();
+    //    torso.gameObject.AddComponent<TorsoTrigger>();
+    //    blockArea.gameObject.AddComponent<DefenseTrigger>();
+    //    attackHitBox.gameObject.AddComponent<AttackTrigger>();
+    //    hypeAttackHitBox.gameObject.AddComponent<HypeAttackTrigger>();
     }
-    
+    private void LateUpdate()
+    {
+        CloseBlockArea();
+    }
+
     #region HitBoxLogic
     private void OpenHitBox()
     {
@@ -45,14 +50,14 @@ public class Hitbox : MonoBehaviour
             attackHitBox.enabled = true;
         }
         else
-            jumpAttackHitBox.enabled = true;
+            hypeAttackHitBox.enabled = true;
         StartCoroutine("CloseHitBoxes");
         
     }
     private void CloseHitBox()
     {
         attackHitBox.enabled = false;
-        jumpAttackHitBox.enabled = false;
+        hypeAttackHitBox.enabled = false;
         player.CanMove = true;
     }
     private void OpenBlockArea()
@@ -62,10 +67,20 @@ public class Hitbox : MonoBehaviour
     }
     private void CloseBlockArea()
     {
+        if(!player.IsDefending)
         blockArea.enabled = false;
         player.CanMove = true;
     }
+    private void OpenHypeHitBox()
+    {
+        if (player.IsGrounded)
+        {
+            player.CanMove = false;
+            hypeAttackHitBox.enabled = true;
+        }
+        
 
+    }
     private IEnumerator CloseHitBoxes()
     {
         yield return delay;

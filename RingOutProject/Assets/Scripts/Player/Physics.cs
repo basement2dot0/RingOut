@@ -26,31 +26,24 @@ class Physics : MonoBehaviour
     private float delay = 0.5f;
     private WaitForSeconds wait;
     private Vector3 defaultPosition;
+    private float defaultSpeed = 20.0f;
         
 
     private void Awake()
     {
         
         rb = GetComponent<Rigidbody>();
-        if (speed < 0)
-            speed = 20.0f;
+        InitializeSpeed(speed);
         inputManager = GetComponent<InputManager>();
         player = GetComponent<Player>();
         wait = new WaitForSeconds(delay);
         defaultPosition = player.transform.eulerAngles;
     }
-    private void Update()
-    {
-        if (player.IsAttacking)
-        {
-            lastAttack = Time.time;
-            speed = 0.0f;
-        }
-    }
+  
     private void LateUpdate()
     {
         Gravity();
-
+        AttackMovementRestriction();
         KnockedBack();
         UpdatePositon();
         UpdateRotation();
@@ -60,6 +53,17 @@ class Physics : MonoBehaviour
 
     }
 
+    private void AttackMovementRestriction()
+    {
+        if (player.IsGrounded)
+        {
+            if (!player.IsDefending && player.IsAttacking)
+            {
+                lastAttack = Time.time;
+               
+            }
+        }
+    }
     public void KnockedBack()
     {
         if (player.IsKnockedBack)
@@ -75,7 +79,7 @@ class Physics : MonoBehaviour
     {
         if (CanMove() && player.IsGrounded)
         {
-            if (player.IsWalking)
+            if (!player.IsDefending && player.IsWalking)
                 transform.position += inputManager.Movement(player.ID) * speed * Time.deltaTime;
         }
         
@@ -104,12 +108,37 @@ class Physics : MonoBehaviour
             rb.velocity += player.Opponent.transform.forward * 30 * Time.time;
        
     }
+    
+    private void BounceBack()
+    {
+        if(!player.IsGrounded && player.IsHit)
+        {
+            
+            Vector3 position = new Vector3(player.transform.position.x, 0, player.transform.position.z);
+            //player.Opponent.transform.position += (player.Opponent.transform.forward * knockBackDistance) * Time.time;
+            
+            player.transform.position += Vector3.Lerp(position, -(player.transform.forward) * knockBackDistance, Time.deltaTime);
+        }
+        
+    }
+    private void PushBack()
+    {
+        if(player.IsPushed)
+        player.Opponent.transform.position += inputManager.Movement(player.Opponent.ID);
+    }
+
+    private IEnumerator GetUp()
+    {
+        yield return wait;
+        player.IsKnockedBack = false;
+        player.transform.eulerAngles = defaultPosition;
+    }
     private bool CanMove()
     {
-        
+
         if ((Time.time - lastAttack) >= moveDelay)
         {
-            speed = 20.0f ;
+            speed = defaultSpeed;
             player.CanMove = true;
             return true;
         }
@@ -119,26 +148,13 @@ class Physics : MonoBehaviour
             player.CanMove = false;
             return false;
         }
-            
-    }
-    private void BounceBack()
-    {
-        if(!player.IsGrounded && player.Opponent.IsHit)
-        {
-            
-            Vector3 position = new Vector3(player.Opponent.transform.position.x, 0, player.Opponent.transform.position.z);
-            //player.Opponent.transform.position += (player.Opponent.transform.forward * knockBackDistance) * Time.time;
-            
-            player.Opponent.transform.position += Vector3.Lerp(position, (player.transform.forward) * knockBackDistance, Time.deltaTime);
-        }
-        
-    }
 
-    private IEnumerator GetUp()
+    }
+    private void InitializeSpeed(float _speed)
     {
-        yield return wait;
-        player.IsKnockedBack = false;
-        player.transform.eulerAngles = defaultPosition;
+        if (_speed <= 0)
+            _speed = defaultSpeed;
+        speed = _speed;
     }
 }
 

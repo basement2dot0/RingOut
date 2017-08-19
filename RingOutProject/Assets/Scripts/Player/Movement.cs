@@ -41,9 +41,9 @@ public class Movement : MonoBehaviour {
     }
     private void Jump()
     {
-        if (player.IsGrounded )
+        if (player.IsGrounded && CanJump())
         {
-            if (inputManager.JumpButtonDown(player.ID)&& CanJump())
+            if (inputManager.JumpButtonDown(player.ID))
             {
                 lastJump = Time.time;
                 player.IsJumping = true;
@@ -67,10 +67,10 @@ public class Movement : MonoBehaviour {
     //    else
     //        return false;
     //}
-
+    private WaitForSeconds resetJump= new  WaitForSeconds(0.0f);
     private IEnumerator JumpReset()
     {
-        yield return null;
+        yield return resetJump;
         player.IsJumping = false;
     }
 }

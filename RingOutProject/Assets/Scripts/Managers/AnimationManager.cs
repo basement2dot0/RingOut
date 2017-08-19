@@ -26,6 +26,14 @@ public class AnimationManager : MonoBehaviour
         Attack();
         Block();
         HypeHit();
+        if(player.AttackCounter == 0)
+        {
+            anim.SetBool("isFirstAttack", true);
+        }
+        else
+        {
+            anim.SetBool("isFirstAttack", false);
+        }
     }
     private void LateUpdate()
     {
@@ -52,13 +60,15 @@ public class AnimationManager : MonoBehaviour
     }
     private void Attack()
     {
-
-        if (player.IsAttacking)
+        if (!player.IsHyped)
         {
-            anim.SetTrigger("isAttacking");
+            if (player.IsAttacking)
+            {
+                anim.SetTrigger("isAttacking");
+            }
+            else
+                anim.ResetTrigger("isAttacking");
         }
-        else
-            anim.ResetTrigger("isAttacking");
     }
     private void IsKnockedBack()
     {
