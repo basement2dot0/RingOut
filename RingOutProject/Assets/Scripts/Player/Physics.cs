@@ -55,10 +55,13 @@ class Physics : MonoBehaviour
 
     private void AttackMovementRestriction()
     {
-        if (!player.IsDefending && player.IsAttacking)
+        if (player.IsGrounded)
         {
-            lastAttack = Time.time;
-            speed = 0.0f;
+            if (!player.IsDefending && player.IsAttacking)
+            {
+                lastAttack = Time.time;
+               
+            }
         }
     }
     public void KnockedBack()
@@ -105,23 +108,7 @@ class Physics : MonoBehaviour
             rb.velocity += player.Opponent.transform.forward * 30 * Time.time;
        
     }
-    private bool CanMove()
-    {
-        
-        if ((Time.time - lastAttack) >= moveDelay)
-        {
-            speed = 20.0f ;
-            player.CanMove = true;
-            return true;
-        }
-        else
-        {
-            speed = 0.0f;
-            player.CanMove = false;
-            return false;
-        }
-            
-    }
+    
     private void BounceBack()
     {
         if(!player.IsGrounded && player.IsHit)
@@ -145,6 +132,23 @@ class Physics : MonoBehaviour
         yield return wait;
         player.IsKnockedBack = false;
         player.transform.eulerAngles = defaultPosition;
+    }
+    private bool CanMove()
+    {
+
+        if ((Time.time - lastAttack) >= moveDelay)
+        {
+            speed = defaultSpeed;
+            player.CanMove = true;
+            return true;
+        }
+        else
+        {
+            speed = 0.0f;
+            player.CanMove = false;
+            return false;
+        }
+
     }
     private void InitializeSpeed(float _speed)
     {

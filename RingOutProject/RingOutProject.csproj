@@ -64,6 +64,12 @@
     <Reference Include="UnityEngine.TestRunner">
       <HintPath>Library\UnityAssemblies\UnityEngine.TestRunner.dll</HintPath>
     </Reference>
+    <Reference Include="nunit.framework">
+      <HintPath>Library\UnityAssemblies\nunit.framework.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.Timeline">
+      <HintPath>Library\UnityAssemblies\UnityEngine.Timeline.dll</HintPath>
+    </Reference>
     <Reference Include="UnityEngine.Analytics">
       <HintPath>Library\UnityAssemblies\UnityEngine.Analytics.dll</HintPath>
     </Reference>
@@ -86,7 +92,6 @@
     <Compile Include="Assets\Scripts\Player\AttackTrigger.cs" />
     <Compile Include="Assets\Scripts\Player\Combat.cs" />
     <Compile Include="Assets\Scripts\Player\DamageType.cs" />
-    <Compile Include="Assets\Scripts\Player\DefenseTrigger.cs" />
     <Compile Include="Assets\Scripts\Player\Hitbox.cs" />
     <Compile Include="Assets\Scripts\Player\HumanInput.cs" />
     <Compile Include="Assets\Scripts\Player\HypeAttackTrigger.cs" />

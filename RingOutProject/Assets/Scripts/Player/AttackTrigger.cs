@@ -28,8 +28,9 @@ public class AttackTrigger : TriggerManager
 
     protected override void ActivateTriggers(Collider hitbox)
     {
-        
-        if (hitbox.name == opponentsHitbox)
+        if (hitbox.name == opponentDefenseHitbox)
+            player.Opponent.IsHit = true;
+        else if (hitbox.name == opponentsHitbox)
         {
             if (!player.Opponent.IsDefending || isBackAttack())
             {

@@ -16,6 +16,9 @@ public class Combat : MonoBehaviour
     private float lastAttack;
     [SerializeField]
     private float attackDelay;
+    private float lastAttackCounter;
+    private float lastSuccessfulAttack;
+
     private void Awake()
     {
         delay = new WaitForSeconds(resetAttack);
@@ -25,25 +28,38 @@ public class Combat : MonoBehaviour
     }
     void Update()
     {
+        Debug.Log(CanAttack().ToString());
         HypeAttack();
         Attack();
+        ResetHitCounter();
         Block();
     }
     
     private void Attack()
     {
 
-        if (!player.IsHyped)
+        if (!player.IsHyped && ResetHitCounter() <= 3)
         {
-            if(CanAttack() && inputManager.AttackButtonDown(player.ID))
+
+            if ((inputManager.AttackButtonDown(player.ID) && !player.IsGrounded))
+            {
+                player.IsAttacking = true;
+                StartCoroutine("ResetAttack");
+            }
+            else if (CanAttack() && inputManager.AttackButtonDown(player.ID))
             {
                 lastAttack = Time.time;
                 player.IsAttacking = true;
+                player.AttackCounter++;
                 StartCoroutine("ResetAttack");
+
+
+
             }
         }
 
     }
+
     private void Block()
     {
         if (player.IsGrounded)
@@ -71,11 +87,14 @@ public class Combat : MonoBehaviour
     {
         if ((Time.time - lastAttack) >= attackDelay)
         {
-            player.IsAttacking = false;
+            // player.IsAttacking = false;
             return true;
         }
         else
+        {
+
             return false;
+        }
     }
     private IEnumerator ResetAttack()
     {
@@ -87,5 +106,11 @@ public class Combat : MonoBehaviour
         yield return hypeDelay;
         player.IsHyped = false;
     }
-    
+    private float ResetHitCounter()
+    {
+        if ((Time.time - lastSuccessfulAttack) >= 1.0f)
+            player.AttackCounter = 0;
+        return player.AttackCounter;
+    }
+
 }
