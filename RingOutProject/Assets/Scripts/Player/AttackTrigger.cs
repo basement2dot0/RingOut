@@ -23,13 +23,13 @@ public class AttackTrigger : TriggerManager
     private void ResetHitCounter()
     {
         if ((Time.time - lastHit) >= 2.5f)
-            player.Opponent.AttackCounter = 0;
+            player.AttackCounter = 0;
     }
 
     protected override void ActivateTriggers(Collider hitbox)
     {
         
-        if (hitbox.name == opponentsBody)
+        if (hitbox.name == opponentsHitbox)
         {
             if (!player.Opponent.IsDefending || isBackAttack())
             {

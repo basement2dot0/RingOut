@@ -39,6 +39,8 @@ public class Player : MonoBehaviour{
     [SerializeField]
     private bool isKnockedBack;
     [SerializeField]
+    private bool isPushed;
+    [SerializeField]
     private int attackCounter;
     private Vector3 hitDirection;
 
@@ -106,8 +108,11 @@ public class Player : MonoBehaviour{
         get { return isKnockedBack; }
         set { isKnockedBack = value; }
     }
-
-    public bool IsPushed { get; internal set; }
+    public bool IsPushed
+    {
+        get { return isPushed; }
+        set { isPushed = value; }
+    }
 
     //Unity Methods
     private void Awake()

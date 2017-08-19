@@ -8,15 +8,15 @@ using UnityEngine;
     {
         protected Player player;
         [SerializeField]
-        protected string opponentsBlockArea;
+        protected string opponentDefenseHitbox;
         [SerializeField]
-        protected string opponentsBody;
+        protected string opponentsHitbox;
 
         private void Start()
         {
             player = GetComponentInParent<Player>();
-            opponentsBlockArea = "BlockArea" + player.Opponent.ID.ToString();
-            opponentsBody = "Body" + player.Opponent.ID.ToString();
+            opponentDefenseHitbox = "BlockArea" + player.Opponent.ID.ToString();
+            opponentsHitbox = "Body" + player.Opponent.ID.ToString();
         }
 
         private void OnTriggerEnter(Collider other)

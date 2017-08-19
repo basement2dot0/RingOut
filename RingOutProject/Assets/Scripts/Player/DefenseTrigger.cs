@@ -9,7 +9,7 @@ using UnityEngine;
 
         protected override void ActivateTriggers(Collider hitbox)
         {   
-            if (hitbox.name == opponentsBlockArea)
+            if (hitbox.name == opponentDefenseHitbox)
                 player.Opponent.IsHit = true;
         }
 

@@ -8,7 +8,7 @@ public class HypeAttackTrigger : TriggerManager
 
     protected override void ActivateTriggers(Collider hitbox)
     {
-        if(hitbox.name == opponentsBody)
+        if(hitbox.name == opponentsHitbox)
         {
             if (!player.Opponent.IsDefending)
             {
