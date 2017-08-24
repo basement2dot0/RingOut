@@ -12,7 +12,7 @@ class Physics : MonoBehaviour
     private InputManager inputManager;
     private Vector3 direction;
     [SerializeField]
-    private float gravity;
+    private float fallMultipler;
     [SerializeField]
     private float jumpHeight;
     [SerializeField]
@@ -31,23 +31,22 @@ class Physics : MonoBehaviour
 
     private void Awake()
     {
-        
         rb = GetComponent<Rigidbody>();
-        InitializeSpeed(speed);
+        Initialize(speed, fallMultipler);
         inputManager = GetComponent<InputManager>();
         player = GetComponent<Player>();
         wait = new WaitForSeconds(delay);
         defaultPosition = player.transform.eulerAngles;
     }
-  
+    
     private void LateUpdate()
     {
+        Jump();
         Gravity();
         AttackMovementRestriction();
         KnockedBack();
         UpdatePositon();
         UpdateRotation();
-        Jump();
         BounceBack();
         RingOut();
 
@@ -58,10 +57,7 @@ class Physics : MonoBehaviour
         if (player.IsGrounded)
         {
             if (!player.IsDefending && player.IsAttacking)
-            {
                 lastAttack = Time.time;
-               
-            }
         }
     }
     public void KnockedBack()
@@ -94,13 +90,13 @@ class Physics : MonoBehaviour
     private void Jump()
     {
         if (player.IsJumping)
-            rb.velocity += Vector3.up * jumpHeight;
+            rb.velocity += (Vector3.up + inputManager.Movement(player.ID)) * jumpHeight;
         
     }
     private void Gravity()
     {
-        if (!player.IsGrounded)
-            rb.velocity += (inputManager.Movement(player.ID) + Vector3.down) * gravity * Time.deltaTime;
+        if (rb.velocity.y < 0)
+            rb.velocity += (-inputManager.Movement(player.ID) + Vector3.up) * UnityEngine.Physics.gravity.y * (fallMultipler - 1) * Time.deltaTime;
     }
     private void RingOut()
     {
@@ -150,11 +146,14 @@ class Physics : MonoBehaviour
         }
 
     }
-    private void InitializeSpeed(float _speed)
+    private void Initialize(float _speed,float _fallMultipler)
     {
         if (_speed <= 0)
             _speed = defaultSpeed;
+        if (_fallMultipler <= 0.0f)
+            _fallMultipler = 2.5f;
         speed = _speed;
+        fallMultipler = _fallMultipler;
     }
 }
 
