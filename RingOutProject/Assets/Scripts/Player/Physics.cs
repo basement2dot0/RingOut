@@ -90,7 +90,7 @@ class Physics : MonoBehaviour
     private void Jump()
     {
         if (player.IsJumping)
-            rb.velocity += (Vector3.up + inputManager.Movement(player.ID)) * jumpHeight;
+            rb.velocity += (Vector3.up * jumpHeight) +(inputManager.Movement(player.ID)*speed);
         
     }
     private void Gravity()
