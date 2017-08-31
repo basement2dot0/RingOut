@@ -43,6 +43,7 @@ public class Player : MonoBehaviour{
     [SerializeField]
     private int attackCounter;
     private Vector3 hitDirection;
+    private DamageType damageType;
 
     //Public Properties 
     public int ID { get { return id; } }
@@ -113,6 +114,11 @@ public class Player : MonoBehaviour{
         get { return isPushed; }
         set { isPushed = value; }
     }
+    public DamageType DamageType
+    {
+        get { return damageType; }
+        set { damageType = value; }
+    }
 
     //Unity Methods
     private void Awake()
@@ -124,6 +130,7 @@ public class Player : MonoBehaviour{
                 opponent = item.GetComponent<Player>();
         }
         id = GetComponent<InputManager>().ControlNo;
+        damageType = GetComponent<DamageType>();
     }
     private void Update()
     {
