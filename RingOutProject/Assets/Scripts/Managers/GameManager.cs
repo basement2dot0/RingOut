@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
+    //this class should be loaded with the stage in an empty game object
     [SerializeField]
     private float Rounds;
     [SerializeField]
@@ -13,6 +14,10 @@ public class GameManager : MonoBehaviour
     private Player[] players;
     [SerializeField]
     private Text ringOutText;
+    private InputManager inputManager;
+    private bool isPaused;
+    private Text pauseText;
+
 
     private void Awake()
     {
@@ -33,14 +38,37 @@ public class GameManager : MonoBehaviour
     }
     private void Update()
     {
-        if (players[1].IsHypeHit)
-            Debug.Log(players[1].IsHypeHit.ToString());
-
-        if (players[0].IsHypeHit|| players[1].IsHypeHit)
+        PauseMenu();
+       if (players[0].IsHypeHit|| players[1].IsHypeHit)
             ringOutText.text = "RING OUT!";
 
 
     }
 
+
+
+    private void PauseMenu()
+    {
+        if (inputManager.PauseButton(players[0].ID) || inputManager.PauseButton(players[1].ID))
+        {
+           if(!isPaused)
+            {
+                Time.timeScale = 0.0f;
+                pauseText.text = string.Format("PAUSE");
+                isPaused = true;
+            }
+            else
+            {
+                Time.timeScale = 1.0f;
+                isPaused = false;
+            }
+        }
+    }
+
+    private void RingOutVictory()
+    {
+        if (players[0].IsHypeHit || players[1].IsHypeHit)
+            ringOutText.text = "RING OUT!";
+    }
 }
 
