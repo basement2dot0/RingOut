@@ -6,6 +6,10 @@ using UnityEngine.UI;
 public class GameManager : MonoBehaviour
 {
     [SerializeField]
+    private float matchTimer;
+    [SerializeField]
+    private Text matchTimerText;
+    [SerializeField]
     private float Rounds;
     [SerializeField]
     private float Match;
@@ -16,6 +20,7 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
+        matchTimerText = GetComponent<Text>();
         players = new Player[2];
         foreach (var player in GameObject.FindGameObjectsWithTag("Player"))
         {
@@ -27,12 +32,15 @@ public class GameManager : MonoBehaviour
     }
     private void Start()
     {
+        matchTimer = 60.0f;
         Rounds = 0;
         ringOutText.text = "";
         
     }
     private void Update()
     {
+        matchTimerText.text = matchTimer.ToString();
+
         if (players[1].IsHypeHit)
             Debug.Log(players[1].IsHypeHit.ToString());
 
@@ -40,6 +48,11 @@ public class GameManager : MonoBehaviour
             ringOutText.text = "RING OUT!";
 
 
+    }
+
+    private void RoundTimer()
+    {
+        matchTimer -= (Time.time);
     }
 
 }
