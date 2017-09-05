@@ -27,7 +27,8 @@ class Physics : MonoBehaviour
     private WaitForSeconds wait;
     private Vector3 defaultPosition;
     private float defaultSpeed = 20.0f;
-        
+    float lungeDistance = 2.0f;
+
 
     private void Awake()
     {
@@ -121,6 +122,13 @@ class Physics : MonoBehaviour
     {
         if(player.IsPushed)
         player.Opponent.transform.position += inputManager.Movement(player.Opponent.ID);
+    }
+    private void Lunge()
+    {
+        if(player.IsAttacking && player.AttackCounter <= 1)
+        {
+            rb.position += rb.transform.forward * lungeDistance * Time.deltaTime;
+        }
     }
 
     private IEnumerator GetUp()
