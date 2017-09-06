@@ -7,24 +7,13 @@ using UnityEngine;
 
 public class MariePhysics  : Physics
 {
+    [SerializeField]
     private float lungeDistance = 5.0f;
-    private WaitForSeconds delay = new WaitForSeconds(.5f);
-
-    private void Update()
-    {
-        Lunge();
-    }
-
     private void Lunge()
     {
-        if (player.IsAttacking && player.AttackCounter == 0)
-            StartCoroutine("DelayLunge");
-    }
-
-    IEnumerator DelayLunge()
-    {
-        yield return delay;
-        rb.position += rb.transform.forward * lungeDistance;
-    }
+        if (player.IsGrounded)
+        rb.position += (rb.transform.forward) * lungeDistance * Time.deltaTime;
+        
+    } //called during animation event
 }
 

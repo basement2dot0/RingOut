@@ -131,6 +131,7 @@ public class Player : MonoBehaviour{
                 opponent = item.GetComponent<Player>();
         }
         id = GetComponent<InputManager>().ControlNo;
+        attackCounter = 0;
     }
     
     //Grounded Check
