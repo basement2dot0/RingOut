@@ -19,21 +19,13 @@ public class AnimationManager : MonoBehaviour
     }
     private void Update()
     {
+        Attack();
         IsFalling();
         Walk();
         Jump();
         HypeAttack();
-        Attack();
         Block();
         HypeHit();
-        if(player.AttackCounter == 0)
-        {
-            anim.SetBool("isFirstAttack", true);
-        }
-        else
-        {
-            anim.SetBool("isFirstAttack", false);
-        }
     }
     private void LateUpdate()
     {
@@ -63,9 +55,7 @@ public class AnimationManager : MonoBehaviour
         if (!player.IsHyped)
         {
             if (player.IsAttacking)
-            {
                 anim.SetTrigger("isAttacking");
-            }
             else
                 anim.ResetTrigger("isAttacking");
         }
@@ -80,7 +70,6 @@ public class AnimationManager : MonoBehaviour
     }
     private void Jump()
     {
-
         anim.SetBool("isJumping", player.IsJumping);
         StartCoroutine("ResetJump", player.IsJumping);
     }

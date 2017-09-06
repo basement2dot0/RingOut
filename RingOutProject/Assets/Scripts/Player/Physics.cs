@@ -5,10 +5,10 @@ using System.Linq;
 using System.Text;
 using UnityEngine;
 
-class Physics : MonoBehaviour
+public class Physics : MonoBehaviour
 {
-    private Rigidbody rb; 
-    private Player player;
+    protected Rigidbody rb;
+    protected Player player;
     private InputManager inputManager;
     private Vector3 direction;
     [SerializeField]
@@ -27,7 +27,7 @@ class Physics : MonoBehaviour
     private WaitForSeconds wait;
     private Vector3 defaultPosition;
     private float defaultSpeed = 20.0f;
-    float lungeDistance = 2.0f;
+    
 
 
     private void Awake()
@@ -123,13 +123,7 @@ class Physics : MonoBehaviour
         if(player.IsPushed)
         player.Opponent.transform.position += inputManager.Movement(player.Opponent.ID);
     }
-    private void Lunge()
-    {
-        if(player.IsAttacking && player.AttackCounter <= 1)
-        {
-            rb.position += rb.transform.forward * lungeDistance * Time.deltaTime;
-        }
-    }
+    
 
     private IEnumerator GetUp()
     {

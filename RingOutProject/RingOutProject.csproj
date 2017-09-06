@@ -89,6 +89,7 @@
     <Compile Include="Assets\Scripts\Player\Hitbox.cs" />
     <Compile Include="Assets\Scripts\Player\HumanInput.cs" />
     <Compile Include="Assets\Scripts\Player\HypeAttackTrigger.cs" />
+    <Compile Include="Assets\Scripts\Player\Marie\MariePhysics.cs" />
     <Compile Include="Assets\Scripts\Player\Movement.cs" />
     <Compile Include="Assets\Scripts\Player\Physics.cs" />
     <Compile Include="Assets\Scripts\Player\Player.cs" />

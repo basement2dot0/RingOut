@@ -39,6 +39,7 @@ public class Hitbox : MonoBehaviour
     private void LateUpdate()
     {
         CloseBlockArea();
+        
     }
 
     #region HitBoxLogic
@@ -48,6 +49,7 @@ public class Hitbox : MonoBehaviour
         {
             player.CanMove = false;
             attackHitBox.enabled = true;
+            UpdateAttackCounter();
         }
         else
             hypeAttackHitBox.enabled = true;
@@ -86,5 +88,28 @@ public class Hitbox : MonoBehaviour
         yield return delay;
         CloseHitBox();
     }
+    private void UpdateAttackCounter()
+    {
+        switch (player.AttackCounter)
+        {
+            case 0:
+                player.AttackCounter = 1;
+                break;
+            case 1:
+                player.AttackCounter = 2;
+                break;
+            case 2:
+                player.AttackCounter = 3;
+                break;
+            case 3:
+                player.AttackCounter = 1;
+                break;
+            default:
+                player.AttackCounter = 1;
+                break;
+        }
+        player.LastSuccessfulAttack = Time.time;
+    }
+
     #endregion
 }

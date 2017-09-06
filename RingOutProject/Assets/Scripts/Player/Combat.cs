@@ -4,21 +4,20 @@ using UnityEngine;
 
 public class Combat : MonoBehaviour
 {
-    private InputManager inputManager;
-    private Player player;
+
     [SerializeField]
     private float resetAttack;
+    [SerializeField]
+    private float attackDelay;
     [SerializeField]
     private WaitForSeconds delay;
     [SerializeField]
     private WaitForSeconds hypeDelay;
 
+    private InputManager inputManager;
+    private Player player;
     private float lastAttack;
-    [SerializeField]
-    private float attackDelay;
-    private float lastAttackCounter;
-    private float lastSuccessfulAttack;
-
+    
     private void Awake()
     {
         delay = new WaitForSeconds(resetAttack);
@@ -28,17 +27,16 @@ public class Combat : MonoBehaviour
     }
     void Update()
     {
-        Debug.Log(CanAttack().ToString());
         HypeAttack();
+        ResetAttackCounter();
         Attack();
-        ResetHitCounter();
         Block();
     }
     
     private void Attack()
     {
 
-        if (!player.IsHyped && ResetHitCounter() <= 3)
+        if (!player.IsHyped)
         {
 
             if ((inputManager.AttackButtonDown(player.ID) && !player.IsGrounded))
@@ -46,20 +44,15 @@ public class Combat : MonoBehaviour
                 player.IsAttacking = true;
                 StartCoroutine("ResetAttack");
             }
-            else if (CanAttack() && inputManager.AttackButtonDown(player.ID))
+            if (CanAttack() && inputManager.AttackButtonDown(player.ID))
             {
                 lastAttack = Time.time;
                 player.IsAttacking = true;
-                player.AttackCounter++;
                 StartCoroutine("ResetAttack");
-
-
-
             }
         }
 
     }
-
     private void Block()
     {
         if (player.IsGrounded)
@@ -83,18 +76,20 @@ public class Combat : MonoBehaviour
                 player.HypeAttack = false;
         }
     }
+
     private bool CanAttack()
     {
         if ((Time.time - lastAttack) >= attackDelay)
-        {
-            // player.IsAttacking = false;
             return true;
-        }
         else
-        {
-
             return false;
-        }
+    }
+    private float ResetAttackCounter()
+    {
+
+        if ((Time.time - player.LastSuccessfulAttack) >= 1.0f)
+            player.AttackCounter = 0;
+        return player.AttackCounter;
     }
     private IEnumerator ResetAttack()
     {
@@ -106,11 +101,4 @@ public class Combat : MonoBehaviour
         yield return hypeDelay;
         player.IsHyped = false;
     }
-    private float ResetHitCounter()
-    {
-        if ((Time.time - lastSuccessfulAttack) >= 1.0f)
-            player.AttackCounter = 0;
-        return player.AttackCounter;
-    }
-
 }
