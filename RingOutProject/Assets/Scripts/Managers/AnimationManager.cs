@@ -60,8 +60,11 @@ public class AnimationManager : MonoBehaviour
     }
     private void Attack()
     {
-        if(!player.IsHyped)
-            AttackManager();
+        if (!player.IsHyped)
+        {
+            if (CanAttack() && inputManager.AttackButtonDown(player.ID))
+                AttackManager();
+        }
         
     }
     private void IsKnockedBack()
@@ -102,11 +105,6 @@ public class AnimationManager : MonoBehaviour
 
     private void AttackManager()
     {
-        if (CanAttack() && inputManager.AttackButtonDown(player.ID))
-            UpdateAttackCounter();
-    }
-    private void UpdateAttackCounter()
-    {
         if (player.IsGrounded)
         {
             if (player.AttackCounter == 0)
@@ -132,9 +130,8 @@ public class AnimationManager : MonoBehaviour
             }
         }
         else
-        {
-            anim.Play("DiveKick_Flying");
-        }
+            anim.Play("JumpAttack");
+        
     }
     private bool CanAttack()
     {

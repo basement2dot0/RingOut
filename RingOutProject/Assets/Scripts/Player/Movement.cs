@@ -12,8 +12,9 @@ public class Movement : MonoBehaviour {
     private float lastJump;
     [SerializeField]
     private float jumpDelay;
-    
-   // Use this for initialization
+    private WaitForSeconds resetJump = new WaitForSeconds(0.0f);
+
+    // Use this for initialization
     void Awake ()
     {
         player = GetComponent<Player>();
@@ -57,7 +58,6 @@ public class Movement : MonoBehaviour {
         else
             return false;
     }
-    private WaitForSeconds resetJump= new  WaitForSeconds(0.0f);
     private IEnumerator JumpReset()
     {
         yield return resetJump;
