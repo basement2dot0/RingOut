@@ -5,11 +5,11 @@ using System.Linq;
 using System.Text;
 using UnityEngine;
 
-class Physics : MonoBehaviour
+public class Physics : MonoBehaviour
 {
-    private Rigidbody rb; 
-    private Player player;
-    private InputManager inputManager;
+    protected Rigidbody rb;
+    protected Player player;
+    protected InputManager inputManager;
     private Vector3 direction;
     [SerializeField]
     private float fallMultipler;
@@ -27,7 +27,8 @@ class Physics : MonoBehaviour
     private WaitForSeconds wait;
     private Vector3 defaultPosition;
     private float defaultSpeed = 20.0f;
-        
+    
+
 
     private void Awake()
     {
@@ -83,7 +84,7 @@ class Physics : MonoBehaviour
     }
     private void UpdateRotation()
     {
-        if (inputManager.Movement(player.ID) != Vector3.zero)
+        if (CanMove() && inputManager.Movement(player.ID) != Vector3.zero)
             rb.rotation = Quaternion.LookRotation(inputManager.Movement(player.ID));
         
     }
@@ -122,6 +123,7 @@ class Physics : MonoBehaviour
         if(player.IsPushed)
         player.Opponent.transform.position += inputManager.Movement(player.Opponent.ID);
     }
+    
 
     private IEnumerator GetUp()
     {
@@ -132,7 +134,7 @@ class Physics : MonoBehaviour
     private bool CanMove()
     {
 
-        if ((Time.time - lastAttack) >= moveDelay)
+        if ((Time.time - player.LastSuccessfulAttack) >= moveDelay)
         {
             speed = defaultSpeed;
             player.CanMove = true;
