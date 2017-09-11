@@ -5,14 +5,14 @@ using System.Linq;
 using System.Text;
 using UnityEngine;
 
-class Physics : MonoBehaviour
+public class Physics : MonoBehaviour
 {
-    private Rigidbody rb; 
-    private Player player;
-    private InputManager inputManager;
+    protected Rigidbody rb;
+    protected Player player;
+    protected InputManager inputManager;
     private Vector3 direction;
     [SerializeField]
-    private float gravity;
+    private float fallMultipler;
     [SerializeField]
     private float jumpHeight;
     [SerializeField]
@@ -26,40 +26,41 @@ class Physics : MonoBehaviour
     private float delay = 0.5f;
     private WaitForSeconds wait;
     private Vector3 defaultPosition;
-        
+    private float defaultSpeed = 20.0f;
+    
+
 
     private void Awake()
     {
-        
         rb = GetComponent<Rigidbody>();
-        if (speed < 0)
-            speed = 20.0f;
+        Initialize(speed, fallMultipler);
         inputManager = GetComponent<InputManager>();
         player = GetComponent<Player>();
         wait = new WaitForSeconds(delay);
         defaultPosition = player.transform.eulerAngles;
     }
-    private void Update()
-    {
-        if (player.IsAttacking)
-        {
-            lastAttack = Time.time;
-            speed = 0.0f;
-        }
-    }
+    
     private void LateUpdate()
     {
+        Jump();
         Gravity();
-
+        AttackMovementRestriction();
         KnockedBack();
         UpdatePositon();
         UpdateRotation();
-        Jump();
         BounceBack();
         RingOut();
 
     }
 
+    private void AttackMovementRestriction()
+    {
+        if (player.IsGrounded)
+        {
+            if (!player.IsDefending && player.IsAttacking)
+                lastAttack = Time.time;
+        }
+    }
     public void KnockedBack()
     {
         if (player.IsKnockedBack)
@@ -75,7 +76,7 @@ class Physics : MonoBehaviour
     {
         if (CanMove() && player.IsGrounded)
         {
-            if (player.IsWalking)
+            if (!player.IsDefending && player.IsWalking)
                 transform.position += inputManager.Movement(player.ID) * speed * Time.deltaTime;
         }
         
@@ -83,20 +84,20 @@ class Physics : MonoBehaviour
     }
     private void UpdateRotation()
     {
-        if (inputManager.Movement(player.ID) != Vector3.zero)
+        if (CanMove() && inputManager.Movement(player.ID) != Vector3.zero)
             rb.rotation = Quaternion.LookRotation(inputManager.Movement(player.ID));
         
     }
     private void Jump()
     {
         if (player.IsJumping)
-            rb.velocity += Vector3.up * jumpHeight;
+            rb.velocity += (Vector3.up * jumpHeight) +(inputManager.Movement(player.ID)*speed);
         
     }
     private void Gravity()
     {
-        if (!player.IsGrounded)
-            rb.velocity += (inputManager.Movement(player.ID) + Vector3.down) * gravity * Time.deltaTime;
+        if (rb.velocity.y < 0)
+            rb.velocity += (-inputManager.Movement(player.ID) + Vector3.up) * UnityEngine.Physics.gravity.y * (fallMultipler - 1) * Time.deltaTime;
     }
     private void RingOut()
     {
@@ -104,12 +105,38 @@ class Physics : MonoBehaviour
             rb.velocity += player.Opponent.transform.forward * 30 * Time.time;
        
     }
+    
+    private void BounceBack()
+    {
+        if(!player.IsGrounded && player.IsHit)
+        {
+            
+            Vector3 position = new Vector3(player.transform.position.x, 0, player.transform.position.z);
+            //player.Opponent.transform.position += (player.Opponent.transform.forward * knockBackDistance) * Time.time;
+            
+            player.transform.position += Vector3.Lerp(position, -(player.transform.forward) * knockBackDistance, Time.deltaTime);
+        }
+        
+    }
+    private void PushBack()
+    {
+        if(player.IsPushed)
+        player.Opponent.transform.position += inputManager.Movement(player.Opponent.ID);
+    }
+    
+
+    private IEnumerator GetUp()
+    {
+        yield return wait;
+        player.IsKnockedBack = false;
+        player.transform.eulerAngles = defaultPosition;
+    }
     private bool CanMove()
     {
-        
-        if ((Time.time - lastAttack) >= moveDelay)
+
+        if ((Time.time - player.LastSuccessfulAttack) >= moveDelay)
         {
-            speed = 20.0f ;
+            speed = defaultSpeed;
             player.CanMove = true;
             return true;
         }
@@ -119,26 +146,16 @@ class Physics : MonoBehaviour
             player.CanMove = false;
             return false;
         }
-            
-    }
-    private void BounceBack()
-    {
-        if(!player.IsGrounded && player.Opponent.IsHit)
-        {
-            
-            Vector3 position = new Vector3(player.Opponent.transform.position.x, 0, player.Opponent.transform.position.z);
-            //player.Opponent.transform.position += (player.Opponent.transform.forward * knockBackDistance) * Time.time;
-            
-            player.Opponent.transform.position += Vector3.Lerp(position, (player.transform.forward) * knockBackDistance, Time.deltaTime);
-        }
-        
-    }
 
-    private IEnumerator GetUp()
+    }
+    private void Initialize(float _speed,float _fallMultipler)
     {
-        yield return wait;
-        player.IsKnockedBack = false;
-        player.transform.eulerAngles = defaultPosition;
+        if (_speed <= 0)
+            _speed = defaultSpeed;
+        if (_fallMultipler <= 0.0f)
+            _fallMultipler = 2.5f;
+        speed = _speed;
+        fallMultipler = _fallMultipler;
     }
 }
 
