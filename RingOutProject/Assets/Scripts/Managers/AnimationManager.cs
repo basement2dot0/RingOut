@@ -69,11 +69,9 @@ public class AnimationManager : MonoBehaviour
     }
     private void IsKnockedBack()
     {
-        //anim.SetBool("isKnockedBack", player.IsKnockedBack);
         if (player.IsKnockedBack)
-        {
-            anim.Play("KnockBack");
-        }
+           anim.Play("KnockBack");
+        
     }
     private void HypeAttack()
     {
@@ -118,7 +116,6 @@ public class AnimationManager : MonoBehaviour
             }
             else if (player.AttackCounter == 1)
             {
-
                 anim.Play("Attack2");
                 player.LastSuccessfulAttack = Time.time;
             }

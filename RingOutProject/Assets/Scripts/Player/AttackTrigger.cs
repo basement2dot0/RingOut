@@ -21,13 +21,10 @@ public class AttackTrigger : TriggerManager
         if (hitbox.name == opponentDefenseHitbox || hitbox.name == opponentsHitbox)
         {
             player.HitDirection = player.transform.forward;
-            Debug.Log("Hit Direction:" + player.HitDirection.ToString());
             if (!player.Opponent.IsDefending || isBackAttack())
             {
                 if (player.AttackCounter == 3)
-                {
                     player.Opponent.IsKnockedBack = true;
-                }
             }
             player.Opponent.IsHit = true;
             attackCollider.enabled = false;
