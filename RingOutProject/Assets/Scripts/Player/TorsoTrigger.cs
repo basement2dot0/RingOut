@@ -9,6 +9,7 @@ public class TorsoTrigger : TriggerManager
     
     protected override void ActivateTriggers(Collider hitbox)
     {
+        
         if(hitbox.name == opponentsHitbox)
             player.IsPushed = true;
         else

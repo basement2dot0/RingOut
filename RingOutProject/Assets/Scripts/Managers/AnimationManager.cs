@@ -69,7 +69,11 @@ public class AnimationManager : MonoBehaviour
     }
     private void IsKnockedBack()
     {
-        anim.SetBool("isKnockedBack", player.IsKnockedBack);
+        //anim.SetBool("isKnockedBack", player.IsKnockedBack);
+        if (player.IsKnockedBack)
+        {
+            anim.Play("KnockBack");
+        }
     }
     private void HypeAttack()
     {
