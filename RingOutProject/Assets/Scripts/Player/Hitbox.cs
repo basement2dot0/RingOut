@@ -31,10 +31,6 @@ public class Hitbox : MonoBehaviour
         player = GetComponentInParent<Player>();
         torso.name += player.ID.ToString();
         blockArea.name += player.ID.ToString();
-    //    torso.gameObject.AddComponent<TorsoTrigger>();
-    //    blockArea.gameObject.AddComponent<DefenseTrigger>();
-    //    attackHitBox.gameObject.AddComponent<AttackTrigger>();
-    //    hypeAttackHitBox.gameObject.AddComponent<HypeAttackTrigger>();
     }
     private void LateUpdate()
     {
@@ -46,12 +42,12 @@ public class Hitbox : MonoBehaviour
     {
         if (player.IsGrounded)
         {
-            player.CanMove = false;
             attackHitBox.enabled = true;
+            player.AttackCounter++;
         }
         else
-            hypeAttackHitBox.enabled = true;
-        StartCoroutine("CloseHitBoxes");
+            attackHitBox.enabled = true;
+        StartCoroutine("CloseHitBoxes"); // this disables the hitbox incase the animation event did not
         
     }
     private void CloseHitBox()
@@ -74,12 +70,7 @@ public class Hitbox : MonoBehaviour
     private void OpenHypeHitBox()
     {
         if (player.IsGrounded)
-        {
-            player.CanMove = false;
             hypeAttackHitBox.enabled = true;
-        }
-        
-
     }
     private IEnumerator CloseHitBoxes()
     {

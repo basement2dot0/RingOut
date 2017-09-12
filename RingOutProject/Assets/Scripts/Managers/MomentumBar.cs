@@ -42,7 +42,7 @@ public class MomentumBar : MonoBehaviour
 
         }
         momentumBar = GameObject.FindGameObjectWithTag("Slider").GetComponent<Slider>();
-        damage = GameObject.FindGameObjectWithTag("Player").GetComponent<DamageType>();
+        damage = GameObject.FindGameObjectWithTag("Player").GetComponent<DamageType>(); // this needs to be dynamically assigned between both players damage type
         startingValue = 50.0f;
         momentumBar.value = startingValue;
         hypeText = gameObject.transform.GetChild(0).GetComponent<Text>();
@@ -89,6 +89,22 @@ public class MomentumBar : MonoBehaviour
                 isTimer = true;
             }
     }
+
+    private void PlayerDamage(Player player)
+    {
+        if ((momentumBar.value + player.DamageType.CurrentDamage(damage.MinDamage, damage.MaxDamage)) > momentumBar.maxValue)
+            momentumBar.value = momentumBar.maxValue;
+        else
+            momentumBar.value += player.DamageType.CurrentDamage(damage.MinDamage, damage.MaxDamage);
+    }
+    private void PlayerDamage(Player player, float negate)
+    {
+        //if ((momentumBar.value + player.DamageType.CurrentDamage(damage.MinDamage, damage.MaxDamage)) > momentumBar.maxValue)
+        //    momentumBar.value = momentumBar.maxValue;
+        //else
+            momentumBar.value += player.DamageType.CurrentDamage(damage.MinDamage, damage.MaxDamage) /negate;
+    }
+
     public void UpdateBar()
     {
         if (!players[0].IsDefending &&  players[0].IsHit || !players[1].IsDefending && players[1].IsHit)
@@ -97,17 +113,26 @@ public class MomentumBar : MonoBehaviour
             {
                 if (isPlayerOne)
                 {
-                    if ((momentumBar.value + damage.CurrentDamage(damage.MinDamage, damage.MaxDamage)) > momentumBar.maxValue)
-                        momentumBar.value = momentumBar.maxValue;
-                    else
-                        momentumBar.value += damage.CurrentDamage(damage.MinDamage, damage.MaxDamage);
+                    PlayerDamage(players[0]);
                 }
                 else
                 {
-                    if ((momentumBar.value - damage.CurrentDamage(damage.MinDamage, damage.MaxDamage)) < momentumBar.minValue)
-                        momentumBar.value = momentumBar.minValue;
-                    else
-                        momentumBar.value -= damage.CurrentDamage(damage.MinDamage, damage.MaxDamage);
+                    PlayerDamage(players[1]);
+                }
+            }
+        }
+        else if(players[0].IsDefending && players[0].IsHit || players[1].IsDefending && players[1].IsHit)
+        {
+            float halfDamage = 2.0f;
+            if (!isTimer)
+            {
+                if (isPlayerOne)
+                {
+                    PlayerDamage(players[0], halfDamage);
+                }
+                else
+                {
+                    PlayerDamage(players[1], halfDamage);
                 }
             }
         }
@@ -115,12 +140,14 @@ public class MomentumBar : MonoBehaviour
     public void ResetMomentumBar()
     {
         
-        if(isHyped && !players[0].IsHyped && !players[1].IsHyped)
+        if(isHyped && !players[0].IsHyped && !players[1].IsHyped || isHyped && momentumBar.value == startingValue)
         {    
             isHyped = false;
             isTimer = false;
             hypeText.text = "";
             momentumBar.value = startingValue;
+            players[0].IsHyped = false;
+            players[1].IsHyped = false;
             playersTheme[0].FadeHypeMusic((momentumBar.value - startingValue) / 50);
             playersTheme[1].FadeHypeMusic((momentumBar.value + startingValue) / 50);
         }

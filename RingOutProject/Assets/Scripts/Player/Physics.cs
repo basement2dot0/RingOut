@@ -5,11 +5,11 @@ using System.Linq;
 using System.Text;
 using UnityEngine;
 
-class Physics : MonoBehaviour
+public class Physics : MonoBehaviour
 {
-    private Rigidbody rb; 
-    private Player player;
-    private InputManager inputManager;
+    protected Rigidbody rb;
+    protected Player player;
+    protected InputManager inputManager;
     private Vector3 direction;
     [SerializeField]
     private float fallMultipler;
@@ -23,11 +23,12 @@ class Physics : MonoBehaviour
     private float lastAttack;
     [SerializeField]
     private float moveDelay;
-    private float delay = 0.5f;
+    private float getUpDelay = 1.5f;
     private WaitForSeconds wait;
     private Vector3 defaultPosition;
     private float defaultSpeed = 20.0f;
-        
+    
+
 
     private void Awake()
     {
@@ -35,7 +36,7 @@ class Physics : MonoBehaviour
         Initialize(speed, fallMultipler);
         inputManager = GetComponent<InputManager>();
         player = GetComponent<Player>();
-        wait = new WaitForSeconds(delay);
+        wait = new WaitForSeconds(getUpDelay);
         defaultPosition = player.transform.eulerAngles;
     }
     
@@ -47,8 +48,7 @@ class Physics : MonoBehaviour
         KnockedBack();
         UpdatePositon();
         UpdateRotation();
-        BounceBack();
-        RingOut();
+       RingOut();
 
     }
 
@@ -60,20 +60,10 @@ class Physics : MonoBehaviour
                 lastAttack = Time.time;
         }
     }
-    public void KnockedBack()
-    {
-        if (player.IsKnockedBack)
-        {
-            player.CanMove = false;
-            float yRotation = 90.0f;
-            player.transform.eulerAngles = new Vector3(player.transform.eulerAngles.x, player.transform.eulerAngles.y, yRotation);
-            player.transform.position += (player.Opponent.HitDirection) * 20.0f * Time.deltaTime;
-            StartCoroutine("GetUp");
-        }
-    }
+   
     private void UpdatePositon()
     {
-        if (CanMove() && player.IsGrounded)
+        if (CanMove() && player.IsGrounded || !player.IsKnockedBack)
         {
             if (!player.IsDefending && player.IsWalking)
                 transform.position += inputManager.Movement(player.ID) * speed * Time.deltaTime;
@@ -83,7 +73,7 @@ class Physics : MonoBehaviour
     }
     private void UpdateRotation()
     {
-        if (inputManager.Movement(player.ID) != Vector3.zero)
+        if (CanMove() && inputManager.Movement(player.ID) != Vector3.zero)
             rb.rotation = Quaternion.LookRotation(inputManager.Movement(player.ID));
         
     }
@@ -105,34 +95,39 @@ class Physics : MonoBehaviour
        
     }
     
-    private void BounceBack()
+    private void KnockedBack()
     {
-        if(!player.IsGrounded && player.IsHit)
+        
+
+        if(player.IsKnockedBack)
         {
             
-            Vector3 position = new Vector3(player.transform.position.x, 0, player.transform.position.z);
-            //player.Opponent.transform.position += (player.Opponent.transform.forward * knockBackDistance) * Time.time;
-            
-            player.transform.position += Vector3.Lerp(position, -(player.transform.forward) * knockBackDistance, Time.deltaTime);
+            StartCoroutine("GetUp");
         }
         
     }
-    private void PushBack()
+    private void Push()
     {
         if(player.IsPushed)
-        player.Opponent.transform.position += inputManager.Movement(player.Opponent.ID);
+            player.Opponent.transform.position += inputManager.Movement(player.Opponent.ID);
     }
+    
 
     private IEnumerator GetUp()
     {
+        
+        float knockBackForce = 10.0f;
+        player.transform.forward = -player.Opponent.HitDirection;
+        rb.position += player.Opponent.HitDirection  *knockBackForce * Time.deltaTime;
         yield return wait;
         player.IsKnockedBack = false;
-        player.transform.eulerAngles = defaultPosition;
+        player.CanMove = true;
+      //  player.transform.eulerAngles = defaultPosition;
     }
     private bool CanMove()
     {
 
-        if ((Time.time - lastAttack) >= moveDelay)
+        if ((Time.time - player.LastSuccessfulAttack) >= moveDelay && !player.IsKnockedBack)
         {
             speed = defaultSpeed;
             player.CanMove = true;
