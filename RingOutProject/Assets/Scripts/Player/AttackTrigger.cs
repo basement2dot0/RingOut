@@ -9,21 +9,27 @@ public class AttackTrigger : TriggerManager
     private static float lastHit;
     [SerializeField]
     private float maxHitCounter;
+    [SerializeField]
+    private BoxCollider attackCollider;
     private void Awake()
     {
         InitializeMaxCounter(maxHitCounter);
+        attackCollider = GetComponent<BoxCollider>();
     }
     protected override void ActivateTriggers(Collider hitbox)
     {
-        if (hitbox.name == opponentDefenseHitbox)
-            player.Opponent.IsHit = true;
-        else if (hitbox.name == opponentsHitbox)
+        if (hitbox.name == opponentDefenseHitbox || hitbox.name == opponentsHitbox)
         {
+            player.HitDirection = player.transform.forward;
             if (!player.Opponent.IsDefending || isBackAttack())
             {
-                player.Opponent.IsHit = true;
+                if (player.AttackCounter == 3)
+                    player.Opponent.IsKnockedBack = true;
             }
+            player.Opponent.IsHit = true;
+            attackCollider.enabled = false;
         }
+        
     }
 
     /// <summary>

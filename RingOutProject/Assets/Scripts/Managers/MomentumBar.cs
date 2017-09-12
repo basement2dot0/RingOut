@@ -140,12 +140,14 @@ public class MomentumBar : MonoBehaviour
     public void ResetMomentumBar()
     {
         
-        if(isHyped && !players[0].IsHyped && !players[1].IsHyped)
+        if(isHyped && !players[0].IsHyped && !players[1].IsHyped || isHyped && momentumBar.value == startingValue)
         {    
             isHyped = false;
             isTimer = false;
             hypeText.text = "";
             momentumBar.value = startingValue;
+            players[0].IsHyped = false;
+            players[1].IsHyped = false;
             playersTheme[0].FadeHypeMusic((momentumBar.value - startingValue) / 50);
             playersTheme[1].FadeHypeMusic((momentumBar.value + startingValue) / 50);
         }
