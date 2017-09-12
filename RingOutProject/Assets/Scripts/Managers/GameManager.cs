@@ -13,34 +13,46 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private Player[] players;
     [SerializeField]
-    private Text ringOutText;
+    private Text uiText;
+    [SerializeField]
     private InputManager inputManager;
     private bool isPaused;
-    private Text pauseText;
-
 
     private void Awake()
+    {
+        uiText = GetComponentInChildren<Text>();
+        inputManager = GetComponent<HumanInput>();
+    }
+
+    private void Start()
     {
         players = new Player[2];
         foreach (var player in GameObject.FindGameObjectsWithTag("Player"))
         {
             if (player.GetComponent<Player>().ID == 1)
+            {
                 players[0] = player.GetComponent<Player>();
+
+
+            }
+
             else
+            {
                 players[1] = player.GetComponent<Player>();
+
+            }
+
         }
-    }
-    private void Start()
-    {
         Rounds = 0;
-        ringOutText.text = "";
-        
+        uiText.text = "";
     }
+    
     private void Update()
     {
+        Debug.Log(isPaused.ToString());
         PauseMenu();
        if (players[0].IsHypeHit|| players[1].IsHypeHit)
-            ringOutText.text = "RING OUT!";
+            uiText.text = "RING OUT!";
 
 
     }
@@ -49,18 +61,21 @@ public class GameManager : MonoBehaviour
 
     private void PauseMenu()
     {
-        if (inputManager.PauseButton(players[0].ID) || inputManager.PauseButton(players[1].ID))
+        if (inputManager.PauseButton())
         {
            if(!isPaused)
             {
                 Time.timeScale = 0.0f;
-                pauseText.text = string.Format("PAUSE");
+                uiText.text = string.Format("PAUSE");
                 isPaused = true;
+                Debug.Log("PAUSED");
             }
-            else
+            else if(isPaused)
             {
                 Time.timeScale = 1.0f;
+                uiText.text = "";
                 isPaused = false;
+                Debug.Log("UNPAUSED");
             }
         }
     }
@@ -68,7 +83,7 @@ public class GameManager : MonoBehaviour
     private void RingOutVictory()
     {
         if (players[0].IsHypeHit || players[1].IsHypeHit)
-            ringOutText.text = "RING OUT!";
+            uiText.text = "RING OUT!";
     }
 }
 

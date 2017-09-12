@@ -14,5 +14,5 @@ public abstract class InputManager : MonoBehaviour
     public abstract bool AttackButtonDown(int playerID);
     public abstract bool DefendButton(int playerID);
     public abstract bool JumpButtonDown(int playerID);
-    public abstract bool PauseButton(int playerID);
+    public abstract bool PauseButton();
 }

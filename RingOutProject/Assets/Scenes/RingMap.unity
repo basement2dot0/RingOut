@@ -347,6 +347,12 @@ MonoBehaviour:
   lastAttack: 0
   moveDelay: 1.5
   lungeDistance: 100
+--- !u!114 &18422016 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114431776236592776, guid: e27e81d1064d31c439312813ce177b9b,
+    type: 2}
+  m_PrefabInternal: {fileID: 229110490}
+  m_Script: {fileID: 11500000, guid: dc520a8477fd7c94c8fb5939478d9878, type: 3}
 --- !u!1 &34234164
 GameObject:
   m_ObjectHideFlags: 0
@@ -4692,6 +4698,7 @@ GameObject:
   - component: {fileID: 1693390987}
   - component: {fileID: 1693390986}
   - component: {fileID: 1693390991}
+  - component: {fileID: 1693390992}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Canvas
@@ -4714,8 +4721,9 @@ MonoBehaviour:
   Match: 0
   players:
   - {fileID: 1421023585}
-  - {fileID: 0}
-  ringOutText: {fileID: 15143244}
+  - {fileID: 18422016}
+  uiText: {fileID: 0}
+  inputManager: {fileID: 0}
 --- !u!114 &1693390987
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4810,6 +4818,18 @@ MonoBehaviour:
   hypeText: {fileID: 15143244}
   isTimer: 0
   isPlayerOne: 0
+--- !u!114 &1693390992
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1693390985}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1fceb841f4cedb4a91a0af3fd08891d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  controlNo: 0
 --- !u!1001 &1700700884
 Prefab:
   m_ObjectHideFlags: 0
@@ -5833,6 +5853,7 @@ MonoBehaviour:
   opponentDefenseHitbox: 
   opponentsHitbox: 
   maxHitCounter: 0
+  attackCollider: {fileID: 0}
 --- !u!1 &2031345049 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 1692059107094412, guid: e27e81d1064d31c439312813ce177b9b,
@@ -5852,6 +5873,7 @@ MonoBehaviour:
   opponentDefenseHitbox: 
   opponentsHitbox: 
   maxHitCounter: 0
+  attackCollider: {fileID: 0}
 --- !u!1 &2071135796
 GameObject:
   m_ObjectHideFlags: 0
