@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
@@ -22,7 +23,7 @@ public class GameManager : MonoBehaviour
     private GameObject nav;
     private void Awake()
     {
-        uiText = GetComponentInChildren<Text>();
+        
         pauseMenuObject = GameObject.FindGameObjectWithTag("ShowOnPause");
         nav = GameObject.FindGameObjectWithTag("Nav");
         pauseButtons = new Button[2];
@@ -81,7 +82,8 @@ public class GameManager : MonoBehaviour
         {
            if(!isPaused)
             {
-                
+              uiText =  pauseMenuObject.GetComponentInChildren<Text>();
+                uiText.text = "PAUSED";
                 Time.timeScale = 0.0f;
                 //uiText.text = string.Format("PAUSE");
                 isPaused = true;
@@ -95,7 +97,11 @@ public class GameManager : MonoBehaviour
     private void RingOutVictory()
     {
         if (players[0].IsHypeHit || players[1].IsHypeHit)
+        {
+            uiText = GetComponentInChildren<Text>();
             uiText.text = "RING OUT!";
+        }
+            
     }
 
     private void PauseControls()
@@ -120,7 +126,9 @@ public class GameManager : MonoBehaviour
             {
               if(nav.transform.position == quitButton)
               {
-
+                
+                SceneManager.LoadScene("Main Menu");
+                
               }
               if(nav.transform.position == resumeButton)
             {
