@@ -342,7 +342,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fallMultipler: 0
   jumpHeight: 35
-  speed: 20
+  speed: 60
   knockBackDistance: 0
   lastAttack: 0
   moveDelay: 1.5
@@ -3943,7 +3943,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fallMultipler: 0
   jumpHeight: 35
-  speed: 20
+  speed: 60
   knockBackDistance: 500
   lastAttack: 0
   moveDelay: 1.5
@@ -5833,6 +5833,7 @@ MonoBehaviour:
   opponentDefenseHitbox: 
   opponentsHitbox: 
   maxHitCounter: 0
+  attackCollider: {fileID: 0}
 --- !u!1 &2031345049 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 1692059107094412, guid: e27e81d1064d31c439312813ce177b9b,
@@ -5852,6 +5853,7 @@ MonoBehaviour:
   opponentDefenseHitbox: 
   opponentsHitbox: 
   maxHitCounter: 0
+  attackCollider: {fileID: 0}
 --- !u!1 &2071135796
 GameObject:
   m_ObjectHideFlags: 0
