@@ -79,7 +79,7 @@ public class Physics : MonoBehaviour
     }
     private void Jump()
     {
-        if (player.IsJumping)
+        if (player.IsJumping && !player.IsKnockedBack)
             rb.velocity += (Vector3.up * jumpHeight) +(inputManager.Movement(player.ID)*speed);
         
     }
@@ -97,14 +97,8 @@ public class Physics : MonoBehaviour
     
     private void KnockedBack()
     {
-        
-
         if(player.IsKnockedBack)
-        {
-            
-            StartCoroutine("GetUp");
-        }
-        
+           StartCoroutine("GetUp");
     }
     private void Push()
     {
