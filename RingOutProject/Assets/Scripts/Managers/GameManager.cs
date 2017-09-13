@@ -86,15 +86,9 @@ public class GameManager : MonoBehaviour
                 //uiText.text = string.Format("PAUSE");
                 isPaused = true;
                 pauseMenuObject.SetActive(true);
-                StartCoroutine("Counter");
+                StartCoroutine("PauseNavigation");
             }
-            else if(isPaused)
-            {
-                Time.timeScale = 1.0f;
-                //uiText.text = "";
-                isPaused = false;
-                pauseMenuObject.SetActive(false);
-            }
+            
         }
     }
 
@@ -124,8 +118,19 @@ public class GameManager : MonoBehaviour
             }
             if (ConfirmButton())
             {
-              
+              if(nav.transform.position == quitButton)
+              {
+
+              }
+              if(nav.transform.position == resumeButton)
+            {
+                Time.timeScale = 1.0f;
+                //uiText.text = "";
+                isPaused = false;
+                pauseMenuObject.SetActive(false);
+
             }
+        }
 
     }
 
@@ -145,7 +150,7 @@ public class GameManager : MonoBehaviour
 
 
     //Testing
-    IEnumerator Counter()
+    IEnumerator PauseNavigation()
     {
         while (true)
         {

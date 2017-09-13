@@ -21,7 +21,7 @@ public class Combat : MonoBehaviour
     {
         if (player.IsGrounded)
         {
-            if (inputManager.DefendButton(player.ID))
+            if (Time.timeScale != 0.0f && inputManager.DefendButton(player.ID))
                 player.IsDefending = true;
             else if (!inputManager.DefendButton(player.ID))
                 player.IsDefending = false;
