@@ -6,6 +6,7 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
+    
     private Text uiText;
     private Button[] pauseButtons;
     private Button quit;
@@ -34,7 +35,6 @@ public class GameManager : MonoBehaviour
        
         uiText = GameObject.Find("UIText").GetComponent<Text>();
         matchTimerText = GetComponentInChildren<Text>();
-        matchTimer = 10.0f;
         pauseMenuObject = GameObject.FindGameObjectWithTag("ShowOnPause");
         nav = GameObject.FindGameObjectWithTag("Nav");
         pauseButtons = new Button[2];
