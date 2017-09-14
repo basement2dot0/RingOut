@@ -111,7 +111,7 @@ public class GameManager : MonoBehaviour
     }
     private float Navigation()
     {
-        return Input.GetAxis("Vertical1");
+        return Input.GetAxis("Nav");
     }
     
     IEnumerator PauseNavigation()
