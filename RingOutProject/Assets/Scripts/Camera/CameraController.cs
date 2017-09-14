@@ -29,7 +29,7 @@ class CameraController : MonoBehaviour
 
     private void Awake()
     {
-        GameObject[] gameObjects = GameObject.FindGameObjectsWithTag("Player");
+        //GameObject[] gameObjects = GameObject.FindGameObjectsWithTag("Player");
         foreach(var player in GameObject.FindGameObjectsWithTag("Player"))
         {
             if (player.GetComponent<Player>().ID == 1)

@@ -137,7 +137,7 @@ public class AnimationManager : MonoBehaviour
     private bool CanAttack()
     {
 
-        if ((Time.time - player.LastSuccessfulAttack) >= attackDelay)
+        if ((Time.time - player.LastSuccessfulAttack) >= attackDelay && Time.timeScale != 0.0f)
             return true;
         else
             return false;

@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -28,5 +29,10 @@ public class HumanInput : InputManager {
     public override bool JumpButtonDown(int playerID)
     {
         return Input.GetButtonDown("Jump" + playerID.ToString());
+    }
+
+    public override bool PauseButton()
+    {
+        return Input.GetButtonDown("Submit");
     }
 }
