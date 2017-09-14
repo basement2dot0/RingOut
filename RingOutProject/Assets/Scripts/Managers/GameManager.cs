@@ -92,7 +92,7 @@ public class GameManager : MonoBehaviour
             {
                 if(nav.transform.position == quitButton)
                     SceneManager.LoadScene("Main Menu");
-                if(nav.transform.position == resumeButton)
+                else if(nav.transform.position == resumeButton)
                 {
                     Time.timeScale = 1.0f;
                     isPaused = false;
@@ -107,7 +107,12 @@ public class GameManager : MonoBehaviour
     }
     private bool ConfirmButton()
     {
-        return Input.GetButtonDown("Attack1");
+        bool buttonPressed = new bool();
+        if(Input.GetButtonDown("Attack1"))
+            buttonPressed = Input.GetButtonDown("Attack1"); 
+        if (Input.GetButtonDown("Attack2"))
+            buttonPressed = Input.GetButtonDown("Attack2");
+        return buttonPressed;
     }
     private float Navigation()
     {
@@ -116,7 +121,7 @@ public class GameManager : MonoBehaviour
     
     IEnumerator PauseNavigation()
     {
-        while (true)
+        while (pauseMenuObject.activeSelf)
         {
             float pauseEndTime = Time.realtimeSinceStartup + 1f;
             while (Time.realtimeSinceStartup < pauseEndTime)
