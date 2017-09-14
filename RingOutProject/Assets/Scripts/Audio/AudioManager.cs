@@ -43,6 +43,10 @@ public class AudioManager : MonoBehaviour
         audio.clip = hypeMusic;
         audio.PlayOneShot(audio.clip);
     }
+    public void StopHypeMusic()
+    {
+        audio.Stop();
+    }
     public void FadeHypeMusic(float fadeSource)
     {
         volume = fadeSource;

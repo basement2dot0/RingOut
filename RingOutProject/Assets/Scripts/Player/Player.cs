@@ -43,12 +43,21 @@ public class Player : MonoBehaviour{
     [SerializeField]
     private int attackCounter;
     private Vector3 hitDirection;
+
     private DamageType damageType;
+
+    private float lastSuccessfulAttack;
+
 
     //Public Properties 
     public int ID { get { return id; } }
     public Player Opponent { get { return opponent; }}
     public bool IsGrounded { get { return isGrounded; } }
+    public float LastSuccessfulAttack
+    {
+        get { return lastSuccessfulAttack; }
+        set { lastSuccessfulAttack = value; }
+    }
     public Vector3 HitDirection
     {
         get { return hitDirection; }
@@ -123,6 +132,7 @@ public class Player : MonoBehaviour{
     //Unity Methods
     private void Awake()
     {
+        
         canMove = true;
         foreach (var item in GameObject.FindGameObjectsWithTag("Player"))
         {
@@ -130,18 +140,18 @@ public class Player : MonoBehaviour{
                 opponent = item.GetComponent<Player>();
         }
         id = GetComponent<InputManager>().ControlNo;
+
         damageType = GetComponent<DamageType>();
+
+        attackCounter = 0;
+
     }
-    private void Update()
-    {
-        //anim.IsFalling();
-    }
+    
     //Grounded Check
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.tag == "Ground")
             isGrounded = true;
-        
     }
     private void OnCollisionExit(Collision collision)
     {

@@ -32,7 +32,7 @@ public class DamageType : MonoBehaviour {
             case DmgType.LIGHT:
                 //set damage 
                 minDamage = 1.0f;
-                maxDamage = 10.0f;
+                maxDamage = 1.0f;
                 currentDamage = CurrentDamage(minDamage, maxDamage);
                break;
             case DmgType.MEDIUM:
