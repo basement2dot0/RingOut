@@ -8,6 +8,8 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private float matchTimer;
     [SerializeField]
+    private Image[] CountDownNumbers;
+    [SerializeField]
     private Text matchTimerText;
     [SerializeField]
     private float Rounds;
@@ -18,9 +20,12 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private Text ringOutText;
 
+    
+
     private void Awake()
     {
-        matchTimerText = GetComponent<Text>();
+        matchTimerText = GetComponentInChildren<Text>();
+        matchTimer = 60.0f;
         players = new Player[2];
         foreach (var player in GameObject.FindGameObjectsWithTag("Player"))
         {
@@ -32,14 +37,16 @@ public class GameManager : MonoBehaviour
     }
     private void Start()
     {
-        matchTimer = 60.0f;
+
         Rounds = 0;
         ringOutText.text = "";
         
     }
     private void Update()
     {
-        matchTimerText.text = matchTimer.ToString();
+        RoundTimer();
+
+
 
         if (players[1].IsHypeHit)
             Debug.Log(players[1].IsHypeHit.ToString());
@@ -52,8 +59,40 @@ public class GameManager : MonoBehaviour
 
     private void RoundTimer()
     {
-        matchTimer -= (Time.time);
+        
+        matchTimer -= Time.deltaTime;
+        UpdateTimer();
+        if (matchTimer < 0)
+        {
+            matchTimer = 0;
+            DetermineWinner();
+            Time.timeScale = 0.0f;
+
+        }
     }
+    private void UpdateTimer()
+    {
+        int seconds = (int)(matchTimer % 60);
+        matchTimerText.text = seconds.ToString();
+    }
+   
+    private void DetermineWinner()
+    {
+        var slider = gameObject.GetComponentInChildren<Slider>();
+        if(slider.value > 50.0f)
+        {
+            ringOutText.text = "Player 1 wins!";
+        }
+        else if(slider.value < 50.0f)
+        {
+            ringOutText.text = "Player 2 wins!";
+        }
+        else
+        {
+            ringOutText.text = "DRAW!";
+        }
+    }
+
 
 }
 
