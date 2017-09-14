@@ -4,4 +4,10 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/RingMap.unity
+    guid: 33ba7f200a629ba499ec9c605b7e1741
+  - enabled: 1
+    path: Assets/Scenes/Main Menu.unity
+    guid: 9dbf8583309b2894ea41fd060ffe2cd6

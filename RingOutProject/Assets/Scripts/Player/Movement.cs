@@ -53,7 +53,7 @@ public class Movement : MonoBehaviour {
     }
     private bool CanJump()
     {
-        if ((Time.time - lastJump) >= jumpDelay)
+        if ((Time.time - lastJump) >= jumpDelay && Time.timeScale != 0.0f)
             return true;
         else
             return false;
