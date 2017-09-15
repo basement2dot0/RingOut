@@ -142,14 +142,17 @@ public class GameManager : MonoBehaviour
                 nav.transform.position = quitButton ;
             else if (ConfirmButton())
             {
-                if(nav.transform.position == quitButton)
-                    SceneManager.LoadScene("Main Menu");
-                else if(nav.transform.position == resumeButton)
-                {
-                    Time.timeScale = 1.0f;
-                    isPaused = false;
-                    pauseMenuObject.SetActive(false);
-                }
+            if (nav.transform.position == quitButton)
+            {
+                SceneManager.LoadScene("Main Menu");
+                Time.timeScale = 1.0f;
+            }
+            else if (nav.transform.position == resumeButton)
+            {
+                Time.timeScale = 1.0f;
+                isPaused = false;
+                pauseMenuObject.SetActive(false);
+            }
             }
     }
     private bool PauseButton()
