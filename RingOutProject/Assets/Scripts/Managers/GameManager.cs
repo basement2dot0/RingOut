@@ -26,12 +26,15 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private Text ringOutText;
     private AudioManager[] playersTheme;
+    [SerializeField]
+    Image ringOut;
 
     public float Match { get { return match; } set { match = value; } }
     public float Rounds { get { return rounds; } set { rounds = value; } }
 
     private void Awake()
     {
+        ringOut.enabled = false;
        
         uiText = GameObject.Find("UIText").GetComponent<Text>();
         matchTimerText = GetComponentInChildren<Text>();
@@ -177,7 +180,7 @@ public class GameManager : MonoBehaviour
     {
         if (players[0].IsHypeHit || players[1].IsHypeHit)
         {
-            uiText.text = "RING OUT!";
+            ringOut.enabled = true;
         }
 
     }
