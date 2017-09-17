@@ -26,12 +26,15 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private Text ringOutText;
     private AudioManager[] playersTheme;
+    [SerializeField]
+    Image ringOut;
 
     public float Match { get { return match; } set { match = value; } }
     public float Rounds { get { return rounds; } set { rounds = value; } }
 
     private void Awake()
     {
+        ringOut.enabled = false;
        
         uiText = GameObject.Find("UIText").GetComponent<Text>();
         matchTimerText = GetComponentInChildren<Text>();
@@ -142,14 +145,17 @@ public class GameManager : MonoBehaviour
                 nav.transform.position = quitButton ;
             else if (ConfirmButton())
             {
-                if(nav.transform.position == quitButton)
-                    SceneManager.LoadScene("Main Menu");
-                else if(nav.transform.position == resumeButton)
-                {
-                    Time.timeScale = 1.0f;
-                    isPaused = false;
-                    pauseMenuObject.SetActive(false);
-                }
+            if (nav.transform.position == quitButton)
+            {
+                SceneManager.LoadScene("Main Menu");
+                Time.timeScale = 1.0f;
+            }
+            else if (nav.transform.position == resumeButton)
+            {
+                Time.timeScale = 1.0f;
+                isPaused = false;
+                pauseMenuObject.SetActive(false);
+            }
             }
     }
     private bool PauseButton()
@@ -174,7 +180,7 @@ public class GameManager : MonoBehaviour
     {
         if (players[0].IsHypeHit || players[1].IsHypeHit)
         {
-            uiText.text = "RING OUT!";
+            ringOut.enabled = true;
         }
 
     }
