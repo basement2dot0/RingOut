@@ -9,6 +9,18 @@ public class MariePhysics  : Physics
 {
     [SerializeField]
     private float lungeDistance = 5.0f;
+
+    private void Awake()
+    {
+        rb = GetComponent<Rigidbody>();
+        Initialize(speed, fallMultipler);
+        inputManager = GetComponent<InputManager>();
+        player = GetComponent<Player>();
+        wait = new WaitForSeconds(getUpDelay);
+        defaultPosition = player.transform.eulerAngles;
+        defaultSpeed = 20.0f;
+    }
+
     private void Lunge()
     {
         if (player.IsGrounded)
