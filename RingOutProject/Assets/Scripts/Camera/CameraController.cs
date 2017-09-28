@@ -9,16 +9,12 @@ class CameraController : MonoBehaviour
 {
     [SerializeField]
     private Player leftTarget;
-
     [SerializeField]
     private float fov;
-
     [SerializeField]
     private Player rightTarget;
-
     [SerializeField]
     private GameObject center;
-
     [SerializeField]
     private float zoomIn;
     [SerializeField]
@@ -26,10 +22,11 @@ class CameraController : MonoBehaviour
 
     private float lastFrameTime;
     private float myDeltaTime;
+    private Vector3 defaultCameraPosition;
 
     private void Awake()
     {
-        //GameObject[] gameObjects = GameObject.FindGameObjectsWithTag("Player");
+        defaultCameraPosition = Camera.main.transform.position;
         foreach(var player in GameObject.FindGameObjectsWithTag("Player"))
         {
             if (player.GetComponent<Player>().ID == 1)
@@ -45,6 +42,8 @@ class CameraController : MonoBehaviour
     private void Update()
     {
         CenterFocus();
+        HypeHitFocus();
+        PlayerHypedFocus();
     }
 
     private void LateUpdate()
@@ -58,25 +57,53 @@ class CameraController : MonoBehaviour
     /// </summary>
     private void CenterFocus()
     {
+            Camera.main.transform.position = defaultCameraPosition;
+            Camera.main.transform.parent = null;
+            Camera.main.orthographic = true;
+            center.transform.position = (leftTarget.transform.position + rightTarget.transform.position) / 2;
+            Camera.main.transform.LookAt(center.transform);
+        
+    }
+    private void HypeHitFocus()
+    {
         if (leftTarget.IsHypeHit)
         {
-            center.transform.position = leftTarget.transform.position;
-            Camera.main.transform.LookAt(center.transform);
-            Camera.main.fieldOfView = (defaultZoom + zoomIn);
+            PositionHypeHitCamera(leftTarget.transform);
         }
         if (rightTarget.IsHypeHit)
         {
-            center.transform.position = rightTarget.transform.position;
-            Camera.main.transform.LookAt(center.transform);
-            if (Camera.main.fieldOfView >= fov)
-                Camera.main.fieldOfView = fov;
-            Time.timeScale = 1;
+            PositionHypeHitCamera(rightTarget.transform);
         }
-        else
+    }
+    private void PlayerHypedFocus()
+    {
+        if(leftTarget.IsTaunting)
         {
-            center.transform.position = (leftTarget.transform.position + rightTarget.transform.position) / 2;
-            Camera.main.transform.LookAt(center.transform);
+            PositionHypeCamera(leftTarget.transform);
         }
+        if (rightTarget.IsTaunting)
+        {
+            PositionHypeCamera(rightTarget.transform);
+        }
+    }
+
+    private void PositionHypeHitCamera(Transform target)
+    {
+        Camera.main.transform.position = defaultCameraPosition;
+        Camera.main.transform.parent = null;
+        Camera.main.orthographic = true;
+        Camera.main.transform.LookAt(target.position);
+        Camera.main.fieldOfView = (defaultZoom + zoomIn);
+        //Time.timeScale = 1;
+    }
+    private void PositionHypeCamera(Transform target)
+    {
+        Camera.main.transform.LookAt(target);
+        Camera.main.transform.SetParent(target);
+        Camera.main.transform.position = center.transform.position;
+        Camera.main.orthographic = false;
+        Camera.main.transform.position = new Vector3(Camera.main.transform.position.x, 45.50f, Camera.main.transform.position.z);
+        Camera.main.fieldOfView = 45.0f;
     }
 }
 
