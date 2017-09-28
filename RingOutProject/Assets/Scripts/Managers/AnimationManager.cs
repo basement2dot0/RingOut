@@ -87,7 +87,7 @@ public class AnimationManager : MonoBehaviour
         if (player.IsHyped && !player.IsTaunting)
         {
             
-            if ((inputManager.AttackButtonDown(player.ID) && player.IsGrounded))
+            if ((inputManager.AttackButtonDown(player.ID) && player.IsGrounded && !player.IsKnockedBack))
             {
                 anim.Play("HypeAttack");
                 StartCoroutine("ResetHype");
@@ -147,7 +147,7 @@ public class AnimationManager : MonoBehaviour
     private bool CanAttack()
     {
 
-        if ((Time.time - player.LastSuccessfulAttack) >= attackDelay && Time.timeScale != 0.0f)
+        if ((Time.time - player.LastSuccessfulAttack) >= attackDelay && Time.timeScale != 0.0f && !player.IsKnockedBack && !player.Opponent.IsTaunting)
             return true;
         else
             return false;
