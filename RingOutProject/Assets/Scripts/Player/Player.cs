@@ -10,8 +10,10 @@ using UnityEngine;
 [RequireComponent(typeof(Movement))]
 [RequireComponent(typeof(AnimationManager))]
 public class Player : MonoBehaviour{
-    
+
     //Universal Player variables
+    [SerializeField]
+    private bool isExhausted;
     [SerializeField]
     private int id;
     [SerializeField]
@@ -53,6 +55,11 @@ public class Player : MonoBehaviour{
     public int ID { get { return id; } }
     public Player Opponent { get { return opponent; }}
     public bool IsGrounded { get { return isGrounded; } }
+    public bool IsExhausted
+    {
+        get { return isExhausted; }
+        set { isExhausted = value; }
+    }
     public float LastSuccessfulAttack
     {
         get { return lastSuccessfulAttack; }

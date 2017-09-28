@@ -34,6 +34,7 @@ public class AnimationManager : MonoBehaviour
         Jump();
         Block();
         HypeHit();
+        Exhausted();
     }
     private void LateUpdate()
     {
@@ -104,6 +105,14 @@ public class AnimationManager : MonoBehaviour
         else
             anim.ResetTrigger("isHit");
     }
+    private void Exhausted()
+    {
+        if (player.IsExhausted)
+        {
+            anim.Play("Exhausted");
+            StartCoroutine("ExhaustReset");
+        }
+    }
 
     private void AttackManager()
     {
@@ -154,6 +163,13 @@ public class AnimationManager : MonoBehaviour
         yield return null;
         player.IsHit = false;
     }
+    private IEnumerator ExhaustReset()
+    {
+        WaitForEndOfFrame exhaustWait = new WaitForEndOfFrame();
+        WaitForSeconds waitForSeconds = new WaitForSeconds(2.0f);
+        yield return waitForSeconds;
+        player.IsExhausted = false;
+    }
 
     private float ResetAttackCounter()
     {
@@ -166,6 +182,8 @@ public class AnimationManager : MonoBehaviour
     {
         yield return hypeDelay;
         player.IsHyped = false;
+        player.IsExhausted = true;
+        
     }
 
 

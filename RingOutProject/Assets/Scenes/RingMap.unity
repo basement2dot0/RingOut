@@ -2740,7 +2740,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29b812145d5ace14fac665c4944f21c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  matchTimer: 20
+  matchTimer: 99
   matchTimerText: {fileID: 0}
   rounds: 0
   match: 0

@@ -121,7 +121,7 @@ public class Physics : MonoBehaviour
     private bool CanMove()
     {
 
-        if ((Time.time - player.LastSuccessfulAttack) >= moveDelay && !player.IsKnockedBack)
+        if ((Time.time - player.LastSuccessfulAttack) >= moveDelay && !player.IsKnockedBack && !player.IsExhausted )
         {
             speed = defaultSpeed;
             player.CanMove = true;
