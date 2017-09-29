@@ -10,41 +10,30 @@ public class Physics : MonoBehaviour
     protected Rigidbody rb;
     protected Player player;
     protected InputManager inputManager;
-    private Vector3 direction;
+    protected Vector3 direction;
     [SerializeField]
-    private float fallMultipler;
+    protected float fallMultipler;
     [SerializeField]
-    private float jumpHeight;
+    protected float jumpHeight;
     [SerializeField]
-    private float speed;
+    protected float speed;
     [SerializeField]
-    private float knockBackDistance; //This may be better off as a Vector3
+    protected float knockBackDistance; //This may be better off as a Vector3
     [SerializeField]
-    private float lastAttack;
+    protected float lastAttack;
     [SerializeField]
-    private float moveDelay;
-    private float getUpDelay = 1.5f;
-    private WaitForSeconds wait;
-    private Vector3 defaultPosition;
-    private float defaultSpeed = 20.0f;
-    
-
-
-    private void Awake()
-    {
-        rb = GetComponent<Rigidbody>();
-        Initialize(speed, fallMultipler);
-        inputManager = GetComponent<InputManager>();
-        player = GetComponent<Player>();
-        wait = new WaitForSeconds(getUpDelay);
-        defaultPosition = player.transform.eulerAngles;
-    }
+    protected float moveDelay;
+    protected float getUpDelay = 1.5f;
+    protected WaitForSeconds wait;
+    protected Vector3 defaultPosition;
+    protected float defaultSpeed;
     
     private void LateUpdate()
     {
         Jump();
         Gravity();
         AttackMovementRestriction();
+        Hit();
         KnockedBack();
         UpdatePositon();
         UpdateRotation();
@@ -94,7 +83,11 @@ public class Physics : MonoBehaviour
             rb.velocity += player.Opponent.transform.forward * 30 * Time.time;
        
     }
-    
+    private void Hit()
+    {
+        if (player.IsHit)
+            StartCoroutine("HitKnockBack");
+    }
     private void KnockedBack()
     {
         if(player.IsKnockedBack)
@@ -118,10 +111,20 @@ public class Physics : MonoBehaviour
         player.CanMove = true;
       //  player.transform.eulerAngles = defaultPosition;
     }
+
+    private IEnumerator HitKnockBack()
+    {
+        float knockBackForce = 200.0f;
+        player.transform.forward = -player.Opponent.HitDirection;
+        rb.position += player.Opponent.HitDirection * knockBackForce * Time.deltaTime;
+        yield return null;
+        player.IsHit = false;
+        player.CanMove = true;
+    }
     private bool CanMove()
     {
 
-        if ((Time.time - player.LastSuccessfulAttack) >= moveDelay && !player.IsKnockedBack)
+        if ((Time.time - player.LastSuccessfulAttack) >= moveDelay && !player.IsKnockedBack && !player.IsHit)
         {
             speed = defaultSpeed;
             player.CanMove = true;
@@ -135,7 +138,7 @@ public class Physics : MonoBehaviour
         }
 
     }
-    private void Initialize(float _speed,float _fallMultipler)
+    protected void Initialize(float _speed,float _fallMultipler)
     {
         if (_speed <= 0)
             _speed = defaultSpeed;
