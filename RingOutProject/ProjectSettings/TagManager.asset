@@ -12,6 +12,7 @@ TagManager:
   - Hitbox
   - ShowOnPause
   - Nav
+  - camera
   layers:
   - Default
   - TransparentFX

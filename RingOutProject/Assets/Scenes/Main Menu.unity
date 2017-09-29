@@ -240,7 +240,7 @@ GameObject:
   - component: {fileID: 172593327}
   - component: {fileID: 172593326}
   m_Layer: 5
-  m_Name: Image
+  m_Name: Logo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -539,6 +539,7 @@ GameObject:
   - component: {fileID: 950040824}
   - component: {fileID: 950040823}
   - component: {fileID: 950040822}
+  - component: {fileID: 950040825}
   m_Layer: 5
   m_Name: Player vs Player
   m_TagString: Untagged
@@ -649,6 +650,17 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 950040820}
+--- !u!114 &950040825
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 950040820}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 63a77313958a26e45853528c997c0b83, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1029779704
 GameObject:
   m_ObjectHideFlags: 0

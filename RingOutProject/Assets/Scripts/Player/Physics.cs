@@ -10,27 +10,27 @@ public class Physics : MonoBehaviour
     protected Rigidbody rb;
     protected Player player;
     protected InputManager inputManager;
-    private Vector3 direction;
+    protected Vector3 direction;
     [SerializeField]
-    private float fallMultipler;
+    protected float fallMultipler;
     [SerializeField]
-    private float jumpHeight;
+    protected float jumpHeight;
     [SerializeField]
-    private float speed;
+    protected float speed;
     [SerializeField]
-    private float knockBackDistance; //This may be better off as a Vector3
+    protected float knockBackDistance; //This may be better off as a Vector3
     [SerializeField]
-    private float lastAttack;
+    protected float lastAttack;
     [SerializeField]
-    private float moveDelay;
-    private float getUpDelay = 1.5f;
-    private WaitForSeconds wait;
-    private Vector3 defaultPosition;
-    private float defaultSpeed = 20.0f;
+    protected float moveDelay;
+    protected float getUpDelay = 1.5f;
+    protected WaitForSeconds wait;
+    protected Vector3 defaultPosition;
+    protected float defaultSpeed = 20.0f;
     
 
 
-    private void Awake()
+    protected void Awake()
     {
         rb = GetComponent<Rigidbody>();
         Initialize(speed, fallMultipler);
@@ -40,7 +40,7 @@ public class Physics : MonoBehaviour
         defaultPosition = player.transform.eulerAngles;
     }
     
-    private void LateUpdate()
+    protected void LateUpdate()
     {
         Jump();
         Gravity();
@@ -52,7 +52,7 @@ public class Physics : MonoBehaviour
 
     }
 
-    private void AttackMovementRestriction()
+    protected void AttackMovementRestriction()
     {
         if (player.IsGrounded)
         {
@@ -61,7 +61,7 @@ public class Physics : MonoBehaviour
         }
     }
    
-    private void UpdatePositon()
+    protected void UpdatePositon()
     {
         if (CanMove() && player.IsGrounded || !player.IsKnockedBack)
         {
@@ -71,43 +71,43 @@ public class Physics : MonoBehaviour
         
         
     }
-    private void UpdateRotation()
+    protected void UpdateRotation()
     {
         if (CanMove() && inputManager.Movement(player.ID) != Vector3.zero)
             rb.rotation = Quaternion.LookRotation(inputManager.Movement(player.ID));
         
     }
-    private void Jump()
+    protected void Jump()
     {
         if (player.IsJumping && !player.IsKnockedBack)
             rb.velocity += (Vector3.up * jumpHeight) +(inputManager.Movement(player.ID)*speed);
         
     }
-    private void Gravity()
+    protected void Gravity()
     {
         if (rb.velocity.y < 0)
             rb.velocity += (-inputManager.Movement(player.ID) + Vector3.up) * UnityEngine.Physics.gravity.y * (fallMultipler - 1) * Time.deltaTime;
     }
-    private void RingOut()
+    protected void RingOut()
     {
         if (player.IsHypeHit)
             rb.velocity += player.Opponent.transform.forward * 30 * Time.time;
        
     }
     
-    private void KnockedBack()
+    protected void KnockedBack()
     {
         if(player.IsKnockedBack)
            StartCoroutine("GetUp");
     }
-    private void Push()
+    protected void Push()
     {
         if(player.IsPushed)
             player.Opponent.transform.position += inputManager.Movement(player.Opponent.ID);
     }
     
 
-    private IEnumerator GetUp()
+    protected IEnumerator GetUp()
     {
         
         float knockBackForce = 10.0f;
@@ -118,10 +118,10 @@ public class Physics : MonoBehaviour
         player.CanMove = true;
       //  player.transform.eulerAngles = defaultPosition;
     }
-    private bool CanMove()
+    protected bool CanMove()
     {
 
-        if ((Time.time - player.LastSuccessfulAttack) >= moveDelay && !player.IsKnockedBack && !player.IsExhausted )
+        if ((Time.time - player.LastSuccessfulAttack) >= moveDelay && !player.IsKnockedBack && !player.IsExhausted && !player.IsHit)
         {
             speed = defaultSpeed;
             player.CanMove = true;
@@ -135,7 +135,7 @@ public class Physics : MonoBehaviour
         }
 
     }
-    private void Initialize(float _speed,float _fallMultipler)
+    protected void Initialize(float _speed,float _fallMultipler)
     {
         if (_speed <= 0)
             _speed = defaultSpeed;

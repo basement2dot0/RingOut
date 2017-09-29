@@ -6,7 +6,11 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
-    
+    private Vector3 cameraPosition;
+    private bool isMatchOver;
+    private bool isPlayerOneVictory;
+    private Camera matchSetcamera;
+    private Camera mainCamera;
     private Text uiText;
     private Button[] pauseButtons;
     private Button quit;
@@ -28,6 +32,8 @@ public class GameManager : MonoBehaviour
     private AudioManager[] playersTheme;
     [SerializeField]
     Image ringOut;
+    [SerializeField]
+    private GameObject playerBounds;
 
     public float Match { get { return match; } set { match = value; } }
     public float Rounds { get { return rounds; } set { rounds = value; } }
@@ -35,7 +41,7 @@ public class GameManager : MonoBehaviour
     private void Awake()
     {
         ringOut.enabled = false;
-       
+        
         uiText = GameObject.Find("UIText").GetComponent<Text>();
         matchTimerText = GetComponentInChildren<Text>();
         pauseMenuObject = GameObject.FindGameObjectWithTag("ShowOnPause");
@@ -50,28 +56,41 @@ public class GameManager : MonoBehaviour
         }
         pauseMenuObject.SetActive(false);
         nav.transform.position = (pauseButtons[0].transform.position - new Vector3(100, 0, 0));
+        
     }
     private void Start()
     {
-
+        playersTheme = new AudioManager[2];
         players = new Player[2];
         foreach (var player in GameObject.FindGameObjectsWithTag("Player"))
         {
             if (player.GetComponent<Player>().ID == 1)
+            {
                 players[0] = player.GetComponent<Player>();
+                playersTheme[0] = player.GetComponent<AudioManager>();
+            }
             else
+            {
                 players[1] = player.GetComponent<Player>();
+                playersTheme[1] = player.GetComponent<AudioManager>();
+            }
+               
             rounds = 0;
             uiText.text = "";
         }
-        playersTheme = new AudioManager[2];
-        foreach (var theme in GameObject.FindGameObjectsWithTag("Player"))
+        
+        foreach (var camera in GameObject.FindGameObjectsWithTag("camera"))
         {
-            if (theme.GetComponent<Player>().ID == 1)
-                playersTheme[0] = theme.GetComponent<AudioManager>();
-            else
-                playersTheme[1] = theme.GetComponent<AudioManager>();
+            matchSetcamera = camera.GetComponent<Camera>();
         }
+        foreach (var camera in GameObject.FindGameObjectsWithTag("MainCamera"))
+        {
+            mainCamera = camera.GetComponent<Camera>();
+            cameraPosition = mainCamera.transform.position;
+        }
+        
+        matchSetcamera.enabled = false;
+        
     }
 
     private void Update()
@@ -79,16 +98,18 @@ public class GameManager : MonoBehaviour
         RoundTimer();
         PauseMenu();
         RingOutVictory();
+        MatchSet();
     }
 
     private void RoundTimer()
     {
-        matchTimer -= Time.deltaTime;
+        if (!isMatchOver)
+            matchTimer -= Time.deltaTime;
         if (matchTimer <= 0)
         {
             //matchTimer = 0;
             UpdateTimer();
-            DetermineWinner();
+            DetermineMomentumWinner();
             Time.timeScale = 0.0f;
         }
         else if(matchTimer > 0)
@@ -97,11 +118,13 @@ public class GameManager : MonoBehaviour
     }
     private void UpdateTimer()
     {
-        int seconds = (int)(matchTimer % 60);
-        matchTimerText.text = seconds.ToString();
+       
+            int seconds = (int)(matchTimer % 60);
+            matchTimerText.text = seconds.ToString();
+        
         
     }
-   private void DetermineWinner()
+   private void DetermineMomentumWinner()
     {
         var slider = gameObject.GetComponentInChildren<Slider>();
         if(slider.value > 50.0f)
@@ -118,7 +141,7 @@ public class GameManager : MonoBehaviour
             uiText.text = "DRAW!";
         
     }
-
+    
     private void PauseMenu()
     {
         if (PauseButton())
@@ -178,13 +201,68 @@ public class GameManager : MonoBehaviour
 
     private void RingOutVictory()
     {
-        if (players[0].IsHypeHit || players[1].IsHypeHit)
+        if (!isMatchOver)
         {
-            ringOut.enabled = true;
+            if (players[0].IsHypeHit)
+            {
+                ringOut.enabled = true;
+                isPlayerOneVictory = false;
+            }
+            else if (players[1].IsHypeHit)
+            {
+                ringOut.enabled = true;
+                isPlayerOneVictory = true;
+            }
+            if (players[0].transform.position.y < playerBounds.transform.position.y)
+            {
+                ringOut.enabled = true;
+                isMatchOver = true;
+                isPlayerOneVictory = false;
+
+            }
+            else if (players[1].transform.position.y < playerBounds.transform.position.y)
+            {
+                ringOut.enabled = true;
+                isMatchOver = true;
+                isPlayerOneVictory = true;
+                
+
+            }
         }
-
     }
+    private void MatchSet()
+    {
+        if (isMatchOver)
+        {
+            //Wait X seconds
+            StartCoroutine("MatchSetDelay");
+            //
+           
+        }
+    }
+    IEnumerator MatchSetDelay()
+    {
+        Debug.Log("Match");
+        WaitForSeconds delay = new WaitForSeconds(2.0f);
+        yield return delay;
+        ringOut.enabled = false;
+        matchSetcamera.enabled = true;
+        matchSetcamera.transform.position = cameraPosition;
+        if (isPlayerOneVictory)
+        {
 
+            matchSetcamera.transform.LookAt(players[0].transform.position);
+            matchSetcamera.fieldOfView = 20.0f;
+            uiText.text = string.Format("PLAYER 1 WINS");
+        }
+        if(!isPlayerOneVictory)
+        {
+            matchSetcamera.transform.LookAt(players[1].transform.position);
+            matchSetcamera.fieldOfView = 20.0f;
+            uiText.text = string.Format("PLAYER 2 WINS");
+        }
+        
+    }
     IEnumerator PauseNavigation()
     {
         while (pauseMenuObject.activeSelf)

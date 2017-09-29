@@ -13,6 +13,7 @@ public class AnimationManager : MonoBehaviour
     private InputManager inputManager;
     [SerializeField]
     private float attackDelay;
+    [SerializeField]
     private WaitForSeconds hypeDelay;
 
     private void Start()
@@ -20,7 +21,10 @@ public class AnimationManager : MonoBehaviour
         anim = GetComponent<Animator>();
         player = GetComponent<Player>();
         inputManager = GetComponent<InputManager>();
-        hypeDelay = new WaitForSeconds(1.5f);
+        if(player.name == string.Format("Xiao"))
+            hypeDelay = new WaitForSeconds(.5f);
+        else
+            hypeDelay = new WaitForSeconds(1.5f);
         attackDelay = 1.0f;
 
     }
