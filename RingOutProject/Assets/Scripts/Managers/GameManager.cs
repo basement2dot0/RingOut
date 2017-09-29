@@ -207,19 +207,11 @@ public class GameManager : MonoBehaviour
             {
                 ringOut.enabled = true;
                 isPlayerOneVictory = false;
-                mainCamera.enabled = false;
-                matchSetcamera.transform.LookAt(players[0].transform.position);
-                matchSetcamera.transform.position = new Vector3((players[0].transform.position.x) - (-9.96f), (players[0].transform.position.y) - (16), (players[0].transform.position.z) - (-74.2f));
-
             }
             else if (players[1].IsHypeHit)
             {
                 ringOut.enabled = true;
                 isPlayerOneVictory = true;
-                mainCamera.enabled = false;
-                matchSetcamera.enabled = true;
-                matchSetcamera.transform.position = new Vector3((players[1].transform.position.x) - (-9.96f), (players[1].transform.position.y) - (16), (players[1].transform.position.z) - (-74.2f));
-                matchSetcamera.transform.LookAt(players[1].transform.position);
             }
             if (players[0].transform.position.y < playerBounds.transform.position.y)
             {
@@ -233,7 +225,7 @@ public class GameManager : MonoBehaviour
                 ringOut.enabled = true;
                 isMatchOver = true;
                 isPlayerOneVictory = true;
-                Debug.Log("Ring Out");
+                
 
             }
         }
