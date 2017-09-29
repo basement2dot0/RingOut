@@ -70,7 +70,17 @@ public class Hitbox : MonoBehaviour
     private void OpenHypeHitBox()
     {
         if (player.IsGrounded)
+        {
             hypeAttackHitBox.enabled = true;
+            StartCoroutine("CloseHype"); // this disables the hitbox incase the animation event did not
+
+        }
+    }
+    private IEnumerator CloseHype()
+    {
+        yield return delay;
+        player.IsHyped = false;
+        CloseHitBox();
     }
     private IEnumerator CloseHitBoxes()
     {

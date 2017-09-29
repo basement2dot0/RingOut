@@ -22,7 +22,7 @@ public class AnimationManager : MonoBehaviour
         anim = GetComponent<Animator>();
         player = GetComponent<Player>();
         inputManager = GetComponent<InputManager>();
-       // hypeDelay = new WaitForSeconds(0.5f);
+       hypeDelay = new WaitForSeconds(0.5f);
         attackDelay = 1.0f;
 
     }
@@ -82,7 +82,7 @@ public class AnimationManager : MonoBehaviour
             if ((inputManager.AttackButtonDown(player.ID) && player.IsGrounded))
             {
                 anim.Play("HypeAttack");
-                StartCoroutine("ResetHype");
+                //StartCoroutine("ResetHype");
             }
         }
            

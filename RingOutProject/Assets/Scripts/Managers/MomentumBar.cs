@@ -77,6 +77,7 @@ public class MomentumBar : MonoBehaviour
                 playersTheme[0].PlayHypeMusic();
                 hypeText.text = "Player One is HYPED!";
                 players[0].IsHyped = true;
+            Debug.Log(players[0].name + "Is Hyped");
                 isHyped = true;
                 isTimer = true;
             }
