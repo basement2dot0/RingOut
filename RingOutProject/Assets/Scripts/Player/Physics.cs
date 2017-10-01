@@ -26,25 +26,14 @@ public class Physics : MonoBehaviour
     protected float getUpDelay = 1.5f;
     protected WaitForSeconds wait;
     protected Vector3 defaultPosition;
-    protected float defaultSpeed = 20.0f;
-    
+    protected float defaultSpeed;
 
-
-    protected void Awake()
-    {
-        rb = GetComponent<Rigidbody>();
-        Initialize(speed, fallMultipler);
-        inputManager = GetComponent<InputManager>();
-        player = GetComponent<Player>();
-        wait = new WaitForSeconds(getUpDelay);
-        defaultPosition = player.transform.eulerAngles;
-    }
-    
-    protected void LateUpdate()
+    private void LateUpdate()
     {
         Jump();
         Gravity();
         AttackMovementRestriction();
+        Hit();
         KnockedBack();
         UpdatePositon();
         UpdateRotation();
@@ -52,7 +41,7 @@ public class Physics : MonoBehaviour
 
     }
 
-    protected void AttackMovementRestriction()
+    private void AttackMovementRestriction()
     {
         if (player.IsGrounded)
         {
@@ -60,67 +49,81 @@ public class Physics : MonoBehaviour
                 lastAttack = Time.time;
         }
     }
-   
-    protected void UpdatePositon()
+
+    private void UpdatePositon()
     {
         if (CanMove() && player.IsGrounded || !player.IsKnockedBack)
         {
             if (!player.IsDefending && player.IsWalking)
                 transform.position += inputManager.Movement(player.ID) * speed * Time.deltaTime;
         }
-        
-        
+
+
     }
-    protected void UpdateRotation()
+    private void UpdateRotation()
     {
         if (CanMove() && inputManager.Movement(player.ID) != Vector3.zero)
             rb.rotation = Quaternion.LookRotation(inputManager.Movement(player.ID));
-        
+
     }
-    protected void Jump()
+    private void Jump()
     {
         if (player.IsJumping && !player.IsKnockedBack)
-            rb.velocity += (Vector3.up * jumpHeight) +(inputManager.Movement(player.ID)*speed);
-        
+            rb.velocity += (Vector3.up * jumpHeight) + (inputManager.Movement(player.ID) * speed);
+
     }
-    protected void Gravity()
+    private void Gravity()
     {
         if (rb.velocity.y < 0)
             rb.velocity += (-inputManager.Movement(player.ID) + Vector3.up) * UnityEngine.Physics.gravity.y * (fallMultipler - 1) * Time.deltaTime;
     }
-    protected void RingOut()
+    private void RingOut()
     {
         if (player.IsHypeHit)
             rb.velocity += player.Opponent.transform.forward * 30 * Time.time;
-       
+
     }
-    
-    protected void KnockedBack()
+    private void Hit()
     {
-        if(player.IsKnockedBack)
-           StartCoroutine("GetUp");
+        if (player.IsHit)
+            StartCoroutine("HitKnockBack");
     }
-    protected void Push()
+    private void KnockedBack()
     {
-        if(player.IsPushed)
+        if (player.IsKnockedBack)
+            StartCoroutine("GetUp");
+    }
+    private void Push()
+    {
+        if (player.IsPushed)
             player.Opponent.transform.position += inputManager.Movement(player.Opponent.ID);
     }
-    
 
-    protected IEnumerator GetUp()
+
+    private IEnumerator GetUp()
     {
-        
+
         float knockBackForce = 10.0f;
         player.transform.forward = -player.Opponent.HitDirection;
-        rb.position += player.Opponent.HitDirection  *knockBackForce * Time.deltaTime;
+        rb.position += player.Opponent.HitDirection * knockBackForce * Time.deltaTime;
         yield return wait;
         player.IsKnockedBack = false;
         player.CanMove = true;
-      //  player.transform.eulerAngles = defaultPosition;
+        //  player.transform.eulerAngles = defaultPosition;
     }
-    protected bool CanMove()
+
+    private IEnumerator HitKnockBack()
     {
-        if ((Time.time - player.LastSuccessfulAttack) >= moveDelay && !player.IsKnockedBack && !player.IsExhausted && !player.IsHit && !player.IsTaunting && !player.Opponent.IsTaunting)
+        float knockBackForce = 200.0f;
+        player.transform.forward = -player.Opponent.HitDirection;
+        rb.position += player.Opponent.HitDirection * knockBackForce * Time.deltaTime;
+        yield return null;
+        player.IsHit = false;
+        player.CanMove = true;
+    }
+    private bool CanMove()
+    {
+        if ((Time.time - player.LastSuccessfulAttack) >= moveDelay && !player.IsKnockedBack && !player.IsTaunting && !player.Opponent.IsTaunting && !player.IsExhausted)
         {
             speed = defaultSpeed;
             player.CanMove = true;
@@ -134,7 +137,7 @@ public class Physics : MonoBehaviour
         }
 
     }
-    protected void Initialize(float _speed,float _fallMultipler)
+    protected void Initialize(float _speed, float _fallMultipler)
     {
         if (_speed <= 0)
             _speed = defaultSpeed;
