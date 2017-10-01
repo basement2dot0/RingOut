@@ -76,18 +76,19 @@ public class MomentumBar : MonoBehaviour
             {
                 playersTheme[0].PlayHypeMusic();
                 hypeText.text = "Player One is HYPED!";
+                players[0].IsTaunting = true;
                 players[0].IsHyped = true;
             Debug.Log(players[0].name + "Is Hyped");
                 isHyped = true;
-                isTimer = true;
+              
             }
             else if (momentumBar.value == momentumBar.minValue && !isHyped)
             {
                 playersTheme[1].PlayHypeMusic();
                 hypeText.text = "Player Two is HYPED!";
+                players[1].IsTaunting = true;
                 players[1].IsHyped = true;
                 isHyped = true;
-                isTimer = true;
             }
     }
 
@@ -138,7 +139,7 @@ public class MomentumBar : MonoBehaviour
         if (isHyped)
         {
 
-            if (!players[0].IsHyped && !players[1].IsHyped || isHyped && momentumBar.value == startingValue)
+            if (!players[0].IsHyped && !players[1].IsHyped || momentumBar.value == startingValue)
             {
                 isHyped = false;
                 isTimer = false;
@@ -149,14 +150,16 @@ public class MomentumBar : MonoBehaviour
                 playersTheme[0].StopHypeMusic();
                 playersTheme[1].StopHypeMusic();
             }
-            else if (players[0].IsHyped)
+            else if (players[0].IsHyped && !players[0].IsTaunting)
             {
+                isTimer = true;
                 momentumBar.value = Mathf.MoveTowards(momentumBar.value, startingValue, Time.deltaTime * hypeTimer);
                 playersTheme[0].FadeHypeMusic((momentumBar.value - startingValue) / 50);
                 
             }
-            else if (players[1].IsHyped)
+            else if (players[1].IsHyped && !players[1].IsTaunting)
             {
+                isTimer = true;
                 momentumBar.value = Mathf.MoveTowards(momentumBar.value, startingValue, Time.deltaTime * hypeTimer);
                 playersTheme[1].FadeHypeMusic((momentumBar.value + startingValue) / 50);
             }

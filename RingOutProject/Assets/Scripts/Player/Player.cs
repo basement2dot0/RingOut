@@ -130,6 +130,8 @@ public class Player : MonoBehaviour{
         set { damageType = value; }
     }
 
+    public bool IsTaunting { get; internal set; }
+
     //Unity Methods
     private void Awake()
     {
