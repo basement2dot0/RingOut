@@ -13,7 +13,6 @@ public class AnimationManager : MonoBehaviour
     private InputManager inputManager;
     [SerializeField]
     private float attackDelay;
-
     [SerializeField]
     private WaitForSeconds hypeDelay;
 
@@ -22,7 +21,10 @@ public class AnimationManager : MonoBehaviour
         anim = GetComponent<Animator>();
         player = GetComponent<Player>();
         inputManager = GetComponent<InputManager>();
-       hypeDelay = new WaitForSeconds(0.5f);
+        if(player.name == string.Format("Xiao"))
+            hypeDelay = new WaitForSeconds(.5f);
+        else
+            hypeDelay = new WaitForSeconds(1.5f);
         attackDelay = 1.0f;
 
     }
@@ -37,6 +39,7 @@ public class AnimationManager : MonoBehaviour
         Jump();
         Block();
         HypeHit();
+        Exhausted();
     }
     private void LateUpdate()
     {
@@ -92,7 +95,7 @@ public class AnimationManager : MonoBehaviour
             if ((inputManager.AttackButtonDown(player.ID) && player.IsGrounded && !player.IsKnockedBack))
             {
                 anim.Play("HypeAttack");
-                //StartCoroutine("ResetHype");
+                StartCoroutine("ResetHype");
             }
         }
            
@@ -109,13 +112,20 @@ public class AnimationManager : MonoBehaviour
     private void Hit()
     {
         if (player.IsHit)
-        {
-            anim.Play("Hit");
-            //anim.SetTrigger("isHit");
-            //StartCoroutine("ResetHit");
+        { 
+            anim.SetTrigger("isHit");
+            StartCoroutine("ResetHit");
         }
         else
             anim.ResetTrigger("isHit");
+    }
+    private void Exhausted()
+    {
+        if (player.IsExhausted)
+        {
+            anim.Play("Exhausted");
+            StartCoroutine("ExhaustReset");
+        }
     }
 
     private void AttackManager()
@@ -162,11 +172,18 @@ public class AnimationManager : MonoBehaviour
         yield return jumpDelay;
         value = false;
     }
-    //private IEnumerator ResetHit( )
-    //{
-    //    yield return null;
-    //    player.IsHit = false;
-    //}
+    private IEnumerator ResetHit( )
+    {
+        yield return null;
+        player.IsHit = false;
+    }
+    private IEnumerator ExhaustReset()
+    {
+        WaitForEndOfFrame exhaustWait = new WaitForEndOfFrame();
+        WaitForSeconds waitForSeconds = new WaitForSeconds(2.0f);
+        yield return waitForSeconds;
+        player.IsExhausted = false;
+    }
 
     private float ResetAttackCounter()
     {
@@ -179,6 +196,8 @@ public class AnimationManager : MonoBehaviour
     {
         yield return hypeDelay;
         player.IsHyped = false;
+        player.IsExhausted = true;
+        
     }
     private IEnumerator ResetTaunt()
     {

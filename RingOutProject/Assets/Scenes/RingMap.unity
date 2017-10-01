@@ -5187,7 +5187,7 @@ GameObject:
   - component: {fileID: 2099117319}
   - component: {fileID: 2099117318}
   m_Layer: 0
-  m_Name: XaioXaio
+  m_Name: Xiao
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5307,6 +5307,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc520a8477fd7c94c8fb5939478d9878, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isExhausted: 0
   id: 1
   isGrounded: 0
   isHyped: 0

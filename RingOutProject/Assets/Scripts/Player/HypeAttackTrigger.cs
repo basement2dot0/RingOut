@@ -13,7 +13,6 @@ public class HypeAttackTrigger : TriggerManager
             if (player.IsHyped && !player.Opponent.IsDefending)
             {
                  player.Opponent.IsHypeHit = true;
-                 Debug.Log(player.Opponent.name + " was hype hit!");
             }
         }
 
