@@ -78,6 +78,7 @@ public class MomentumBar : MonoBehaviour
                 hypeText.text = "Player One is HYPED!";
                 players[0].IsTaunting = true;
                 players[0].IsHyped = true;
+            Debug.Log(players[0].name + "Is Hyped");
                 isHyped = true;
               
             }
@@ -98,14 +99,14 @@ public class MomentumBar : MonoBehaviour
             if ((momentumBar.value + players[0].DamageType.CurrentDamage(damage.MinDamage, damage.MaxDamage)) > momentumBar.maxValue)
                 momentumBar.value = momentumBar.maxValue;
             else
-                momentumBar.value += players[0].DamageType.CurrentDamage(damage.MinDamage, damage.MaxDamage);
+                momentumBar.value += players[0].DamageType.CurrentDamage(players[0].DamageType.MinDamage, players[0].DamageType.MaxDamage);
         }
         else 
         {
             if ((momentumBar.value + players[1].DamageType.CurrentDamage(damage.MinDamage, damage.MaxDamage)) < momentumBar.minValue)
                 momentumBar.value = momentumBar.minValue;
             else
-                momentumBar.value -= players[1].DamageType.CurrentDamage(damage.MinDamage, damage.MaxDamage);
+                momentumBar.value -= players[1].DamageType.CurrentDamage(players[1].DamageType.MinDamage, players[1].DamageType.MaxDamage);
         }
 
 

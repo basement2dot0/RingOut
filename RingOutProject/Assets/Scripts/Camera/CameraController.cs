@@ -19,6 +19,7 @@ class CameraController : MonoBehaviour
     private float zoomIn;
     [SerializeField]
     private float defaultZoom;
+    private bool isHypeCamera;
 
     private float lastFrameTime;
     private float myDeltaTime;
@@ -57,12 +58,14 @@ class CameraController : MonoBehaviour
     /// </summary>
     private void CenterFocus()
     {
+        if (!isHypeCamera)
+        {
             Camera.main.transform.position = defaultCameraPosition;
             Camera.main.transform.parent = null;
             Camera.main.orthographic = true;
             center.transform.position = (leftTarget.transform.position + rightTarget.transform.position) / 2;
             Camera.main.transform.LookAt(center.transform);
-        
+        }
     }
     private void HypeHitFocus()
     {
@@ -85,10 +88,13 @@ class CameraController : MonoBehaviour
         {
             PositionHypeCamera(rightTarget.transform);
         }
+        else
+            isHypeCamera = false;
     }
 
     private void PositionHypeHitCamera(Transform target)
     {
+        isHypeCamera = true;
         Camera.main.transform.position = defaultCameraPosition;
         Camera.main.transform.parent = null;
         Camera.main.orthographic = true;
@@ -98,12 +104,15 @@ class CameraController : MonoBehaviour
     }
     private void PositionHypeCamera(Transform target)
     {
-        Camera.main.transform.LookAt(target);
+        isHypeCamera = true;
+        //Camera.main.transform.LookAt(target);
         Camera.main.transform.SetParent(target);
-        Camera.main.transform.position = center.transform.position;
+       Camera.main.transform.localPosition = new Vector3(0, 1, 2);
         Camera.main.orthographic = false;
-        Camera.main.transform.position = new Vector3(Camera.main.transform.position.x, 45.50f, Camera.main.transform.position.z);
         Camera.main.fieldOfView = 45.0f;
+
+        Camera.main.transform.forward = (-(target.transform.forward));
+        
     }
 }
 
