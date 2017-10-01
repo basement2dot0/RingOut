@@ -48,7 +48,7 @@ public class Physics : MonoBehaviour
         KnockedBack();
         UpdatePositon();
         UpdateRotation();
-       RingOut();
+        RingOut();
 
     }
 
@@ -120,8 +120,7 @@ public class Physics : MonoBehaviour
     }
     protected bool CanMove()
     {
-
-        if ((Time.time - player.LastSuccessfulAttack) >= moveDelay && !player.IsKnockedBack && !player.IsExhausted && !player.IsHit)
+        if ((Time.time - player.LastSuccessfulAttack) >= moveDelay && !player.IsKnockedBack && !player.IsExhausted && !player.IsHit && !player.IsTaunting && !player.Opponent.IsTaunting)
         {
             speed = defaultSpeed;
             player.CanMove = true;
