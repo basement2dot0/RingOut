@@ -123,6 +123,7 @@ public class Player : MonoBehaviour{
         get { return isPushed; }
         set { isPushed = value; }
     }
+    
     public DamageType DamageType
     {
         get { return damageType; }

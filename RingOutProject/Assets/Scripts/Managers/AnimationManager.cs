@@ -13,6 +13,8 @@ public class AnimationManager : MonoBehaviour
     private InputManager inputManager;
     [SerializeField]
     private float attackDelay;
+
+    [SerializeField]
     private WaitForSeconds hypeDelay;
 
     private void Start()
@@ -20,7 +22,7 @@ public class AnimationManager : MonoBehaviour
         anim = GetComponent<Animator>();
         player = GetComponent<Player>();
         inputManager = GetComponent<InputManager>();
-        hypeDelay = new WaitForSeconds(1.5f);
+       hypeDelay = new WaitForSeconds(0.5f);
         attackDelay = 1.0f;
 
     }
@@ -80,7 +82,7 @@ public class AnimationManager : MonoBehaviour
             if ((inputManager.AttackButtonDown(player.ID) && player.IsGrounded))
             {
                 anim.Play("HypeAttack");
-                StartCoroutine("ResetHype");
+                //StartCoroutine("ResetHype");
             }
         }
            
@@ -97,9 +99,10 @@ public class AnimationManager : MonoBehaviour
     private void Hit()
     {
         if (player.IsHit)
-        { 
-            anim.SetTrigger("isHit");
-            StartCoroutine("ResetHit");
+        {
+            anim.Play("Hit");
+            //anim.SetTrigger("isHit");
+            //StartCoroutine("ResetHit");
         }
         else
             anim.ResetTrigger("isHit");
@@ -149,11 +152,11 @@ public class AnimationManager : MonoBehaviour
         yield return jumpDelay;
         value = false;
     }
-    private IEnumerator ResetHit( )
-    {
-        yield return null;
-        player.IsHit = false;
-    }
+    //private IEnumerator ResetHit( )
+    //{
+    //    yield return null;
+    //    player.IsHit = false;
+    //}
 
     private float ResetAttackCounter()
     {
