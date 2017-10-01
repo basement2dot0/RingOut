@@ -112,12 +112,9 @@ public class AnimationManager : MonoBehaviour
     private void Hit()
     {
         if (player.IsHit)
-        { 
-            anim.SetTrigger("isHit");
-            StartCoroutine("ResetHit");
+        {
+            anim.Play("Hit");
         }
-        else
-            anim.ResetTrigger("isHit");
     }
     private void Exhausted()
     {
@@ -172,11 +169,11 @@ public class AnimationManager : MonoBehaviour
         yield return jumpDelay;
         value = false;
     }
-    private IEnumerator ResetHit( )
-    {
-        yield return null;
-        player.IsHit = false;
-    }
+    //private IEnumerator ResetHit( )
+    //{
+    //    yield return null;
+    //    player.IsHit = false;
+    //}
     private IEnumerator ExhaustReset()
     {
         WaitForEndOfFrame exhaustWait = new WaitForEndOfFrame();
