@@ -69,7 +69,11 @@ public class AnimationManager : MonoBehaviour
         if (!player.IsHyped)
         {
             if (CanAttack() && inputManager.AttackButtonDown(player.ID))
+            {
+               
                 AttackManager();
+                
+            }
         }
         
     }
@@ -127,10 +131,12 @@ public class AnimationManager : MonoBehaviour
 
     private void AttackManager()
     {
+        player.IsAttacking = true;
         if (player.IsGrounded)
         {
             if (player.AttackCounter == 0)
             {
+                
                 anim.Play("Attack");
                 player.LastSuccessfulAttack = Time.time;
             }
@@ -160,7 +166,10 @@ public class AnimationManager : MonoBehaviour
         if ((Time.time - player.LastSuccessfulAttack) >= attackDelay && Time.timeScale != 0.0f && !player.IsKnockedBack && !player.Opponent.IsTaunting)
             return true;
         else
+        {
+            player.IsAttacking = false;
             return false;
+        }
 
 
     }
