@@ -111,21 +111,21 @@ public class MomentumBar : MonoBehaviour
 
 
     }
-    private void PlayerDamage(float negate)
+    private void PlayerNegate()
     {
         if (isPlayerOne)
-            momentumBar.value += players[0].DamageType.CurrentDamage(damage.MinDamage, damage.MaxDamage)/negate;
+            momentumBar.value = momentumBar.value;
         else
-            momentumBar.value -= players[1].DamageType.CurrentDamage(damage.MinDamage, damage.MaxDamage)/ negate;
+            momentumBar.value = momentumBar.value;
     }
 
     public void UpdateBar()
     {
         if (players[0].IsDefending && players[0].IsHit || players[1].IsDefending && players[1].IsHit)
         {
-            float halfDamage = 2.0f;
+            //float halfDamage = 2.0f;
             if (!isTimer)
-                PlayerDamage(halfDamage);
+                PlayerNegate();
         }
         else if (players[0].IsHit || players[1].IsHit)
         {

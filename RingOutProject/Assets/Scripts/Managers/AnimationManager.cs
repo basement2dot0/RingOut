@@ -129,6 +129,7 @@ public class AnimationManager : MonoBehaviour
     {
         if (player.IsGrounded)
         {
+           
             if (player.AttackCounter == 0)
             {
                 anim.Play("Attack");
@@ -161,8 +162,6 @@ public class AnimationManager : MonoBehaviour
             return true;
         else
             return false;
-
-
     }
     private IEnumerator ResetJump(bool value)
     {
