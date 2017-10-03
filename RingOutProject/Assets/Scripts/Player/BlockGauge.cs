@@ -32,7 +32,7 @@ public class BlockGauge : MonoBehaviour
 
     private void Block()
     {
-        if (player.IsGrounded && canBlock && !player.IsAttacking && !player.IsTaunting && !player.IsExhausted)
+        if (player.IsGrounded && canBlock && !player.IsAttacking && !player.IsTaunting && !player.IsExhausted && !player.IsKnockedBack)
         {
             if (Time.timeScale != 0.0f && inputManager.DefendButton(player.ID))
                 player.IsDefending = true;
