@@ -46,6 +46,7 @@ public class Hitbox : MonoBehaviour
             attackHitBox.enabled = true;
             player.AttackCounter++;
             
+            
         }
         else
             attackHitBox.enabled = true;

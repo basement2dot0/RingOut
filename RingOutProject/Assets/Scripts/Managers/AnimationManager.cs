@@ -62,7 +62,11 @@ public class AnimationManager : MonoBehaviour
     }
     private void Block()
     {
-        anim.SetBool("isBlocking", player.IsDefending);
+        //anim.SetBool("isBlocking", player.IsDefending);
+        if (player.IsDefending)
+        {
+            anim.Play("Block");
+        }
     }
     private void Attack()
     {
@@ -93,7 +97,7 @@ public class AnimationManager : MonoBehaviour
     }
     private void HypeAttack()
     {
-        if (player.IsHyped && !player.IsTaunting)
+        if (player.IsHyped && !player.IsTaunting && !player.IsDefending)
         {
             
             if ((inputManager.AttackButtonDown(player.ID) && player.IsGrounded && !player.IsKnockedBack))
@@ -132,6 +136,7 @@ public class AnimationManager : MonoBehaviour
     private void AttackManager()
     {
         player.IsAttacking = true;
+        
         if (player.IsGrounded)
         {
            

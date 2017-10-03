@@ -35,6 +35,8 @@ public class AudioManager : MonoBehaviour
     }
 
     private float defaultVolume;
+    [SerializeField]
+    private AudioClip defenseHit;
 
     private void Awake()
     {
@@ -72,7 +74,12 @@ public class AudioManager : MonoBehaviour
 
     private void playerHit()
     {
-        if (player.IsHit)
+        if(player.IsHit && player.IsDefending)
+        {
+            audio.clip = defenseHit;
+            audio.PlayOneShot(audio.clip);
+        }
+        else if (player.IsHit)
         {
             audio.clip = hit;
             audio.PlayOneShot(audio.clip);
@@ -81,7 +88,7 @@ public class AudioManager : MonoBehaviour
 
 private void PlayerAttack()
     {
-        if (player.IsAttacking)
+        if (!player.IsDefending && player.IsAttacking)
         {
             audio.clip = attacking;
             audio.Play();
