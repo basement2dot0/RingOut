@@ -7,7 +7,7 @@ public class AudioManager : MonoBehaviour
 {
     public AudioClip hypeMusic;
     public AudioClip hit;
-    public AudioClip attacking;
+    public AudioClip[] attackAudio;
 
 
     [SerializeField]
@@ -37,6 +37,8 @@ public class AudioManager : MonoBehaviour
     private float defaultVolume;
     [SerializeField]
     private AudioClip defenseHit;
+    [SerializeField]
+    private AudioClip airAttackAudio;
 
     private void Awake()
     {
@@ -77,21 +79,33 @@ public class AudioManager : MonoBehaviour
         if(player.IsHit && player.IsDefending)
         {
             audio.clip = defenseHit;
-            audio.PlayOneShot(audio.clip);
+            audio.Play();
         }
         else if (player.IsHit)
         {
             audio.clip = hit;
-            audio.PlayOneShot(audio.clip);
+            audio.Play();
         }
     }
 
 private void PlayerAttack()
     {
-        if (!player.IsDefending && player.IsAttacking)
-        {
-            audio.clip = attacking;
+        
+            if (player.IsGrounded && !player.IsDefending && player.IsAttacking)
+            {
+                Random rng = new Random();
+                audio.clip = attackAudio[player.AttackCounter];
+                audio.Play();
+            }
+            else if(!player.IsGrounded && player.IsAttacking)
+            {
+            audio.clip = airAttackAudio;
             audio.Play();
-        }
+            }
+        
+        
+        
+        
+        
     }
 }

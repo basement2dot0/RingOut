@@ -70,11 +70,12 @@ public class AnimationManager : MonoBehaviour
     }
     private void Attack()
     {
-        if (!player.IsHyped)
-        {
+        
             if (CanAttack() && inputManager.AttackButtonDown(player.ID))
             {
-               
+            if (!player.IsHyped)
+            {
+                player.IsAttacking = true;
                 AttackManager();
                 
             }
@@ -91,6 +92,7 @@ public class AnimationManager : MonoBehaviour
     {
         if (player.IsTaunting)
         {
+
             
             StartCoroutine("ResetTaunt");
         }
@@ -135,14 +137,16 @@ public class AnimationManager : MonoBehaviour
 
     private void AttackManager()
     {
-        player.IsAttacking = true;
-        
+
         if (player.IsGrounded)
         {
-           
+
+
             if (player.AttackCounter == 0)
             {
-                
+
+
+
                 anim.Play("Attack");
                 player.LastSuccessfulAttack = Time.time;
             }
@@ -159,13 +163,19 @@ public class AnimationManager : MonoBehaviour
             else if (player.AttackCounter >= 3)
             {
                 anim.Play("Attack");
+                player.AttackCounter = 0;
                 player.LastSuccessfulAttack = Time.time;
             }
+            player.IsAttacking = true;
         }
         else
+        {
             anim.Play("JumpAttack");
-        
-    }
+            player.LastSuccessfulAttack = Time.time;
+            player.IsAttacking = true;
+        }
+
+        }
     private bool CanAttack()
     {
 
@@ -212,10 +222,12 @@ public class AnimationManager : MonoBehaviour
     }
     private IEnumerator ResetTaunt()
     {
+        player.Opponent.gameObject.active = false;
         anim.Play("HypeTaunt");
         WaitForSeconds delay = new WaitForSeconds(6.0f);
         yield return delay;
         player.IsTaunting = false;
+        player.Opponent.gameObject.active = true;
         
     }
 

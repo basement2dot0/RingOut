@@ -40,13 +40,11 @@ public class Hitbox : MonoBehaviour
     #region HitBoxLogic
     private void OpenHitBox()
     {
-        
+       
         if (player.IsGrounded)
         {
             attackHitBox.enabled = true;
             player.AttackCounter++;
-            
-            
         }
         else
             attackHitBox.enabled = true;
@@ -55,6 +53,8 @@ public class Hitbox : MonoBehaviour
     }
     private void CloseHitBox()
     {
+        
+
         attackHitBox.enabled = false;
         hypeAttackHitBox.enabled = false;
         player.CanMove = true;

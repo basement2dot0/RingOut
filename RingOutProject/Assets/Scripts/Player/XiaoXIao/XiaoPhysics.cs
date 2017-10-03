@@ -19,7 +19,7 @@ public class XiaoPhysics  : Physics
         player = GetComponent<Player>();
         wait = new WaitForSeconds(getUpDelay);
         defaultPosition = player.transform.eulerAngles;
-        defaultSpeed = 40.0f;
+        defaultSpeed = 25.0f;
     }
     private void Lunge()
     {
