@@ -40,10 +40,12 @@ public class Hitbox : MonoBehaviour
     #region HitBoxLogic
     private void OpenHitBox()
     {
+        
         if (player.IsGrounded)
         {
             attackHitBox.enabled = true;
             player.AttackCounter++;
+            
         }
         else
             attackHitBox.enabled = true;

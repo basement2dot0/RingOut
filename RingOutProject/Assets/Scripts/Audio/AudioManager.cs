@@ -6,10 +6,12 @@ using UnityEngine;
 public class AudioManager : MonoBehaviour
 {
     public AudioClip hypeMusic;
+    public AudioClip hit;
+    public AudioClip attacking;
 
 
-    //[SerializeField]
-    //private float fadeDuration;
+    [SerializeField]
+    private Player player;
 
     [SerializeField]
     private AudioSource audio;
@@ -37,11 +39,22 @@ public class AudioManager : MonoBehaviour
     private void Awake()
     {
         volume = 1.0f;
+        player = GetComponent<Player>();
     }
+    private void Update()
+    {
+        playerHit();
+        PlayerAttack();
+    }
+
+
     public void PlayHypeMusic()
     {
-        audio.clip = hypeMusic;
-        audio.PlayOneShot(audio.clip);
+        if (player.IsHyped)
+        {
+            audio.clip = hypeMusic;
+            audio.Play();
+        }
     }
     public void StopHypeMusic()
     {
@@ -54,6 +67,24 @@ public class AudioManager : MonoBehaviour
         {
             audio.Stop();
             volume = 1.0f;
+        }
+    }
+
+    private void playerHit()
+    {
+        if (player.IsHit)
+        {
+            audio.clip = hit;
+            audio.PlayOneShot(audio.clip);
+        }
+    }
+
+private void PlayerAttack()
+    {
+        if (player.IsAttacking)
+        {
+            audio.clip = attacking;
+            audio.Play();
         }
     }
 }

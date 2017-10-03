@@ -147,4 +147,3 @@ public class Physics : MonoBehaviour
         fallMultipler = _fallMultipler;
     }
 }
-

@@ -10,7 +10,12 @@ public class MomentumBar : MonoBehaviour
     [SerializeField]
     private bool isHyped; 
     private DamageType damage;
-    private AudioManager[] playersTheme;
+    private AudioManager[] playerAudioManager;
+    private AudioSource playersTheme;
+    [SerializeField]
+    private AudioClip themeOne;
+    [SerializeField]
+    private AudioClip themeTwo;
     [SerializeField]
     private float startingValue;
     [SerializeField]
@@ -46,13 +51,14 @@ public class MomentumBar : MonoBehaviour
         startingValue = 50.0f;
         momentumBar.value = startingValue;
         hypeText = gameObject.transform.GetChild(0).GetComponent<Text>();
-        playersTheme = new AudioManager[2]; 
+        playersTheme = GetComponent<AudioSource>();
+        playerAudioManager = new AudioManager[2];
         foreach (var theme in GameObject.FindGameObjectsWithTag("Player"))
         {
-            if(theme.GetComponent<Player>().ID == 1)
-                playersTheme[0] =theme.GetComponent<AudioManager>();
+            if (theme.GetComponent<Player>().ID == 1)
+                playerAudioManager[0] = theme.GetComponent<AudioManager>();
             else
-                playersTheme[1] = theme.GetComponent<AudioManager>();
+                playerAudioManager[1] = theme.GetComponent<AudioManager>();
         }
     }
     private void Update()
@@ -74,7 +80,8 @@ public class MomentumBar : MonoBehaviour
     {
             if (momentumBar.value == momentumBar.maxValue && !isHyped)
             {
-                playersTheme[0].PlayHypeMusic();
+                playersTheme.clip = themeOne;
+                playersTheme.Play();
                 hypeText.text = "Player One is HYPED!";
                 players[0].IsTaunting = true;
                 players[0].IsHyped = true;
@@ -84,7 +91,8 @@ public class MomentumBar : MonoBehaviour
             }
             else if (momentumBar.value == momentumBar.minValue && !isHyped)
             {
-                playersTheme[1].PlayHypeMusic();
+                playersTheme.clip = themeTwo;
+                playersTheme.Play();
                 hypeText.text = "Player Two is HYPED!";
                 players[1].IsTaunting = true;
                 players[1].IsHyped = true;
@@ -147,21 +155,21 @@ public class MomentumBar : MonoBehaviour
                 momentumBar.value = startingValue;
                 players[0].IsHyped = false;
                 players[1].IsHyped = false;
-                playersTheme[0].StopHypeMusic();
-                playersTheme[1].StopHypeMusic();
+                playersTheme.Stop();
+                
             }
             else if (players[0].IsHyped && !players[0].IsTaunting)
             {
                 isTimer = true;
                 momentumBar.value = Mathf.MoveTowards(momentumBar.value, startingValue, Time.deltaTime * hypeTimer);
-                playersTheme[0].FadeHypeMusic((momentumBar.value - startingValue) / 50);
+                playerAudioManager[0].FadeHypeMusic((momentumBar.value - startingValue) / 50);
                 
             }
             else if (players[1].IsHyped && !players[1].IsTaunting)
             {
                 isTimer = true;
                 momentumBar.value = Mathf.MoveTowards(momentumBar.value, startingValue, Time.deltaTime * hypeTimer);
-                playersTheme[1].FadeHypeMusic((momentumBar.value + startingValue) / 50);
+                playerAudioManager[1].FadeHypeMusic((momentumBar.value + startingValue) / 50);
             }
         }
     }
