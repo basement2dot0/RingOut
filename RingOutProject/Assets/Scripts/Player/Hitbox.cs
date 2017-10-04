@@ -40,12 +40,12 @@ public class Hitbox : MonoBehaviour
     #region HitBoxLogic
     private void OpenHitBox()
     {
-        
+       
         if (player.IsGrounded)
         {
+            
             attackHitBox.enabled = true;
             player.AttackCounter++;
-            
         }
         else
             attackHitBox.enabled = true;
@@ -54,6 +54,8 @@ public class Hitbox : MonoBehaviour
     }
     private void CloseHitBox()
     {
+        
+
         attackHitBox.enabled = false;
         hypeAttackHitBox.enabled = false;
         player.CanMove = true;
@@ -74,13 +76,15 @@ public class Hitbox : MonoBehaviour
         if (player.IsGrounded)
         {
             hypeAttackHitBox.enabled = true;
+            
             StartCoroutine("CloseHype"); // this disables the hitbox incase the animation event did not
 
         }
     }
     private IEnumerator CloseHype()
     {
-        yield return delay;
+        WaitForSeconds delayHype = new WaitForSeconds(1.5f);
+        yield return delayHype;
         player.IsHyped = false;
         CloseHitBox();
     }

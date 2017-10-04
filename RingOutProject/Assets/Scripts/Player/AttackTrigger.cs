@@ -24,7 +24,10 @@ public class AttackTrigger : TriggerManager
             if (!player.Opponent.IsDefending || isBackAttack())
             {
                 if (player.AttackCounter == 3)
+                {
                     player.Opponent.IsKnockedBack = true;
+                    
+                }
             }
             player.Opponent.IsHit = true;
             attackCollider.enabled = false;

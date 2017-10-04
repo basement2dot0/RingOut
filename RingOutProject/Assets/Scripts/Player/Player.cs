@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody))]
-[RequireComponent(typeof(Combat))]
+[RequireComponent(typeof(BlockGauge))]
 [RequireComponent(typeof(DamageType))]
 [RequireComponent(typeof(AudioManager))]
 [RequireComponent(typeof(Movement))]
@@ -130,7 +130,11 @@ public class Player : MonoBehaviour{
         get { return isPushed; }
         set { isPushed = value; }
     }
-    
+    public bool CanBlock
+    {
+        get;
+        set;
+    }
     public DamageType DamageType
     {
         get { return damageType; }

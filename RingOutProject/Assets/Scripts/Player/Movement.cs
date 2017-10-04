@@ -41,7 +41,7 @@ public class Movement : MonoBehaviour {
     }
     private void Jump()
     {
-        if (player.IsGrounded && CanJump())
+        if (player.IsGrounded && CanJump() && !player.IsExhausted)
         {
             if (inputManager.JumpButtonDown(player.ID))
             {

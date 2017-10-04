@@ -108,7 +108,7 @@ public class Physics : MonoBehaviour
         rb.position += player.Opponent.HitDirection * knockBackForce * Time.deltaTime;
         yield return wait;
         player.IsKnockedBack = false;
-        player.CanMove = true;
+        //player.CanMove = true;
         //  player.transform.eulerAngles = defaultPosition;
     }
 

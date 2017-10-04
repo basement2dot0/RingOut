@@ -7,7 +7,7 @@ public class AudioManager : MonoBehaviour
 {
     public AudioClip hypeMusic;
     public AudioClip hit;
-    public AudioClip attacking;
+    public AudioClip[] attackAudio;
 
 
     [SerializeField]
@@ -35,6 +35,14 @@ public class AudioManager : MonoBehaviour
     }
 
     private float defaultVolume;
+    [SerializeField]
+    private AudioClip defenseHit;
+    [SerializeField]
+    private AudioClip airAttackAudio;
+    [SerializeField]
+    private AudioClip playerHypeHit;
+    [SerializeField]
+    private AudioClip hypeAttackAudio;
 
     private void Awake()
     {
@@ -45,6 +53,8 @@ public class AudioManager : MonoBehaviour
     {
         playerHit();
         PlayerAttack();
+        HypeHit();
+        HypeAttack();
     }
 
 
@@ -72,19 +82,51 @@ public class AudioManager : MonoBehaviour
 
     private void playerHit()
     {
-        if (player.IsHit)
+        if(player.IsHit && player.IsDefending)
+        {
+            audio.clip = defenseHit;
+            audio.Play();
+        }
+        else if (player.IsHit)
         {
             audio.clip = hit;
-            audio.PlayOneShot(audio.clip);
+            audio.Play();
         }
     }
-
-private void PlayerAttack()
+    private void HypeHit()
     {
-        if (player.IsAttacking)
+        if (player.IsHypeHit && !audio.isPlaying)
         {
-            audio.clip = attacking;
+            audio.clip = playerHypeHit;
             audio.Play();
+        }
+    }
+    private void PlayerAttack()
+    {
+        
+            if (player.IsGrounded && !player.IsDefending && player.IsAttacking)
+            {
+                Random rng = new Random();
+                audio.clip = attackAudio[player.AttackCounter];
+                audio.Play();
+            }
+            else if(!player.IsGrounded && player.IsAttacking)
+            {
+            audio.clip = airAttackAudio;
+            audio.Play();
+            }
+        
+        
+        
+        
+        
+    }
+    private void HypeAttack()
+    {
+        if (player.HypeAttack)
+        {
+            audio.clip = hypeAttackAudio;
+            audio.PlayOneShot(audio.clip);
         }
     }
 }

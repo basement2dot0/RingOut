@@ -92,7 +92,7 @@
     <Compile Include="Assets\Scripts\Managers\TriggerManager.cs" />
     <Compile Include="Assets\Scripts\Managers\UIManager.cs" />
     <Compile Include="Assets\Scripts\Player\AttackTrigger.cs" />
-    <Compile Include="Assets\Scripts\Player\Combat.cs" />
+    <Compile Include="Assets\Scripts\Player\BlockGauge.cs" />
     <Compile Include="Assets\Scripts\Player\DamageType.cs" />
     <Compile Include="Assets\Scripts\Player\Hitbox.cs" />
     <Compile Include="Assets\Scripts\Player\HumanInput.cs" />

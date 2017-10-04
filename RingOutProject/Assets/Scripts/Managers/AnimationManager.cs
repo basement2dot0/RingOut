@@ -15,6 +15,14 @@ public class AnimationManager : MonoBehaviour
     private float attackDelay;
     [SerializeField]
     private WaitForSeconds hypeDelay;
+    public bool canAttack
+    {
+        get
+            {
+            return CanAttack();
+            }
+        
+     }
 
     private void Start()
     {
@@ -62,15 +70,30 @@ public class AnimationManager : MonoBehaviour
     }
     private void Block()
     {
-        anim.SetBool("isBlocking", player.IsDefending);
+        //anim.SetBool("isBlocking", player.IsDefending);
+        if (player.IsGrounded)
+        { 
+            if (player.CanBlock && inputManager.DefendButton(player.ID) && (Time.time - player.LastSuccessfulAttack) > 1.0f && !player.IsTaunting && !player.IsExhausted && !player.IsKnockedBack)
+            {
+                anim.Play("Block");
+                player.IsDefending = true;
+            }
+            else if (!inputManager.DefendButton(player.ID))
+            {
+                player.IsDefending = false;
+            }
+        }
+        
     }
     private void Attack()
     {
-        if (!player.IsHyped)
-        {
-            if (CanAttack() && inputManager.AttackButtonDown(player.ID))
+        
+            if (!player.IsDefending && CanAttack() && inputManager.AttackButtonDown(player.ID))
             {
-               
+                 player.CanBlock = false;
+            if (!player.IsHyped)
+            {
+                player.IsAttacking = true;
                 AttackManager();
                 
             }
@@ -87,13 +110,14 @@ public class AnimationManager : MonoBehaviour
     {
         if (player.IsTaunting)
         {
+
             
             StartCoroutine("ResetTaunt");
         }
     }
     private void HypeAttack()
     {
-        if (player.IsHyped && !player.IsTaunting)
+        if (player.IsHyped && !player.IsTaunting && !player.IsDefending)
         {
             
             if ((inputManager.AttackButtonDown(player.ID) && player.IsGrounded && !player.IsKnockedBack))
@@ -111,7 +135,12 @@ public class AnimationManager : MonoBehaviour
     }
     private void HypeHit()
     {
-        anim.SetBool("hypeHit", player.IsHypeHit);
+        // anim.SetBool("hypeHit", player.IsHypeHit);
+        if (player.IsHypeHit)
+        {
+            anim.Play("HypeHit");
+            StartCoroutine("ResetHypeHit");
+        }
     }
     private void Hit()
     {
@@ -131,12 +160,16 @@ public class AnimationManager : MonoBehaviour
 
     private void AttackManager()
     {
-        player.IsAttacking = true;
+
         if (player.IsGrounded)
         {
+
+
             if (player.AttackCounter == 0)
             {
-                
+
+
+
                 anim.Play("Attack");
                 player.LastSuccessfulAttack = Time.time;
             }
@@ -153,13 +186,19 @@ public class AnimationManager : MonoBehaviour
             else if (player.AttackCounter >= 3)
             {
                 anim.Play("Attack");
+                player.AttackCounter = 0;
                 player.LastSuccessfulAttack = Time.time;
             }
+            player.IsAttacking = true;
         }
         else
+        {
             anim.Play("JumpAttack");
-        
-    }
+            player.LastSuccessfulAttack = Time.time;
+            player.IsAttacking = true;
+        }
+
+        }
     private bool CanAttack()
     {
 
@@ -169,10 +208,9 @@ public class AnimationManager : MonoBehaviour
         {
             player.IsAttacking = false;
             return false;
+
         }
-
-
-    }
+   }
     private IEnumerator ResetJump(bool value)
     {
         yield return jumpDelay;
@@ -203,15 +241,24 @@ public class AnimationManager : MonoBehaviour
         yield return hypeDelay;
         player.IsHyped = false;
         player.IsExhausted = true;
+
         
     }
     private IEnumerator ResetTaunt()
     {
+        player.Opponent.gameObject.active = false;
         anim.Play("HypeTaunt");
         WaitForSeconds delay = new WaitForSeconds(6.0f);
         yield return delay;
         player.IsTaunting = false;
+        player.Opponent.gameObject.active = true;
         
+    }
+    private IEnumerator ResetHypeHit()
+    {
+        WaitForSeconds wait = new WaitForSeconds(2.0f);
+        yield return wait;
+        player.IsHypeHit = false;
     }
 
 

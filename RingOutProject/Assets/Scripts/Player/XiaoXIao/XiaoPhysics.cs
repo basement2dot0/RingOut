@@ -19,12 +19,12 @@ public class XiaoPhysics  : Physics
         player = GetComponent<Player>();
         wait = new WaitForSeconds(getUpDelay);
         defaultPosition = player.transform.eulerAngles;
-        defaultSpeed = 40.0f;
+        defaultSpeed = 25.0f;
     }
     private void Lunge()
     {
         if (player.IsGrounded)
-        rb.position += (rb.transform.forward) * lungeDistance * Time.deltaTime;
+            rb.position += (rb.transform.forward) * lungeDistance * Time.deltaTime;
         
     } //called during animation event
 }

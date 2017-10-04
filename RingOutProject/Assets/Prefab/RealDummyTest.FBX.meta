@@ -1,0 +1,4139 @@
+fileFormatVersion: 2
+guid: fa7b550235e774f4da6bbede8009ebff
+timeCreated: 1475690097
+licenseType: Free
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: Back
+    100002: Chest
+    100004: Dummy_
+    100006: Dummy_Head
+    100008: Dummy_LCalf
+    100010: Dummy_LCollarbone
+    100012: Dummy_LDigit11
+    100014: Dummy_LFoot
+    100016: Dummy_LForearm
+    100018: Dummy_LPalm
+    100020: Dummy_LPlatform
+    100022: Dummy_LThigh
+    100024: Dummy_LUpperarm
+    100026: Dummy_Neck1
+    100028: Dummy_Neck2
+    100030: Dummy_Pelvis
+    100032: Dummy_RCalf
+    100034: Dummy_RCollarbone
+    100036: Dummy_RDigit11
+    100038: Dummy_RFoot
+    100040: Dummy_RForearm
+    100042: Dummy_Ribcage
+    100044: Dummy_RPalm
+    100046: Dummy_RPlatform
+    100048: Dummy_RThigh
+    100050: Dummy_RUpperarm
+    100052: Dummy_Spine1
+    100054: Dummy_Spine2
+    100056: Dummy_Spine3
+    100058: Dummy_Spine4
+    100060: Group21
+    100062: Group22
+    100064: Group23
+    100066: Group24
+    100068: Group25
+    100070: Group26
+    100072: Group27
+    100074: Group28
+    100076: Group29
+    100078: Group36038
+    100080: Group36039
+    100082: Group38
+    100084: Group41
+    100086: Group42
+    100088: Group43
+    100090: Group44
+    100092: Group45
+    100094: Group46
+    100096: Head
+    100098: Left Bicep
+    100100: Left Foot
+    100102: Left Forearm
+    100104: Left Hand
+    100106: Left Shin
+    100108: Left Thigh
+    100110: Pelvis
+    100112: //RootNode
+    100114: Right Bicep
+    100116: Right Foot
+    100118: Right Forearm
+    100120: Right Hand
+    100122: Right Shin
+    100124: Right Thigh
+    400000: Back
+    400002: Chest
+    400004: Dummy_
+    400006: Dummy_Head
+    400008: Dummy_LCalf
+    400010: Dummy_LCollarbone
+    400012: Dummy_LDigit11
+    400014: Dummy_LFoot
+    400016: Dummy_LForearm
+    400018: Dummy_LPalm
+    400020: Dummy_LPlatform
+    400022: Dummy_LThigh
+    400024: Dummy_LUpperarm
+    400026: Dummy_Neck1
+    400028: Dummy_Neck2
+    400030: Dummy_Pelvis
+    400032: Dummy_RCalf
+    400034: Dummy_RCollarbone
+    400036: Dummy_RDigit11
+    400038: Dummy_RFoot
+    400040: Dummy_RForearm
+    400042: Dummy_Ribcage
+    400044: Dummy_RPalm
+    400046: Dummy_RPlatform
+    400048: Dummy_RThigh
+    400050: Dummy_RUpperarm
+    400052: Dummy_Spine1
+    400054: Dummy_Spine2
+    400056: Dummy_Spine3
+    400058: Dummy_Spine4
+    400060: Group21
+    400062: Group22
+    400064: Group23
+    400066: Group24
+    400068: Group25
+    400070: Group26
+    400072: Group27
+    400074: Group28
+    400076: Group29
+    400078: Group36038
+    400080: Group36039
+    400082: Group38
+    400084: Group41
+    400086: Group42
+    400088: Group43
+    400090: Group44
+    400092: Group45
+    400094: Group46
+    400096: Head
+    400098: Left Bicep
+    400100: Left Foot
+    400102: Left Forearm
+    400104: Left Hand
+    400106: Left Shin
+    400108: Left Thigh
+    400110: Pelvis
+    400112: //RootNode
+    400114: Right Bicep
+    400116: Right Foot
+    400118: Right Forearm
+    400120: Right Hand
+    400122: Right Shin
+    400124: Right Thigh
+    4300000: Group36038
+    4300002: Left Thigh
+    4300004: Chest
+    4300006: Pelvis
+    4300008: Left Bicep
+    4300010: Group25
+    4300012: Group23
+    4300014: Back
+    4300016: Group27
+    4300018: Left Foot
+    4300020: Group38
+    4300022: Left Hand
+    4300024: Left Forearm
+    4300026: Group45
+    4300028: Head
+    4300030: Group41
+    4300032: Right Forearm
+    4300034: Right Foot
+    4300036: Group28
+    4300038: Group46
+    4300040: Right Shin
+    4300042: Group43
+    4300044: Group22
+    4300046: Right Thigh
+    4300048: Group42
+    4300050: Right Bicep
+    4300052: Group29
+    4300054: Group24
+    4300056: Group44
+    4300058: Group26
+    4300060: Group21
+    4300062: Left Shin
+    4300064: Right Hand
+    7400000: Idle
+    7400002: Walk
+    7400004: Run
+    7400006: Jump
+    7400008: Falling
+    7400010: Landing
+    7400012: Punch
+    7400014: Punch2
+    7400016: Punch3
+    7400018: Punch4
+    7400020: JumpKick
+    7400022: Block
+    7400024: BlockHit
+    7400026: Parry
+    7400028: ParryHit
+    7400030: Hit
+    7400032: Hit2
+    7400034: KnockDownHit
+    7400036: KnockDownFalling
+    7400038: KnockDownLanding
+    7400040: KnockdownRecover
+    7400042: Grab
+    7400044: Grabbed
+    7400046: GrabPunch
+    7400048: WalkBack
+    9500000: //RootNode
+    13700000: Back
+    13700002: Chest
+    13700004: Group21
+    13700006: Group22
+    13700008: Group23
+    13700010: Group24
+    13700012: Group25
+    13700014: Group26
+    13700016: Group27
+    13700018: Group28
+    13700020: Group29
+    13700022: Group36038
+    13700024: Group38
+    13700026: Group41
+    13700028: Group42
+    13700030: Group43
+    13700032: Group44
+    13700034: Group45
+    13700036: Group46
+    13700038: Head
+    13700040: Left Bicep
+    13700042: Left Foot
+    13700044: Left Forearm
+    13700046: Left Hand
+    13700048: Left Shin
+    13700050: Left Thigh
+    13700052: Pelvis
+    13700054: Right Bicep
+    13700056: Right Foot
+    13700058: Right Forearm
+    13700060: Right Hand
+    13700062: Right Shin
+    13700064: Right Thigh
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleRotations: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Idle
+      takeName: Take 001
+      firstFrame: 1
+      lastFrame: 119
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Dummy_
+        weight: 1
+      - path: Group36039
+        weight: 1
+      - path: Group36039/Back
+        weight: 1
+      - path: Group36039/Chest
+        weight: 1
+      - path: Group36039/Dummy_LPlatform
+        weight: 1
+      - path: Group36039/Dummy_Pelvis
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_LThigh
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_LThigh/Dummy_LCalf
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_LThigh/Dummy_LCalf/Dummy_LFoot
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_LThigh/Dummy_LCalf/Dummy_LFoot/Dummy_LDigit11
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_RThigh
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_RThigh/Dummy_RCalf
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_RThigh/Dummy_RCalf/Dummy_RFoot
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_RThigh/Dummy_RCalf/Dummy_RFoot/Dummy_RDigit11
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4/Dummy_Ribcage
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4/Dummy_Ribcage/Dummy_LCollarbone
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4/Dummy_Ribcage/Dummy_LCollarbone/Dummy_LUpperarm
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4/Dummy_Ribcage/Dummy_LCollarbone/Dummy_LUpperarm/Dummy_LForearm
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4/Dummy_Ribcage/Dummy_LCollarbone/Dummy_LUpperarm/Dummy_LForearm/Dummy_LPalm
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4/Dummy_Ribcage/Dummy_Neck1
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4/Dummy_Ribcage/Dummy_Neck1/Dummy_Neck2
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4/Dummy_Ribcage/Dummy_Neck1/Dummy_Neck2/Dummy_Head
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4/Dummy_Ribcage/Dummy_RCollarbone
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4/Dummy_Ribcage/Dummy_RCollarbone/Dummy_RUpperarm
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4/Dummy_Ribcage/Dummy_RCollarbone/Dummy_RUpperarm/Dummy_RForearm
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4/Dummy_Ribcage/Dummy_RCollarbone/Dummy_RUpperarm/Dummy_RForearm/Dummy_RPalm
+        weight: 1
+      - path: Group36039/Dummy_RPlatform
+        weight: 1
+      - path: Group36039/Group21
+        weight: 1
+      - path: Group36039/Group22
+        weight: 1
+      - path: Group36039/Group23
+        weight: 1
+      - path: Group36039/Group24
+        weight: 1
+      - path: Group36039/Group25
+        weight: 1
+      - path: Group36039/Group26
+        weight: 1
+      - path: Group36039/Group27
+        weight: 1
+      - path: Group36039/Group28
+        weight: 1
+      - path: Group36039/Group29
+        weight: 1
+      - path: Group36039/Group38
+        weight: 1
+      - path: Group36039/Group41
+        weight: 1
+      - path: Group36039/Group42
+        weight: 1
+      - path: Group36039/Group43
+        weight: 1
+      - path: Group36039/Group44
+        weight: 1
+      - path: Group36039/Group45
+        weight: 1
+      - path: Group36039/Group46
+        weight: 1
+      - path: Group36039/Group36038
+        weight: 1
+      - path: Group36039/Head
+        weight: 1
+      - path: Group36039/Left Bicep
+        weight: 1
+      - path: Group36039/Left Foot
+        weight: 1
+      - path: Group36039/Left Forearm
+        weight: 1
+      - path: Group36039/Left Hand
+        weight: 1
+      - path: Group36039/Left Shin
+        weight: 1
+      - path: Group36039/Left Thigh
+        weight: 1
+      - path: Group36039/Pelvis
+        weight: 1
+      - path: Group36039/Right Bicep
+        weight: 1
+      - path: Group36039/Right Foot
+        weight: 1
+      - path: Group36039/Right Forearm
+        weight: 1
+      - path: Group36039/Right Hand
+        weight: 1
+      - path: Group36039/Right Shin
+        weight: 1
+      - path: Group36039/Right Thigh
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Walk
+      takeName: Take 001
+      firstFrame: 121
+      lastFrame: 179
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Dummy_
+        weight: 1
+      - path: Group36039
+        weight: 1
+      - path: Group36039/Back
+        weight: 1
+      - path: Group36039/Chest
+        weight: 1
+      - path: Group36039/Dummy_LPlatform
+        weight: 1
+      - path: Group36039/Dummy_Pelvis
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_LThigh
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_LThigh/Dummy_LCalf
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_LThigh/Dummy_LCalf/Dummy_LFoot
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_LThigh/Dummy_LCalf/Dummy_LFoot/Dummy_LDigit11
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_RThigh
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_RThigh/Dummy_RCalf
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_RThigh/Dummy_RCalf/Dummy_RFoot
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_RThigh/Dummy_RCalf/Dummy_RFoot/Dummy_RDigit11
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4/Dummy_Ribcage
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4/Dummy_Ribcage/Dummy_LCollarbone
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4/Dummy_Ribcage/Dummy_LCollarbone/Dummy_LUpperarm
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4/Dummy_Ribcage/Dummy_LCollarbone/Dummy_LUpperarm/Dummy_LForearm
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4/Dummy_Ribcage/Dummy_LCollarbone/Dummy_LUpperarm/Dummy_LForearm/Dummy_LPalm
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4/Dummy_Ribcage/Dummy_Neck1
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4/Dummy_Ribcage/Dummy_Neck1/Dummy_Neck2
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4/Dummy_Ribcage/Dummy_Neck1/Dummy_Neck2/Dummy_Head
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4/Dummy_Ribcage/Dummy_RCollarbone
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4/Dummy_Ribcage/Dummy_RCollarbone/Dummy_RUpperarm
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4/Dummy_Ribcage/Dummy_RCollarbone/Dummy_RUpperarm/Dummy_RForearm
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4/Dummy_Ribcage/Dummy_RCollarbone/Dummy_RUpperarm/Dummy_RForearm/Dummy_RPalm
+        weight: 1
+      - path: Group36039/Dummy_RPlatform
+        weight: 1
+      - path: Group36039/Group21
+        weight: 1
+      - path: Group36039/Group22
+        weight: 1
+      - path: Group36039/Group23
+        weight: 1
+      - path: Group36039/Group24
+        weight: 1
+      - path: Group36039/Group25
+        weight: 1
+      - path: Group36039/Group26
+        weight: 1
+      - path: Group36039/Group27
+        weight: 1
+      - path: Group36039/Group28
+        weight: 1
+      - path: Group36039/Group29
+        weight: 1
+      - path: Group36039/Group38
+        weight: 1
+      - path: Group36039/Group41
+        weight: 1
+      - path: Group36039/Group42
+        weight: 1
+      - path: Group36039/Group43
+        weight: 1
+      - path: Group36039/Group44
+        weight: 1
+      - path: Group36039/Group45
+        weight: 1
+      - path: Group36039/Group46
+        weight: 1
+      - path: Group36039/Group36038
+        weight: 1
+      - path: Group36039/Head
+        weight: 1
+      - path: Group36039/Left Bicep
+        weight: 1
+      - path: Group36039/Left Foot
+        weight: 1
+      - path: Group36039/Left Forearm
+        weight: 1
+      - path: Group36039/Left Hand
+        weight: 1
+      - path: Group36039/Left Shin
+        weight: 1
+      - path: Group36039/Left Thigh
+        weight: 1
+      - path: Group36039/Pelvis
+        weight: 1
+      - path: Group36039/Right Bicep
+        weight: 1
+      - path: Group36039/Right Foot
+        weight: 1
+      - path: Group36039/Right Forearm
+        weight: 1
+      - path: Group36039/Right Hand
+        weight: 1
+      - path: Group36039/Right Shin
+        weight: 1
+      - path: Group36039/Right Thigh
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Run
+      takeName: Take 001
+      firstFrame: 182
+      lastFrame: 230
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Dummy_
+        weight: 1
+      - path: Group36039
+        weight: 1
+      - path: Group36039/Back
+        weight: 1
+      - path: Group36039/Chest
+        weight: 1
+      - path: Group36039/Dummy_LPlatform
+        weight: 1
+      - path: Group36039/Dummy_Pelvis
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_LThigh
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_LThigh/Dummy_LCalf
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_LThigh/Dummy_LCalf/Dummy_LFoot
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_LThigh/Dummy_LCalf/Dummy_LFoot/Dummy_LDigit11
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_RThigh
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_RThigh/Dummy_RCalf
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_RThigh/Dummy_RCalf/Dummy_RFoot
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_RThigh/Dummy_RCalf/Dummy_RFoot/Dummy_RDigit11
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4/Dummy_Ribcage
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4/Dummy_Ribcage/Dummy_LCollarbone
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4/Dummy_Ribcage/Dummy_LCollarbone/Dummy_LUpperarm
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4/Dummy_Ribcage/Dummy_LCollarbone/Dummy_LUpperarm/Dummy_LForearm
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4/Dummy_Ribcage/Dummy_LCollarbone/Dummy_LUpperarm/Dummy_LForearm/Dummy_LPalm
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4/Dummy_Ribcage/Dummy_Neck1
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4/Dummy_Ribcage/Dummy_Neck1/Dummy_Neck2
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4/Dummy_Ribcage/Dummy_Neck1/Dummy_Neck2/Dummy_Head
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4/Dummy_Ribcage/Dummy_RCollarbone
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4/Dummy_Ribcage/Dummy_RCollarbone/Dummy_RUpperarm
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4/Dummy_Ribcage/Dummy_RCollarbone/Dummy_RUpperarm/Dummy_RForearm
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4/Dummy_Ribcage/Dummy_RCollarbone/Dummy_RUpperarm/Dummy_RForearm/Dummy_RPalm
+        weight: 1
+      - path: Group36039/Dummy_RPlatform
+        weight: 1
+      - path: Group36039/Group21
+        weight: 1
+      - path: Group36039/Group22
+        weight: 1
+      - path: Group36039/Group23
+        weight: 1
+      - path: Group36039/Group24
+        weight: 1
+      - path: Group36039/Group25
+        weight: 1
+      - path: Group36039/Group26
+        weight: 1
+      - path: Group36039/Group27
+        weight: 1
+      - path: Group36039/Group28
+        weight: 1
+      - path: Group36039/Group29
+        weight: 1
+      - path: Group36039/Group38
+        weight: 1
+      - path: Group36039/Group41
+        weight: 1
+      - path: Group36039/Group42
+        weight: 1
+      - path: Group36039/Group43
+        weight: 1
+      - path: Group36039/Group44
+        weight: 1
+      - path: Group36039/Group45
+        weight: 1
+      - path: Group36039/Group46
+        weight: 1
+      - path: Group36039/Group36038
+        weight: 1
+      - path: Group36039/Head
+        weight: 1
+      - path: Group36039/Left Bicep
+        weight: 1
+      - path: Group36039/Left Foot
+        weight: 1
+      - path: Group36039/Left Forearm
+        weight: 1
+      - path: Group36039/Left Hand
+        weight: 1
+      - path: Group36039/Left Shin
+        weight: 1
+      - path: Group36039/Left Thigh
+        weight: 1
+      - path: Group36039/Pelvis
+        weight: 1
+      - path: Group36039/Right Bicep
+        weight: 1
+      - path: Group36039/Right Foot
+        weight: 1
+      - path: Group36039/Right Forearm
+        weight: 1
+      - path: Group36039/Right Hand
+        weight: 1
+      - path: Group36039/Right Shin
+        weight: 1
+      - path: Group36039/Right Thigh
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Jump
+      takeName: Take 001
+      firstFrame: 231
+      lastFrame: 279
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Dummy_
+        weight: 1
+      - path: Group36039
+        weight: 1
+      - path: Group36039/Back
+        weight: 1
+      - path: Group36039/Chest
+        weight: 1
+      - path: Group36039/Dummy_LPlatform
+        weight: 1
+      - path: Group36039/Dummy_Pelvis
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_LThigh
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_LThigh/Dummy_LCalf
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_LThigh/Dummy_LCalf/Dummy_LFoot
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_LThigh/Dummy_LCalf/Dummy_LFoot/Dummy_LDigit11
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_RThigh
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_RThigh/Dummy_RCalf
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_RThigh/Dummy_RCalf/Dummy_RFoot
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_RThigh/Dummy_RCalf/Dummy_RFoot/Dummy_RDigit11
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4/Dummy_Ribcage
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4/Dummy_Ribcage/Dummy_LCollarbone
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4/Dummy_Ribcage/Dummy_LCollarbone/Dummy_LUpperarm
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4/Dummy_Ribcage/Dummy_LCollarbone/Dummy_LUpperarm/Dummy_LForearm
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4/Dummy_Ribcage/Dummy_LCollarbone/Dummy_LUpperarm/Dummy_LForearm/Dummy_LPalm
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4/Dummy_Ribcage/Dummy_Neck1
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4/Dummy_Ribcage/Dummy_Neck1/Dummy_Neck2
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4/Dummy_Ribcage/Dummy_Neck1/Dummy_Neck2/Dummy_Head
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4/Dummy_Ribcage/Dummy_RCollarbone
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4/Dummy_Ribcage/Dummy_RCollarbone/Dummy_RUpperarm
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4/Dummy_Ribcage/Dummy_RCollarbone/Dummy_RUpperarm/Dummy_RForearm
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4/Dummy_Ribcage/Dummy_RCollarbone/Dummy_RUpperarm/Dummy_RForearm/Dummy_RPalm
+        weight: 1
+      - path: Group36039/Dummy_RPlatform
+        weight: 1
+      - path: Group36039/Group21
+        weight: 1
+      - path: Group36039/Group22
+        weight: 1
+      - path: Group36039/Group23
+        weight: 1
+      - path: Group36039/Group24
+        weight: 1
+      - path: Group36039/Group25
+        weight: 1
+      - path: Group36039/Group26
+        weight: 1
+      - path: Group36039/Group27
+        weight: 1
+      - path: Group36039/Group28
+        weight: 1
+      - path: Group36039/Group29
+        weight: 1
+      - path: Group36039/Group38
+        weight: 1
+      - path: Group36039/Group41
+        weight: 1
+      - path: Group36039/Group42
+        weight: 1
+      - path: Group36039/Group43
+        weight: 1
+      - path: Group36039/Group44
+        weight: 1
+      - path: Group36039/Group45
+        weight: 1
+      - path: Group36039/Group46
+        weight: 1
+      - path: Group36039/Group36038
+        weight: 1
+      - path: Group36039/Head
+        weight: 1
+      - path: Group36039/Left Bicep
+        weight: 1
+      - path: Group36039/Left Foot
+        weight: 1
+      - path: Group36039/Left Forearm
+        weight: 1
+      - path: Group36039/Left Hand
+        weight: 1
+      - path: Group36039/Left Shin
+        weight: 1
+      - path: Group36039/Left Thigh
+        weight: 1
+      - path: Group36039/Pelvis
+        weight: 1
+      - path: Group36039/Right Bicep
+        weight: 1
+      - path: Group36039/Right Foot
+        weight: 1
+      - path: Group36039/Right Forearm
+        weight: 1
+      - path: Group36039/Right Hand
+        weight: 1
+      - path: Group36039/Right Shin
+        weight: 1
+      - path: Group36039/Right Thigh
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Falling
+      takeName: Take 001
+      firstFrame: 280
+      lastFrame: 302
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Dummy_
+        weight: 1
+      - path: Group36039
+        weight: 1
+      - path: Group36039/Back
+        weight: 1
+      - path: Group36039/Chest
+        weight: 1
+      - path: Group36039/Dummy_LPlatform
+        weight: 1
+      - path: Group36039/Dummy_Pelvis
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_LThigh
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_LThigh/Dummy_LCalf
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_LThigh/Dummy_LCalf/Dummy_LFoot
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_LThigh/Dummy_LCalf/Dummy_LFoot/Dummy_LDigit11
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_RThigh
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_RThigh/Dummy_RCalf
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_RThigh/Dummy_RCalf/Dummy_RFoot
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_RThigh/Dummy_RCalf/Dummy_RFoot/Dummy_RDigit11
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4/Dummy_Ribcage
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4/Dummy_Ribcage/Dummy_LCollarbone
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4/Dummy_Ribcage/Dummy_LCollarbone/Dummy_LUpperarm
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4/Dummy_Ribcage/Dummy_LCollarbone/Dummy_LUpperarm/Dummy_LForearm
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4/Dummy_Ribcage/Dummy_LCollarbone/Dummy_LUpperarm/Dummy_LForearm/Dummy_LPalm
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4/Dummy_Ribcage/Dummy_Neck1
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4/Dummy_Ribcage/Dummy_Neck1/Dummy_Neck2
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4/Dummy_Ribcage/Dummy_Neck1/Dummy_Neck2/Dummy_Head
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4/Dummy_Ribcage/Dummy_RCollarbone
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4/Dummy_Ribcage/Dummy_RCollarbone/Dummy_RUpperarm
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4/Dummy_Ribcage/Dummy_RCollarbone/Dummy_RUpperarm/Dummy_RForearm
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4/Dummy_Ribcage/Dummy_RCollarbone/Dummy_RUpperarm/Dummy_RForearm/Dummy_RPalm
+        weight: 1
+      - path: Group36039/Dummy_RPlatform
+        weight: 1
+      - path: Group36039/Group21
+        weight: 1
+      - path: Group36039/Group22
+        weight: 1
+      - path: Group36039/Group23
+        weight: 1
+      - path: Group36039/Group24
+        weight: 1
+      - path: Group36039/Group25
+        weight: 1
+      - path: Group36039/Group26
+        weight: 1
+      - path: Group36039/Group27
+        weight: 1
+      - path: Group36039/Group28
+        weight: 1
+      - path: Group36039/Group29
+        weight: 1
+      - path: Group36039/Group38
+        weight: 1
+      - path: Group36039/Group41
+        weight: 1
+      - path: Group36039/Group42
+        weight: 1
+      - path: Group36039/Group43
+        weight: 1
+      - path: Group36039/Group44
+        weight: 1
+      - path: Group36039/Group45
+        weight: 1
+      - path: Group36039/Group46
+        weight: 1
+      - path: Group36039/Group36038
+        weight: 1
+      - path: Group36039/Head
+        weight: 1
+      - path: Group36039/Left Bicep
+        weight: 1
+      - path: Group36039/Left Foot
+        weight: 1
+      - path: Group36039/Left Forearm
+        weight: 1
+      - path: Group36039/Left Hand
+        weight: 1
+      - path: Group36039/Left Shin
+        weight: 1
+      - path: Group36039/Left Thigh
+        weight: 1
+      - path: Group36039/Pelvis
+        weight: 1
+      - path: Group36039/Right Bicep
+        weight: 1
+      - path: Group36039/Right Foot
+        weight: 1
+      - path: Group36039/Right Forearm
+        weight: 1
+      - path: Group36039/Right Hand
+        weight: 1
+      - path: Group36039/Right Shin
+        weight: 1
+      - path: Group36039/Right Thigh
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Landing
+      takeName: Take 001
+      firstFrame: 304
+      lastFrame: 319
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Dummy_
+        weight: 1
+      - path: Group36039
+        weight: 1
+      - path: Group36039/Back
+        weight: 1
+      - path: Group36039/Chest
+        weight: 1
+      - path: Group36039/Dummy_LPlatform
+        weight: 1
+      - path: Group36039/Dummy_Pelvis
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_LThigh
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_LThigh/Dummy_LCalf
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_LThigh/Dummy_LCalf/Dummy_LFoot
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_LThigh/Dummy_LCalf/Dummy_LFoot/Dummy_LDigit11
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_RThigh
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_RThigh/Dummy_RCalf
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_RThigh/Dummy_RCalf/Dummy_RFoot
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_RThigh/Dummy_RCalf/Dummy_RFoot/Dummy_RDigit11
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4/Dummy_Ribcage
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4/Dummy_Ribcage/Dummy_LCollarbone
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4/Dummy_Ribcage/Dummy_LCollarbone/Dummy_LUpperarm
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4/Dummy_Ribcage/Dummy_LCollarbone/Dummy_LUpperarm/Dummy_LForearm
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4/Dummy_Ribcage/Dummy_LCollarbone/Dummy_LUpperarm/Dummy_LForearm/Dummy_LPalm
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4/Dummy_Ribcage/Dummy_Neck1
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4/Dummy_Ribcage/Dummy_Neck1/Dummy_Neck2
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4/Dummy_Ribcage/Dummy_Neck1/Dummy_Neck2/Dummy_Head
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4/Dummy_Ribcage/Dummy_RCollarbone
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4/Dummy_Ribcage/Dummy_RCollarbone/Dummy_RUpperarm
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4/Dummy_Ribcage/Dummy_RCollarbone/Dummy_RUpperarm/Dummy_RForearm
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4/Dummy_Ribcage/Dummy_RCollarbone/Dummy_RUpperarm/Dummy_RForearm/Dummy_RPalm
+        weight: 1
+      - path: Group36039/Dummy_RPlatform
+        weight: 1
+      - path: Group36039/Group21
+        weight: 1
+      - path: Group36039/Group22
+        weight: 1
+      - path: Group36039/Group23
+        weight: 1
+      - path: Group36039/Group24
+        weight: 1
+      - path: Group36039/Group25
+        weight: 1
+      - path: Group36039/Group26
+        weight: 1
+      - path: Group36039/Group27
+        weight: 1
+      - path: Group36039/Group28
+        weight: 1
+      - path: Group36039/Group29
+        weight: 1
+      - path: Group36039/Group38
+        weight: 1
+      - path: Group36039/Group41
+        weight: 1
+      - path: Group36039/Group42
+        weight: 1
+      - path: Group36039/Group43
+        weight: 1
+      - path: Group36039/Group44
+        weight: 1
+      - path: Group36039/Group45
+        weight: 1
+      - path: Group36039/Group46
+        weight: 1
+      - path: Group36039/Group36038
+        weight: 1
+      - path: Group36039/Head
+        weight: 1
+      - path: Group36039/Left Bicep
+        weight: 1
+      - path: Group36039/Left Foot
+        weight: 1
+      - path: Group36039/Left Forearm
+        weight: 1
+      - path: Group36039/Left Hand
+        weight: 1
+      - path: Group36039/Left Shin
+        weight: 1
+      - path: Group36039/Left Thigh
+        weight: 1
+      - path: Group36039/Pelvis
+        weight: 1
+      - path: Group36039/Right Bicep
+        weight: 1
+      - path: Group36039/Right Foot
+        weight: 1
+      - path: Group36039/Right Forearm
+        weight: 1
+      - path: Group36039/Right Hand
+        weight: 1
+      - path: Group36039/Right Shin
+        weight: 1
+      - path: Group36039/Right Thigh
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Punch
+      takeName: Take 001
+      firstFrame: 320
+      lastFrame: 345
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Dummy_
+        weight: 1
+      - path: Group36039
+        weight: 1
+      - path: Group36039/Back
+        weight: 1
+      - path: Group36039/Chest
+        weight: 1
+      - path: Group36039/Dummy_LPlatform
+        weight: 1
+      - path: Group36039/Dummy_Pelvis
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_LThigh
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_LThigh/Dummy_LCalf
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_LThigh/Dummy_LCalf/Dummy_LFoot
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_LThigh/Dummy_LCalf/Dummy_LFoot/Dummy_LDigit11
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_RThigh
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_RThigh/Dummy_RCalf
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_RThigh/Dummy_RCalf/Dummy_RFoot
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_RThigh/Dummy_RCalf/Dummy_RFoot/Dummy_RDigit11
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4/Dummy_Ribcage
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4/Dummy_Ribcage/Dummy_LCollarbone
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4/Dummy_Ribcage/Dummy_LCollarbone/Dummy_LUpperarm
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4/Dummy_Ribcage/Dummy_LCollarbone/Dummy_LUpperarm/Dummy_LForearm
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4/Dummy_Ribcage/Dummy_LCollarbone/Dummy_LUpperarm/Dummy_LForearm/Dummy_LPalm
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4/Dummy_Ribcage/Dummy_Neck1
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4/Dummy_Ribcage/Dummy_Neck1/Dummy_Neck2
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4/Dummy_Ribcage/Dummy_Neck1/Dummy_Neck2/Dummy_Head
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4/Dummy_Ribcage/Dummy_RCollarbone
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4/Dummy_Ribcage/Dummy_RCollarbone/Dummy_RUpperarm
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4/Dummy_Ribcage/Dummy_RCollarbone/Dummy_RUpperarm/Dummy_RForearm
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4/Dummy_Ribcage/Dummy_RCollarbone/Dummy_RUpperarm/Dummy_RForearm/Dummy_RPalm
+        weight: 1
+      - path: Group36039/Dummy_RPlatform
+        weight: 1
+      - path: Group36039/Group21
+        weight: 1
+      - path: Group36039/Group22
+        weight: 1
+      - path: Group36039/Group23
+        weight: 1
+      - path: Group36039/Group24
+        weight: 1
+      - path: Group36039/Group25
+        weight: 1
+      - path: Group36039/Group26
+        weight: 1
+      - path: Group36039/Group27
+        weight: 1
+      - path: Group36039/Group28
+        weight: 1
+      - path: Group36039/Group29
+        weight: 1
+      - path: Group36039/Group38
+        weight: 1
+      - path: Group36039/Group41
+        weight: 1
+      - path: Group36039/Group42
+        weight: 1
+      - path: Group36039/Group43
+        weight: 1
+      - path: Group36039/Group44
+        weight: 1
+      - path: Group36039/Group45
+        weight: 1
+      - path: Group36039/Group46
+        weight: 1
+      - path: Group36039/Group36038
+        weight: 1
+      - path: Group36039/Head
+        weight: 1
+      - path: Group36039/Left Bicep
+        weight: 1
+      - path: Group36039/Left Foot
+        weight: 1
+      - path: Group36039/Left Forearm
+        weight: 1
+      - path: Group36039/Left Hand
+        weight: 1
+      - path: Group36039/Left Shin
+        weight: 1
+      - path: Group36039/Left Thigh
+        weight: 1
+      - path: Group36039/Pelvis
+        weight: 1
+      - path: Group36039/Right Bicep
+        weight: 1
+      - path: Group36039/Right Foot
+        weight: 1
+      - path: Group36039/Right Forearm
+        weight: 1
+      - path: Group36039/Right Hand
+        weight: 1
+      - path: Group36039/Right Shin
+        weight: 1
+      - path: Group36039/Right Thigh
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Punch2
+      takeName: Take 001
+      firstFrame: 346
+      lastFrame: 365
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Dummy_
+        weight: 1
+      - path: Group36039
+        weight: 1
+      - path: Group36039/Back
+        weight: 1
+      - path: Group36039/Chest
+        weight: 1
+      - path: Group36039/Dummy_LPlatform
+        weight: 1
+      - path: Group36039/Dummy_Pelvis
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_LThigh
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_LThigh/Dummy_LCalf
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_LThigh/Dummy_LCalf/Dummy_LFoot
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_LThigh/Dummy_LCalf/Dummy_LFoot/Dummy_LDigit11
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_RThigh
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_RThigh/Dummy_RCalf
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_RThigh/Dummy_RCalf/Dummy_RFoot
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_RThigh/Dummy_RCalf/Dummy_RFoot/Dummy_RDigit11
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4/Dummy_Ribcage
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4/Dummy_Ribcage/Dummy_LCollarbone
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4/Dummy_Ribcage/Dummy_LCollarbone/Dummy_LUpperarm
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4/Dummy_Ribcage/Dummy_LCollarbone/Dummy_LUpperarm/Dummy_LForearm
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4/Dummy_Ribcage/Dummy_LCollarbone/Dummy_LUpperarm/Dummy_LForearm/Dummy_LPalm
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4/Dummy_Ribcage/Dummy_Neck1
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4/Dummy_Ribcage/Dummy_Neck1/Dummy_Neck2
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4/Dummy_Ribcage/Dummy_Neck1/Dummy_Neck2/Dummy_Head
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4/Dummy_Ribcage/Dummy_RCollarbone
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4/Dummy_Ribcage/Dummy_RCollarbone/Dummy_RUpperarm
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4/Dummy_Ribcage/Dummy_RCollarbone/Dummy_RUpperarm/Dummy_RForearm
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4/Dummy_Ribcage/Dummy_RCollarbone/Dummy_RUpperarm/Dummy_RForearm/Dummy_RPalm
+        weight: 1
+      - path: Group36039/Dummy_RPlatform
+        weight: 1
+      - path: Group36039/Group21
+        weight: 1
+      - path: Group36039/Group22
+        weight: 1
+      - path: Group36039/Group23
+        weight: 1
+      - path: Group36039/Group24
+        weight: 1
+      - path: Group36039/Group25
+        weight: 1
+      - path: Group36039/Group26
+        weight: 1
+      - path: Group36039/Group27
+        weight: 1
+      - path: Group36039/Group28
+        weight: 1
+      - path: Group36039/Group29
+        weight: 1
+      - path: Group36039/Group38
+        weight: 1
+      - path: Group36039/Group41
+        weight: 1
+      - path: Group36039/Group42
+        weight: 1
+      - path: Group36039/Group43
+        weight: 1
+      - path: Group36039/Group44
+        weight: 1
+      - path: Group36039/Group45
+        weight: 1
+      - path: Group36039/Group46
+        weight: 1
+      - path: Group36039/Group36038
+        weight: 1
+      - path: Group36039/Head
+        weight: 1
+      - path: Group36039/Left Bicep
+        weight: 1
+      - path: Group36039/Left Foot
+        weight: 1
+      - path: Group36039/Left Forearm
+        weight: 1
+      - path: Group36039/Left Hand
+        weight: 1
+      - path: Group36039/Left Shin
+        weight: 1
+      - path: Group36039/Left Thigh
+        weight: 1
+      - path: Group36039/Pelvis
+        weight: 1
+      - path: Group36039/Right Bicep
+        weight: 1
+      - path: Group36039/Right Foot
+        weight: 1
+      - path: Group36039/Right Forearm
+        weight: 1
+      - path: Group36039/Right Hand
+        weight: 1
+      - path: Group36039/Right Shin
+        weight: 1
+      - path: Group36039/Right Thigh
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Punch3
+      takeName: Take 001
+      firstFrame: 366
+      lastFrame: 433
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Dummy_
+        weight: 1
+      - path: Group36039
+        weight: 1
+      - path: Group36039/Back
+        weight: 1
+      - path: Group36039/Chest
+        weight: 1
+      - path: Group36039/Dummy_LPlatform
+        weight: 1
+      - path: Group36039/Dummy_Pelvis
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_LThigh
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_LThigh/Dummy_LCalf
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_LThigh/Dummy_LCalf/Dummy_LFoot
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_LThigh/Dummy_LCalf/Dummy_LFoot/Dummy_LDigit11
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_RThigh
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_RThigh/Dummy_RCalf
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_RThigh/Dummy_RCalf/Dummy_RFoot
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_RThigh/Dummy_RCalf/Dummy_RFoot/Dummy_RDigit11
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4/Dummy_Ribcage
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4/Dummy_Ribcage/Dummy_LCollarbone
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4/Dummy_Ribcage/Dummy_LCollarbone/Dummy_LUpperarm
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4/Dummy_Ribcage/Dummy_LCollarbone/Dummy_LUpperarm/Dummy_LForearm
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4/Dummy_Ribcage/Dummy_LCollarbone/Dummy_LUpperarm/Dummy_LForearm/Dummy_LPalm
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4/Dummy_Ribcage/Dummy_Neck1
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4/Dummy_Ribcage/Dummy_Neck1/Dummy_Neck2
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4/Dummy_Ribcage/Dummy_Neck1/Dummy_Neck2/Dummy_Head
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4/Dummy_Ribcage/Dummy_RCollarbone
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4/Dummy_Ribcage/Dummy_RCollarbone/Dummy_RUpperarm
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4/Dummy_Ribcage/Dummy_RCollarbone/Dummy_RUpperarm/Dummy_RForearm
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4/Dummy_Ribcage/Dummy_RCollarbone/Dummy_RUpperarm/Dummy_RForearm/Dummy_RPalm
+        weight: 1
+      - path: Group36039/Dummy_RPlatform
+        weight: 1
+      - path: Group36039/Group21
+        weight: 1
+      - path: Group36039/Group22
+        weight: 1
+      - path: Group36039/Group23
+        weight: 1
+      - path: Group36039/Group24
+        weight: 1
+      - path: Group36039/Group25
+        weight: 1
+      - path: Group36039/Group26
+        weight: 1
+      - path: Group36039/Group27
+        weight: 1
+      - path: Group36039/Group28
+        weight: 1
+      - path: Group36039/Group29
+        weight: 1
+      - path: Group36039/Group38
+        weight: 1
+      - path: Group36039/Group41
+        weight: 1
+      - path: Group36039/Group42
+        weight: 1
+      - path: Group36039/Group43
+        weight: 1
+      - path: Group36039/Group44
+        weight: 1
+      - path: Group36039/Group45
+        weight: 1
+      - path: Group36039/Group46
+        weight: 1
+      - path: Group36039/Group36038
+        weight: 1
+      - path: Group36039/Head
+        weight: 1
+      - path: Group36039/Left Bicep
+        weight: 1
+      - path: Group36039/Left Foot
+        weight: 1
+      - path: Group36039/Left Forearm
+        weight: 1
+      - path: Group36039/Left Hand
+        weight: 1
+      - path: Group36039/Left Shin
+        weight: 1
+      - path: Group36039/Left Thigh
+        weight: 1
+      - path: Group36039/Pelvis
+        weight: 1
+      - path: Group36039/Right Bicep
+        weight: 1
+      - path: Group36039/Right Foot
+        weight: 1
+      - path: Group36039/Right Forearm
+        weight: 1
+      - path: Group36039/Right Hand
+        weight: 1
+      - path: Group36039/Right Shin
+        weight: 1
+      - path: Group36039/Right Thigh
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Punch4
+      takeName: Take 001
+      firstFrame: 434
+      lastFrame: 535
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Dummy_
+        weight: 1
+      - path: Group36039
+        weight: 1
+      - path: Group36039/Back
+        weight: 1
+      - path: Group36039/Chest
+        weight: 1
+      - path: Group36039/Dummy_LPlatform
+        weight: 1
+      - path: Group36039/Dummy_Pelvis
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_LThigh
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_LThigh/Dummy_LCalf
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_LThigh/Dummy_LCalf/Dummy_LFoot
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_LThigh/Dummy_LCalf/Dummy_LFoot/Dummy_LDigit11
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_RThigh
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_RThigh/Dummy_RCalf
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_RThigh/Dummy_RCalf/Dummy_RFoot
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_RThigh/Dummy_RCalf/Dummy_RFoot/Dummy_RDigit11
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4/Dummy_Ribcage
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4/Dummy_Ribcage/Dummy_LCollarbone
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4/Dummy_Ribcage/Dummy_LCollarbone/Dummy_LUpperarm
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4/Dummy_Ribcage/Dummy_LCollarbone/Dummy_LUpperarm/Dummy_LForearm
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4/Dummy_Ribcage/Dummy_LCollarbone/Dummy_LUpperarm/Dummy_LForearm/Dummy_LPalm
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4/Dummy_Ribcage/Dummy_Neck1
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4/Dummy_Ribcage/Dummy_Neck1/Dummy_Neck2
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4/Dummy_Ribcage/Dummy_Neck1/Dummy_Neck2/Dummy_Head
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4/Dummy_Ribcage/Dummy_RCollarbone
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4/Dummy_Ribcage/Dummy_RCollarbone/Dummy_RUpperarm
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4/Dummy_Ribcage/Dummy_RCollarbone/Dummy_RUpperarm/Dummy_RForearm
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4/Dummy_Ribcage/Dummy_RCollarbone/Dummy_RUpperarm/Dummy_RForearm/Dummy_RPalm
+        weight: 1
+      - path: Group36039/Dummy_RPlatform
+        weight: 1
+      - path: Group36039/Group21
+        weight: 1
+      - path: Group36039/Group22
+        weight: 1
+      - path: Group36039/Group23
+        weight: 1
+      - path: Group36039/Group24
+        weight: 1
+      - path: Group36039/Group25
+        weight: 1
+      - path: Group36039/Group26
+        weight: 1
+      - path: Group36039/Group27
+        weight: 1
+      - path: Group36039/Group28
+        weight: 1
+      - path: Group36039/Group29
+        weight: 1
+      - path: Group36039/Group38
+        weight: 1
+      - path: Group36039/Group41
+        weight: 1
+      - path: Group36039/Group42
+        weight: 1
+      - path: Group36039/Group43
+        weight: 1
+      - path: Group36039/Group44
+        weight: 1
+      - path: Group36039/Group45
+        weight: 1
+      - path: Group36039/Group46
+        weight: 1
+      - path: Group36039/Group36038
+        weight: 1
+      - path: Group36039/Head
+        weight: 1
+      - path: Group36039/Left Bicep
+        weight: 1
+      - path: Group36039/Left Foot
+        weight: 1
+      - path: Group36039/Left Forearm
+        weight: 1
+      - path: Group36039/Left Hand
+        weight: 1
+      - path: Group36039/Left Shin
+        weight: 1
+      - path: Group36039/Left Thigh
+        weight: 1
+      - path: Group36039/Pelvis
+        weight: 1
+      - path: Group36039/Right Bicep
+        weight: 1
+      - path: Group36039/Right Foot
+        weight: 1
+      - path: Group36039/Right Forearm
+        weight: 1
+      - path: Group36039/Right Hand
+        weight: 1
+      - path: Group36039/Right Shin
+        weight: 1
+      - path: Group36039/Right Thigh
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: JumpKick
+      takeName: Take 001
+      firstFrame: 536
+      lastFrame: 585
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Dummy_
+        weight: 1
+      - path: Group36039
+        weight: 1
+      - path: Group36039/Back
+        weight: 1
+      - path: Group36039/Chest
+        weight: 1
+      - path: Group36039/Dummy_LPlatform
+        weight: 1
+      - path: Group36039/Dummy_Pelvis
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_LThigh
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_LThigh/Dummy_LCalf
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_LThigh/Dummy_LCalf/Dummy_LFoot
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_LThigh/Dummy_LCalf/Dummy_LFoot/Dummy_LDigit11
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_RThigh
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_RThigh/Dummy_RCalf
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_RThigh/Dummy_RCalf/Dummy_RFoot
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_RThigh/Dummy_RCalf/Dummy_RFoot/Dummy_RDigit11
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4/Dummy_Ribcage
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4/Dummy_Ribcage/Dummy_LCollarbone
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4/Dummy_Ribcage/Dummy_LCollarbone/Dummy_LUpperarm
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4/Dummy_Ribcage/Dummy_LCollarbone/Dummy_LUpperarm/Dummy_LForearm
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4/Dummy_Ribcage/Dummy_LCollarbone/Dummy_LUpperarm/Dummy_LForearm/Dummy_LPalm
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4/Dummy_Ribcage/Dummy_Neck1
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4/Dummy_Ribcage/Dummy_Neck1/Dummy_Neck2
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4/Dummy_Ribcage/Dummy_Neck1/Dummy_Neck2/Dummy_Head
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4/Dummy_Ribcage/Dummy_RCollarbone
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4/Dummy_Ribcage/Dummy_RCollarbone/Dummy_RUpperarm
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4/Dummy_Ribcage/Dummy_RCollarbone/Dummy_RUpperarm/Dummy_RForearm
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4/Dummy_Ribcage/Dummy_RCollarbone/Dummy_RUpperarm/Dummy_RForearm/Dummy_RPalm
+        weight: 1
+      - path: Group36039/Dummy_RPlatform
+        weight: 1
+      - path: Group36039/Group21
+        weight: 1
+      - path: Group36039/Group22
+        weight: 1
+      - path: Group36039/Group23
+        weight: 1
+      - path: Group36039/Group24
+        weight: 1
+      - path: Group36039/Group25
+        weight: 1
+      - path: Group36039/Group26
+        weight: 1
+      - path: Group36039/Group27
+        weight: 1
+      - path: Group36039/Group28
+        weight: 1
+      - path: Group36039/Group29
+        weight: 1
+      - path: Group36039/Group38
+        weight: 1
+      - path: Group36039/Group41
+        weight: 1
+      - path: Group36039/Group42
+        weight: 1
+      - path: Group36039/Group43
+        weight: 1
+      - path: Group36039/Group44
+        weight: 1
+      - path: Group36039/Group45
+        weight: 1
+      - path: Group36039/Group46
+        weight: 1
+      - path: Group36039/Group36038
+        weight: 1
+      - path: Group36039/Head
+        weight: 1
+      - path: Group36039/Left Bicep
+        weight: 1
+      - path: Group36039/Left Foot
+        weight: 1
+      - path: Group36039/Left Forearm
+        weight: 1
+      - path: Group36039/Left Hand
+        weight: 1
+      - path: Group36039/Left Shin
+        weight: 1
+      - path: Group36039/Left Thigh
+        weight: 1
+      - path: Group36039/Pelvis
+        weight: 1
+      - path: Group36039/Right Bicep
+        weight: 1
+      - path: Group36039/Right Foot
+        weight: 1
+      - path: Group36039/Right Forearm
+        weight: 1
+      - path: Group36039/Right Hand
+        weight: 1
+      - path: Group36039/Right Shin
+        weight: 1
+      - path: Group36039/Right Thigh
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Block
+      takeName: Take 001
+      firstFrame: 586
+      lastFrame: 624
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Dummy_
+        weight: 1
+      - path: Group36039
+        weight: 1
+      - path: Group36039/Back
+        weight: 1
+      - path: Group36039/Chest
+        weight: 1
+      - path: Group36039/Dummy_LPlatform
+        weight: 1
+      - path: Group36039/Dummy_Pelvis
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_LThigh
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_LThigh/Dummy_LCalf
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_LThigh/Dummy_LCalf/Dummy_LFoot
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_LThigh/Dummy_LCalf/Dummy_LFoot/Dummy_LDigit11
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_RThigh
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_RThigh/Dummy_RCalf
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_RThigh/Dummy_RCalf/Dummy_RFoot
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_RThigh/Dummy_RCalf/Dummy_RFoot/Dummy_RDigit11
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4/Dummy_Ribcage
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4/Dummy_Ribcage/Dummy_LCollarbone
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4/Dummy_Ribcage/Dummy_LCollarbone/Dummy_LUpperarm
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4/Dummy_Ribcage/Dummy_LCollarbone/Dummy_LUpperarm/Dummy_LForearm
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4/Dummy_Ribcage/Dummy_LCollarbone/Dummy_LUpperarm/Dummy_LForearm/Dummy_LPalm
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4/Dummy_Ribcage/Dummy_Neck1
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4/Dummy_Ribcage/Dummy_Neck1/Dummy_Neck2
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4/Dummy_Ribcage/Dummy_Neck1/Dummy_Neck2/Dummy_Head
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4/Dummy_Ribcage/Dummy_RCollarbone
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4/Dummy_Ribcage/Dummy_RCollarbone/Dummy_RUpperarm
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4/Dummy_Ribcage/Dummy_RCollarbone/Dummy_RUpperarm/Dummy_RForearm
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4/Dummy_Ribcage/Dummy_RCollarbone/Dummy_RUpperarm/Dummy_RForearm/Dummy_RPalm
+        weight: 1
+      - path: Group36039/Dummy_RPlatform
+        weight: 1
+      - path: Group36039/Group21
+        weight: 1
+      - path: Group36039/Group22
+        weight: 1
+      - path: Group36039/Group23
+        weight: 1
+      - path: Group36039/Group24
+        weight: 1
+      - path: Group36039/Group25
+        weight: 1
+      - path: Group36039/Group26
+        weight: 1
+      - path: Group36039/Group27
+        weight: 1
+      - path: Group36039/Group28
+        weight: 1
+      - path: Group36039/Group29
+        weight: 1
+      - path: Group36039/Group38
+        weight: 1
+      - path: Group36039/Group41
+        weight: 1
+      - path: Group36039/Group42
+        weight: 1
+      - path: Group36039/Group43
+        weight: 1
+      - path: Group36039/Group44
+        weight: 1
+      - path: Group36039/Group45
+        weight: 1
+      - path: Group36039/Group46
+        weight: 1
+      - path: Group36039/Group36038
+        weight: 1
+      - path: Group36039/Head
+        weight: 1
+      - path: Group36039/Left Bicep
+        weight: 1
+      - path: Group36039/Left Foot
+        weight: 1
+      - path: Group36039/Left Forearm
+        weight: 1
+      - path: Group36039/Left Hand
+        weight: 1
+      - path: Group36039/Left Shin
+        weight: 1
+      - path: Group36039/Left Thigh
+        weight: 1
+      - path: Group36039/Pelvis
+        weight: 1
+      - path: Group36039/Right Bicep
+        weight: 1
+      - path: Group36039/Right Foot
+        weight: 1
+      - path: Group36039/Right Forearm
+        weight: 1
+      - path: Group36039/Right Hand
+        weight: 1
+      - path: Group36039/Right Shin
+        weight: 1
+      - path: Group36039/Right Thigh
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: BlockHit
+      takeName: Take 001
+      firstFrame: 625
+      lastFrame: 644
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Dummy_
+        weight: 1
+      - path: Group36039
+        weight: 1
+      - path: Group36039/Back
+        weight: 1
+      - path: Group36039/Chest
+        weight: 1
+      - path: Group36039/Dummy_LPlatform
+        weight: 1
+      - path: Group36039/Dummy_Pelvis
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_LThigh
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_LThigh/Dummy_LCalf
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_LThigh/Dummy_LCalf/Dummy_LFoot
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_LThigh/Dummy_LCalf/Dummy_LFoot/Dummy_LDigit11
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_RThigh
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_RThigh/Dummy_RCalf
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_RThigh/Dummy_RCalf/Dummy_RFoot
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_RThigh/Dummy_RCalf/Dummy_RFoot/Dummy_RDigit11
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4/Dummy_Ribcage
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4/Dummy_Ribcage/Dummy_LCollarbone
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4/Dummy_Ribcage/Dummy_LCollarbone/Dummy_LUpperarm
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4/Dummy_Ribcage/Dummy_LCollarbone/Dummy_LUpperarm/Dummy_LForearm
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4/Dummy_Ribcage/Dummy_LCollarbone/Dummy_LUpperarm/Dummy_LForearm/Dummy_LPalm
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4/Dummy_Ribcage/Dummy_Neck1
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4/Dummy_Ribcage/Dummy_Neck1/Dummy_Neck2
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4/Dummy_Ribcage/Dummy_Neck1/Dummy_Neck2/Dummy_Head
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4/Dummy_Ribcage/Dummy_RCollarbone
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4/Dummy_Ribcage/Dummy_RCollarbone/Dummy_RUpperarm
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4/Dummy_Ribcage/Dummy_RCollarbone/Dummy_RUpperarm/Dummy_RForearm
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4/Dummy_Ribcage/Dummy_RCollarbone/Dummy_RUpperarm/Dummy_RForearm/Dummy_RPalm
+        weight: 1
+      - path: Group36039/Dummy_RPlatform
+        weight: 1
+      - path: Group36039/Group21
+        weight: 1
+      - path: Group36039/Group22
+        weight: 1
+      - path: Group36039/Group23
+        weight: 1
+      - path: Group36039/Group24
+        weight: 1
+      - path: Group36039/Group25
+        weight: 1
+      - path: Group36039/Group26
+        weight: 1
+      - path: Group36039/Group27
+        weight: 1
+      - path: Group36039/Group28
+        weight: 1
+      - path: Group36039/Group29
+        weight: 1
+      - path: Group36039/Group38
+        weight: 1
+      - path: Group36039/Group41
+        weight: 1
+      - path: Group36039/Group42
+        weight: 1
+      - path: Group36039/Group43
+        weight: 1
+      - path: Group36039/Group44
+        weight: 1
+      - path: Group36039/Group45
+        weight: 1
+      - path: Group36039/Group46
+        weight: 1
+      - path: Group36039/Group36038
+        weight: 1
+      - path: Group36039/Head
+        weight: 1
+      - path: Group36039/Left Bicep
+        weight: 1
+      - path: Group36039/Left Foot
+        weight: 1
+      - path: Group36039/Left Forearm
+        weight: 1
+      - path: Group36039/Left Hand
+        weight: 1
+      - path: Group36039/Left Shin
+        weight: 1
+      - path: Group36039/Left Thigh
+        weight: 1
+      - path: Group36039/Pelvis
+        weight: 1
+      - path: Group36039/Right Bicep
+        weight: 1
+      - path: Group36039/Right Foot
+        weight: 1
+      - path: Group36039/Right Forearm
+        weight: 1
+      - path: Group36039/Right Hand
+        weight: 1
+      - path: Group36039/Right Shin
+        weight: 1
+      - path: Group36039/Right Thigh
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Parry
+      takeName: Take 001
+      firstFrame: 645
+      lastFrame: 669
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Dummy_
+        weight: 1
+      - path: Group36039
+        weight: 1
+      - path: Group36039/Back
+        weight: 1
+      - path: Group36039/Chest
+        weight: 1
+      - path: Group36039/Dummy_LPlatform
+        weight: 1
+      - path: Group36039/Dummy_Pelvis
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_LThigh
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_LThigh/Dummy_LCalf
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_LThigh/Dummy_LCalf/Dummy_LFoot
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_LThigh/Dummy_LCalf/Dummy_LFoot/Dummy_LDigit11
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_RThigh
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_RThigh/Dummy_RCalf
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_RThigh/Dummy_RCalf/Dummy_RFoot
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_RThigh/Dummy_RCalf/Dummy_RFoot/Dummy_RDigit11
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4/Dummy_Ribcage
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4/Dummy_Ribcage/Dummy_LCollarbone
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4/Dummy_Ribcage/Dummy_LCollarbone/Dummy_LUpperarm
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4/Dummy_Ribcage/Dummy_LCollarbone/Dummy_LUpperarm/Dummy_LForearm
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4/Dummy_Ribcage/Dummy_LCollarbone/Dummy_LUpperarm/Dummy_LForearm/Dummy_LPalm
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4/Dummy_Ribcage/Dummy_Neck1
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4/Dummy_Ribcage/Dummy_Neck1/Dummy_Neck2
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4/Dummy_Ribcage/Dummy_Neck1/Dummy_Neck2/Dummy_Head
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4/Dummy_Ribcage/Dummy_RCollarbone
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4/Dummy_Ribcage/Dummy_RCollarbone/Dummy_RUpperarm
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4/Dummy_Ribcage/Dummy_RCollarbone/Dummy_RUpperarm/Dummy_RForearm
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4/Dummy_Ribcage/Dummy_RCollarbone/Dummy_RUpperarm/Dummy_RForearm/Dummy_RPalm
+        weight: 1
+      - path: Group36039/Dummy_RPlatform
+        weight: 1
+      - path: Group36039/Group21
+        weight: 1
+      - path: Group36039/Group22
+        weight: 1
+      - path: Group36039/Group23
+        weight: 1
+      - path: Group36039/Group24
+        weight: 1
+      - path: Group36039/Group25
+        weight: 1
+      - path: Group36039/Group26
+        weight: 1
+      - path: Group36039/Group27
+        weight: 1
+      - path: Group36039/Group28
+        weight: 1
+      - path: Group36039/Group29
+        weight: 1
+      - path: Group36039/Group38
+        weight: 1
+      - path: Group36039/Group41
+        weight: 1
+      - path: Group36039/Group42
+        weight: 1
+      - path: Group36039/Group43
+        weight: 1
+      - path: Group36039/Group44
+        weight: 1
+      - path: Group36039/Group45
+        weight: 1
+      - path: Group36039/Group46
+        weight: 1
+      - path: Group36039/Group36038
+        weight: 1
+      - path: Group36039/Head
+        weight: 1
+      - path: Group36039/Left Bicep
+        weight: 1
+      - path: Group36039/Left Foot
+        weight: 1
+      - path: Group36039/Left Forearm
+        weight: 1
+      - path: Group36039/Left Hand
+        weight: 1
+      - path: Group36039/Left Shin
+        weight: 1
+      - path: Group36039/Left Thigh
+        weight: 1
+      - path: Group36039/Pelvis
+        weight: 1
+      - path: Group36039/Right Bicep
+        weight: 1
+      - path: Group36039/Right Foot
+        weight: 1
+      - path: Group36039/Right Forearm
+        weight: 1
+      - path: Group36039/Right Hand
+        weight: 1
+      - path: Group36039/Right Shin
+        weight: 1
+      - path: Group36039/Right Thigh
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: ParryHit
+      takeName: Take 001
+      firstFrame: 670
+      lastFrame: 735
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Dummy_
+        weight: 1
+      - path: Group36039
+        weight: 1
+      - path: Group36039/Back
+        weight: 1
+      - path: Group36039/Chest
+        weight: 1
+      - path: Group36039/Dummy_LPlatform
+        weight: 1
+      - path: Group36039/Dummy_Pelvis
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_LThigh
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_LThigh/Dummy_LCalf
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_LThigh/Dummy_LCalf/Dummy_LFoot
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_LThigh/Dummy_LCalf/Dummy_LFoot/Dummy_LDigit11
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_RThigh
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_RThigh/Dummy_RCalf
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_RThigh/Dummy_RCalf/Dummy_RFoot
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_RThigh/Dummy_RCalf/Dummy_RFoot/Dummy_RDigit11
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4/Dummy_Ribcage
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4/Dummy_Ribcage/Dummy_LCollarbone
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4/Dummy_Ribcage/Dummy_LCollarbone/Dummy_LUpperarm
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4/Dummy_Ribcage/Dummy_LCollarbone/Dummy_LUpperarm/Dummy_LForearm
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4/Dummy_Ribcage/Dummy_LCollarbone/Dummy_LUpperarm/Dummy_LForearm/Dummy_LPalm
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4/Dummy_Ribcage/Dummy_Neck1
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4/Dummy_Ribcage/Dummy_Neck1/Dummy_Neck2
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4/Dummy_Ribcage/Dummy_Neck1/Dummy_Neck2/Dummy_Head
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4/Dummy_Ribcage/Dummy_RCollarbone
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4/Dummy_Ribcage/Dummy_RCollarbone/Dummy_RUpperarm
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4/Dummy_Ribcage/Dummy_RCollarbone/Dummy_RUpperarm/Dummy_RForearm
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4/Dummy_Ribcage/Dummy_RCollarbone/Dummy_RUpperarm/Dummy_RForearm/Dummy_RPalm
+        weight: 1
+      - path: Group36039/Dummy_RPlatform
+        weight: 1
+      - path: Group36039/Group21
+        weight: 1
+      - path: Group36039/Group22
+        weight: 1
+      - path: Group36039/Group23
+        weight: 1
+      - path: Group36039/Group24
+        weight: 1
+      - path: Group36039/Group25
+        weight: 1
+      - path: Group36039/Group26
+        weight: 1
+      - path: Group36039/Group27
+        weight: 1
+      - path: Group36039/Group28
+        weight: 1
+      - path: Group36039/Group29
+        weight: 1
+      - path: Group36039/Group38
+        weight: 1
+      - path: Group36039/Group41
+        weight: 1
+      - path: Group36039/Group42
+        weight: 1
+      - path: Group36039/Group43
+        weight: 1
+      - path: Group36039/Group44
+        weight: 1
+      - path: Group36039/Group45
+        weight: 1
+      - path: Group36039/Group46
+        weight: 1
+      - path: Group36039/Group36038
+        weight: 1
+      - path: Group36039/Head
+        weight: 1
+      - path: Group36039/Left Bicep
+        weight: 1
+      - path: Group36039/Left Foot
+        weight: 1
+      - path: Group36039/Left Forearm
+        weight: 1
+      - path: Group36039/Left Hand
+        weight: 1
+      - path: Group36039/Left Shin
+        weight: 1
+      - path: Group36039/Left Thigh
+        weight: 1
+      - path: Group36039/Pelvis
+        weight: 1
+      - path: Group36039/Right Bicep
+        weight: 1
+      - path: Group36039/Right Foot
+        weight: 1
+      - path: Group36039/Right Forearm
+        weight: 1
+      - path: Group36039/Right Hand
+        weight: 1
+      - path: Group36039/Right Shin
+        weight: 1
+      - path: Group36039/Right Thigh
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Hit
+      takeName: Take 001
+      firstFrame: 736
+      lastFrame: 755
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Dummy_
+        weight: 1
+      - path: Group36039
+        weight: 1
+      - path: Group36039/Back
+        weight: 1
+      - path: Group36039/Chest
+        weight: 1
+      - path: Group36039/Dummy_LPlatform
+        weight: 1
+      - path: Group36039/Dummy_Pelvis
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_LThigh
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_LThigh/Dummy_LCalf
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_LThigh/Dummy_LCalf/Dummy_LFoot
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_LThigh/Dummy_LCalf/Dummy_LFoot/Dummy_LDigit11
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_RThigh
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_RThigh/Dummy_RCalf
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_RThigh/Dummy_RCalf/Dummy_RFoot
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_RThigh/Dummy_RCalf/Dummy_RFoot/Dummy_RDigit11
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4/Dummy_Ribcage
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4/Dummy_Ribcage/Dummy_LCollarbone
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4/Dummy_Ribcage/Dummy_LCollarbone/Dummy_LUpperarm
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4/Dummy_Ribcage/Dummy_LCollarbone/Dummy_LUpperarm/Dummy_LForearm
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4/Dummy_Ribcage/Dummy_LCollarbone/Dummy_LUpperarm/Dummy_LForearm/Dummy_LPalm
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4/Dummy_Ribcage/Dummy_Neck1
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4/Dummy_Ribcage/Dummy_Neck1/Dummy_Neck2
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4/Dummy_Ribcage/Dummy_Neck1/Dummy_Neck2/Dummy_Head
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4/Dummy_Ribcage/Dummy_RCollarbone
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4/Dummy_Ribcage/Dummy_RCollarbone/Dummy_RUpperarm
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4/Dummy_Ribcage/Dummy_RCollarbone/Dummy_RUpperarm/Dummy_RForearm
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4/Dummy_Ribcage/Dummy_RCollarbone/Dummy_RUpperarm/Dummy_RForearm/Dummy_RPalm
+        weight: 1
+      - path: Group36039/Dummy_RPlatform
+        weight: 1
+      - path: Group36039/Group21
+        weight: 1
+      - path: Group36039/Group22
+        weight: 1
+      - path: Group36039/Group23
+        weight: 1
+      - path: Group36039/Group24
+        weight: 1
+      - path: Group36039/Group25
+        weight: 1
+      - path: Group36039/Group26
+        weight: 1
+      - path: Group36039/Group27
+        weight: 1
+      - path: Group36039/Group28
+        weight: 1
+      - path: Group36039/Group29
+        weight: 1
+      - path: Group36039/Group38
+        weight: 1
+      - path: Group36039/Group41
+        weight: 1
+      - path: Group36039/Group42
+        weight: 1
+      - path: Group36039/Group43
+        weight: 1
+      - path: Group36039/Group44
+        weight: 1
+      - path: Group36039/Group45
+        weight: 1
+      - path: Group36039/Group46
+        weight: 1
+      - path: Group36039/Group36038
+        weight: 1
+      - path: Group36039/Head
+        weight: 1
+      - path: Group36039/Left Bicep
+        weight: 1
+      - path: Group36039/Left Foot
+        weight: 1
+      - path: Group36039/Left Forearm
+        weight: 1
+      - path: Group36039/Left Hand
+        weight: 1
+      - path: Group36039/Left Shin
+        weight: 1
+      - path: Group36039/Left Thigh
+        weight: 1
+      - path: Group36039/Pelvis
+        weight: 1
+      - path: Group36039/Right Bicep
+        weight: 1
+      - path: Group36039/Right Foot
+        weight: 1
+      - path: Group36039/Right Forearm
+        weight: 1
+      - path: Group36039/Right Hand
+        weight: 1
+      - path: Group36039/Right Shin
+        weight: 1
+      - path: Group36039/Right Thigh
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Hit2
+      takeName: Take 001
+      firstFrame: 756
+      lastFrame: 795
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Dummy_
+        weight: 1
+      - path: Group36039
+        weight: 1
+      - path: Group36039/Back
+        weight: 1
+      - path: Group36039/Chest
+        weight: 1
+      - path: Group36039/Dummy_LPlatform
+        weight: 1
+      - path: Group36039/Dummy_Pelvis
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_LThigh
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_LThigh/Dummy_LCalf
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_LThigh/Dummy_LCalf/Dummy_LFoot
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_LThigh/Dummy_LCalf/Dummy_LFoot/Dummy_LDigit11
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_RThigh
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_RThigh/Dummy_RCalf
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_RThigh/Dummy_RCalf/Dummy_RFoot
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_RThigh/Dummy_RCalf/Dummy_RFoot/Dummy_RDigit11
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4/Dummy_Ribcage
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4/Dummy_Ribcage/Dummy_LCollarbone
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4/Dummy_Ribcage/Dummy_LCollarbone/Dummy_LUpperarm
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4/Dummy_Ribcage/Dummy_LCollarbone/Dummy_LUpperarm/Dummy_LForearm
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4/Dummy_Ribcage/Dummy_LCollarbone/Dummy_LUpperarm/Dummy_LForearm/Dummy_LPalm
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4/Dummy_Ribcage/Dummy_Neck1
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4/Dummy_Ribcage/Dummy_Neck1/Dummy_Neck2
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4/Dummy_Ribcage/Dummy_Neck1/Dummy_Neck2/Dummy_Head
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4/Dummy_Ribcage/Dummy_RCollarbone
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4/Dummy_Ribcage/Dummy_RCollarbone/Dummy_RUpperarm
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4/Dummy_Ribcage/Dummy_RCollarbone/Dummy_RUpperarm/Dummy_RForearm
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4/Dummy_Ribcage/Dummy_RCollarbone/Dummy_RUpperarm/Dummy_RForearm/Dummy_RPalm
+        weight: 1
+      - path: Group36039/Dummy_RPlatform
+        weight: 1
+      - path: Group36039/Group21
+        weight: 1
+      - path: Group36039/Group22
+        weight: 1
+      - path: Group36039/Group23
+        weight: 1
+      - path: Group36039/Group24
+        weight: 1
+      - path: Group36039/Group25
+        weight: 1
+      - path: Group36039/Group26
+        weight: 1
+      - path: Group36039/Group27
+        weight: 1
+      - path: Group36039/Group28
+        weight: 1
+      - path: Group36039/Group29
+        weight: 1
+      - path: Group36039/Group38
+        weight: 1
+      - path: Group36039/Group41
+        weight: 1
+      - path: Group36039/Group42
+        weight: 1
+      - path: Group36039/Group43
+        weight: 1
+      - path: Group36039/Group44
+        weight: 1
+      - path: Group36039/Group45
+        weight: 1
+      - path: Group36039/Group46
+        weight: 1
+      - path: Group36039/Group36038
+        weight: 1
+      - path: Group36039/Head
+        weight: 1
+      - path: Group36039/Left Bicep
+        weight: 1
+      - path: Group36039/Left Foot
+        weight: 1
+      - path: Group36039/Left Forearm
+        weight: 1
+      - path: Group36039/Left Hand
+        weight: 1
+      - path: Group36039/Left Shin
+        weight: 1
+      - path: Group36039/Left Thigh
+        weight: 1
+      - path: Group36039/Pelvis
+        weight: 1
+      - path: Group36039/Right Bicep
+        weight: 1
+      - path: Group36039/Right Foot
+        weight: 1
+      - path: Group36039/Right Forearm
+        weight: 1
+      - path: Group36039/Right Hand
+        weight: 1
+      - path: Group36039/Right Shin
+        weight: 1
+      - path: Group36039/Right Thigh
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: KnockDownHit
+      takeName: Take 001
+      firstFrame: 796
+      lastFrame: 812
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Dummy_
+        weight: 1
+      - path: Group36039
+        weight: 1
+      - path: Group36039/Back
+        weight: 1
+      - path: Group36039/Chest
+        weight: 1
+      - path: Group36039/Dummy_LPlatform
+        weight: 1
+      - path: Group36039/Dummy_Pelvis
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_LThigh
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_LThigh/Dummy_LCalf
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_LThigh/Dummy_LCalf/Dummy_LFoot
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_LThigh/Dummy_LCalf/Dummy_LFoot/Dummy_LDigit11
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_RThigh
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_RThigh/Dummy_RCalf
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_RThigh/Dummy_RCalf/Dummy_RFoot
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_RThigh/Dummy_RCalf/Dummy_RFoot/Dummy_RDigit11
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4/Dummy_Ribcage
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4/Dummy_Ribcage/Dummy_LCollarbone
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4/Dummy_Ribcage/Dummy_LCollarbone/Dummy_LUpperarm
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4/Dummy_Ribcage/Dummy_LCollarbone/Dummy_LUpperarm/Dummy_LForearm
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4/Dummy_Ribcage/Dummy_LCollarbone/Dummy_LUpperarm/Dummy_LForearm/Dummy_LPalm
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4/Dummy_Ribcage/Dummy_Neck1
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4/Dummy_Ribcage/Dummy_Neck1/Dummy_Neck2
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4/Dummy_Ribcage/Dummy_Neck1/Dummy_Neck2/Dummy_Head
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4/Dummy_Ribcage/Dummy_RCollarbone
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4/Dummy_Ribcage/Dummy_RCollarbone/Dummy_RUpperarm
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4/Dummy_Ribcage/Dummy_RCollarbone/Dummy_RUpperarm/Dummy_RForearm
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4/Dummy_Ribcage/Dummy_RCollarbone/Dummy_RUpperarm/Dummy_RForearm/Dummy_RPalm
+        weight: 1
+      - path: Group36039/Dummy_RPlatform
+        weight: 1
+      - path: Group36039/Group21
+        weight: 1
+      - path: Group36039/Group22
+        weight: 1
+      - path: Group36039/Group23
+        weight: 1
+      - path: Group36039/Group24
+        weight: 1
+      - path: Group36039/Group25
+        weight: 1
+      - path: Group36039/Group26
+        weight: 1
+      - path: Group36039/Group27
+        weight: 1
+      - path: Group36039/Group28
+        weight: 1
+      - path: Group36039/Group29
+        weight: 1
+      - path: Group36039/Group38
+        weight: 1
+      - path: Group36039/Group41
+        weight: 1
+      - path: Group36039/Group42
+        weight: 1
+      - path: Group36039/Group43
+        weight: 1
+      - path: Group36039/Group44
+        weight: 1
+      - path: Group36039/Group45
+        weight: 1
+      - path: Group36039/Group46
+        weight: 1
+      - path: Group36039/Group36038
+        weight: 1
+      - path: Group36039/Head
+        weight: 1
+      - path: Group36039/Left Bicep
+        weight: 1
+      - path: Group36039/Left Foot
+        weight: 1
+      - path: Group36039/Left Forearm
+        weight: 1
+      - path: Group36039/Left Hand
+        weight: 1
+      - path: Group36039/Left Shin
+        weight: 1
+      - path: Group36039/Left Thigh
+        weight: 1
+      - path: Group36039/Pelvis
+        weight: 1
+      - path: Group36039/Right Bicep
+        weight: 1
+      - path: Group36039/Right Foot
+        weight: 1
+      - path: Group36039/Right Forearm
+        weight: 1
+      - path: Group36039/Right Hand
+        weight: 1
+      - path: Group36039/Right Shin
+        weight: 1
+      - path: Group36039/Right Thigh
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: KnockDownFalling
+      takeName: Take 001
+      firstFrame: 813
+      lastFrame: 835
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Dummy_
+        weight: 1
+      - path: Group36039
+        weight: 1
+      - path: Group36039/Back
+        weight: 1
+      - path: Group36039/Chest
+        weight: 1
+      - path: Group36039/Dummy_LPlatform
+        weight: 1
+      - path: Group36039/Dummy_Pelvis
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_LThigh
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_LThigh/Dummy_LCalf
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_LThigh/Dummy_LCalf/Dummy_LFoot
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_LThigh/Dummy_LCalf/Dummy_LFoot/Dummy_LDigit11
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_RThigh
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_RThigh/Dummy_RCalf
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_RThigh/Dummy_RCalf/Dummy_RFoot
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_RThigh/Dummy_RCalf/Dummy_RFoot/Dummy_RDigit11
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4/Dummy_Ribcage
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4/Dummy_Ribcage/Dummy_LCollarbone
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4/Dummy_Ribcage/Dummy_LCollarbone/Dummy_LUpperarm
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4/Dummy_Ribcage/Dummy_LCollarbone/Dummy_LUpperarm/Dummy_LForearm
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4/Dummy_Ribcage/Dummy_LCollarbone/Dummy_LUpperarm/Dummy_LForearm/Dummy_LPalm
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4/Dummy_Ribcage/Dummy_Neck1
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4/Dummy_Ribcage/Dummy_Neck1/Dummy_Neck2
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4/Dummy_Ribcage/Dummy_Neck1/Dummy_Neck2/Dummy_Head
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4/Dummy_Ribcage/Dummy_RCollarbone
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4/Dummy_Ribcage/Dummy_RCollarbone/Dummy_RUpperarm
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4/Dummy_Ribcage/Dummy_RCollarbone/Dummy_RUpperarm/Dummy_RForearm
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4/Dummy_Ribcage/Dummy_RCollarbone/Dummy_RUpperarm/Dummy_RForearm/Dummy_RPalm
+        weight: 1
+      - path: Group36039/Dummy_RPlatform
+        weight: 1
+      - path: Group36039/Group21
+        weight: 1
+      - path: Group36039/Group22
+        weight: 1
+      - path: Group36039/Group23
+        weight: 1
+      - path: Group36039/Group24
+        weight: 1
+      - path: Group36039/Group25
+        weight: 1
+      - path: Group36039/Group26
+        weight: 1
+      - path: Group36039/Group27
+        weight: 1
+      - path: Group36039/Group28
+        weight: 1
+      - path: Group36039/Group29
+        weight: 1
+      - path: Group36039/Group38
+        weight: 1
+      - path: Group36039/Group41
+        weight: 1
+      - path: Group36039/Group42
+        weight: 1
+      - path: Group36039/Group43
+        weight: 1
+      - path: Group36039/Group44
+        weight: 1
+      - path: Group36039/Group45
+        weight: 1
+      - path: Group36039/Group46
+        weight: 1
+      - path: Group36039/Group36038
+        weight: 1
+      - path: Group36039/Head
+        weight: 1
+      - path: Group36039/Left Bicep
+        weight: 1
+      - path: Group36039/Left Foot
+        weight: 1
+      - path: Group36039/Left Forearm
+        weight: 1
+      - path: Group36039/Left Hand
+        weight: 1
+      - path: Group36039/Left Shin
+        weight: 1
+      - path: Group36039/Left Thigh
+        weight: 1
+      - path: Group36039/Pelvis
+        weight: 1
+      - path: Group36039/Right Bicep
+        weight: 1
+      - path: Group36039/Right Foot
+        weight: 1
+      - path: Group36039/Right Forearm
+        weight: 1
+      - path: Group36039/Right Hand
+        weight: 1
+      - path: Group36039/Right Shin
+        weight: 1
+      - path: Group36039/Right Thigh
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: KnockDownLanding
+      takeName: Take 001
+      firstFrame: 0
+      lastFrame: 1082
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Dummy_
+        weight: 1
+      - path: Group36039
+        weight: 1
+      - path: Group36039/Back
+        weight: 1
+      - path: Group36039/Chest
+        weight: 1
+      - path: Group36039/Dummy_LPlatform
+        weight: 1
+      - path: Group36039/Dummy_Pelvis
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_LThigh
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_LThigh/Dummy_LCalf
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_LThigh/Dummy_LCalf/Dummy_LFoot
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_LThigh/Dummy_LCalf/Dummy_LFoot/Dummy_LDigit11
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_RThigh
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_RThigh/Dummy_RCalf
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_RThigh/Dummy_RCalf/Dummy_RFoot
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_RThigh/Dummy_RCalf/Dummy_RFoot/Dummy_RDigit11
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4/Dummy_Ribcage
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4/Dummy_Ribcage/Dummy_LCollarbone
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4/Dummy_Ribcage/Dummy_LCollarbone/Dummy_LUpperarm
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4/Dummy_Ribcage/Dummy_LCollarbone/Dummy_LUpperarm/Dummy_LForearm
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4/Dummy_Ribcage/Dummy_LCollarbone/Dummy_LUpperarm/Dummy_LForearm/Dummy_LPalm
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4/Dummy_Ribcage/Dummy_Neck1
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4/Dummy_Ribcage/Dummy_Neck1/Dummy_Neck2
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4/Dummy_Ribcage/Dummy_Neck1/Dummy_Neck2/Dummy_Head
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4/Dummy_Ribcage/Dummy_RCollarbone
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4/Dummy_Ribcage/Dummy_RCollarbone/Dummy_RUpperarm
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4/Dummy_Ribcage/Dummy_RCollarbone/Dummy_RUpperarm/Dummy_RForearm
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4/Dummy_Ribcage/Dummy_RCollarbone/Dummy_RUpperarm/Dummy_RForearm/Dummy_RPalm
+        weight: 1
+      - path: Group36039/Dummy_RPlatform
+        weight: 1
+      - path: Group36039/Group21
+        weight: 1
+      - path: Group36039/Group22
+        weight: 1
+      - path: Group36039/Group23
+        weight: 1
+      - path: Group36039/Group24
+        weight: 1
+      - path: Group36039/Group25
+        weight: 1
+      - path: Group36039/Group26
+        weight: 1
+      - path: Group36039/Group27
+        weight: 1
+      - path: Group36039/Group28
+        weight: 1
+      - path: Group36039/Group29
+        weight: 1
+      - path: Group36039/Group38
+        weight: 1
+      - path: Group36039/Group41
+        weight: 1
+      - path: Group36039/Group42
+        weight: 1
+      - path: Group36039/Group43
+        weight: 1
+      - path: Group36039/Group44
+        weight: 1
+      - path: Group36039/Group45
+        weight: 1
+      - path: Group36039/Group46
+        weight: 1
+      - path: Group36039/Group36038
+        weight: 1
+      - path: Group36039/Head
+        weight: 1
+      - path: Group36039/Left Bicep
+        weight: 1
+      - path: Group36039/Left Foot
+        weight: 1
+      - path: Group36039/Left Forearm
+        weight: 1
+      - path: Group36039/Left Hand
+        weight: 1
+      - path: Group36039/Left Shin
+        weight: 1
+      - path: Group36039/Left Thigh
+        weight: 1
+      - path: Group36039/Pelvis
+        weight: 1
+      - path: Group36039/Right Bicep
+        weight: 1
+      - path: Group36039/Right Foot
+        weight: 1
+      - path: Group36039/Right Forearm
+        weight: 1
+      - path: Group36039/Right Hand
+        weight: 1
+      - path: Group36039/Right Shin
+        weight: 1
+      - path: Group36039/Right Thigh
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: KnockdownRecover
+      takeName: Take 001
+      firstFrame: 865
+      lastFrame: 888
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Dummy_
+        weight: 1
+      - path: Group36039
+        weight: 1
+      - path: Group36039/Back
+        weight: 1
+      - path: Group36039/Chest
+        weight: 1
+      - path: Group36039/Dummy_LPlatform
+        weight: 1
+      - path: Group36039/Dummy_Pelvis
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_LThigh
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_LThigh/Dummy_LCalf
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_LThigh/Dummy_LCalf/Dummy_LFoot
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_LThigh/Dummy_LCalf/Dummy_LFoot/Dummy_LDigit11
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_RThigh
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_RThigh/Dummy_RCalf
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_RThigh/Dummy_RCalf/Dummy_RFoot
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_RThigh/Dummy_RCalf/Dummy_RFoot/Dummy_RDigit11
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4/Dummy_Ribcage
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4/Dummy_Ribcage/Dummy_LCollarbone
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4/Dummy_Ribcage/Dummy_LCollarbone/Dummy_LUpperarm
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4/Dummy_Ribcage/Dummy_LCollarbone/Dummy_LUpperarm/Dummy_LForearm
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4/Dummy_Ribcage/Dummy_LCollarbone/Dummy_LUpperarm/Dummy_LForearm/Dummy_LPalm
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4/Dummy_Ribcage/Dummy_Neck1
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4/Dummy_Ribcage/Dummy_Neck1/Dummy_Neck2
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4/Dummy_Ribcage/Dummy_Neck1/Dummy_Neck2/Dummy_Head
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4/Dummy_Ribcage/Dummy_RCollarbone
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4/Dummy_Ribcage/Dummy_RCollarbone/Dummy_RUpperarm
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4/Dummy_Ribcage/Dummy_RCollarbone/Dummy_RUpperarm/Dummy_RForearm
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4/Dummy_Ribcage/Dummy_RCollarbone/Dummy_RUpperarm/Dummy_RForearm/Dummy_RPalm
+        weight: 1
+      - path: Group36039/Dummy_RPlatform
+        weight: 1
+      - path: Group36039/Group21
+        weight: 1
+      - path: Group36039/Group22
+        weight: 1
+      - path: Group36039/Group23
+        weight: 1
+      - path: Group36039/Group24
+        weight: 1
+      - path: Group36039/Group25
+        weight: 1
+      - path: Group36039/Group26
+        weight: 1
+      - path: Group36039/Group27
+        weight: 1
+      - path: Group36039/Group28
+        weight: 1
+      - path: Group36039/Group29
+        weight: 1
+      - path: Group36039/Group38
+        weight: 1
+      - path: Group36039/Group41
+        weight: 1
+      - path: Group36039/Group42
+        weight: 1
+      - path: Group36039/Group43
+        weight: 1
+      - path: Group36039/Group44
+        weight: 1
+      - path: Group36039/Group45
+        weight: 1
+      - path: Group36039/Group46
+        weight: 1
+      - path: Group36039/Group36038
+        weight: 1
+      - path: Group36039/Head
+        weight: 1
+      - path: Group36039/Left Bicep
+        weight: 1
+      - path: Group36039/Left Foot
+        weight: 1
+      - path: Group36039/Left Forearm
+        weight: 1
+      - path: Group36039/Left Hand
+        weight: 1
+      - path: Group36039/Left Shin
+        weight: 1
+      - path: Group36039/Left Thigh
+        weight: 1
+      - path: Group36039/Pelvis
+        weight: 1
+      - path: Group36039/Right Bicep
+        weight: 1
+      - path: Group36039/Right Foot
+        weight: 1
+      - path: Group36039/Right Forearm
+        weight: 1
+      - path: Group36039/Right Hand
+        weight: 1
+      - path: Group36039/Right Shin
+        weight: 1
+      - path: Group36039/Right Thigh
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Grab
+      takeName: Take 001
+      firstFrame: 921
+      lastFrame: 940
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Dummy_
+        weight: 1
+      - path: Group36039
+        weight: 1
+      - path: Group36039/Back
+        weight: 1
+      - path: Group36039/Chest
+        weight: 1
+      - path: Group36039/Dummy_LPlatform
+        weight: 1
+      - path: Group36039/Dummy_Pelvis
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_LThigh
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_LThigh/Dummy_LCalf
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_LThigh/Dummy_LCalf/Dummy_LFoot
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_LThigh/Dummy_LCalf/Dummy_LFoot/Dummy_LDigit11
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_RThigh
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_RThigh/Dummy_RCalf
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_RThigh/Dummy_RCalf/Dummy_RFoot
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_RThigh/Dummy_RCalf/Dummy_RFoot/Dummy_RDigit11
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4/Dummy_Ribcage
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4/Dummy_Ribcage/Dummy_LCollarbone
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4/Dummy_Ribcage/Dummy_LCollarbone/Dummy_LUpperarm
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4/Dummy_Ribcage/Dummy_LCollarbone/Dummy_LUpperarm/Dummy_LForearm
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4/Dummy_Ribcage/Dummy_LCollarbone/Dummy_LUpperarm/Dummy_LForearm/Dummy_LPalm
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4/Dummy_Ribcage/Dummy_Neck1
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4/Dummy_Ribcage/Dummy_Neck1/Dummy_Neck2
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4/Dummy_Ribcage/Dummy_Neck1/Dummy_Neck2/Dummy_Head
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4/Dummy_Ribcage/Dummy_RCollarbone
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4/Dummy_Ribcage/Dummy_RCollarbone/Dummy_RUpperarm
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4/Dummy_Ribcage/Dummy_RCollarbone/Dummy_RUpperarm/Dummy_RForearm
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4/Dummy_Ribcage/Dummy_RCollarbone/Dummy_RUpperarm/Dummy_RForearm/Dummy_RPalm
+        weight: 1
+      - path: Group36039/Dummy_RPlatform
+        weight: 1
+      - path: Group36039/Group21
+        weight: 1
+      - path: Group36039/Group22
+        weight: 1
+      - path: Group36039/Group23
+        weight: 1
+      - path: Group36039/Group24
+        weight: 1
+      - path: Group36039/Group25
+        weight: 1
+      - path: Group36039/Group26
+        weight: 1
+      - path: Group36039/Group27
+        weight: 1
+      - path: Group36039/Group28
+        weight: 1
+      - path: Group36039/Group29
+        weight: 1
+      - path: Group36039/Group38
+        weight: 1
+      - path: Group36039/Group41
+        weight: 1
+      - path: Group36039/Group42
+        weight: 1
+      - path: Group36039/Group43
+        weight: 1
+      - path: Group36039/Group44
+        weight: 1
+      - path: Group36039/Group45
+        weight: 1
+      - path: Group36039/Group46
+        weight: 1
+      - path: Group36039/Group36038
+        weight: 1
+      - path: Group36039/Head
+        weight: 1
+      - path: Group36039/Left Bicep
+        weight: 1
+      - path: Group36039/Left Foot
+        weight: 1
+      - path: Group36039/Left Forearm
+        weight: 1
+      - path: Group36039/Left Hand
+        weight: 1
+      - path: Group36039/Left Shin
+        weight: 1
+      - path: Group36039/Left Thigh
+        weight: 1
+      - path: Group36039/Pelvis
+        weight: 1
+      - path: Group36039/Right Bicep
+        weight: 1
+      - path: Group36039/Right Foot
+        weight: 1
+      - path: Group36039/Right Forearm
+        weight: 1
+      - path: Group36039/Right Hand
+        weight: 1
+      - path: Group36039/Right Shin
+        weight: 1
+      - path: Group36039/Right Thigh
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Grabbed
+      takeName: Take 001
+      firstFrame: 941
+      lastFrame: 1000
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Dummy_
+        weight: 1
+      - path: Group36039
+        weight: 1
+      - path: Group36039/Back
+        weight: 1
+      - path: Group36039/Chest
+        weight: 1
+      - path: Group36039/Dummy_LPlatform
+        weight: 1
+      - path: Group36039/Dummy_Pelvis
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_LThigh
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_LThigh/Dummy_LCalf
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_LThigh/Dummy_LCalf/Dummy_LFoot
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_LThigh/Dummy_LCalf/Dummy_LFoot/Dummy_LDigit11
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_RThigh
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_RThigh/Dummy_RCalf
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_RThigh/Dummy_RCalf/Dummy_RFoot
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_RThigh/Dummy_RCalf/Dummy_RFoot/Dummy_RDigit11
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4/Dummy_Ribcage
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4/Dummy_Ribcage/Dummy_LCollarbone
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4/Dummy_Ribcage/Dummy_LCollarbone/Dummy_LUpperarm
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4/Dummy_Ribcage/Dummy_LCollarbone/Dummy_LUpperarm/Dummy_LForearm
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4/Dummy_Ribcage/Dummy_LCollarbone/Dummy_LUpperarm/Dummy_LForearm/Dummy_LPalm
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4/Dummy_Ribcage/Dummy_Neck1
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4/Dummy_Ribcage/Dummy_Neck1/Dummy_Neck2
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4/Dummy_Ribcage/Dummy_Neck1/Dummy_Neck2/Dummy_Head
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4/Dummy_Ribcage/Dummy_RCollarbone
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4/Dummy_Ribcage/Dummy_RCollarbone/Dummy_RUpperarm
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4/Dummy_Ribcage/Dummy_RCollarbone/Dummy_RUpperarm/Dummy_RForearm
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4/Dummy_Ribcage/Dummy_RCollarbone/Dummy_RUpperarm/Dummy_RForearm/Dummy_RPalm
+        weight: 1
+      - path: Group36039/Dummy_RPlatform
+        weight: 1
+      - path: Group36039/Group21
+        weight: 1
+      - path: Group36039/Group22
+        weight: 1
+      - path: Group36039/Group23
+        weight: 1
+      - path: Group36039/Group24
+        weight: 1
+      - path: Group36039/Group25
+        weight: 1
+      - path: Group36039/Group26
+        weight: 1
+      - path: Group36039/Group27
+        weight: 1
+      - path: Group36039/Group28
+        weight: 1
+      - path: Group36039/Group29
+        weight: 1
+      - path: Group36039/Group38
+        weight: 1
+      - path: Group36039/Group41
+        weight: 1
+      - path: Group36039/Group42
+        weight: 1
+      - path: Group36039/Group43
+        weight: 1
+      - path: Group36039/Group44
+        weight: 1
+      - path: Group36039/Group45
+        weight: 1
+      - path: Group36039/Group46
+        weight: 1
+      - path: Group36039/Group36038
+        weight: 1
+      - path: Group36039/Head
+        weight: 1
+      - path: Group36039/Left Bicep
+        weight: 1
+      - path: Group36039/Left Foot
+        weight: 1
+      - path: Group36039/Left Forearm
+        weight: 1
+      - path: Group36039/Left Hand
+        weight: 1
+      - path: Group36039/Left Shin
+        weight: 1
+      - path: Group36039/Left Thigh
+        weight: 1
+      - path: Group36039/Pelvis
+        weight: 1
+      - path: Group36039/Right Bicep
+        weight: 1
+      - path: Group36039/Right Foot
+        weight: 1
+      - path: Group36039/Right Forearm
+        weight: 1
+      - path: Group36039/Right Hand
+        weight: 1
+      - path: Group36039/Right Shin
+        weight: 1
+      - path: Group36039/Right Thigh
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: GrabPunch
+      takeName: Take 001
+      firstFrame: 1001
+      lastFrame: 1023
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Dummy_
+        weight: 1
+      - path: Group36039
+        weight: 1
+      - path: Group36039/Back
+        weight: 1
+      - path: Group36039/Chest
+        weight: 1
+      - path: Group36039/Dummy_LPlatform
+        weight: 1
+      - path: Group36039/Dummy_Pelvis
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_LThigh
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_LThigh/Dummy_LCalf
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_LThigh/Dummy_LCalf/Dummy_LFoot
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_LThigh/Dummy_LCalf/Dummy_LFoot/Dummy_LDigit11
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_RThigh
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_RThigh/Dummy_RCalf
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_RThigh/Dummy_RCalf/Dummy_RFoot
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_RThigh/Dummy_RCalf/Dummy_RFoot/Dummy_RDigit11
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4/Dummy_Ribcage
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4/Dummy_Ribcage/Dummy_LCollarbone
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4/Dummy_Ribcage/Dummy_LCollarbone/Dummy_LUpperarm
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4/Dummy_Ribcage/Dummy_LCollarbone/Dummy_LUpperarm/Dummy_LForearm
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4/Dummy_Ribcage/Dummy_LCollarbone/Dummy_LUpperarm/Dummy_LForearm/Dummy_LPalm
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4/Dummy_Ribcage/Dummy_Neck1
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4/Dummy_Ribcage/Dummy_Neck1/Dummy_Neck2
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4/Dummy_Ribcage/Dummy_Neck1/Dummy_Neck2/Dummy_Head
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4/Dummy_Ribcage/Dummy_RCollarbone
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4/Dummy_Ribcage/Dummy_RCollarbone/Dummy_RUpperarm
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4/Dummy_Ribcage/Dummy_RCollarbone/Dummy_RUpperarm/Dummy_RForearm
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4/Dummy_Ribcage/Dummy_RCollarbone/Dummy_RUpperarm/Dummy_RForearm/Dummy_RPalm
+        weight: 1
+      - path: Group36039/Dummy_RPlatform
+        weight: 1
+      - path: Group36039/Group21
+        weight: 1
+      - path: Group36039/Group22
+        weight: 1
+      - path: Group36039/Group23
+        weight: 1
+      - path: Group36039/Group24
+        weight: 1
+      - path: Group36039/Group25
+        weight: 1
+      - path: Group36039/Group26
+        weight: 1
+      - path: Group36039/Group27
+        weight: 1
+      - path: Group36039/Group28
+        weight: 1
+      - path: Group36039/Group29
+        weight: 1
+      - path: Group36039/Group38
+        weight: 1
+      - path: Group36039/Group41
+        weight: 1
+      - path: Group36039/Group42
+        weight: 1
+      - path: Group36039/Group43
+        weight: 1
+      - path: Group36039/Group44
+        weight: 1
+      - path: Group36039/Group45
+        weight: 1
+      - path: Group36039/Group46
+        weight: 1
+      - path: Group36039/Group36038
+        weight: 1
+      - path: Group36039/Head
+        weight: 1
+      - path: Group36039/Left Bicep
+        weight: 1
+      - path: Group36039/Left Foot
+        weight: 1
+      - path: Group36039/Left Forearm
+        weight: 1
+      - path: Group36039/Left Hand
+        weight: 1
+      - path: Group36039/Left Shin
+        weight: 1
+      - path: Group36039/Left Thigh
+        weight: 1
+      - path: Group36039/Pelvis
+        weight: 1
+      - path: Group36039/Right Bicep
+        weight: 1
+      - path: Group36039/Right Foot
+        weight: 1
+      - path: Group36039/Right Forearm
+        weight: 1
+      - path: Group36039/Right Hand
+        weight: 1
+      - path: Group36039/Right Shin
+        weight: 1
+      - path: Group36039/Right Thigh
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: WalkBack
+      takeName: Take 001
+      firstFrame: 1024
+      lastFrame: 1082
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Dummy_
+        weight: 1
+      - path: Group36039
+        weight: 1
+      - path: Group36039/Back
+        weight: 1
+      - path: Group36039/Chest
+        weight: 1
+      - path: Group36039/Dummy_LPlatform
+        weight: 1
+      - path: Group36039/Dummy_Pelvis
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_LThigh
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_LThigh/Dummy_LCalf
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_LThigh/Dummy_LCalf/Dummy_LFoot
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_LThigh/Dummy_LCalf/Dummy_LFoot/Dummy_LDigit11
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_RThigh
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_RThigh/Dummy_RCalf
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_RThigh/Dummy_RCalf/Dummy_RFoot
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_RThigh/Dummy_RCalf/Dummy_RFoot/Dummy_RDigit11
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4/Dummy_Ribcage
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4/Dummy_Ribcage/Dummy_LCollarbone
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4/Dummy_Ribcage/Dummy_LCollarbone/Dummy_LUpperarm
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4/Dummy_Ribcage/Dummy_LCollarbone/Dummy_LUpperarm/Dummy_LForearm
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4/Dummy_Ribcage/Dummy_LCollarbone/Dummy_LUpperarm/Dummy_LForearm/Dummy_LPalm
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4/Dummy_Ribcage/Dummy_Neck1
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4/Dummy_Ribcage/Dummy_Neck1/Dummy_Neck2
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4/Dummy_Ribcage/Dummy_Neck1/Dummy_Neck2/Dummy_Head
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4/Dummy_Ribcage/Dummy_RCollarbone
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4/Dummy_Ribcage/Dummy_RCollarbone/Dummy_RUpperarm
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4/Dummy_Ribcage/Dummy_RCollarbone/Dummy_RUpperarm/Dummy_RForearm
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4/Dummy_Ribcage/Dummy_RCollarbone/Dummy_RUpperarm/Dummy_RForearm/Dummy_RPalm
+        weight: 1
+      - path: Group36039/Dummy_RPlatform
+        weight: 1
+      - path: Group36039/Group21
+        weight: 1
+      - path: Group36039/Group22
+        weight: 1
+      - path: Group36039/Group23
+        weight: 1
+      - path: Group36039/Group24
+        weight: 1
+      - path: Group36039/Group25
+        weight: 1
+      - path: Group36039/Group26
+        weight: 1
+      - path: Group36039/Group27
+        weight: 1
+      - path: Group36039/Group28
+        weight: 1
+      - path: Group36039/Group29
+        weight: 1
+      - path: Group36039/Group38
+        weight: 1
+      - path: Group36039/Group41
+        weight: 1
+      - path: Group36039/Group42
+        weight: 1
+      - path: Group36039/Group43
+        weight: 1
+      - path: Group36039/Group44
+        weight: 1
+      - path: Group36039/Group45
+        weight: 1
+      - path: Group36039/Group46
+        weight: 1
+      - path: Group36039/Group36038
+        weight: 1
+      - path: Group36039/Head
+        weight: 1
+      - path: Group36039/Left Bicep
+        weight: 1
+      - path: Group36039/Left Foot
+        weight: 1
+      - path: Group36039/Left Forearm
+        weight: 1
+      - path: Group36039/Left Hand
+        weight: 1
+      - path: Group36039/Left Shin
+        weight: 1
+      - path: Group36039/Left Thigh
+        weight: 1
+      - path: Group36039/Pelvis
+        weight: 1
+      - path: Group36039/Right Bicep
+        weight: 1
+      - path: Group36039/Right Foot
+        weight: 1
+      - path: Group36039/Right Forearm
+        weight: 1
+      - path: Group36039/Right Hand
+        weight: 1
+      - path: Group36039/Right Shin
+        weight: 1
+      - path: Group36039/Right Thigh
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

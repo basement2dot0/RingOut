@@ -250,13 +250,14 @@ public class GameManager : MonoBehaviour
         matchSetcamera.transform.position = cameraPosition;
         if (isPlayerOneVictory)
         {
-
+            players[1].gameObject.active = false;
             matchSetcamera.transform.LookAt(players[0].transform.position);
             matchSetcamera.fieldOfView = 20.0f;
             uiText.text = string.Format("PLAYER 1 WINS");
         }
         if(!isPlayerOneVictory)
         {
+            players[0].gameObject.active = false;
             matchSetcamera.transform.LookAt(players[1].transform.position);
             matchSetcamera.fieldOfView = 20.0f;
             uiText.text = string.Format("PLAYER 2 WINS");
