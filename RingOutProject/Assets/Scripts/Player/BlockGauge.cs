@@ -25,25 +25,25 @@ public class BlockGauge : MonoBehaviour
     }
     void Update()
     {
-        Block();
+        
         BlockGaugeSlider();
         GaugeRecharge();
     }
 
-    private void Block()
-    {
-        if (player.IsGrounded && canBlock && !player.IsAttacking && !player.IsTaunting && !player.IsExhausted && !player.IsKnockedBack)
-        {
-            if (Time.timeScale != 0.0f && inputManager.DefendButton(player.ID))
-                player.IsDefending = true;
-            else if (!inputManager.DefendButton(player.ID))
-                player.IsDefending = false;
-        }
-    }
+    //private void Block()
+    //{
+    //    if (player.IsGrounded && !player.IsAttacking && !player.IsTaunting && !player.IsExhausted && !player.IsKnockedBack)
+    //    {
+    //        if (Time.timeScale != 0.0f && inputManager.DefendButton(player.ID))
+    //            player.IsDefending = true;
+    //        else if (!inputManager.DefendButton(player.ID))
+    //            player.IsDefending = false;
+    //    }
+    //}
 
     private void BlockGaugeSlider()
     {
-        if (player.IsDefending)
+        if (player.IsDefending && player.CanBlock)
         {
             gaugeSlider.value--;
             if(gaugeSlider.value <= gaugeSlider.minValue)
@@ -58,7 +58,7 @@ public class BlockGauge : MonoBehaviour
             if (gaugeSlider.value >= gaugeSlider.maxValue)
             {
                 gaugeSlider.value = gaugeSlider.maxValue;
-                canBlock = true;
+                player.CanBlock = true;
                 jammerText.enabled = false;
             }
         }
@@ -69,13 +69,13 @@ public class BlockGauge : MonoBehaviour
     {
         if(gaugeSlider.value <= gaugeSlider.minValue)
         {
-            canBlock = false;
+            player.CanBlock = false;
             jammerText.enabled = true;
             if (player.IsDefending)
             {
                 player.IsDefending = false;
             }
-            gaugeSlider.value = Mathf.MoveTowards(gaugeSlider.value, gaugeSlider.maxValue, Time.time);
+            gaugeSlider.value = Mathf.MoveTowards(gaugeSlider.minValue, gaugeSlider.maxValue, Time.deltaTime);
             
 
         }

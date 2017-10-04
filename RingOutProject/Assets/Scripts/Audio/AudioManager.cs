@@ -39,6 +39,10 @@ public class AudioManager : MonoBehaviour
     private AudioClip defenseHit;
     [SerializeField]
     private AudioClip airAttackAudio;
+    [SerializeField]
+    private AudioClip playerHypeHit;
+    [SerializeField]
+    private AudioClip hypeAttackAudio;
 
     private void Awake()
     {
@@ -49,6 +53,8 @@ public class AudioManager : MonoBehaviour
     {
         playerHit();
         PlayerAttack();
+        HypeHit();
+        HypeAttack();
     }
 
 
@@ -87,8 +93,15 @@ public class AudioManager : MonoBehaviour
             audio.Play();
         }
     }
-
-private void PlayerAttack()
+    private void HypeHit()
+    {
+        if (player.IsHypeHit && !audio.isPlaying)
+        {
+            audio.clip = playerHypeHit;
+            audio.Play();
+        }
+    }
+    private void PlayerAttack()
     {
         
             if (player.IsGrounded && !player.IsDefending && player.IsAttacking)
@@ -107,5 +120,13 @@ private void PlayerAttack()
         
         
         
+    }
+    private void HypeAttack()
+    {
+        if (player.HypeAttack)
+        {
+            audio.clip = hypeAttackAudio;
+            audio.Play();
+        }
     }
 }

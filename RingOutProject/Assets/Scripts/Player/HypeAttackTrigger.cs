@@ -10,7 +10,7 @@ public class HypeAttackTrigger : TriggerManager
     {
         if(hitbox.name == opponentsHitbox)
         {
-            if (player.IsHyped && !player.Opponent.IsDefending)
+            if (!player.Opponent.IsDefending)
             {
                  player.Opponent.IsHypeHit = true;
             }

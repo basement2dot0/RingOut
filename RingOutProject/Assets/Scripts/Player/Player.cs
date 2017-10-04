@@ -130,7 +130,11 @@ public class Player : MonoBehaviour{
         get { return isPushed; }
         set { isPushed = value; }
     }
-    
+    public bool CanBlock
+    {
+        get;
+        set;
+    }
     public DamageType DamageType
     {
         get { return damageType; }

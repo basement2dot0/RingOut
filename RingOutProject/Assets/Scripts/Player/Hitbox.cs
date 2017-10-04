@@ -43,6 +43,7 @@ public class Hitbox : MonoBehaviour
        
         if (player.IsGrounded)
         {
+            
             attackHitBox.enabled = true;
             player.AttackCounter++;
         }
@@ -75,13 +76,15 @@ public class Hitbox : MonoBehaviour
         if (player.IsGrounded)
         {
             hypeAttackHitBox.enabled = true;
+            
             StartCoroutine("CloseHype"); // this disables the hitbox incase the animation event did not
 
         }
     }
     private IEnumerator CloseHype()
     {
-        yield return delay;
+        WaitForSeconds delayHype = new WaitForSeconds(2.0f);
+        yield return delayHype;
         player.IsHyped = false;
         CloseHitBox();
     }

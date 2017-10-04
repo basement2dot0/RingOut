@@ -15,6 +15,14 @@ public class AnimationManager : MonoBehaviour
     private float attackDelay;
     [SerializeField]
     private WaitForSeconds hypeDelay;
+    public bool canAttack
+    {
+        get
+            {
+            return CanAttack();
+            }
+        
+     }
 
     private void Start()
     {
@@ -63,16 +71,26 @@ public class AnimationManager : MonoBehaviour
     private void Block()
     {
         //anim.SetBool("isBlocking", player.IsDefending);
-        if (player.IsDefending)
-        {
-            anim.Play("Block");
+        if (player.IsGrounded)
+        { 
+            if (player.CanBlock && inputManager.DefendButton(player.ID) && (Time.time - player.LastSuccessfulAttack) > 1.0f && !player.IsTaunting && !player.IsExhausted && !player.IsKnockedBack)
+            {
+                anim.Play("Block");
+                player.IsDefending = true;
+            }
+            else if (!inputManager.DefendButton(player.ID))
+            {
+                player.IsDefending = false;
+            }
         }
+        
     }
     private void Attack()
     {
         
-            if (CanAttack() && inputManager.AttackButtonDown(player.ID))
+            if (!player.IsDefending && CanAttack() && inputManager.AttackButtonDown(player.ID))
             {
+                 player.CanBlock = false;
             if (!player.IsHyped)
             {
                 player.IsAttacking = true;
@@ -117,7 +135,12 @@ public class AnimationManager : MonoBehaviour
     }
     private void HypeHit()
     {
-        anim.SetBool("hypeHit", player.IsHypeHit);
+        // anim.SetBool("hypeHit", player.IsHypeHit);
+        if (player.IsHypeHit)
+        {
+            anim.Play("HypeHit");
+            StartCoroutine("ResetHypeHit");
+        }
     }
     private void Hit()
     {
@@ -218,6 +241,7 @@ public class AnimationManager : MonoBehaviour
         yield return hypeDelay;
         player.IsHyped = false;
         player.IsExhausted = true;
+
         
     }
     private IEnumerator ResetTaunt()
@@ -229,6 +253,12 @@ public class AnimationManager : MonoBehaviour
         player.IsTaunting = false;
         player.Opponent.gameObject.active = true;
         
+    }
+    private IEnumerator ResetHypeHit()
+    {
+        WaitForSeconds wait = new WaitForSeconds(2.0f);
+        yield return wait;
+        player.IsHypeHit = false;
     }
 
 

@@ -24,7 +24,7 @@ public class XiaoPhysics  : Physics
     private void Lunge()
     {
         if (player.IsGrounded)
-        rb.position += (rb.transform.forward) * lungeDistance * Time.deltaTime;
+            rb.position += (rb.transform.forward) * lungeDistance * Time.deltaTime;
         
     } //called during animation event
 }
