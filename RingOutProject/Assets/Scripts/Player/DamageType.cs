@@ -38,12 +38,12 @@ public class DamageType : MonoBehaviour {
             case DmgType.MEDIUM:
                 minDamage = 10.0f;
                 maxDamage = 15.0f;
-                currentDamage = CurrentDamage(minDamage, maxDamage);
+                //currentDamage = CurrentDamage(minDamage, maxDamage);
                 break;
             case DmgType.HEAVY:
                 minDamage = 15.0f;
                 maxDamage = 20.0f;
-                currentDamage = CurrentDamage(minDamage, maxDamage);
+                //currentDamage = CurrentDamage(minDamage, maxDamage);
                 break;
             default:
                 Debug.LogError("Please Select a Damage Type");

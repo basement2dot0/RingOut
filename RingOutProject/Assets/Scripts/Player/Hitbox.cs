@@ -83,7 +83,7 @@ public class Hitbox : MonoBehaviour
     }
     private IEnumerator CloseHype()
     {
-        WaitForSeconds delayHype = new WaitForSeconds(2.0f);
+        WaitForSeconds delayHype = new WaitForSeconds(1.5f);
         yield return delayHype;
         player.IsHyped = false;
         CloseHitBox();

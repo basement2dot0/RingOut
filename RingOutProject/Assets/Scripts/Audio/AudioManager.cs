@@ -126,7 +126,7 @@ public class AudioManager : MonoBehaviour
         if (player.HypeAttack)
         {
             audio.clip = hypeAttackAudio;
-            audio.Play();
+            audio.PlayOneShot(audio.clip);
         }
     }
 }
