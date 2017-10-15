@@ -21,11 +21,13 @@ public class XiaoPhysics  : Physics
         defaultPosition = player.transform.eulerAngles;
         defaultSpeed = 25.0f;
     }
+   
     private void Lunge()
     {
         if (player.IsGrounded)
             rb.position += (rb.transform.forward) * lungeDistance * Time.deltaTime;
         
     } //called during animation event
+   
 }
 
