@@ -107,7 +107,7 @@ class CameraController : MonoBehaviour
         isHypeCamera = true;
         //Camera.main.transform.LookAt(target);
         Camera.main.transform.SetParent(target);
-       Camera.main.transform.localPosition = new Vector3(0, 1, 2);
+       Camera.main.transform.localPosition = new Vector3(0, 1.5f, 4);
         Camera.main.orthographic = false;
         Camera.main.fieldOfView = 45.0f;
 

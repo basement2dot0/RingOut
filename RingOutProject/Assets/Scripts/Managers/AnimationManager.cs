@@ -15,6 +15,8 @@ public class AnimationManager : MonoBehaviour
     private float attackDelay;
     [SerializeField]
     private WaitForSeconds hypeDelay;
+    [SerializeField]
+    private float attackDelayMultiplier;
     public bool canAttack
     {
         get
@@ -181,7 +183,7 @@ public class AnimationManager : MonoBehaviour
             else if (player.AttackCounter == 2)
             {
                 anim.Play("Attack3");
-                player.LastSuccessfulAttack = Time.time;
+                player.LastSuccessfulAttack = Time.time + attackDelayMultiplier;
             }
             else if (player.AttackCounter >= 3)
             {
