@@ -18900,7 +18900,7 @@ AnimationClip:
         tangentMode: 0
       - serializedVersion: 2
         time: 0.43333334
-        value: {x: 3.7247307, y: 0.8319396, z: 4.2016196}
+        value: {x: 3.1096392, y: 0.8319396, z: 5.3437953}
         inSlope: {x: 0, y: 0, z: 0}
         outSlope: {x: 0, y: 0, z: 0}
         tangentMode: 0
@@ -81896,7 +81896,7 @@ AnimationClip:
         tangentMode: 136
       - serializedVersion: 2
         time: 0.43333334
-        value: 3.7247307
+        value: 3.1096392
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -81940,7 +81940,7 @@ AnimationClip:
         tangentMode: 136
       - serializedVersion: 2
         time: 0.43333334
-        value: 4.2016196
+        value: 5.3437953
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -93378,7 +93378,7 @@ AnimationClip:
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
-  - time: 0.6166667
+  - time: 0.6666667
     functionName: CloseHitBoxes
     data: 
     objectReferenceParameter: {fileID: 0}

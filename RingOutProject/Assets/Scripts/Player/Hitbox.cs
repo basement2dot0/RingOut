@@ -15,9 +15,12 @@ public class Hitbox : MonoBehaviour
     private BoxCollider ground;
     //Player Reference
     private Player player;
-   //delay between active attacks
+    //delay between active attacks
+
     [SerializeField]
+    private float delaySeconds;
     private WaitForSeconds delay;
+
 
     public BoxCollider Torso
     {
@@ -27,7 +30,7 @@ public class Hitbox : MonoBehaviour
 
     private void Awake()
     {
-        delay = new WaitForSeconds(.50f);
+        delay = new WaitForSeconds(delaySeconds);
         player = GetComponentInParent<Player>();
         torso.name += player.ID.ToString();
         blockArea.name += player.ID.ToString();
@@ -83,7 +86,7 @@ public class Hitbox : MonoBehaviour
     }
     private IEnumerator CloseHype()
     {
-        WaitForSeconds delayHype = new WaitForSeconds(1.5f);
+        WaitForSeconds delayHype = new WaitForSeconds(0.5f);
         yield return delayHype;
         player.IsHyped = false;
         CloseHitBox();

@@ -28,11 +28,11 @@ class CameraController : MonoBehaviour
     private void Awake()
     {
         defaultCameraPosition = Camera.main.transform.position;
-        foreach(var player in GameObject.FindGameObjectsWithTag("Player"))
+        foreach(GameObject player in GameObject.FindGameObjectsWithTag("Player"))
         {
             if (player.GetComponent<Player>().ID == 1)
                 leftTarget = player.GetComponent<Player>();
-            else
+            else if(player.GetComponent<Player>().ID == 2)
                 rightTarget = player.GetComponent<Player>();
         }
         defaultZoom = Camera.main.fieldOfView;
@@ -107,7 +107,7 @@ class CameraController : MonoBehaviour
         isHypeCamera = true;
         //Camera.main.transform.LookAt(target);
         Camera.main.transform.SetParent(target);
-       Camera.main.transform.localPosition = new Vector3(0, 1, 2);
+       Camera.main.transform.localPosition = new Vector3(0, 1.5f, 4);
         Camera.main.orthographic = false;
         Camera.main.fieldOfView = 45.0f;
 
