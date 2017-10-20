@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class AttackTrigger : TriggerManager
 {
-    
+    [SerializeField]
     private static float lastHit;
     [SerializeField]
     private float maxHitCounter;
@@ -16,6 +16,13 @@ public class AttackTrigger : TriggerManager
         InitializeMaxCounter(maxHitCounter);
         attackCollider = GetComponent<BoxCollider>();
     }
+    private void Update()
+    {
+        //if ((Time.time - lastHit) > 1.5f)
+        //{
+        //    maxHitCounter = 0;
+        //}
+    }
     protected override void ActivateTriggers(Collider hitbox)
     {
         if (hitbox.name == opponentDefenseHitbox || hitbox.name == opponentsHitbox)
@@ -23,13 +30,24 @@ public class AttackTrigger : TriggerManager
             player.HitDirection = player.transform.forward;
             if (!player.Opponent.IsDefending || isBackAttack())
             {
+                //maxHitCounter++;
+                //if (player.AttackCounter == 1 && maxHitCounter > 1)
+                //{
+                //    player.Opponent.IsKnockedBack = true;
+                //    maxHitCounter = 0;
+                //}
+                //if (player.AttackCounter == 2)
+                //{
+                //    maxHitCounter = 0;
+                //}
                 if (player.AttackCounter == 3)
                 {
                     player.Opponent.IsKnockedBack = true;
-                    
+                    maxHitCounter = 0;
                 }
             }
             player.Opponent.IsHit = true;
+            //lastHit = Time.time;
             attackCollider.enabled = false;
         }
         
@@ -52,7 +70,7 @@ public class AttackTrigger : TriggerManager
     private void InitializeMaxCounter(float _maxHitCounter)
     {
         if (_maxHitCounter == 0 )
-            _maxHitCounter = 3;
+            _maxHitCounter = 0;
         maxHitCounter = _maxHitCounter;
     }
 

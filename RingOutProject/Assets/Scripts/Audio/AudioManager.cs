@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -43,6 +44,8 @@ public class AudioManager : MonoBehaviour
     private AudioClip playerHypeHit;
     [SerializeField]
     private AudioClip hypeAttackAudio;
+    [SerializeField]
+    private AudioClip walkingSFX;
 
     private void Awake()
     {
@@ -51,12 +54,23 @@ public class AudioManager : MonoBehaviour
     }
     private void Update()
     {
+        Walking();
         playerHit();
         PlayerAttack();
         HypeHit();
         HypeAttack();
+
     }
 
+    private void Walking()
+    {
+        if (player.IsWalking && !audio.isPlaying)
+        {
+            audio.clip = walkingSFX;
+            
+            audio.Play();
+        }
+    }
 
     public void PlayHypeMusic()
     {
@@ -104,9 +118,9 @@ public class AudioManager : MonoBehaviour
     private void PlayerAttack()
     {
         
-            if (player.IsGrounded && !player.IsDefending && player.IsAttacking)
+            if (player.IsGrounded && !player.IsDefending && player.IsAttacking )
             {
-                Random rng = new Random();
+                UnityEngine.Random rng = new UnityEngine.Random();
                 audio.clip = attackAudio[player.AttackCounter];
                 audio.Play();
             }
