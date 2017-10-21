@@ -31,6 +31,12 @@ public class GameManager : MonoBehaviour
     private Text ringOutText;
     private AudioManager[] playersTheme;
     [SerializeField]
+    private AudioSource menuSFX;
+    [SerializeField]
+    private AudioClip navChime;
+    [SerializeField]
+    private AudioClip navConfirm;
+    [SerializeField]
     Image ringOut;
     [SerializeField]
     private GameObject playerBounds;
@@ -41,7 +47,7 @@ public class GameManager : MonoBehaviour
     private void Awake()
     {
         ringOut.enabled = false;
-        
+        menuSFX = GetComponent<AudioSource>();
         uiText = GameObject.Find("UIText").GetComponent<Text>();
         matchTimerText = GetComponentInChildren<Text>();
         pauseMenuObject = GameObject.FindGameObjectWithTag("ShowOnPause");
@@ -158,18 +164,41 @@ public class GameManager : MonoBehaviour
     }
     private void PauseControls()
     {
-            var resumeButton = (pauseButtons[0].transform.position - new Vector3(100, 0, 0));
-            var quitButton = (pauseButtons[1].transform.position - new Vector3(100, 0, 0));
-         
+        var resumeButton = (pauseButtons[0].transform.position - new Vector3(100, 0, 0));
+        var quitButton = (pauseButtons[1].transform.position - new Vector3(100, 0, 0));
 
-            if (Navigation() > 0.0f)
-                nav.transform.position = resumeButton;
-            else if (Navigation() < 0.0f)
-                nav.transform.position = quitButton ;
-            else if (ConfirmButton())
+
+        if (Navigation() == 1)
+        {
+            menuSFX.clip = navChime;
+            if (nav.transform.position != resumeButton)
             {
+                nav.transform.position = resumeButton;
+                
+                menuSFX.Play();
+            }
+            
+        }
+        else if (Navigation() == -1)
+        {
+            menuSFX.clip = navChime;
+            if (nav.transform.position != quitButton)
+            {
+                nav.transform.position = quitButton; ;
+                menuSFX.Play();
+            }
+
+        }
+        else if (ConfirmButton())
+        {
+            menuSFX.clip = navConfirm;
+            if (menuSFX.clip == navConfirm && !menuSFX.isPlaying)
+                menuSFX.Play();
+            
+
             if (nav.transform.position == quitButton)
             {
+                
                 SceneManager.LoadScene("Main Menu");
                 Time.timeScale = 1.0f;
             }
@@ -178,8 +207,9 @@ public class GameManager : MonoBehaviour
                 Time.timeScale = 1.0f;
                 isPaused = false;
                 pauseMenuObject.SetActive(false);
+                
             }
-            }
+        }
     }
     private bool PauseButton()
     {
@@ -196,6 +226,7 @@ public class GameManager : MonoBehaviour
     }
     private float Navigation()
     {
+       
         return Input.GetAxis("Nav");
     }
 
@@ -274,6 +305,7 @@ public class GameManager : MonoBehaviour
                 
                 yield return 0;
                 PauseControls();
+
             }
            
         }

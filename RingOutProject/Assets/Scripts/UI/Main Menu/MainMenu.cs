@@ -4,16 +4,22 @@ using UnityEngine.UI;
 
 public class MainMenu : MonoBehaviour
 {
+    private AudioSource audioSource;
     [SerializeField]
-    Button multiplayerButton;
+    private AudioClip navChime;
     [SerializeField]
-    Button quitButton;
+    private AudioClip navConfirm;
+    [SerializeField]
+    private Button multiplayerButton;
+    [SerializeField]
+    private Button quitButton;
     [SerializeField]
     private GameObject nav;
 
     private void Awake()
     {
         nav.transform.position = (multiplayerButton.transform.position - new Vector3(150, 0, 0));
+        audioSource = GetComponent<AudioSource>();
     }
     private void Update()
     {
@@ -36,15 +42,39 @@ public class MainMenu : MonoBehaviour
 
 
         if (Navigation() > 0.0f)
-            nav.transform.position = multiplayer;
+        {
+            audioSource.clip = navChime;
+            if(nav.transform.position != multiplayer)
+            {
+                audioSource.Play();
+                nav.transform.position = multiplayer;
+            }
+
+        }
         else if (Navigation() < 0.0f)
-            nav.transform.position = quit;
+        {
+            if (nav.transform.position != quit)
+            {
+                audioSource.Play();
+                nav.transform.position = quit;
+            }
+        }
         else if (ConfirmButton())
         {
+            audioSource.clip = navConfirm;
+            if (audioSource.clip == navConfirm && !audioSource.isPlaying)
+                audioSource.Play();
+
             if (nav.transform.position == quit)
+            {
+
                 QuitGame();
+            }
             else if (nav.transform.position == multiplayer)
-                LoadLevel("RingMap");
+            {
+                //LoadLevel("RingMap");
+                SceneManager.LoadScene("RingMap");
+            }
             
         }
     }

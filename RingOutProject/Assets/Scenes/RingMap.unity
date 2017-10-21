@@ -9245,6 +9245,9 @@ MonoBehaviour:
   - {fileID: 1421023585}
   - {fileID: 0}
   ringOutText: {fileID: 0}
+  menuSFX: {fileID: 0}
+  navChime: {fileID: 8300000, guid: c4b00069c82c7344594b1f417dd39a81, type: 3}
+  navConfirm: {fileID: 8300000, guid: bc8e33877a922dd4ab9fba9f82eb89fb, type: 3}
   ringOut: {fileID: 1980752806}
   playerBounds: {fileID: 1944741750}
 --- !u!114 &1693390987
