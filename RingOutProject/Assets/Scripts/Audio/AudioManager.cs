@@ -79,6 +79,8 @@ public class AudioManager : MonoBehaviour
             audio.clip = hypeMusic;
             audio.Play();
         }
+        else
+            audio.Stop();
     }
     public void StopHypeMusic()
     {
@@ -140,7 +142,7 @@ public class AudioManager : MonoBehaviour
         if (player.HypeAttack)
         {
             audio.clip = hypeAttackAudio;
-            audio.PlayOneShot(audio.clip);
+            audio.Play();
         }
     }
 }

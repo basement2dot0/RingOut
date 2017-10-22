@@ -379,6 +379,7 @@ GameObject:
   - component: {fileID: 83150258}
   - component: {fileID: 83150257}
   - component: {fileID: 83150262}
+  - component: {fileID: 83150263}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -473,6 +474,14 @@ MonoBehaviour:
   center: {fileID: 1018077341}
   zoomIn: 0
   defaultZoom: 0
+--- !u!45 &83150263
+Skybox:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 83150256}
+  m_Enabled: 1
+  m_CustomSkybox: {fileID: 2100000, guid: 4067de1a02072244798361060c5e7325, type: 2}
 --- !u!1 &111304982
 GameObject:
   m_ObjectHideFlags: 0
@@ -3509,7 +3518,7 @@ MonoBehaviour:
   airAttackAudio: {fileID: 8300000, guid: 8a7b9c6736f5cf3428daeae06bc4cd3e, type: 3}
   playerHypeHit: {fileID: 8300000, guid: f2851143447e8b943b2270c8e7038a53, type: 3}
   hypeAttackAudio: {fileID: 8300000, guid: 7ad1dddd6a9b3904ea68fd549400939e, type: 3}
-  walkingSFX: {fileID: 8300000, guid: 866fe49369eb320428c8841640a93261, type: 3}
+  walkingSFX: {fileID: 8300000, guid: dc1a1595f4640b74dbab6fef97db3b8d, type: 3}
 --- !u!114 &739343339
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3527,7 +3536,7 @@ MonoBehaviour:
   knockBackHitBox: {fileID: 67157533}
   torso: {fileID: 673369304}
   blockArea: {fileID: 59246687}
-  delaySeconds: 0
+  delaySeconds: 0.2
 --- !u!82 &739343340
 AudioSource:
   m_ObjectHideFlags: 0
@@ -5518,7 +5527,7 @@ Prefab:
         type: 2}
       propertyPath: walkingSFX
       value: 
-      objectReference: {fileID: 8300000, guid: 866fe49369eb320428c8841640a93261, type: 3}
+      objectReference: {fileID: 8300000, guid: a2e2759862a293643a51e0b9ea0a233b, type: 3}
     - target: {fileID: 114495084119657824, guid: 96edf2a7e4f44674ab66f95272470580,
         type: 2}
       propertyPath: maxHitCounter
@@ -5529,6 +5538,21 @@ Prefab:
       propertyPath: knockBackHitBox
       value: 
       objectReference: {fileID: 1097959258}
+    - target: {fileID: 114002024779711614, guid: 96edf2a7e4f44674ab66f95272470580,
+        type: 2}
+      propertyPath: attackAudio.Array.data[1]
+      value: 
+      objectReference: {fileID: 8300000, guid: 407a8d2ac7fd1f740bc49b7675d022e1, type: 3}
+    - target: {fileID: 114002024779711614, guid: 96edf2a7e4f44674ab66f95272470580,
+        type: 2}
+      propertyPath: attackAudio.Array.data[2]
+      value: 
+      objectReference: {fileID: 8300000, guid: 8d2ab50a88e6edf409eb3f9570032431, type: 3}
+    - target: {fileID: 114002024779711614, guid: 96edf2a7e4f44674ab66f95272470580,
+        type: 2}
+      propertyPath: attackAudio.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: 3e9e28bf3c3c3b747adc7c7c60e8312f, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 96edf2a7e4f44674ab66f95272470580, type: 2}
   m_IsPrefabParent: 0
@@ -9406,6 +9430,9 @@ MonoBehaviour:
   - {fileID: 1421023585}
   - {fileID: 0}
   ringOutText: {fileID: 0}
+  menuSFX: {fileID: 0}
+  navChime: {fileID: 8300000, guid: c4b00069c82c7344594b1f417dd39a81, type: 3}
+  navConfirm: {fileID: 8300000, guid: bc8e33877a922dd4ab9fba9f82eb89fb, type: 3}
   ringOut: {fileID: 1980752806}
   playerBounds: {fileID: 1944741750}
 --- !u!114 &1693390987
