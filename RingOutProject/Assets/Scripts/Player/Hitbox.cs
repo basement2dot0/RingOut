@@ -9,6 +9,8 @@ public class Hitbox : MonoBehaviour
     [SerializeField]
     private BoxCollider attackHitBox;
     [SerializeField]
+    private BoxCollider knockBackHitBox;
+    [SerializeField]
     private BoxCollider torso;
     [SerializeField]
     private BoxCollider blockArea;
@@ -61,6 +63,7 @@ public class Hitbox : MonoBehaviour
 
         attackHitBox.enabled = false;
         hypeAttackHitBox.enabled = false;
+        knockBackHitBox.enabled = false;
         player.CanMove = true;
     }
     private void OpenBlockArea()
@@ -84,6 +87,19 @@ public class Hitbox : MonoBehaviour
 
         }
     }
+    private void OpenKnockBackHitBox()
+    {
+
+        if (player.IsGrounded)
+        {
+
+            knockBackHitBox.enabled = true;
+            player.AttackCounter++;
+        }
+            StartCoroutine("CloseHitBoxes"); // this disables the hitbox incase the animation event did not
+
+    }
+
     private IEnumerator CloseHype()
     {
         WaitForSeconds delayHype = new WaitForSeconds(0.5f);

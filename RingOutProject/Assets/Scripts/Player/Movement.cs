@@ -28,7 +28,7 @@ public class Movement : MonoBehaviour {
     }
     private void Move()
     {
-        if (player.IsGrounded && player.CanMove)
+        if (player.IsGrounded && !player.IsAttacking && player.CanMove)
         {
             if (inputManager.Movement(player.ID) != Vector3.zero)
                 player.IsWalking = true;
