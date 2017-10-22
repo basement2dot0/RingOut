@@ -64,7 +64,7 @@ public class AudioManager : MonoBehaviour
 
     private void Walking()
     {
-        if (player.IsWalking && !audio.isPlaying)
+        if (player.IsWalking && !audio.isPlaying && Time.timeScale != 0.0f)
         {
             audio.clip = walkingSFX;
             
