@@ -65,6 +65,8 @@ public class AudioManager : MonoBehaviour
             audio.clip = hypeMusic;
             audio.Play();
         }
+        else
+            audio.Stop();
     }
     public void StopHypeMusic()
     {
