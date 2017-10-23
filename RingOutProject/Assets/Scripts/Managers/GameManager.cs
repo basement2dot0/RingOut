@@ -13,9 +13,10 @@ public class GameManager : MonoBehaviour
     private Camera mainCamera;
     private Text uiText;
     private Button[] pauseButtons;
-    private Button quit;
+    private Button[] matchSetButtons;
     private bool isPaused;
     private GameObject pauseMenuObject;
+    private GameObject MatchSetMenuObject;
     private GameObject nav;
     [SerializeField]
     private float matchTimer;
@@ -51,8 +52,10 @@ public class GameManager : MonoBehaviour
         uiText = GameObject.Find("UIText").GetComponent<Text>();
         matchTimerText = GetComponentInChildren<Text>();
         pauseMenuObject = GameObject.FindGameObjectWithTag("ShowOnPause");
+        MatchSetMenuObject = GameObject.FindGameObjectWithTag("MatchMenu");
         nav = GameObject.FindGameObjectWithTag("Nav");
         pauseButtons = new Button[2];
+        matchSetButtons = new Button[2];
         foreach (Button button in pauseMenuObject.GetComponentsInChildren<Button>())
         {
             if (button.name.ToLower() == string.Format("resume"))
@@ -60,7 +63,15 @@ public class GameManager : MonoBehaviour
             else
                 pauseButtons[1] = button;
         }
+        foreach (Button button in MatchSetMenuObject.GetComponentsInChildren<Button>())
+        {
+            if (button.name.ToLower() == string.Format("rematch"))
+                matchSetButtons[0] = button;
+            else
+                matchSetButtons[1] = button;
+        }
         pauseMenuObject.SetActive(false);
+        MatchSetMenuObject.SetActive(false);
         nav.transform.position = (pauseButtons[0].transform.position - new Vector3(100, 0, 0));
         
     }
@@ -150,7 +161,7 @@ public class GameManager : MonoBehaviour
     
     private void PauseMenu()
     {
-        if (PauseButton())
+        if (PauseButton() && !isMatchOver)
         {
            if(!isPaused)
             {
@@ -164,9 +175,22 @@ public class GameManager : MonoBehaviour
     }
     private void PauseControls()
     {
-        var resumeButton = (pauseButtons[0].transform.position - new Vector3(100, 0, 0));
-        var quitButton = (pauseButtons[1].transform.position - new Vector3(100, 0, 0));
+        
+        Vector3 resumeButton;
+        Vector3 quitButton;
+        if (isMatchOver)
+        {
+            Debug.Log(matchSetButtons[0].name);
+            resumeButton = (matchSetButtons[0].transform.position - new Vector3(100, 15.0f, 0));
+            quitButton = (matchSetButtons[1].transform.position - new Vector3(100, 0, 0));
+            nav.transform.parent = MatchSetMenuObject.transform;            
 
+        }
+        else
+        {
+            resumeButton = (pauseButtons[0].transform.position - new Vector3(100, 0, 0));
+             quitButton = (pauseButtons[1].transform.position - new Vector3(100, 0, 0));
+        }
 
         if (Navigation() == 1)
         {
@@ -184,7 +208,7 @@ public class GameManager : MonoBehaviour
             menuSFX.clip = navChime;
             if (nav.transform.position != quitButton)
             {
-                nav.transform.position = quitButton; ;
+                nav.transform.position = quitButton; 
                 menuSFX.Play();
             }
 
@@ -198,12 +222,14 @@ public class GameManager : MonoBehaviour
 
             if (nav.transform.position == quitButton)
             {
-                
                 SceneManager.LoadScene("Main Menu");
                 Time.timeScale = 1.0f;
+
             }
             else if (nav.transform.position == resumeButton)
             {
+                if(isMatchOver)
+                    SceneManager.LoadScene("RingMap");
                 Time.timeScale = 1.0f;
                 isPaused = false;
                 pauseMenuObject.SetActive(false);
@@ -267,8 +293,10 @@ public class GameManager : MonoBehaviour
         {
             //Wait X seconds
             StartCoroutine("MatchSetDelay");
-            //
+            
            
+            //
+
         }
     }
     IEnumerator MatchSetDelay()
@@ -279,21 +307,20 @@ public class GameManager : MonoBehaviour
         ringOut.enabled = false;
         matchSetcamera.enabled = true;
         matchSetcamera.transform.position = cameraPosition;
+        matchSetcamera.fieldOfView = 20.0f;
         if (isPlayerOneVictory)
         {
-            players[1].gameObject.active = false;
-            matchSetcamera.transform.LookAt(players[0].transform.position);
-            matchSetcamera.fieldOfView = 20.0f;
-            uiText.text = string.Format("PLAYER 1 WINS");
+            playersTheme[0].PlayHypeMusic();
+            StartCoroutine("VictoryTaunt", 0);
         }
-        if(!isPlayerOneVictory)
+           
+        if (!isPlayerOneVictory)
         {
-            players[0].gameObject.active = false;
-            matchSetcamera.transform.LookAt(players[1].transform.position);
-            matchSetcamera.fieldOfView = 20.0f;
-            uiText.text = string.Format("PLAYER 2 WINS");
+            playersTheme[1].PlayHypeMusic();
+            StartCoroutine("VictoryTaunt", 1);
         }
-        
+           
+
     }
     IEnumerator PauseNavigation()
     {
@@ -309,6 +336,48 @@ public class GameManager : MonoBehaviour
             }
            
         }
+    }
+    IEnumerator MatchSetNavigation()
+    {
+        MatchSetMenuObject.SetActive(true);
+        var text = MatchSetMenuObject.GetComponentInChildren<Text>();
+        if (isPlayerOneVictory)
+        {
+            players[1].gameObject.active = false;
+            text.text = string.Format(players[0].name + " Wins!");
+        }
+        else
+        {
+            players[0].gameObject.active = false;
+            text.text = string.Format(players[1].name + " Wins!");
+        }
+
+        nav.transform.position = (matchSetButtons[0].transform.position - new Vector3(100, 15.0f, 0));
+        Time.timeScale = 0.0f;
+        while (MatchSetMenuObject.activeSelf)
+        {
+            float pauseEndTime = Time.realtimeSinceStartup + 1f;
+            while (Time.realtimeSinceStartup < pauseEndTime)
+            {
+
+                yield return 0;
+                PauseControls();
+
+            }
+
+        }
+    }
+    IEnumerator VictoryTaunt(int player)
+    {
+
+        matchSetcamera.transform.LookAt(players[player].transform.position);
+        players[player].transform.LookAt(matchSetcamera.transform.position);
+        players[player].IsTaunting = true;
+        
+
+        WaitForSeconds delay = new WaitForSeconds(2.0f);
+        yield return delay;
+        StartCoroutine("MatchSetNavigation");
     }
 }
 
