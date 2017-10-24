@@ -141,7 +141,8 @@ public class Player : MonoBehaviour{
         set { damageType = value; }
     }
 
-    public bool IsTaunting { get; internal set; }
+    public bool IsTaunting { get;  set; }
+    public bool IsWinner { get;  set; }
 
     //Unity Methods
     private void Awake()

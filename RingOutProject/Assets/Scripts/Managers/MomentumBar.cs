@@ -50,7 +50,7 @@ public class MomentumBar : MonoBehaviour
         damage = GameObject.FindGameObjectWithTag("Player").GetComponent<DamageType>(); // this needs to be dynamically assigned between both players damage type
         startingValue = 50.0f;
         momentumBar.value = startingValue;
-        hypeText = gameObject.transform.GetChild(0).GetComponent<Text>();
+        hypeText = gameObject.transform.GetChild(2).GetComponent<Text>();
         playersTheme = GetComponent<AudioSource>();
         playerAudioManager = new AudioManager[2];
         foreach (var theme in GameObject.FindGameObjectsWithTag("Player"))
@@ -80,8 +80,8 @@ public class MomentumBar : MonoBehaviour
     {
             if (momentumBar.value == momentumBar.maxValue && !isHyped)
             {
-                playersTheme.clip = themeOne;
-                playersTheme.Play();
+                //playersTheme.clip = themeOne;
+                //playersTheme.Play();
                 hypeText.text = "Player One is HYPED!";
                 players[0].IsTaunting = true;
                 players[0].IsHyped = true;
@@ -91,8 +91,8 @@ public class MomentumBar : MonoBehaviour
             }
             else if (momentumBar.value == momentumBar.minValue && !isHyped)
             {
-                playersTheme.clip = themeTwo;
-                playersTheme.Play();
+               // playersTheme.clip = themeTwo;
+                //playersTheme.Play();
                 hypeText.text = "Player Two is HYPED!";
                 players[1].IsTaunting = true;
                 players[1].IsHyped = true;
@@ -155,7 +155,7 @@ public class MomentumBar : MonoBehaviour
                 momentumBar.value = startingValue;
                 players[0].IsHyped = false;
                 players[1].IsHyped = false;
-                playersTheme.Stop();
+                //playersTheme.Stop();
                 
             }
             else if (players[0].IsHyped && !players[0].IsTaunting)
@@ -170,6 +170,15 @@ public class MomentumBar : MonoBehaviour
                 isTimer = true;
                 momentumBar.value = Mathf.MoveTowards(momentumBar.value, startingValue, Time.deltaTime * hypeTimer);
                 playerAudioManager[1].FadeHypeMusic((momentumBar.value + startingValue) / 50);
+            }
+        }
+        else
+        {
+            if (players[0].IsHyped || players[1].IsHyped)
+            {
+                players[0].IsHyped = false;
+                players[1].IsHyped = false;
+               
             }
         }
     }
