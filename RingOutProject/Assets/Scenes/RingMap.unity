@@ -3418,12 +3418,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bfa39a1409f3e054187c48fcc2eaa1b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dashDelayLength: 0.5
   fallMultipler: 0
   jumpHeight: 35
   speed: 60
   knockBackDistance: 500
   lastAttack: 0
   moveDelay: 1.5
+  dashSpeed: 30
   lungeDistance: 100
 --- !u!114 &739343333
 MonoBehaviour:
@@ -5553,6 +5555,16 @@ Prefab:
       propertyPath: attackAudio.Array.data[0]
       value: 
       objectReference: {fileID: 8300000, guid: 3e9e28bf3c3c3b747adc7c7c60e8312f, type: 3}
+    - target: {fileID: 114497812462890444, guid: 96edf2a7e4f44674ab66f95272470580,
+        type: 2}
+      propertyPath: dashDelayLength
+      value: 0.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 114497812462890444, guid: 96edf2a7e4f44674ab66f95272470580,
+        type: 2}
+      propertyPath: dashSpeed
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 96edf2a7e4f44674ab66f95272470580, type: 2}
   m_IsPrefabParent: 0

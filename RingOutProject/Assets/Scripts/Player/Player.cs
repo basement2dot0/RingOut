@@ -10,6 +10,7 @@ using UnityEngine;
 [RequireComponent(typeof(Movement))]
 [RequireComponent(typeof(AnimationManager))]
 public class Player : MonoBehaviour{
+    internal bool CanDash;
 
     //Universal Player variables
     [SerializeField]
@@ -142,12 +143,15 @@ public class Player : MonoBehaviour{
     }
 
     public bool IsTaunting { get; internal set; }
+    public bool IsDashing { get; set; }
+    public int DashCounter { get; set; }
 
     //Unity Methods
     private void Awake()
     {
         
         canMove = true;
+        CanDash = true;
         foreach (var item in GameObject.FindGameObjectsWithTag("Player"))
         {
             if (item.GetComponent<Player>() != this)

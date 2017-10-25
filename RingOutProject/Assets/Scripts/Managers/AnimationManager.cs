@@ -75,7 +75,7 @@ public class AnimationManager : MonoBehaviour
         //anim.SetBool("isBlocking", player.IsDefending);
         if (player.IsGrounded)
         { 
-            if (player.CanBlock && inputManager.DefendButton(player.ID) && (Time.time - player.LastSuccessfulAttack) > 1.0f && !player.IsTaunting && !player.IsExhausted && !player.IsKnockedBack)
+            if (player.CanBlock && inputManager.DefendButton(player.ID) && (Time.time - player.LastSuccessfulAttack) > 1.0f && !player.IsTaunting && !player.IsExhausted && !player.IsKnockedBack && !player.IsDashing)
             {
                 anim.Play("Block");
                 player.IsDefending = true;
@@ -93,7 +93,7 @@ public class AnimationManager : MonoBehaviour
             if (!player.IsDefending && CanAttack() && inputManager.AttackButtonDown(player.ID))
             {
                  player.CanBlock = false;
-            if (!player.IsHyped)
+            if (!player.IsHyped && !player.IsDashing)
             {
                 player.IsAttacking = true;
                 AttackManager();
@@ -163,7 +163,7 @@ public class AnimationManager : MonoBehaviour
     private void AttackManager()
     {
 
-        if (player.IsGrounded)
+        if (player.IsGrounded && !player.IsDashing)
         {
 
 

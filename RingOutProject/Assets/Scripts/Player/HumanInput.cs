@@ -35,4 +35,9 @@ public class HumanInput : InputManager {
     {
         return Input.GetButtonDown("Submit");
     }
+
+    public override bool DashButton(int playerID)
+    {
+        return Input.GetButtonDown("Dash"+ playerID.ToString());
+    }
 }

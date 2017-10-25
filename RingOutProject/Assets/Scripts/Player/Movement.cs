@@ -24,11 +24,12 @@ public class Movement : MonoBehaviour {
     void Update ()
     {
         Move();
+        Dash();
         Jump();
     }
     private void Move()
     {
-        if (player.IsGrounded && !player.IsAttacking && player.CanMove && Time.timeScale != 0.0f)
+        if (player.IsGrounded && !player.IsDashing && !player.IsAttacking && player.CanMove && Time.timeScale != 0.0f)
         {
             if (inputManager.Movement(player.ID) != Vector3.zero)
                 player.IsWalking = true;
@@ -57,6 +58,16 @@ public class Movement : MonoBehaviour {
             return true;
         else
             return false;
+    }
+    private void Dash()
+    {
+        if (player.IsGrounded && player.CanDash && !player.IsDefending && !player.IsTaunting && !player.IsAttacking && !player.IsWalking && Time.timeScale != 0.0f)
+        {
+            if (inputManager.DashButton(player.ID))
+            {
+                player.IsDashing = true;
+            }
+        }
     }
     private IEnumerator JumpReset()
     {
