@@ -13,7 +13,7 @@ public class GameManager : MonoBehaviour
     private bool isPlayerOneVictory;
     private Camera matchSetcamera;
     private Camera mainCamera;
-    private Text uiText;
+    private Image uiTime;
     private Button[] pauseButtons;
     private Button[] matchSetButtons;
     private bool isPaused;
@@ -61,7 +61,8 @@ public class GameManager : MonoBehaviour
         stageTheme = GetComponent<AudioSource>().clip;
         ringOut.enabled = false;
         audioSource = GetComponent<AudioSource>();
-        uiText = GameObject.Find("UIText").GetComponent<Text>();
+        uiTime = GameObject.Find("Time").GetComponent<Image>();
+        uiTime.enabled = false;
         matchTimerText = GetComponentInChildren<Text>();
         pauseMenuObject = GameObject.FindGameObjectWithTag("ShowOnPause");
         MatchSetMenuObject = GameObject.FindGameObjectWithTag("MatchMenu");
@@ -106,7 +107,7 @@ public class GameManager : MonoBehaviour
             }
                
             rounds = 0;
-            uiText.text = "";
+
         }
         
         foreach (var camera in GameObject.FindGameObjectsWithTag("camera"))
@@ -162,28 +163,12 @@ public class GameManager : MonoBehaviour
     private void PlayHypeMusic()
     {
         if(isPaused && audioSource.clip == playerOneTheme || isPaused && audioSource.clip == playerTwoTheme)
-        {
-            Debug.Log(hypeMusicLastTime);
             hypeMusicLastTime = audioSource.time;
-        }
-        if (players[0].IsHyped && !isPaused)
-        {
-            audioSource.clip = playerOneTheme;
-            if (hypeMusicLastTime > 0.0f)
-            {
-                audioSource.time = hypeMusicLastTime;
-                if (!audioSource.isPlaying)
-                    audioSource.Play();
-                hypeMusicLastTime = 0.0f;
-            }
-            else if (!audioSource.isPlaying)
-                audioSource.Play();
-        }
+        if (players[0].IsHyped )
+            SetPlayerTheme(playerOneTheme);
         else if (players[1].IsHyped)
-        {
-            audioSource.clip = playerTwoTheme;
-            audioSource.Play();
-        }
+            SetPlayerTheme(playerTwoTheme);
+        
     }
     private void RoundTimer()
     {
@@ -213,10 +198,10 @@ public class GameManager : MonoBehaviour
         if (!isMatchOver)
         {
             var slider = gameObject.GetComponentInChildren<Slider>();
-
             if (slider.value > 50.0f)
             {
                 //uiText.text = "Player 1 wins!";
+                uiTime.enabled = true;
                 isPlayerOneVictory = true;
                 isMatchOver = true;
 
@@ -227,15 +212,18 @@ public class GameManager : MonoBehaviour
             else if(slider.value < 50.0f)
             {
                 //uiText.text = "Player 2 wins!";
+                uiTime.enabled = true;
                 isPlayerOneVictory = false;
                 isMatchOver = true;
                 // playersTheme[1].StopHypeMusic();
             }
             else
             {
-                uiText.text = "DRAW!";
+                uiTime.enabled = true;
                 isMatchOver = true;
+
             }
+            
         }
 
 
@@ -405,6 +393,7 @@ public class GameManager : MonoBehaviour
         WaitForSeconds delay = new WaitForSeconds(2.0f);
         yield return delay;
         ringOut.enabled = false;
+        uiTime.enabled = false;
         matchSetcamera.enabled = true;
         matchSetcamera.transform.position = cameraPosition;
         matchSetcamera.fieldOfView = 20.0f;
@@ -473,6 +462,20 @@ public class GameManager : MonoBehaviour
         WaitForSeconds delay = new WaitForSeconds(2.0f);
         yield return delay;
         StartCoroutine("MatchSetNavigation");
+    }
+
+    private void SetPlayerTheme(AudioClip AudioClip)
+    {
+        audioSource.clip = AudioClip;
+        if (hypeMusicLastTime > 0.0f)
+        {
+            audioSource.time = hypeMusicLastTime;
+            if (!audioSource.isPlaying)
+                audioSource.Play();
+            hypeMusicLastTime = 0.0f;
+        }
+        else if (!audioSource.isPlaying)
+            audioSource.Play();
     }
 }
 
