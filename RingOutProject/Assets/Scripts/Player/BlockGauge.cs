@@ -48,18 +48,16 @@ public class BlockGauge : MonoBehaviour
     {
         if (player.IsDefending && player.CanBlock)
         {
-            isRecharging = false;
+           
             gaugeSlider.value--;
             if(gaugeSlider.value <= gaugeSlider.minValue)
             {
                 gaugeSlider.value = gaugeSlider.minValue;
+                player.CanBlock = false;
+                isRecharging = true;
             }
         }
-        else
-        {
-            isRecharging = true;
-            
-        }
+        
 
 
 
@@ -72,6 +70,7 @@ public class BlockGauge : MonoBehaviour
         {
             player.CanBlock = false;
             player.CanDash = false;
+            isRecharging = true;
             jammerText.enabled = true;
             if (player.IsDefending || player.IsDashing)
             {
@@ -86,24 +85,24 @@ public class BlockGauge : MonoBehaviour
 
     private void DashGaugeDrain()
     {
+
         
-
-        //if (gaugeSlider.value <= 15.0f)
-        //    player.CanDash = false;
-        if (player.IsDashing && player.CanDash)
+        if (player.IsDashing && !isRecharging && gaugeSlider.value >10.0f)
         {
-            isRecharging = false;
-            gaugeSlider.value -= 50.0f;
+
+            gaugeSlider.value -= 2.0f;
+            if (gaugeSlider.value <= gaugeSlider.minValue)
+            {
+                gaugeSlider.value = gaugeSlider.minValue;
+                player.CanDash = false;
+                isRecharging = true;
+            }
         }
-
-        else
-        {
-            isRecharging = true;
-      }
+        
     }
     private void RechargeEcho()
     {
-        if (!player.IsDefending && !player.IsDashing )
+        if (!player.IsDefending && !player.IsDashing)
         {
             gaugeSlider.value++;
             if (gaugeSlider.value >= gaugeSlider.maxValue)
@@ -112,6 +111,7 @@ public class BlockGauge : MonoBehaviour
                 player.CanBlock = true;
                 player.CanDash = true;
                 jammerText.enabled = false;
+                isRecharging = false;
             }
         }
     }

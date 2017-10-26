@@ -73,8 +73,12 @@ public class Physics : MonoBehaviour
     }
     private void Dash()
     {
-        if (player.IsDashing)
+        if (player.IsDashing && player.CanDash)
+        {
+           
             StartCoroutine("Dashing");
+        }
+           
         
     }
     private void Jump()
@@ -138,13 +142,13 @@ public class Physics : MonoBehaviour
         //float knockBackForce = 10.0f;
         //player.transform.forward = -player.Opponent.HitDirection;
         //rb.position += player.Opponent.HitDirection * knockBackForce * Time.deltaTime;
-        player.CanDash = false;
+        
         float dashSpeed_ = dashSpeed;
         rb.position += player.transform.forward * dashSpeed * Time.deltaTime;
         dashDelay = new WaitForSeconds(dashDelayLength);
         yield return dashDelay;
         player.IsDashing = false;
-        player.CanDash = true;
+        //player.CanDash = true;
         //player.CanMove = true;
         //  player.transform.eulerAngles = defaultPosition;
     }

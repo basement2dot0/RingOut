@@ -3418,7 +3418,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bfa39a1409f3e054187c48fcc2eaa1b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dashDelayLength: 0.5
+  dashDelayLength: 0.4
   fallMultipler: 0
   jumpHeight: 35
   speed: 60
