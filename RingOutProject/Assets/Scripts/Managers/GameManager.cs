@@ -84,7 +84,7 @@ public class GameManager : MonoBehaviour
         }
         pauseMenuObject.SetActive(false);
         MatchSetMenuObject.SetActive(false);
-        nav.transform.position = (pauseButtons[0].transform.position - new Vector3(100, 0, 0));
+        nav.transform.position = (pauseButtons[0].transform.position - new Vector3(110, 0, 0));
         
     }
     private void Start()
@@ -194,7 +194,6 @@ public class GameManager : MonoBehaviour
             //matchTimer = 0;
             UpdateTimer();
             DetermineMomentumWinner();
-            Time.timeScale = 0.0f;
         }
         else if(matchTimer > 0)
             UpdateTimer();
@@ -210,21 +209,36 @@ public class GameManager : MonoBehaviour
     }
     private void DetermineMomentumWinner()
     {
-        var slider = gameObject.GetComponentInChildren<Slider>();
-        if(slider.value > 50.0f)
+       
+        if (!isMatchOver)
         {
-            uiText.text = "Player 1 wins!";
-           // playersTheme[0].StopHypeMusic();
+            var slider = gameObject.GetComponentInChildren<Slider>();
+
+            if (slider.value > 50.0f)
+            {
+                //uiText.text = "Player 1 wins!";
+                isPlayerOneVictory = true;
+                isMatchOver = true;
+
             
+                // playersTheme[0].StopHypeMusic();
+
+            }
+            else if(slider.value < 50.0f)
+            {
+                //uiText.text = "Player 2 wins!";
+                isPlayerOneVictory = false;
+                isMatchOver = true;
+                // playersTheme[1].StopHypeMusic();
+            }
+            else
+            {
+                uiText.text = "DRAW!";
+                isMatchOver = true;
+            }
         }
-        else if(slider.value < 50.0f)
-        {
-            uiText.text = "Player 2 wins!";
-           // playersTheme[1].StopHypeMusic();
-        }
-        else
-            uiText.text = "DRAW!";
-        
+
+
     }
     
     private void PauseMenu()
@@ -251,16 +265,17 @@ public class GameManager : MonoBehaviour
         Vector3 quitButton;
         if (isMatchOver)
         {
-            Debug.Log(matchSetButtons[0].name);
-            resumeButton = (matchSetButtons[0].transform.position - new Vector3(100, 15.0f, 0));
-            quitButton = (matchSetButtons[1].transform.position - new Vector3(100, 0, 0));
-            nav.transform.parent = MatchSetMenuObject.transform;            
 
+            Debug.Log(matchSetButtons[0].name);
+            resumeButton = (matchSetButtons[0].transform.position - new Vector3(130, 10.0f, 0));
+            quitButton = (matchSetButtons[1].transform.position - new Vector3(150, 1, 0));
+            
+            nav.transform.parent = MatchSetMenuObject.transform;
         }
         else
         {
-            resumeButton = (pauseButtons[0].transform.position - new Vector3(100, 0, 0));
-             quitButton = (pauseButtons[1].transform.position - new Vector3(100, 0, 0));
+            resumeButton = (pauseButtons[0].transform.position - new Vector3(110, 0, 0));
+             quitButton = (pauseButtons[1].transform.position - new Vector3(110, 0, 0));
         }
 
         if (Navigation() == 1)
@@ -335,29 +350,35 @@ public class GameManager : MonoBehaviour
             if (players[0].IsHypeHit)
             {
                 ringOut.enabled = true;
-                isPlayerOneVictory = false;
                
+                isPlayerOneVictory = false;
+                isMatchOver = true;
             }
             else if (players[1].IsHypeHit)
             {
 
                 ringOut.enabled = true;
+               
                 isPlayerOneVictory = true;
-                
+                isMatchOver = true;
+
             }
             if (players[0].transform.position.y < playerBounds.transform.position.y)
             {
                 
                 ringOut.enabled = true;
-                isMatchOver = true;
+                              
                 isPlayerOneVictory = false;
-                
+                isMatchOver = true;
+
             }
             else if (players[1].transform.position.y < playerBounds.transform.position.y)
             {
                 ringOut.enabled = true;
-                isMatchOver = true;
                 isPlayerOneVictory = true;
+                isMatchOver = true;
+               
+                
                 
             }
         }
@@ -370,6 +391,7 @@ public class GameManager : MonoBehaviour
                 audioSource.clip = playerOneTheme;
             else
                 audioSource.clip = playerTwoTheme;
+            
 
             //Wait X seconds
             StartCoroutine("MatchSetDelay");
