@@ -18,7 +18,7 @@ public class MainMenu : MonoBehaviour
 
     private void Awake()
     {
-        nav.transform.position = (multiplayerButton.transform.position - new Vector3(150, 0, 0));
+        nav.transform.position = (multiplayerButton.transform.position - new Vector3(175, 0, 0));
         audioSource = GetComponent<AudioSource>();
     }
     private void Update()
@@ -37,8 +37,8 @@ public class MainMenu : MonoBehaviour
 
     private void PauseControls()
     {
-        var multiplayer = (multiplayerButton.transform.position - new Vector3(150, 0, 0));
-        var quit = (quitButton.transform.position - new Vector3(120, 0, 0));
+        var multiplayer = (multiplayerButton.transform.position - new Vector3(175, 0, 0));
+        var quit = (quitButton.transform.position - new Vector3(175, 0, 0));
 
 
         if (Navigation() > 0.0f)
