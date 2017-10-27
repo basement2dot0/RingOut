@@ -15,6 +15,7 @@ TagManager:
   - camera
   - gaugeSlider1
   - gaugeSlider2
+  - MatchMenu
   layers:
   - Default
   - TransparentFX

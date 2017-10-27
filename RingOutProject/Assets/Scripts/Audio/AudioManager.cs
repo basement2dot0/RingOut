@@ -46,11 +46,13 @@ public class AudioManager : MonoBehaviour
     private AudioClip hypeAttackAudio;
     [SerializeField]
     private AudioClip walkingSFX;
+    
 
     private void Awake()
     {
         volume = 1.0f;
         player = GetComponent<Player>();
+       
     }
     private void Update()
     {
@@ -59,12 +61,13 @@ public class AudioManager : MonoBehaviour
         PlayerAttack();
         HypeHit();
         HypeAttack();
+       
 
     }
 
     private void Walking()
     {
-        if (player.IsWalking && !audio.isPlaying && Time.timeScale != 0.0f)
+        if (player.IsWalking && !audio.isPlaying && !player.IsDefending && Time.timeScale != 0.0f)
         {
             audio.clip = walkingSFX;
             
@@ -79,8 +82,7 @@ public class AudioManager : MonoBehaviour
             audio.clip = hypeMusic;
             audio.Play();
         }
-        else
-            audio.Stop();
+    
     }
     public void StopHypeMusic()
     {

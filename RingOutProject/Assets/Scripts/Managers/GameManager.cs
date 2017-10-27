@@ -6,16 +6,19 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
+    private float BGMLastTime;
+    private float hypeMusicLastTime;
     private Vector3 cameraPosition;
     private bool isMatchOver;
     private bool isPlayerOneVictory;
     private Camera matchSetcamera;
     private Camera mainCamera;
-    private Text uiText;
+    private Image uiTime;
     private Button[] pauseButtons;
-    private Button quit;
+    private Button[] matchSetButtons;
     private bool isPaused;
     private GameObject pauseMenuObject;
+    private GameObject MatchSetMenuObject;
     private GameObject nav;
     [SerializeField]
     private float matchTimer;
@@ -31,6 +34,8 @@ public class GameManager : MonoBehaviour
     private Text ringOutText;
     private AudioManager[] playersTheme;
     [SerializeField]
+    private AudioSource audioSource;
+    [SerializeField]
     private AudioSource menuSFX;
     [SerializeField]
     private AudioClip navChime;
@@ -40,19 +45,30 @@ public class GameManager : MonoBehaviour
     Image ringOut;
     [SerializeField]
     private GameObject playerBounds;
+    [SerializeField]
+    private AudioClip stageTheme;
+    [SerializeField]
+    private AudioClip playerOneTheme;
+    [SerializeField]
+    private AudioClip playerTwoTheme;
+    private AudioClip[] playersHypeTheme;
 
     public float Match { get { return match; } set { match = value; } }
     public float Rounds { get { return rounds; } set { rounds = value; } }
 
     private void Awake()
     {
+        stageTheme = GetComponent<AudioSource>().clip;
         ringOut.enabled = false;
-        menuSFX = GetComponent<AudioSource>();
-        uiText = GameObject.Find("UIText").GetComponent<Text>();
+        audioSource = GetComponent<AudioSource>();
+        uiTime = GameObject.Find("Time").GetComponent<Image>();
+        uiTime.enabled = false;
         matchTimerText = GetComponentInChildren<Text>();
         pauseMenuObject = GameObject.FindGameObjectWithTag("ShowOnPause");
+        MatchSetMenuObject = GameObject.FindGameObjectWithTag("MatchMenu");
         nav = GameObject.FindGameObjectWithTag("Nav");
         pauseButtons = new Button[2];
+        matchSetButtons = new Button[2];
         foreach (Button button in pauseMenuObject.GetComponentsInChildren<Button>())
         {
             if (button.name.ToLower() == string.Format("resume"))
@@ -60,29 +76,38 @@ public class GameManager : MonoBehaviour
             else
                 pauseButtons[1] = button;
         }
+        foreach (Button button in MatchSetMenuObject.GetComponentsInChildren<Button>())
+        {
+            if (button.name.ToLower() == string.Format("rematch"))
+                matchSetButtons[0] = button;
+            else
+                matchSetButtons[1] = button;
+        }
         pauseMenuObject.SetActive(false);
-        nav.transform.position = (pauseButtons[0].transform.position - new Vector3(100, 0, 0));
+        MatchSetMenuObject.SetActive(false);
+        nav.transform.position = (pauseButtons[0].transform.position - new Vector3(110, 0, 0));
         
     }
     private void Start()
     {
-        playersTheme = new AudioManager[2];
         players = new Player[2];
         foreach (var player in GameObject.FindGameObjectsWithTag("Player"))
         {
             if (player.GetComponent<Player>().ID == 1)
             {
                 players[0] = player.GetComponent<Player>();
-                playersTheme[0] = player.GetComponent<AudioManager>();
+                playerOneTheme = player.GetComponent<AudioManager>().hypeMusic;
+                //playersTheme[0] = player.GetComponent<AudioManager>();
             }
             else
             {
                 players[1] = player.GetComponent<Player>();
-                playersTheme[1] = player.GetComponent<AudioManager>();
+                playerTwoTheme = player.GetComponent<AudioManager>().hypeMusic;
+                // playersTheme[1] = player.GetComponent<AudioManager>();
             }
                
             rounds = 0;
-            uiText.text = "";
+
         }
         
         foreach (var camera in GameObject.FindGameObjectsWithTag("camera"))
@@ -94,9 +119,7 @@ public class GameManager : MonoBehaviour
             mainCamera = camera.GetComponent<Camera>();
             cameraPosition = mainCamera.transform.position;
         }
-        
         matchSetcamera.enabled = false;
-        
     }
 
     private void Update()
@@ -105,8 +128,48 @@ public class GameManager : MonoBehaviour
         PauseMenu();
         RingOutVictory();
         MatchSet();
+        StageTheme();
+        PlayHypeMusic();
     }
 
+    private void StageTheme()
+    {
+        if (!players[0].IsHyped && !players[1].IsHyped  && !isPaused && !isMatchOver)
+        {
+            if (BGMLastTime > 0.0f)
+            { 
+                if (audioSource.clip != stageTheme)
+                {
+                    audioSource.clip = stageTheme;
+                    audioSource.time = BGMLastTime;
+                    audioSource.Play();
+                }
+                else
+                {
+                    if(!audioSource.isPlaying)
+                        audioSource.Play();
+                        
+                }
+            }
+            else if (!audioSource.isPlaying)
+                audioSource.Play();
+        }
+        if (audioSource.clip == stageTheme && isMatchOver || 
+            audioSource.clip == stageTheme && players[0].IsHyped ||
+            audioSource.clip == stageTheme && players[1].IsHyped ||
+            audioSource.clip == stageTheme && isPaused)
+               BGMLastTime = audioSource.time;
+    }
+    private void PlayHypeMusic()
+    {
+        if(isPaused && audioSource.clip == playerOneTheme || isPaused && audioSource.clip == playerTwoTheme)
+            hypeMusicLastTime = audioSource.time;
+        if (players[0].IsHyped )
+            SetPlayerTheme(playerOneTheme);
+        else if (players[1].IsHyped)
+            SetPlayerTheme(playerTwoTheme);
+        
+    }
     private void RoundTimer()
     {
         if (!isMatchOver)
@@ -116,7 +179,6 @@ public class GameManager : MonoBehaviour
             //matchTimer = 0;
             UpdateTimer();
             DetermineMomentumWinner();
-            Time.timeScale = 0.0f;
         }
         else if(matchTimer > 0)
             UpdateTimer();
@@ -130,43 +192,79 @@ public class GameManager : MonoBehaviour
         
         
     }
-   private void DetermineMomentumWinner()
+    private void DetermineMomentumWinner()
     {
-        var slider = gameObject.GetComponentInChildren<Slider>();
-        if(slider.value > 50.0f)
+       
+        if (!isMatchOver)
         {
-            uiText.text = "Player 1 wins!";
-            playersTheme[0].StopHypeMusic();
+            var slider = gameObject.GetComponentInChildren<Slider>();
+            if (slider.value > 50.0f)
+            {
+                //uiText.text = "Player 1 wins!";
+                uiTime.enabled = true;
+                isPlayerOneVictory = true;
+                isMatchOver = true;
+
+            
+                // playersTheme[0].StopHypeMusic();
+
+            }
+            else if(slider.value < 50.0f)
+            {
+                //uiText.text = "Player 2 wins!";
+                uiTime.enabled = true;
+                isPlayerOneVictory = false;
+                isMatchOver = true;
+                // playersTheme[1].StopHypeMusic();
+            }
+            else
+            {
+                uiTime.enabled = true;
+                isMatchOver = true;
+
+            }
+            
         }
-        else if(slider.value < 50.0f)
-        {
-            uiText.text = "Player 2 wins!";
-            playersTheme[1].StopHypeMusic();
-        }
-        else
-            uiText.text = "DRAW!";
-        
+
+
     }
     
     private void PauseMenu()
     {
-        if (PauseButton())
+        if (PauseButton() && !isMatchOver)
         {
            if(!isPaused)
             {
+               
                 Time.timeScale = 0.0f;
                 isPaused = true;
+                audioSource.Pause();
                 pauseMenuObject.SetActive(true);
                 StartCoroutine("PauseNavigation");
             }
+           
             
         }
     }
     private void PauseControls()
     {
-        var resumeButton = (pauseButtons[0].transform.position - new Vector3(100, 0, 0));
-        var quitButton = (pauseButtons[1].transform.position - new Vector3(100, 0, 0));
+        
+        Vector3 resumeButton;
+        Vector3 quitButton;
+        if (isMatchOver)
+        {
 
+            Debug.Log(matchSetButtons[0].name);
+            resumeButton = (matchSetButtons[0].transform.position - new Vector3(130, 10.0f, 0));
+            quitButton = (matchSetButtons[1].transform.position - new Vector3(150, 1, 0));
+            
+            nav.transform.parent = MatchSetMenuObject.transform;
+        }
+        else
+        {
+            resumeButton = (pauseButtons[0].transform.position - new Vector3(110, 0, 0));
+             quitButton = (pauseButtons[1].transform.position - new Vector3(110, 0, 0));
+        }
 
         if (Navigation() == 1)
         {
@@ -174,7 +272,7 @@ public class GameManager : MonoBehaviour
             if (nav.transform.position != resumeButton)
             {
                 nav.transform.position = resumeButton;
-                
+
                 menuSFX.Play();
             }
             
@@ -184,26 +282,29 @@ public class GameManager : MonoBehaviour
             menuSFX.clip = navChime;
             if (nav.transform.position != quitButton)
             {
-                nav.transform.position = quitButton; ;
+                nav.transform.position = quitButton;
                 menuSFX.Play();
             }
 
         }
         else if (ConfirmButton())
         {
+
             menuSFX.clip = navConfirm;
-            if (menuSFX.clip == navConfirm && !menuSFX.isPlaying)
+            if (isPaused)
                 menuSFX.Play();
             
 
             if (nav.transform.position == quitButton)
             {
-                
                 SceneManager.LoadScene("Main Menu");
                 Time.timeScale = 1.0f;
+
             }
             else if (nav.transform.position == resumeButton)
             {
+                if(isMatchOver)
+                    SceneManager.LoadScene("RingMap");
                 Time.timeScale = 1.0f;
                 isPaused = false;
                 pauseMenuObject.SetActive(false);
@@ -237,27 +338,36 @@ public class GameManager : MonoBehaviour
             if (players[0].IsHypeHit)
             {
                 ringOut.enabled = true;
+               
                 isPlayerOneVictory = false;
+                isMatchOver = true;
             }
             else if (players[1].IsHypeHit)
             {
+
                 ringOut.enabled = true;
+               
                 isPlayerOneVictory = true;
+                isMatchOver = true;
+
             }
             if (players[0].transform.position.y < playerBounds.transform.position.y)
             {
+                
                 ringOut.enabled = true;
-                isMatchOver = true;
+                              
                 isPlayerOneVictory = false;
+                isMatchOver = true;
 
             }
             else if (players[1].transform.position.y < playerBounds.transform.position.y)
             {
                 ringOut.enabled = true;
-                isMatchOver = true;
                 isPlayerOneVictory = true;
+                isMatchOver = true;
+               
                 
-
+                
             }
         }
     }
@@ -265,35 +375,38 @@ public class GameManager : MonoBehaviour
     {
         if (isMatchOver)
         {
+            if (isPlayerOneVictory)
+                audioSource.clip = playerOneTheme;
+            else
+                audioSource.clip = playerTwoTheme;
+            
+
             //Wait X seconds
             StartCoroutine("MatchSetDelay");
-            //
-           
         }
     }
     IEnumerator MatchSetDelay()
     {
         Debug.Log("Match");
+        if(!audioSource.isPlaying)
+            audioSource.Play();
         WaitForSeconds delay = new WaitForSeconds(2.0f);
         yield return delay;
         ringOut.enabled = false;
+        uiTime.enabled = false;
         matchSetcamera.enabled = true;
         matchSetcamera.transform.position = cameraPosition;
+        matchSetcamera.fieldOfView = 20.0f;
         if (isPlayerOneVictory)
         {
-            players[1].gameObject.active = false;
-            matchSetcamera.transform.LookAt(players[0].transform.position);
-            matchSetcamera.fieldOfView = 20.0f;
-            uiText.text = string.Format("PLAYER 1 WINS");
+            //players[0].IsWinner = true;
+            StartCoroutine("VictoryTaunt", 0);
         }
-        if(!isPlayerOneVictory)
+        else if (!isPlayerOneVictory)
         {
-            players[0].gameObject.active = false;
-            matchSetcamera.transform.LookAt(players[1].transform.position);
-            matchSetcamera.fieldOfView = 20.0f;
-            uiText.text = string.Format("PLAYER 2 WINS");
+           // players[1].IsWinner = true;
+            StartCoroutine("VictoryTaunt", 1);
         }
-        
     }
     IEnumerator PauseNavigation()
     {
@@ -309,6 +422,60 @@ public class GameManager : MonoBehaviour
             }
            
         }
+    }
+    IEnumerator MatchSetNavigation()
+    {
+        MatchSetMenuObject.SetActive(true);
+        var text = MatchSetMenuObject.GetComponentInChildren<Text>();
+        if (isPlayerOneVictory)
+        {
+            players[1].gameObject.active = false;
+            text.text = string.Format(players[0].name + " Wins!");
+        }
+        else
+        {
+            players[0].gameObject.active = false;
+            text.text = string.Format(players[1].name + " Wins!");
+        }
+
+        nav.transform.position = (matchSetButtons[0].transform.position - new Vector3(100, 15.0f, 0));
+        Time.timeScale = 0.0f;
+        while (MatchSetMenuObject.activeSelf)
+        {
+            float pauseEndTime = Time.realtimeSinceStartup + 1f;
+            while (Time.realtimeSinceStartup < pauseEndTime)
+            {
+
+                yield return 0;
+                PauseControls();
+
+            }
+
+        }
+    }
+    IEnumerator VictoryTaunt(int player)
+    {
+
+        matchSetcamera.transform.LookAt(players[player].transform.position);
+        players[player].transform.LookAt(matchSetcamera.transform.position);
+        players[player].IsTaunting = true;
+        WaitForSeconds delay = new WaitForSeconds(2.0f);
+        yield return delay;
+        StartCoroutine("MatchSetNavigation");
+    }
+
+    private void SetPlayerTheme(AudioClip AudioClip)
+    {
+        audioSource.clip = AudioClip;
+        if (hypeMusicLastTime > 0.0f)
+        {
+            audioSource.time = hypeMusicLastTime;
+            if (!audioSource.isPlaying)
+                audioSource.Play();
+            hypeMusicLastTime = 0.0f;
+        }
+        else if (!audioSource.isPlaying)
+            audioSource.Play();
     }
 }
 
