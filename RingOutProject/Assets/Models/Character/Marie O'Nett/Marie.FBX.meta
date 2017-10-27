@@ -3,7 +3,7 @@ guid: 2935f722a957d134b9bf22ab8de8b7b0
 timeCreated: 1499999473
 licenseType: Free
 ModelImporter:
-  serializedVersion: 19
+  serializedVersion: 21
   fileIDToRecycleName:
     100000: Bangs
     100002: Base Human
@@ -502,6 +502,8 @@ ModelImporter:
     resampleCurves: 1
     optimizeGameObjects: 0
     motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
     animationImportErrors: 
     animationImportWarnings: 
     animationRetargetingWarnings: 
@@ -512,6 +514,7 @@ ModelImporter:
     animationScaleError: 0.5
     animationWrapMode: 0
     extraExposedTransformPaths: []
+    extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
       name: Take 001
@@ -1750,7 +1753,7 @@ ModelImporter:
       name: Run
       takeName: Run
       firstFrame: 201
-      lastFrame: 260
+      lastFrame: 230
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -5448,7 +5451,7 @@ ModelImporter:
     - serializedVersion: 16
       name: Attack Combo 1
       takeName: Attack Combo 1
-      firstFrame: 807
+      firstFrame: 830
       lastFrame: 971
       wrapMode: 0
       orientationOffsetY: 0
@@ -13260,7 +13263,10 @@ ModelImporter:
     globalScale: 1
     meshCompression: 0
     addColliders: 0
+    importVisibility: 0
     importBlendShapes: 1
+    importCameras: 0
+    importLights: 0
     swapUVChannels: 0
     generateSecondaryUV: 0
     useFileUnits: 1
@@ -13276,6 +13282,7 @@ ModelImporter:
     normalSmoothAngle: 60
     normalImportMode: 0
     tangentImportMode: 3
+    normalCalculationMode: 0
   importAnimation: 1
   copyAvatar: 0
   humanDescription:

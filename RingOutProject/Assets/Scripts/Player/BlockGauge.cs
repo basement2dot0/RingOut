@@ -9,7 +9,7 @@ public class BlockGauge : MonoBehaviour
     private Player player;
     public float blockGauge;
     private Slider gaugeSlider;
-    private Text jammerText;
+    private Image jammerText;
     private bool canBlock;
     private bool isRecharging;
     
@@ -21,7 +21,7 @@ public class BlockGauge : MonoBehaviour
         gaugeSlider = GameObject.FindGameObjectWithTag("gaugeSlider"+player.ID).GetComponent<Slider>();
         gaugeSlider.value = gaugeSlider.maxValue;
         canBlock = true;
-        jammerText = gaugeSlider.GetComponentInChildren<Text>();
+        jammerText = gaugeSlider.GetComponentsInChildren<Image>()[2];
         jammerText.enabled = false;
     }
     void Update()
@@ -87,10 +87,10 @@ public class BlockGauge : MonoBehaviour
     {
 
         
-        if (player.IsDashing && !isRecharging && gaugeSlider.value >10.0f)
+        if (player.IsDashing && !isRecharging)
         {
 
-            gaugeSlider.value -= 2.0f;
+            gaugeSlider.value -= 2.5f;
             if (gaugeSlider.value <= gaugeSlider.minValue)
             {
                 gaugeSlider.value = gaugeSlider.minValue;

@@ -23,7 +23,7 @@ public class Movement : MonoBehaviour {
     // Update is called once per frame
     void Update ()
     {
-        Move();
+       // Move();
         Dash();
         Jump();
     }
@@ -61,7 +61,7 @@ public class Movement : MonoBehaviour {
     }
     private void Dash()
     {
-        if (player.IsGrounded && player.CanDash && !player.IsDefending && !player.IsTaunting && !player.IsAttacking && !player.IsWalking && Time.timeScale != 0.0f)
+        if (player.IsGrounded && !player.IsKnockedBack && player.CanDash && !player.IsDefending && !player.IsTaunting && !player.IsAttacking && !player.IsWalking && Time.timeScale != 0.0f)
         {
             if (inputManager.DashButton(player.ID))
             {

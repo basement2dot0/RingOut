@@ -68,7 +68,19 @@ public class AnimationManager : MonoBehaviour
     }
     private void Walk()
     {
-        anim.SetBool("isWalking", player.IsWalking);
+
+        if (player.IsGrounded && player.AttackCounter <= 0 && !player.IsDefending && !player.IsTaunting &&  !player.IsDashing && player.CanMove && Time.timeScale != 0.0f)
+        {
+            if (inputManager.Movement(player.ID) != Vector3.zero)
+            {
+
+                anim.Play("Walking");
+                player.IsWalking = true;
+            }
+        }
+        else
+            player.IsWalking = false;
+
     }
     private void Block()
     {
@@ -93,13 +105,14 @@ public class AnimationManager : MonoBehaviour
             if (!player.IsDefending && CanAttack() && inputManager.AttackButtonDown(player.ID))
             {
                  player.CanBlock = false;
-            if (!player.IsHyped && !player.IsDashing)
-            {
-                player.IsAttacking = true;
-                AttackManager();
+                player.CanMove = false;
+                if (!player.IsHyped && !player.IsDashing)
+                {
+                   // player.IsAttacking = true;
+                    AttackManager();
                 
-            }
-        }
+                }
+             }
         
     }
     private void IsKnockedBack()
@@ -119,11 +132,11 @@ public class AnimationManager : MonoBehaviour
     }
     private void HypeAttack()
     {
-        if (player.IsHyped && !player.IsTaunting && !player.IsDefending)
+        if ((inputManager.AttackButtonDown(player.ID)))
         {
-            
-            if ((inputManager.AttackButtonDown(player.ID) && player.IsGrounded && !player.IsKnockedBack))
+            if (player.IsHyped && player.IsGrounded && !player.IsKnockedBack && !player.IsTaunting && !player.IsWalking && !player.IsDefending)
             {
+                
                 anim.Play("HypeAttack");
                 StartCoroutine("ResetHype");
             }
@@ -169,34 +182,36 @@ public class AnimationManager : MonoBehaviour
 
             if (player.AttackCounter == 0)
             {
+                player.IsAttacking = true;
 
-
-
+                player.AttackCounter++;
                 anim.Play("Attack");
                 player.LastSuccessfulAttack = Time.time;
+                
             }
             else if (player.AttackCounter == 1)
             {
+                player.IsAttacking = true;
+                player.AttackCounter++;
                 anim.Play("Attack2");
                 player.LastSuccessfulAttack = Time.time;
+                
             }
-            else if (player.AttackCounter == 2)
+            else if (player.AttackCounter >= 2)
             {
+                player.IsAttacking = true;
+                player.AttackCounter = 0;
                 anim.Play("Attack3");
                 player.LastSuccessfulAttack = Time.time + attackDelayMultiplier;
+               
             }
-            else if (player.AttackCounter >= 3)
-            {
-                anim.Play("Attack");
-                player.AttackCounter = 0;
-                player.LastSuccessfulAttack = Time.time;
-            }
-            player.IsAttacking = true;
+            
+            
         }
         else
         {
             anim.Play("JumpAttack");
-            player.LastSuccessfulAttack = Time.time;
+            player.LastSuccessfulAttack = Time.time + 1.0f;
             player.IsAttacking = true;
         }
 
@@ -206,12 +221,14 @@ public class AnimationManager : MonoBehaviour
 
         if ((Time.time - player.LastSuccessfulAttack) >= attackDelay && Time.timeScale != 0.0f && !player.IsKnockedBack && !player.Opponent.IsTaunting)
             return true;
+        
         else
         {
             player.IsAttacking = false;
             return false;
 
         }
+        
    }
     private IEnumerator ResetJump(bool value)
     {
@@ -243,6 +260,7 @@ public class AnimationManager : MonoBehaviour
         yield return hypeDelay;
         player.IsHyped = false;
         player.IsExhausted = true;
+        player.CanMove = true;
 
         
     }
