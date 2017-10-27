@@ -148,7 +148,7 @@ public class Physics : MonoBehaviour
         dashDelay = new WaitForSeconds(dashDelayLength);
         yield return dashDelay;
         player.IsDashing = false;
-        //player.CanDash = true;
+        player.CanDash = true;
         //player.CanMove = true;
         //  player.transform.eulerAngles = defaultPosition;
     }

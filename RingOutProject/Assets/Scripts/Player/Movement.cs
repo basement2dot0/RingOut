@@ -24,7 +24,7 @@ public class Movement : MonoBehaviour {
     void Update ()
     {
        // Move();
-        Dash();
+        //Dash();
         Jump();
     }
     private void Move()
@@ -63,7 +63,7 @@ public class Movement : MonoBehaviour {
     {
         if (player.IsGrounded && !player.IsKnockedBack && player.CanDash && !player.IsDefending && !player.IsTaunting && !player.IsAttacking && !player.IsWalking && Time.timeScale != 0.0f)
         {
-            if (inputManager.DashButton(player.ID))
+            if (inputManager.DashButton(player.ID) && player.AttackCounter == 0)
             {
                 player.IsDashing = true;
             }

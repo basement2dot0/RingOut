@@ -14,6 +14,8 @@ public class AnimationManager : MonoBehaviour
     [SerializeField]
     private float attackDelay;
     [SerializeField]
+    private float resetDelay;
+    [SerializeField]
     private WaitForSeconds hypeDelay;
     [SerializeField]
     private float attackDelayMultiplier;
@@ -41,6 +43,7 @@ public class AnimationManager : MonoBehaviour
     private void Update()
     {
         ResetAttackCounter();
+        Dash();
         HypeTaunt();
         HypeAttack();
         Attack();
@@ -69,7 +72,7 @@ public class AnimationManager : MonoBehaviour
     private void Walk()
     {
 
-        if (player.IsGrounded && player.AttackCounter <= 0 && !player.IsDefending && !player.IsTaunting &&  !player.IsDashing && player.CanMove && Time.timeScale != 0.0f)
+        if (player.IsGrounded && player.AttackCounter <= 0  && !player.IsExhausted &&  !player.IsKnockedBack && !player.IsHypeAttack &&!player.IsDefending && !player.IsTaunting &&  !player.IsDashing && player.CanMove && Time.timeScale != 0.0f)
         {
             if (inputManager.Movement(player.ID) != Vector3.zero)
             {
@@ -77,9 +80,10 @@ public class AnimationManager : MonoBehaviour
                 anim.Play("Walking");
                 player.IsWalking = true;
             }
+            else
+                player.IsWalking = false;
         }
-        else
-            player.IsWalking = false;
+
 
     }
     private void Block()
@@ -102,13 +106,13 @@ public class AnimationManager : MonoBehaviour
     private void Attack()
     {
         
-            if (!player.IsDefending && CanAttack() && inputManager.AttackButtonDown(player.ID))
+            if (CanAttack() && inputManager.AttackButtonDown(player.ID))
             {
                  player.CanBlock = false;
                 player.CanMove = false;
-                if (!player.IsHyped && !player.IsDashing)
+                if (!player.IsHyped && !player.IsDefending && !player.IsDashing)
                 {
-                   // player.IsAttacking = true;
+                   //player.IsAttacking = true;
                     AttackManager();
                 
                 }
@@ -134,10 +138,11 @@ public class AnimationManager : MonoBehaviour
     {
         if ((inputManager.AttackButtonDown(player.ID)))
         {
-            if (player.IsHyped && player.IsGrounded && !player.IsKnockedBack && !player.IsTaunting && !player.IsWalking && !player.IsDefending)
+            if (player.IsHyped && player.IsGrounded && !player.IsDashing && !player.IsKnockedBack && !player.IsTaunting && !player.IsWalking && !player.IsDefending)
             {
                 
                 anim.Play("HypeAttack");
+                player.IsHypeAttack = true;
                 StartCoroutine("ResetHype");
             }
         }
@@ -187,7 +192,14 @@ public class AnimationManager : MonoBehaviour
                 player.AttackCounter++;
                 anim.Play("Attack");
                 player.LastSuccessfulAttack = Time.time;
-                
+               if(player.name == string.Format("Marie"))
+                {
+                    resetDelay = 2.0f;
+                   // attackDelay = .1f;
+                }
+                else
+                    resetDelay = 0.8f;
+
             }
             else if (player.AttackCounter == 1)
             {
@@ -195,15 +207,27 @@ public class AnimationManager : MonoBehaviour
                 player.AttackCounter++;
                 anim.Play("Attack2");
                 player.LastSuccessfulAttack = Time.time;
-                
+                if (player.name == string.Format("Marie"))
+                {
+                    resetDelay = 1.5f;
+                   // attackDelay = 1.0f;
+                }
+                else
+                    resetDelay = 0.8f;
             }
             else if (player.AttackCounter >= 2)
             {
                 player.IsAttacking = true;
-                player.AttackCounter = 0;
+                
                 anim.Play("Attack3");
-                player.LastSuccessfulAttack = Time.time + attackDelayMultiplier;
-               
+                player.LastSuccessfulAttack = Time.time;
+                if (player.name == string.Format("Marie"))
+                {
+                    resetDelay = 1.0f;
+                }
+                else
+                    resetDelay = 0.6f;
+
             }
             
             
@@ -211,11 +235,21 @@ public class AnimationManager : MonoBehaviour
         else
         {
             anim.Play("JumpAttack");
-            player.LastSuccessfulAttack = Time.time + 1.0f;
-            player.IsAttacking = true;
+           // player.LastSuccessfulAttack = (Time.time);
+           // player.IsAttacking = true;
+            //attackDelay = 0.0f;
         }
 
         }
+    private void Dash()
+    {
+        if (inputManager.DashButton(player.ID) && !player.IsKnockedBack && !player.IsExhausted && !player.IsHypeAttack && player.CanDash && !player.IsTaunting && player.AttackCounter == 0)
+        {
+            player.IsDashing = true;
+            anim.Play("Dash");
+        }
+       
+    }
     private bool CanAttack()
     {
 
@@ -251,7 +285,7 @@ public class AnimationManager : MonoBehaviour
     private float ResetAttackCounter()
     {
 
-        if ((Time.time - player.LastSuccessfulAttack) >= 1.5f)
+        if ((Time.time - player.LastSuccessfulAttack) >= resetDelay)
             player.AttackCounter = 0;
         return player.AttackCounter;
     }
@@ -261,14 +295,15 @@ public class AnimationManager : MonoBehaviour
         player.IsHyped = false;
         player.IsExhausted = true;
         player.CanMove = true;
+        player.IsHypeAttack = false;
 
-        
+
     }
     private IEnumerator ResetTaunt()
     {
         player.Opponent.gameObject.active = false;
         anim.Play("HypeTaunt");
-        WaitForSeconds delay = new WaitForSeconds(6.0f);
+        WaitForSeconds delay = new WaitForSeconds(2.0f);
         yield return delay;
         player.IsTaunting = false;
         player.Opponent.gameObject.active = true;
@@ -276,6 +311,7 @@ public class AnimationManager : MonoBehaviour
     }
     private IEnumerator ResetHypeHit()
     {
+        
         WaitForSeconds wait = new WaitForSeconds(2.0f);
         yield return wait;
         player.IsHypeHit = false;

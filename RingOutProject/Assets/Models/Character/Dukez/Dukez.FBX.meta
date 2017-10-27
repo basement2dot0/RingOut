@@ -191,6 +191,7 @@ ModelImporter:
     7400048: WalkBack
     7400050: BlockStart
     7400052: Blockend
+    7400054: Dash
     9500000: //RootNode
     13700000: Back
     13700002: Chest
@@ -4278,6 +4279,160 @@ ModelImporter:
       loop: 0
       hasAdditiveReferencePose: 0
       loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Dummy_
+        weight: 1
+      - path: Group36039
+        weight: 1
+      - path: Group36039/Back
+        weight: 1
+      - path: Group36039/Chest
+        weight: 1
+      - path: Group36039/Dummy_LPlatform
+        weight: 1
+      - path: Group36039/Dummy_Pelvis
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_LThigh
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_LThigh/Dummy_LCalf
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_LThigh/Dummy_LCalf/Dummy_LFoot
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_LThigh/Dummy_LCalf/Dummy_LFoot/Dummy_LDigit11
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_RThigh
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_RThigh/Dummy_RCalf
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_RThigh/Dummy_RCalf/Dummy_RFoot
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_RThigh/Dummy_RCalf/Dummy_RFoot/Dummy_RDigit11
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4/Dummy_Ribcage
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4/Dummy_Ribcage/Dummy_LCollarbone
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4/Dummy_Ribcage/Dummy_LCollarbone/Dummy_LUpperarm
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4/Dummy_Ribcage/Dummy_LCollarbone/Dummy_LUpperarm/Dummy_LForearm
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4/Dummy_Ribcage/Dummy_LCollarbone/Dummy_LUpperarm/Dummy_LForearm/Dummy_LPalm
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4/Dummy_Ribcage/Dummy_Neck1
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4/Dummy_Ribcage/Dummy_Neck1/Dummy_Neck2
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4/Dummy_Ribcage/Dummy_Neck1/Dummy_Neck2/Dummy_Head
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4/Dummy_Ribcage/Dummy_RCollarbone
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4/Dummy_Ribcage/Dummy_RCollarbone/Dummy_RUpperarm
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4/Dummy_Ribcage/Dummy_RCollarbone/Dummy_RUpperarm/Dummy_RForearm
+        weight: 1
+      - path: Group36039/Dummy_Pelvis/Dummy_Spine1/Dummy_Spine2/Dummy_Spine3/Dummy_Spine4/Dummy_Ribcage/Dummy_RCollarbone/Dummy_RUpperarm/Dummy_RForearm/Dummy_RPalm
+        weight: 1
+      - path: Group36039/Dummy_RPlatform
+        weight: 1
+      - path: Group36039/Group21
+        weight: 1
+      - path: Group36039/Group22
+        weight: 1
+      - path: Group36039/Group23
+        weight: 1
+      - path: Group36039/Group24
+        weight: 1
+      - path: Group36039/Group25
+        weight: 1
+      - path: Group36039/Group26
+        weight: 1
+      - path: Group36039/Group27
+        weight: 1
+      - path: Group36039/Group28
+        weight: 1
+      - path: Group36039/Group29
+        weight: 1
+      - path: Group36039/Group38
+        weight: 1
+      - path: Group36039/Group41
+        weight: 1
+      - path: Group36039/Group42
+        weight: 1
+      - path: Group36039/Group43
+        weight: 1
+      - path: Group36039/Group44
+        weight: 1
+      - path: Group36039/Group45
+        weight: 1
+      - path: Group36039/Group46
+        weight: 1
+      - path: Group36039/Group36038
+        weight: 1
+      - path: Group36039/Head
+        weight: 1
+      - path: Group36039/Left Bicep
+        weight: 1
+      - path: Group36039/Left Foot
+        weight: 1
+      - path: Group36039/Left Forearm
+        weight: 1
+      - path: Group36039/Left Hand
+        weight: 1
+      - path: Group36039/Left Shin
+        weight: 1
+      - path: Group36039/Left Thigh
+        weight: 1
+      - path: Group36039/Pelvis
+        weight: 1
+      - path: Group36039/Right Bicep
+        weight: 1
+      - path: Group36039/Right Foot
+        weight: 1
+      - path: Group36039/Right Forearm
+        weight: 1
+      - path: Group36039/Right Hand
+        weight: 1
+      - path: Group36039/Right Shin
+        weight: 1
+      - path: Group36039/Right Thigh
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Dash
+      takeName: Take 001
+      firstFrame: 182
+      lastFrame: 183
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
       loopBlend: 0
       loopBlendOrientation: 0
       loopBlendPositionY: 0

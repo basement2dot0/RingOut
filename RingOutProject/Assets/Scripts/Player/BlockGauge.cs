@@ -87,7 +87,7 @@ public class BlockGauge : MonoBehaviour
     {
 
         
-        if (player.IsDashing && !isRecharging)
+        if (player.IsDashing)
         {
 
             gaugeSlider.value -= 2.5f;
@@ -95,7 +95,7 @@ public class BlockGauge : MonoBehaviour
             {
                 gaugeSlider.value = gaugeSlider.minValue;
                 player.CanDash = false;
-                isRecharging = true;
+                
             }
         }
         
@@ -111,7 +111,7 @@ public class BlockGauge : MonoBehaviour
                 player.CanBlock = true;
                 player.CanDash = true;
                 jammerText.enabled = false;
-                isRecharging = false;
+                
             }
         }
     }

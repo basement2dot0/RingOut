@@ -145,6 +145,7 @@ public class Player : MonoBehaviour{
     public bool IsTaunting { get; internal set; }
     public bool IsDashing { get; set; }
     public int DashCounter { get; set; }
+    public bool IsHypeAttack { get; internal set; }
 
     //Unity Methods
     private void Awake()
