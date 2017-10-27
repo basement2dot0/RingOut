@@ -6,6 +6,9 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
+    private Vector3 resumeButton;
+    private Vector3 quitButton;
+
     private float BGMLastTime;
     private float hypeMusicLastTime;
     private Vector3 cameraPosition;
@@ -85,7 +88,7 @@ public class GameManager : MonoBehaviour
         }
         pauseMenuObject.SetActive(false);
         MatchSetMenuObject.SetActive(false);
-        nav.transform.position = (pauseButtons[0].transform.position - new Vector3(110, 0, 0));
+        nav.transform.position = (pauseButtons[0].transform.position - new Vector3(130, 0, 0));
         
     }
     private void Start()
@@ -137,22 +140,27 @@ public class GameManager : MonoBehaviour
         if (!players[0].IsHyped && !players[1].IsHyped  && !isPaused && !isMatchOver)
         {
             if (BGMLastTime > 0.0f)
-            { 
+            {
                 if (audioSource.clip != stageTheme)
                 {
+                    audioSource.volume = 0.05f;
                     audioSource.clip = stageTheme;
                     audioSource.time = BGMLastTime;
                     audioSource.Play();
                 }
                 else
                 {
-                    if(!audioSource.isPlaying)
+                    audioSource.volume = 0.05f;
+                    if (!audioSource.isPlaying)
                         audioSource.Play();
-                        
+
                 }
             }
             else if (!audioSource.isPlaying)
+            {
+                audioSource.volume = 0.05f;
                 audioSource.Play();
+            }
         }
         if (audioSource.clip == stageTheme && isMatchOver || 
             audioSource.clip == stageTheme && players[0].IsHyped ||
@@ -249,8 +257,7 @@ public class GameManager : MonoBehaviour
     private void PauseControls()
     {
         
-        Vector3 resumeButton;
-        Vector3 quitButton;
+        
         if (isMatchOver)
         {
 
@@ -301,7 +308,7 @@ public class GameManager : MonoBehaviour
                 Time.timeScale = 1.0f;
 
             }
-            else if (nav.transform.position == resumeButton)
+            else 
             {
                 if(isMatchOver)
                     SceneManager.LoadScene("RingMap");
@@ -311,6 +318,7 @@ public class GameManager : MonoBehaviour
                 
             }
         }
+
     }
     private bool PauseButton()
     {
@@ -467,6 +475,7 @@ public class GameManager : MonoBehaviour
     private void SetPlayerTheme(AudioClip AudioClip)
     {
         audioSource.clip = AudioClip;
+        audioSource.volume = 1.0f;
         if (hypeMusicLastTime > 0.0f)
         {
             audioSource.time = hypeMusicLastTime;

@@ -71,18 +71,19 @@ public class AnimationManager : MonoBehaviour
     }
     private void Walk()
     {
-
-        if (player.IsGrounded && player.AttackCounter <= 0  && !player.IsExhausted &&  !player.IsKnockedBack && !player.IsHypeAttack &&!player.IsDefending && !player.IsTaunting &&  !player.IsDashing && player.CanMove && Time.timeScale != 0.0f)
+        if (inputManager.Movement(player.ID) != Vector3.zero)
         {
-            if (inputManager.Movement(player.ID) != Vector3.zero)
+            if (player.IsGrounded && player.AttackCounter <= 0 && !player.IsExhausted && !player.IsKnockedBack && !player.IsHypeAttack && !player.IsDefending && !player.IsTaunting && !player.IsDashing && player.CanMove && Time.timeScale != 0.0f)
             {
+
 
                 anim.Play("Walking");
                 player.IsWalking = true;
             }
-            else
-                player.IsWalking = false;
+
         }
+        else
+            player.IsWalking = false;
 
 
     }
@@ -166,7 +167,10 @@ public class AnimationManager : MonoBehaviour
     {
         if (player.IsHit)
         {
+           
             anim.Play("Hit");
+            //anim.PlayInFixedTime("Hit");
+
         }
     }
     private void Exhausted()

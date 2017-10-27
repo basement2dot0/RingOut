@@ -56,23 +56,33 @@ public class AudioManager : MonoBehaviour
     }
     private void Update()
     {
-        Walking();
+       
         playerHit();
         PlayerAttack();
         HypeHit();
         HypeAttack();
-       
+        Walking();
 
     }
 
     private void Walking()
     {
-        if (player.IsWalking  && !player.IsDefending && Time.timeScale != 0.0f)
+
+        if (player.IsWalking && !player.IsDefending && !player.IsTaunting && Time.timeScale != 0.0f)
         {
-            audio.clip = walkingSFX;
-            if(!audio.isPlaying)
-                audio.Play();
+            if (audio.clip == hit)
+            {
+
+            }
+            else
+            {
+                audio.clip = walkingSFX;
+                if(!audio.isPlaying)
+                    audio.Play();
+            }
         }
+        
+        
     }
 
     public void PlayHypeMusic()
@@ -100,15 +110,17 @@ public class AudioManager : MonoBehaviour
 
     private void playerHit()
     {
-        if(player.IsHit && player.IsDefending)
+        if(player.IsHit && player.IsDefending )
         {
             audio.clip = defenseHit;
-            audio.Play();
+           
+                audio.Play();
         }
         else if (player.IsHit)
         {
             audio.clip = hit;
-            audio.Play();
+           
+                audio.Play();
         }
     }
     private void HypeHit()

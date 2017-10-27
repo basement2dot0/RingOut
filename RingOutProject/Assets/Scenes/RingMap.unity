@@ -12137,8 +12137,8 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: eb9dc2b251849a5468bb6a7d24db3715, type: 3}
-  m_PlayOnAwake: 1
-  m_Volume: 0.25
+  m_PlayOnAwake: 0
+  m_Volume: 0.05
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -13381,7 +13381,7 @@ MonoBehaviour:
   knockBackHitBox: {fileID: 1097959258}
   torso: {fileID: 1042770227}
   blockArea: {fileID: 21057819}
-  delaySeconds: 0.2
+  delaySeconds: 0
 --- !u!114 &1816822759
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13400,7 +13400,7 @@ MonoBehaviour:
   speed: 25
   knockBackDistance: 500
   lastAttack: 0
-  moveDelay: 0
+  moveDelay: 0.6
   dashSpeed: 30
   lungeDistance: 100
 --- !u!114 &1816822760
@@ -13428,8 +13428,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d16d9b653240354693f761a9dcd83e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackDelay: 0.6
-  resetDelay: 0.7
+  attackDelay: 0.5
+  resetDelay: 0.6
   attackDelayMultiplier: 0.4
 --- !u!114 &1816822762
 MonoBehaviour:

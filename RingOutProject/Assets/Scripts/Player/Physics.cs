@@ -101,7 +101,11 @@ public class Physics : MonoBehaviour
     private void Hit()
     {
         if (player.IsHit)
+        {
+            
             StartCoroutine("HitKnockBack");
+        }
+           
     }
     private void KnockedBack()
     {
@@ -129,10 +133,14 @@ public class Physics : MonoBehaviour
 
     private IEnumerator HitKnockBack()
     {
+        player.IsWalking = false;
+        player.CanMove = false;
+
         float knockBackForce = 200.0f;
         player.transform.forward = -player.Opponent.HitDirection;
         rb.position += player.Opponent.HitDirection * knockBackForce * Time.deltaTime;
-        yield return null;
+        WaitForSeconds delay = new WaitForSeconds(0.01f);
+        yield return delay;
         player.IsHit = false;
         player.CanMove = true;
     }
