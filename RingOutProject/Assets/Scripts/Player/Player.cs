@@ -142,9 +142,12 @@ public class Player : MonoBehaviour{
         set { damageType = value; }
     }
 
+
     public bool IsTaunting { get; internal set; }
     public bool IsDashing { get; set; }
     public int DashCounter { get; set; }
+
+    public bool IsWinner { get;  set; }
 
     //Unity Methods
     private void Awake()
