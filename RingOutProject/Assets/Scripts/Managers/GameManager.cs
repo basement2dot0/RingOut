@@ -485,11 +485,9 @@ public class GameManager : MonoBehaviour
         
         WaitForSeconds delay = new WaitForSeconds(2.0f);
         yield return delay;
-        if (rounds.round >= 3)
-            StartCoroutine("MatchSetNavigation");
-        else if(rounds.playerVictories[0] >=1 && rounds.playerVictories[1] <= 1)
-            StartCoroutine("MatchSetNavigation");
-        else if(rounds.playerVictories[1] >= 1 && rounds.playerVictories[0] <= 1)
+        Debug.Log("Player1" + rounds.playerVictories[0]+ " Player2:"+rounds.playerVictories[1]);
+
+        if(rounds.playerVictories[player] >= 1)
             StartCoroutine("MatchSetNavigation");
         else
         {
