@@ -47,11 +47,7 @@ public class Hitbox : MonoBehaviour
     {
        
         if (player.IsGrounded)
-        {
-            
             attackHitBox.enabled = true;
-            player.AttackCounter++;
-        }
         else
             attackHitBox.enabled = true;
         StartCoroutine("CloseHitBoxes"); // this disables the hitbox incase the animation event did not
@@ -94,7 +90,7 @@ public class Hitbox : MonoBehaviour
         {
 
             knockBackHitBox.enabled = true;
-            player.AttackCounter++;
+            //player.AttackCounter++;
         }
             StartCoroutine("CloseHitBoxes"); // this disables the hitbox incase the animation event did not
 

@@ -16,7 +16,7 @@ public class HumanInput : InputManager {
     }
     public override Vector3 Movement(int playerID)
     {
-        return new Vector3(GetHorizontal(playerID), 0, GetVertical(playerID));
+        return new Vector3( GetHorizontal(playerID), 0, GetVertical(playerID));
     }
     public override bool AttackButtonDown(int playerID)
     {
@@ -34,5 +34,10 @@ public class HumanInput : InputManager {
     public override bool PauseButton()
     {
         return Input.GetButtonDown("Submit");
+    }
+
+    public override bool DashButton(int playerID)
+    {
+        return Input.GetButtonDown("Dash"+ playerID.ToString());
     }
 }

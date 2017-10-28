@@ -6,6 +6,9 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
+    private Vector3 resumeButton;
+    private Vector3 quitButton;
+
     private float BGMLastTime;
     private float hypeMusicLastTime;
     private Vector3 cameraPosition;
@@ -25,7 +28,7 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private Text matchTimerText;
     [SerializeField]
-    private float rounds;
+    private Rounds rounds;
     [SerializeField]
     private float match;
     [SerializeField]
@@ -54,10 +57,11 @@ public class GameManager : MonoBehaviour
     private AudioClip[] playersHypeTheme;
 
     public float Match { get { return match; } set { match = value; } }
-    public float Rounds { get { return rounds; } set { rounds = value; } }
+    public Rounds Rounds { get { return rounds; } set { rounds = value; } }
 
     private void Awake()
     {
+        rounds = GameObject.Find("Round").GetComponent<Rounds>();
         stageTheme = GetComponent<AudioSource>().clip;
         ringOut.enabled = false;
         audioSource = GetComponent<AudioSource>();
@@ -85,7 +89,7 @@ public class GameManager : MonoBehaviour
         }
         pauseMenuObject.SetActive(false);
         MatchSetMenuObject.SetActive(false);
-        nav.transform.position = (pauseButtons[0].transform.position - new Vector3(110, 0, 0));
+        nav.transform.position = (pauseButtons[0].transform.position - new Vector3(130, 0, 0));
         
     }
     private void Start()
@@ -106,7 +110,7 @@ public class GameManager : MonoBehaviour
                 // playersTheme[1] = player.GetComponent<AudioManager>();
             }
                
-            rounds = 0;
+            //rounds = 0;
 
         }
         
@@ -137,22 +141,27 @@ public class GameManager : MonoBehaviour
         if (!players[0].IsHyped && !players[1].IsHyped  && !isPaused && !isMatchOver)
         {
             if (BGMLastTime > 0.0f)
-            { 
+            {
                 if (audioSource.clip != stageTheme)
                 {
+                    audioSource.volume = 0.05f;
                     audioSource.clip = stageTheme;
                     audioSource.time = BGMLastTime;
                     audioSource.Play();
                 }
                 else
                 {
-                    if(!audioSource.isPlaying)
+                    audioSource.volume = 0.05f;
+                    if (!audioSource.isPlaying)
                         audioSource.Play();
-                        
+
                 }
             }
             else if (!audioSource.isPlaying)
+            {
+                audioSource.volume = 0.05f;
                 audioSource.Play();
+            }
         }
         if (audioSource.clip == stageTheme && isMatchOver || 
             audioSource.clip == stageTheme && players[0].IsHyped ||
@@ -228,6 +237,14 @@ public class GameManager : MonoBehaviour
 
 
     }
+
+    private void RoundTracker()
+    {
+        if(rounds.round == 1)
+        {
+
+        }
+    }
     
     private void PauseMenu()
     {
@@ -249,8 +266,7 @@ public class GameManager : MonoBehaviour
     private void PauseControls()
     {
         
-        Vector3 resumeButton;
-        Vector3 quitButton;
+        
         if (isMatchOver)
         {
 
@@ -301,16 +317,21 @@ public class GameManager : MonoBehaviour
                 Time.timeScale = 1.0f;
 
             }
-            else if (nav.transform.position == resumeButton)
+            else 
             {
-                if(isMatchOver)
+                if (isMatchOver)
+                {
+                    rounds.ClearRounds();
                     SceneManager.LoadScene("RingMap");
+                }
+                   
                 Time.timeScale = 1.0f;
                 isPaused = false;
                 pauseMenuObject.SetActive(false);
                 
             }
         }
+
     }
     private bool PauseButton()
     {
@@ -379,12 +400,14 @@ public class GameManager : MonoBehaviour
                 audioSource.clip = playerOneTheme;
             else
                 audioSource.clip = playerTwoTheme;
-            
+                StartCoroutine("MatchSetDelay");
+           
 
             //Wait X seconds
-            StartCoroutine("MatchSetDelay");
+            
         }
     }
+    
     IEnumerator MatchSetDelay()
     {
         Debug.Log("Match");
@@ -399,12 +422,12 @@ public class GameManager : MonoBehaviour
         matchSetcamera.fieldOfView = 20.0f;
         if (isPlayerOneVictory)
         {
-            //players[0].IsWinner = true;
+            
             StartCoroutine("VictoryTaunt", 0);
         }
         else if (!isPlayerOneVictory)
         {
-           // players[1].IsWinner = true;
+           
             StartCoroutine("VictoryTaunt", 1);
         }
     }
@@ -459,14 +482,28 @@ public class GameManager : MonoBehaviour
         matchSetcamera.transform.LookAt(players[player].transform.position);
         players[player].transform.LookAt(matchSetcamera.transform.position);
         players[player].IsTaunting = true;
+        
         WaitForSeconds delay = new WaitForSeconds(2.0f);
         yield return delay;
-        StartCoroutine("MatchSetNavigation");
+        Debug.Log("Player1" + rounds.playerVictories[0]+ " Player2:"+rounds.playerVictories[1]);
+
+        if(rounds.playerVictories[player] >= 1)
+            StartCoroutine("MatchSetNavigation");
+        else
+        {
+            rounds.round++;
+            rounds.playerVictories[player]++;
+            // isMatchOver = false;
+
+            SceneManager.LoadScene("RingMap");
+        }
+
     }
 
     private void SetPlayerTheme(AudioClip AudioClip)
     {
         audioSource.clip = AudioClip;
+        audioSource.volume = 1.0f;
         if (hypeMusicLastTime > 0.0f)
         {
             audioSource.time = hypeMusicLastTime;

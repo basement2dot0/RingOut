@@ -9,8 +9,9 @@ public class BlockGauge : MonoBehaviour
     private Player player;
     public float blockGauge;
     private Slider gaugeSlider;
-    private Text jammerText;
+    private Image jammerText;
     private bool canBlock;
+    private bool isRecharging;
     
 
     private void Awake()
@@ -20,14 +21,16 @@ public class BlockGauge : MonoBehaviour
         gaugeSlider = GameObject.FindGameObjectWithTag("gaugeSlider"+player.ID).GetComponent<Slider>();
         gaugeSlider.value = gaugeSlider.maxValue;
         canBlock = true;
-        jammerText = gaugeSlider.GetComponentInChildren<Text>();
+        jammerText = gaugeSlider.GetComponentsInChildren<Image>()[2];
         jammerText.enabled = false;
     }
     void Update()
     {
         
         BlockGaugeSlider();
+        DashGaugeDrain();
         GaugeRecharge();
+        RechargeEcho();
     }
 
     //private void Block()
@@ -45,35 +48,34 @@ public class BlockGauge : MonoBehaviour
     {
         if (player.IsDefending && player.CanBlock)
         {
+           
             gaugeSlider.value--;
             if(gaugeSlider.value <= gaugeSlider.minValue)
             {
                 gaugeSlider.value = gaugeSlider.minValue;
+                player.CanBlock = false;
+                isRecharging = true;
             }
         }
+        
 
-        else
-        {
-            gaugeSlider.value++;
-            if (gaugeSlider.value >= gaugeSlider.maxValue)
-            {
-                gaugeSlider.value = gaugeSlider.maxValue;
-                player.CanBlock = true;
-                jammerText.enabled = false;
-            }
-        }
-            
+
+
     }
 
     private void GaugeRecharge()
     {
-        if(gaugeSlider.value <= gaugeSlider.minValue)
+        
+         if (gaugeSlider.value <= gaugeSlider.minValue)
         {
             player.CanBlock = false;
+            player.CanDash = false;
+            isRecharging = true;
             jammerText.enabled = true;
-            if (player.IsDefending)
+            if (player.IsDefending || player.IsDashing)
             {
                 player.IsDefending = false;
+                player.IsDashing = false;
             }
             gaugeSlider.value = Mathf.MoveTowards(gaugeSlider.minValue, gaugeSlider.maxValue, Time.deltaTime);
             
@@ -81,5 +83,37 @@ public class BlockGauge : MonoBehaviour
         }
     }
 
+    private void DashGaugeDrain()
+    {
+
+        
+        if (player.IsDashing)
+        {
+
+            gaugeSlider.value -= 2.5f;
+            if (gaugeSlider.value <= gaugeSlider.minValue)
+            {
+                gaugeSlider.value = gaugeSlider.minValue;
+                player.CanDash = false;
+                
+            }
+        }
+        
+    }
+    private void RechargeEcho()
+    {
+        if (!player.IsDefending && !player.IsDashing)
+        {
+            gaugeSlider.value++;
+            if (gaugeSlider.value >= gaugeSlider.maxValue)
+            {
+                gaugeSlider.value = gaugeSlider.maxValue;
+                player.CanBlock = true;
+                player.CanDash = true;
+                jammerText.enabled = false;
+                
+            }
+        }
+    }
 
 }

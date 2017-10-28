@@ -3,7 +3,7 @@ guid: 2935f722a957d134b9bf22ab8de8b7b0
 timeCreated: 1499999473
 licenseType: Free
 ModelImporter:
-  serializedVersion: 19
+  serializedVersion: 21
   fileIDToRecycleName:
     100000: Bangs
     100002: Base Human
@@ -428,6 +428,7 @@ ModelImporter:
     7400056: Getting Up From Stomach
     7400058: Aerial Attack Light
     7400060: Hype Attack UNFINISHED
+    7400062: Dash
     9500000: //RootNode
     13700000: Bangs
     13700002: BottomTeeth
@@ -502,6 +503,8 @@ ModelImporter:
     resampleCurves: 1
     optimizeGameObjects: 0
     motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
     animationImportErrors: 
     animationImportWarnings: 
     animationRetargetingWarnings: 
@@ -512,6 +515,7 @@ ModelImporter:
     animationScaleError: 0.5
     animationWrapMode: 0
     extraExposedTransformPaths: []
+    extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
       name: Take 001
@@ -1750,7 +1754,7 @@ ModelImporter:
       name: Run
       takeName: Run
       firstFrame: 201
-      lastFrame: 260
+      lastFrame: 230
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -5448,7 +5452,7 @@ ModelImporter:
     - serializedVersion: 16
       name: Attack Combo 1
       takeName: Attack Combo 1
-      firstFrame: 807
+      firstFrame: 830
       lastFrame: 971
       wrapMode: 0
       orientationOffsetY: 0
@@ -13254,13 +13258,427 @@ ModelImporter:
       maskType: 3
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Dash
+      takeName: Take 001
+      firstFrame: 740
+      lastFrame: 770
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Bangs
+        weight: 1
+      - path: Base Human
+        weight: 1
+      - path: Base HumanStomachBone
+        weight: 1
+      - path: Base HumanStomachBone/Base HumanChest
+        weight: 1
+      - path: Base HumanStomachBone/Base HumanChest/Base HumanHeadBone
+        weight: 1
+      - path: Base HumanStomachBone/Base HumanChest/Base HumanHeadBone/JawBone
+        weight: 1
+      - path: Base HumanStomachBone/Base HumanChest/Base HumanHeadBone/JawBone/JawBoneNub
+        weight: 1
+      - path: Base HumanStomachBone/Base HumanChest/Base HumanHeadBone/JawBone/LowerLipBone1
+        weight: 1
+      - path: Base HumanStomachBone/Base HumanChest/Base HumanHeadBone/JawBone/LowerLipBone1/LowerLipBone1Nub
+        weight: 1
+      - path: Base HumanStomachBone/Base HumanChest/Base HumanHeadBone/JawBone/LowerLipBone2
+        weight: 1
+      - path: Base HumanStomachBone/Base HumanChest/Base HumanHeadBone/JawBone/LowerLipBone2/LowerLipBone2Nub
+        weight: 1
+      - path: Base HumanStomachBone/Base HumanChest/Base HumanHeadBone/JawBone/LowerLipBone3
+        weight: 1
+      - path: Base HumanStomachBone/Base HumanChest/Base HumanHeadBone/JawBone/LowerLipBone3/LowerLipBone3Nub
+        weight: 1
+      - path: Base HumanStomachBone/Base HumanChest/Base HumanHeadBone/JawBone/LowerLipBone4
+        weight: 1
+      - path: Base HumanStomachBone/Base HumanChest/Base HumanHeadBone/JawBone/LowerLipBone4/LowerLipBone4Nub
+        weight: 1
+      - path: Base HumanStomachBone/Base HumanChest/Base HumanHeadBone/JawBone/LowerLipBone5
+        weight: 1
+      - path: Base HumanStomachBone/Base HumanChest/Base HumanHeadBone/JawBone/LowerLipBone5/LowerLipBone5Nub
+        weight: 1
+      - path: Base HumanStomachBone/Base HumanChest/Base HumanHeadBone/JawBone/LowerLipBone6
+        weight: 1
+      - path: Base HumanStomachBone/Base HumanChest/Base HumanHeadBone/JawBone/LowerLipBone6/LowerLipBone6nub
+        weight: 1
+      - path: Base HumanStomachBone/Base HumanChest/Base HumanHeadBone/JawBone/LowerLipBone7
+        weight: 1
+      - path: Base HumanStomachBone/Base HumanChest/Base HumanHeadBone/JawBone/LowerLipBone7/LowerLipBone7Nub
+        weight: 1
+      - path: Base HumanStomachBone/Base HumanChest/Base HumanHeadBone/JawBone/LowerLipBone8
+        weight: 1
+      - path: Base HumanStomachBone/Base HumanChest/Base HumanHeadBone/JawBone/LowerLipBone8/LowerLipBone8Nub
+        weight: 1
+      - path: Base HumanStomachBone/Base HumanChest/Base HumanHeadBone/JawBone/LowerLipBone9
+        weight: 1
+      - path: Base HumanStomachBone/Base HumanChest/Base HumanHeadBone/JawBone/LowerLipBone9/LowerLipBone9Nub
+        weight: 1
+      - path: Base HumanStomachBone/Base HumanChest/Base HumanHeadBone/JawBone/LowerLipBone10
+        weight: 1
+      - path: Base HumanStomachBone/Base HumanChest/Base HumanHeadBone/JawBone/LowerLipBone10/LowerLipBone10Nub
+        weight: 1
+      - path: Base HumanStomachBone/Base HumanChest/Base HumanHeadBone/JawBone/LowerLipBone11
+        weight: 1
+      - path: Base HumanStomachBone/Base HumanChest/Base HumanHeadBone/JawBone/LowerLipBone11/LowerLipBone11Nub
+        weight: 1
+      - path: Base HumanStomachBone/Base HumanChest/Base HumanHeadBone/JawBone/TongueBone1
+        weight: 1
+      - path: Base HumanStomachBone/Base HumanChest/Base HumanHeadBone/JawBone/TongueBone1/TongueBone2
+        weight: 1
+      - path: Base HumanStomachBone/Base HumanChest/Base HumanHeadBone/JawBone/TongueBone1/TongueBone2/TongueBone3
+        weight: 1
+      - path: Base HumanStomachBone/Base HumanChest/Base HumanHeadBone/JawBone/TongueBone1/TongueBone2/TongueBone3/TongueBone4
+        weight: 1
+      - path: Base HumanStomachBone/Base HumanChest/Base HumanHeadBone/JawBone/TongueBone1/TongueBone2/TongueBone3/TongueBone4/TongueBoneNub
+        weight: 1
+      - path: Base HumanStomachBone/Base HumanChest/Base HumanHeadBone/UpperLipBone1
+        weight: 1
+      - path: Base HumanStomachBone/Base HumanChest/Base HumanHeadBone/UpperLipBone1/UpperLipBone1Nub
+        weight: 1
+      - path: Base HumanStomachBone/Base HumanChest/Base HumanHeadBone/UpperLipBone2
+        weight: 1
+      - path: Base HumanStomachBone/Base HumanChest/Base HumanHeadBone/UpperLipBone2/UpperLipBone2Nub
+        weight: 1
+      - path: Base HumanStomachBone/Base HumanChest/Base HumanHeadBone/UpperLipBone3
+        weight: 1
+      - path: Base HumanStomachBone/Base HumanChest/Base HumanHeadBone/UpperLipBone3/UpperLipBone3Nub
+        weight: 1
+      - path: Base HumanStomachBone/Base HumanChest/Base HumanHeadBone/UpperLipBone4
+        weight: 1
+      - path: Base HumanStomachBone/Base HumanChest/Base HumanHeadBone/UpperLipBone4/UpperLipBone4Nub
+        weight: 1
+      - path: Base HumanStomachBone/Base HumanChest/Base HumanHeadBone/UpperLipBone5
+        weight: 1
+      - path: Base HumanStomachBone/Base HumanChest/Base HumanHeadBone/UpperLipBone5/UpperLipBone5Nub
+        weight: 1
+      - path: Base HumanStomachBone/Base HumanChest/Base HumanHeadBone/UpperLipBone6
+        weight: 1
+      - path: Base HumanStomachBone/Base HumanChest/Base HumanHeadBone/UpperLipBone6/UpperLipBone6Nub
+        weight: 1
+      - path: Base HumanStomachBone/Base HumanChest/Base HumanHeadBone/UpperLipBone7
+        weight: 1
+      - path: Base HumanStomachBone/Base HumanChest/Base HumanHeadBone/UpperLipBone7/UpperLipBone7Nub
+        weight: 1
+      - path: Base HumanStomachBone/Base HumanChest/Base HumanHeadBone/UpperLipBone8
+        weight: 1
+      - path: Base HumanStomachBone/Base HumanChest/Base HumanHeadBone/UpperLipBone8/UpperLipBone8Nub
+        weight: 1
+      - path: Base HumanStomachBone/Base HumanChest/Base HumanHeadBone/UpperLipBone9
+        weight: 1
+      - path: Base HumanStomachBone/Base HumanChest/Base HumanHeadBone/UpperLipBone9/UpperLipBone9Nub
+        weight: 1
+      - path: Base HumanStomachBone/Base HumanChest/Base HumanLeftArmUpperarm
+        weight: 1
+      - path: Base HumanStomachBone/Base HumanChest/Base HumanLeftArmUpperarm/Base
+          HumanLeftArmForearm
+        weight: 1
+      - path: Base HumanStomachBone/Base HumanChest/Base HumanLeftArmUpperarm/Base
+          HumanLeftArmForearm/Base HumanLeftArmHandBoneL
+        weight: 1
+      - path: Base HumanStomachBone/Base HumanChest/Base HumanLeftArmUpperarm/Base
+          HumanLeftArmForearm/Base HumanLeftArmHandBoneL/Base HumanLeftArmL_MiddleFinger1
+        weight: 1
+      - path: Base HumanStomachBone/Base HumanChest/Base HumanLeftArmUpperarm/Base
+          HumanLeftArmForearm/Base HumanLeftArmHandBoneL/Base HumanLeftArmL_MiddleFinger1/Base
+          HumanLeftArmL_MiddleFinger2
+        weight: 1
+      - path: Base HumanStomachBone/Base HumanChest/Base HumanLeftArmUpperarm/Base
+          HumanLeftArmForearm/Base HumanLeftArmHandBoneL/Base HumanLeftArmL_MiddleFinger1/Base
+          HumanLeftArmL_MiddleFinger2/Base HumanLeftArmL_MiddleFinger3
+        weight: 1
+      - path: Base HumanStomachBone/Base HumanChest/Base HumanLeftArmUpperarm/Base
+          HumanLeftArmForearm/Base HumanLeftArmHandBoneL/Base HumanLeftArmL_PinkyFinger1
+        weight: 1
+      - path: Base HumanStomachBone/Base HumanChest/Base HumanLeftArmUpperarm/Base
+          HumanLeftArmForearm/Base HumanLeftArmHandBoneL/Base HumanLeftArmL_PinkyFinger1/Base
+          HumanLeftArmL_PinkyFinger2
+        weight: 1
+      - path: Base HumanStomachBone/Base HumanChest/Base HumanLeftArmUpperarm/Base
+          HumanLeftArmForearm/Base HumanLeftArmHandBoneL/Base HumanLeftArmL_PinkyFinger1/Base
+          HumanLeftArmL_PinkyFinger2/Base HumanLeftArmL_PinkyFinger3
+        weight: 1
+      - path: Base HumanStomachBone/Base HumanChest/Base HumanLeftArmUpperarm/Base
+          HumanLeftArmForearm/Base HumanLeftArmHandBoneL/Base HumanLeftArmL_PointerFinger1
+        weight: 1
+      - path: Base HumanStomachBone/Base HumanChest/Base HumanLeftArmUpperarm/Base
+          HumanLeftArmForearm/Base HumanLeftArmHandBoneL/Base HumanLeftArmL_PointerFinger1/Base
+          HumanLeftArmL_PointerFinger2
+        weight: 1
+      - path: Base HumanStomachBone/Base HumanChest/Base HumanLeftArmUpperarm/Base
+          HumanLeftArmForearm/Base HumanLeftArmHandBoneL/Base HumanLeftArmL_PointerFinger1/Base
+          HumanLeftArmL_PointerFinger2/Base HumanLeftArmL_PointerFinger3
+        weight: 1
+      - path: Base HumanStomachBone/Base HumanChest/Base HumanLeftArmUpperarm/Base
+          HumanLeftArmForearm/Base HumanLeftArmHandBoneL/Base HumanLeftArmL_RingFinger1
+        weight: 1
+      - path: Base HumanStomachBone/Base HumanChest/Base HumanLeftArmUpperarm/Base
+          HumanLeftArmForearm/Base HumanLeftArmHandBoneL/Base HumanLeftArmL_RingFinger1/Base
+          HumanLeftArmL_RingFinger2
+        weight: 1
+      - path: Base HumanStomachBone/Base HumanChest/Base HumanLeftArmUpperarm/Base
+          HumanLeftArmForearm/Base HumanLeftArmHandBoneL/Base HumanLeftArmL_RingFinger1/Base
+          HumanLeftArmL_RingFinger2/Base HumanLeftArmL_RingFinger3
+        weight: 1
+      - path: Base HumanStomachBone/Base HumanChest/Base HumanLeftArmUpperarm/Base
+          HumanLeftArmForearm/Base HumanLeftArmHandBoneL/Base HumanLeftArmL_Thumb1
+        weight: 1
+      - path: Base HumanStomachBone/Base HumanChest/Base HumanLeftArmUpperarm/Base
+          HumanLeftArmForearm/Base HumanLeftArmHandBoneL/Base HumanLeftArmL_Thumb1/Base
+          HumanLeftArmL_Thumb2
+        weight: 1
+      - path: Base HumanStomachBone/Base HumanChest/Base HumanLeftArmUpperarm/Base
+          HumanLeftArmForearm/Base HumanLeftArmHandBoneL/Base HumanLeftArmL_Thumb1/Base
+          HumanLeftArmL_Thumb2/Base HumanLeftArmL_Thumb3
+        weight: 1
+      - path: Base HumanStomachBone/Base HumanChest/Base HumanRibcage
+        weight: 1
+      - path: Base HumanStomachBone/Base HumanChest/Base HumanRightArmUpperarm
+        weight: 1
+      - path: Base HumanStomachBone/Base HumanChest/Base HumanRightArmUpperarm/Base
+          HumanRightArmForearm
+        weight: 1
+      - path: Base HumanStomachBone/Base HumanChest/Base HumanRightArmUpperarm/Base
+          HumanRightArmForearm/Base HumanRightArmHandBoneL
+        weight: 1
+      - path: Base HumanStomachBone/Base HumanChest/Base HumanRightArmUpperarm/Base
+          HumanRightArmForearm/Base HumanRightArmHandBoneL/Base HumanRightArmL_MiddleFinger1
+        weight: 1
+      - path: Base HumanStomachBone/Base HumanChest/Base HumanRightArmUpperarm/Base
+          HumanRightArmForearm/Base HumanRightArmHandBoneL/Base HumanRightArmL_MiddleFinger1/Base
+          HumanRightArmL_MiddleFinger2
+        weight: 1
+      - path: Base HumanStomachBone/Base HumanChest/Base HumanRightArmUpperarm/Base
+          HumanRightArmForearm/Base HumanRightArmHandBoneL/Base HumanRightArmL_MiddleFinger1/Base
+          HumanRightArmL_MiddleFinger2/Base HumanRightArmL_MiddleFinger3
+        weight: 1
+      - path: Base HumanStomachBone/Base HumanChest/Base HumanRightArmUpperarm/Base
+          HumanRightArmForearm/Base HumanRightArmHandBoneL/Base HumanRightArmL_PinkyFinger1
+        weight: 1
+      - path: Base HumanStomachBone/Base HumanChest/Base HumanRightArmUpperarm/Base
+          HumanRightArmForearm/Base HumanRightArmHandBoneL/Base HumanRightArmL_PinkyFinger1/Base
+          HumanRightArmL_PinkyFinger2
+        weight: 1
+      - path: Base HumanStomachBone/Base HumanChest/Base HumanRightArmUpperarm/Base
+          HumanRightArmForearm/Base HumanRightArmHandBoneL/Base HumanRightArmL_PinkyFinger1/Base
+          HumanRightArmL_PinkyFinger2/Base HumanRightArmL_PinkyFinger3
+        weight: 1
+      - path: Base HumanStomachBone/Base HumanChest/Base HumanRightArmUpperarm/Base
+          HumanRightArmForearm/Base HumanRightArmHandBoneL/Base HumanRightArmL_PointerFinger1
+        weight: 1
+      - path: Base HumanStomachBone/Base HumanChest/Base HumanRightArmUpperarm/Base
+          HumanRightArmForearm/Base HumanRightArmHandBoneL/Base HumanRightArmL_PointerFinger1/Base
+          HumanRightArmL_PointerFinger2
+        weight: 1
+      - path: Base HumanStomachBone/Base HumanChest/Base HumanRightArmUpperarm/Base
+          HumanRightArmForearm/Base HumanRightArmHandBoneL/Base HumanRightArmL_PointerFinger1/Base
+          HumanRightArmL_PointerFinger2/Base HumanRightArmL_PointerFinger3
+        weight: 1
+      - path: Base HumanStomachBone/Base HumanChest/Base HumanRightArmUpperarm/Base
+          HumanRightArmForearm/Base HumanRightArmHandBoneL/Base HumanRightArmL_RingFinger1
+        weight: 1
+      - path: Base HumanStomachBone/Base HumanChest/Base HumanRightArmUpperarm/Base
+          HumanRightArmForearm/Base HumanRightArmHandBoneL/Base HumanRightArmL_RingFinger1/Base
+          HumanRightArmL_RingFinger2
+        weight: 1
+      - path: Base HumanStomachBone/Base HumanChest/Base HumanRightArmUpperarm/Base
+          HumanRightArmForearm/Base HumanRightArmHandBoneL/Base HumanRightArmL_RingFinger1/Base
+          HumanRightArmL_RingFinger2/Base HumanRightArmL_RingFinger3
+        weight: 1
+      - path: Base HumanStomachBone/Base HumanChest/Base HumanRightArmUpperarm/Base
+          HumanRightArmForearm/Base HumanRightArmHandBoneL/Base HumanRightArmL_Thumb1
+        weight: 1
+      - path: Base HumanStomachBone/Base HumanChest/Base HumanRightArmUpperarm/Base
+          HumanRightArmForearm/Base HumanRightArmHandBoneL/Base HumanRightArmL_Thumb1/Base
+          HumanRightArmL_Thumb2
+        weight: 1
+      - path: Base HumanStomachBone/Base HumanChest/Base HumanRightArmUpperarm/Base
+          HumanRightArmForearm/Base HumanRightArmHandBoneL/Base HumanRightArmL_Thumb1/Base
+          HumanRightArmL_Thumb2/Base HumanRightArmL_Thumb3
+        weight: 1
+      - path: Base HumanStomachBone/Base HumanThighBoneLThigh
+        weight: 1
+      - path: Base HumanStomachBone/Base HumanThighBoneLThigh/Base HumanThighBoneLCalf
+        weight: 1
+      - path: Base HumanStomachBone/Base HumanThighBoneLThigh/Base HumanThighBoneLCalf/FootBoneL001
+        weight: 1
+      - path: Base HumanStomachBone/Base HumanThighBoneLThigh/Base HumanThighBoneLCalf/FootBoneL001/Base
+          HumanThighBoneLToeBoneL1
+        weight: 1
+      - path: Base HumanStomachBone/Base HumanThighBoneRThigh
+        weight: 1
+      - path: Base HumanStomachBone/Base HumanThighBoneRThigh/Base HumanThighBoneRCalf
+        weight: 1
+      - path: Base HumanStomachBone/Base HumanThighBoneRThigh/Base HumanThighBoneRCalf/Base
+          HumanThighBoneRFootBoneR
+        weight: 1
+      - path: Base HumanStomachBone/Base HumanThighBoneRThigh/Base HumanThighBoneRCalf/Base
+          HumanThighBoneRFootBoneR/Base HumanThighBoneRToeBoneR1
+        weight: 1
+      - path: Base HumanThighBoneLPlatform
+        weight: 1
+      - path: Base HumanThighBoneRPlatform
+        weight: 1
+      - path: BottomTeeth
+        weight: 1
+      - path: Bow
+        weight: 1
+      - path: BowShoes
+        weight: 1
+      - path: BowShoesR
+        weight: 1
+      - path: Chest
+        weight: 1
+      - path: DressBellBottom
+        weight: 1
+      - path: DressBellBottomInside
+        weight: 1
+      - path: DressBellMiddle
+        weight: 1
+      - path: DressBellMiddleInside
+        weight: 1
+      - path: DressButtons
+        weight: 1
+      - path: DressFrills
+        weight: 1
+      - path: DressFrillsInside
+        weight: 1
+      - path: DressLaces
+        weight: 1
+      - path: DressStrap
+        weight: 1
+      - path: DressTop
+        weight: 1
+      - path: DressTopInside
+        weight: 1
+      - path: ElbowJoints
+        weight: 1
+      - path: ElbowJoints001
+        weight: 1
+      - path: EyelashesLeft
+        weight: 1
+      - path: EyelashesRight
+        weight: 1
+      - path: HairBase
+        weight: 1
+      - path: HairBunnyFrontL
+        weight: 1
+      - path: HairBunnyFrontR
+        weight: 1
+      - path: HairScrunchyLeft
+        weight: 1
+      - path: HairScrunchyRight
+        weight: 1
+      - path: Hammer
+        weight: 1
+      - path: HandLeft
+        weight: 1
+      - path: HandRight
+        weight: 1
+      - path: Head
+        weight: 1
+      - path: L_HairBunnyRear
+        weight: 1
+      - path: L_HairBunnyRear001
+        weight: 1
+      - path: L_TwinTails
+        weight: 1
+      - path: LeftBicep
+        weight: 1
+      - path: LeftEye
+        weight: 1
+      - path: LeftForeArm
+        weight: 1
+      - path: LeftShin
+        weight: 1
+      - path: LeftShoeBackStrap
+        weight: 1
+      - path: LeftSideBurn
+        weight: 1
+      - path: LeftThigh
+        weight: 1
+      - path: Panties
+        weight: 1
+      - path: R_TwinTails
+        weight: 1
+      - path: RightBicep
+        weight: 1
+      - path: RightEye
+        weight: 1
+      - path: RightForeArm
+        weight: 1
+      - path: RightShin
+        weight: 1
+      - path: RightShoeBackStrap
+        weight: 1
+      - path: RightSideBurn
+        weight: 1
+      - path: RightThigh
+        weight: 1
+      - path: ShoeSole
+        weight: 1
+      - path: ShoeSole001
+        weight: 1
+      - path: ShoeStrap1
+        weight: 1
+      - path: ShoeStrap2
+        weight: 1
+      - path: ShoeStrap003
+        weight: 1
+      - path: ShoeStrap004
+        weight: 1
+      - path: ShoeTopR
+        weight: 1
+      - path: ShoeTopR001
+        weight: 1
+      - path: Socks
+        weight: 1
+      - path: Socks001
+        weight: 1
+      - path: Stomach
+        weight: 1
+      - path: Tongue
+        weight: 1
+      - path: TopTeeth
+        weight: 1
+      - path: WristJoints
+        weight: 1
+      - path: WristJoints001
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
     isReadable: 1
   meshes:
     lODScreenPercentages: []
     globalScale: 1
     meshCompression: 0
     addColliders: 0
+    importVisibility: 0
     importBlendShapes: 1
+    importCameras: 0
+    importLights: 0
     swapUVChannels: 0
     generateSecondaryUV: 0
     useFileUnits: 1
@@ -13276,6 +13694,7 @@ ModelImporter:
     normalSmoothAngle: 60
     normalImportMode: 0
     tangentImportMode: 3
+    normalCalculationMode: 0
   importAnimation: 1
   copyAvatar: 0
   humanDescription:

@@ -7,6 +7,9 @@ using UnityEngine;
 
 public class Physics : MonoBehaviour
 {
+    [SerializeField]
+    private float dashDelayLength;
+    private WaitForSeconds dashDelay;
     protected Rigidbody rb;
     protected Player player;
     protected InputManager inputManager;
@@ -27,7 +30,8 @@ public class Physics : MonoBehaviour
     protected WaitForSeconds wait;
     protected Vector3 defaultPosition;
     protected float defaultSpeed;
-
+    [SerializeField]
+    protected float dashSpeed = 0.0f;
     private void LateUpdate()
     {
         Jump();
@@ -35,6 +39,7 @@ public class Physics : MonoBehaviour
         AttackMovementRestriction();
         Hit();
         KnockedBack();
+        Dash();
         UpdatePositon();
         UpdateRotation();
         RingOut();
@@ -66,6 +71,16 @@ public class Physics : MonoBehaviour
             rb.rotation = Quaternion.LookRotation(inputManager.Movement(player.ID));
 
     }
+    private void Dash()
+    {
+        if (player.IsDashing && player.CanDash)
+        {
+           
+            StartCoroutine("Dashing");
+        }
+           
+        
+    }
     private void Jump()
     {
         if (player.IsJumping && !player.IsKnockedBack)
@@ -86,7 +101,11 @@ public class Physics : MonoBehaviour
     private void Hit()
     {
         if (player.IsHit)
+        {
+            
             StartCoroutine("HitKnockBack");
+        }
+           
     }
     private void KnockedBack()
     {
@@ -114,16 +133,36 @@ public class Physics : MonoBehaviour
 
     private IEnumerator HitKnockBack()
     {
+        player.IsWalking = false;
+        player.CanMove = false;
+
         float knockBackForce = 200.0f;
         player.transform.forward = -player.Opponent.HitDirection;
         rb.position += player.Opponent.HitDirection * knockBackForce * Time.deltaTime;
-        yield return null;
+        WaitForSeconds delay = new WaitForSeconds(0.01f);
+        yield return delay;
         player.IsHit = false;
         player.CanMove = true;
     }
+    private IEnumerator Dashing()
+    {
+
+        //float knockBackForce = 10.0f;
+        //player.transform.forward = -player.Opponent.HitDirection;
+        //rb.position += player.Opponent.HitDirection * knockBackForce * Time.deltaTime;
+        
+        float dashSpeed_ = dashSpeed;
+        rb.position += player.transform.forward * dashSpeed * Time.deltaTime;
+        dashDelay = new WaitForSeconds(dashDelayLength);
+        yield return dashDelay;
+        player.IsDashing = false;
+        player.CanDash = true;
+        //player.CanMove = true;
+        //  player.transform.eulerAngles = defaultPosition;
+    }
     private bool CanMove()
     {
-        if ((Time.time - player.LastSuccessfulAttack) >= moveDelay && !player.IsKnockedBack && !player.IsTaunting && !player.Opponent.IsTaunting && !player.IsExhausted)
+        if ((Time.time - player.LastSuccessfulAttack) >= moveDelay && !player.IsDashing && !player.IsKnockedBack && !player.IsTaunting && !player.Opponent.IsTaunting && !player.IsExhausted)
         {
             speed = defaultSpeed;
             player.CanMove = true;

@@ -14,6 +14,8 @@ public class AnimationManager : MonoBehaviour
     [SerializeField]
     private float attackDelay;
     [SerializeField]
+    private float resetDelay;
+    [SerializeField]
     private WaitForSeconds hypeDelay;
     [SerializeField]
     private float attackDelayMultiplier;
@@ -41,6 +43,7 @@ public class AnimationManager : MonoBehaviour
     private void Update()
     {
         ResetAttackCounter();
+        Dash();
         HypeTaunt();
         HypeAttack();
         Attack();
@@ -68,14 +71,28 @@ public class AnimationManager : MonoBehaviour
     }
     private void Walk()
     {
-        anim.SetBool("isWalking", player.IsWalking);
+        if (inputManager.Movement(player.ID) != Vector3.zero)
+        {
+            if (player.IsGrounded && player.AttackCounter <= 0 && !player.IsExhausted && !player.IsKnockedBack && !player.IsHypeAttack && !player.IsDefending && !player.IsTaunting && !player.IsDashing && player.CanMove && Time.timeScale != 0.0f)
+            {
+
+
+                anim.Play("Walking");
+                player.IsWalking = true;
+            }
+
+        }
+        else
+            player.IsWalking = false;
+
+
     }
     private void Block()
     {
         //anim.SetBool("isBlocking", player.IsDefending);
         if (player.IsGrounded)
         { 
-            if (player.CanBlock && inputManager.DefendButton(player.ID) && (Time.time - player.LastSuccessfulAttack) > 1.0f && !player.IsTaunting && !player.IsExhausted && !player.IsKnockedBack)
+            if (player.CanBlock && inputManager.DefendButton(player.ID) && (Time.time - player.LastSuccessfulAttack) > 1.0f && !player.IsTaunting && !player.IsExhausted && !player.IsKnockedBack && !player.IsDashing)
             {
                 anim.Play("Block");
                 player.IsDefending = true;
@@ -90,16 +107,17 @@ public class AnimationManager : MonoBehaviour
     private void Attack()
     {
         
-            if (!player.IsDefending && CanAttack() && inputManager.AttackButtonDown(player.ID))
+            if (CanAttack() && inputManager.AttackButtonDown(player.ID))
             {
                  player.CanBlock = false;
-            if (!player.IsHyped)
-            {
-                player.IsAttacking = true;
-                AttackManager();
+                player.CanMove = false;
+                if (!player.IsHyped && !player.IsDefending && !player.IsDashing)
+                {
+                   //player.IsAttacking = true;
+                    AttackManager();
                 
-            }
-        }
+                }
+             }
         
     }
     private void IsKnockedBack()
@@ -119,12 +137,13 @@ public class AnimationManager : MonoBehaviour
     }
     private void HypeAttack()
     {
-        if (player.IsHyped && !player.IsTaunting && !player.IsDefending)
+        if ((inputManager.AttackButtonDown(player.ID)))
         {
-            
-            if ((inputManager.AttackButtonDown(player.ID) && player.IsGrounded && !player.IsKnockedBack))
+            if (player.IsHyped && player.IsGrounded && !player.IsDashing && !player.IsKnockedBack && !player.IsTaunting && !player.IsWalking && !player.IsDefending)
             {
+                
                 anim.Play("HypeAttack");
+                player.IsHypeAttack = true;
                 StartCoroutine("ResetHype");
             }
         }
@@ -148,7 +167,10 @@ public class AnimationManager : MonoBehaviour
     {
         if (player.IsHit)
         {
+           
             anim.Play("Hit");
+            //anim.PlayInFixedTime("Hit");
+
         }
     }
     private void Exhausted()
@@ -163,55 +185,88 @@ public class AnimationManager : MonoBehaviour
     private void AttackManager()
     {
 
-        if (player.IsGrounded)
+        if (player.IsGrounded && !player.IsDashing)
         {
 
 
             if (player.AttackCounter == 0)
             {
+                player.IsAttacking = true;
 
-
-
+                player.AttackCounter++;
                 anim.Play("Attack");
                 player.LastSuccessfulAttack = Time.time;
+               if(player.name == string.Format("Marie"))
+                {
+                    resetDelay = 2.0f;
+                   // attackDelay = .1f;
+                }
+                else
+                    resetDelay = 0.8f;
+
             }
             else if (player.AttackCounter == 1)
             {
+                player.IsAttacking = true;
+                player.AttackCounter++;
                 anim.Play("Attack2");
                 player.LastSuccessfulAttack = Time.time;
+                if (player.name == string.Format("Marie"))
+                {
+                    resetDelay = 1.5f;
+                   // attackDelay = 1.0f;
+                }
+                else
+                    resetDelay = 0.8f;
             }
-            else if (player.AttackCounter == 2)
+            else if (player.AttackCounter >= 2)
             {
+                player.IsAttacking = true;
+                
                 anim.Play("Attack3");
-                player.LastSuccessfulAttack = Time.time + attackDelayMultiplier;
-            }
-            else if (player.AttackCounter >= 3)
-            {
-                anim.Play("Attack");
-                player.AttackCounter = 0;
                 player.LastSuccessfulAttack = Time.time;
+                if (player.name == string.Format("Marie"))
+                {
+                    resetDelay = 1.0f;
+                }
+                else
+                    resetDelay = 0.6f;
+
             }
-            player.IsAttacking = true;
+            
+            
         }
         else
         {
             anim.Play("JumpAttack");
-            player.LastSuccessfulAttack = Time.time;
-            player.IsAttacking = true;
+           // player.LastSuccessfulAttack = (Time.time);
+           // player.IsAttacking = true;
+            //attackDelay = 0.0f;
         }
 
         }
+    private void Dash()
+    {
+        if (inputManager.DashButton(player.ID) && !player.IsKnockedBack && !player.IsExhausted && !player.IsHypeAttack && player.CanDash && !player.IsTaunting && player.AttackCounter == 0)
+        {
+            player.IsDashing = true;
+            anim.Play("Dash");
+        }
+       
+    }
     private bool CanAttack()
     {
 
         if ((Time.time - player.LastSuccessfulAttack) >= attackDelay && Time.timeScale != 0.0f && !player.IsKnockedBack && !player.Opponent.IsTaunting)
             return true;
+        
         else
         {
             player.IsAttacking = false;
             return false;
 
         }
+        
    }
     private IEnumerator ResetJump(bool value)
     {
@@ -234,7 +289,7 @@ public class AnimationManager : MonoBehaviour
     private float ResetAttackCounter()
     {
 
-        if ((Time.time - player.LastSuccessfulAttack) >= 1.5f)
+        if ((Time.time - player.LastSuccessfulAttack) >= resetDelay)
             player.AttackCounter = 0;
         return player.AttackCounter;
     }
@@ -243,14 +298,16 @@ public class AnimationManager : MonoBehaviour
         yield return hypeDelay;
         player.IsHyped = false;
         player.IsExhausted = true;
+        player.CanMove = true;
+        player.IsHypeAttack = false;
 
-        
+
     }
     private IEnumerator ResetTaunt()
     {
         player.Opponent.gameObject.active = false;
         anim.Play("HypeTaunt");
-        WaitForSeconds delay = new WaitForSeconds(6.0f);
+        WaitForSeconds delay = new WaitForSeconds(2.0f);
         yield return delay;
         player.IsTaunting = false;
         player.Opponent.gameObject.active = true;
@@ -258,6 +315,7 @@ public class AnimationManager : MonoBehaviour
     }
     private IEnumerator ResetHypeHit()
     {
+        
         WaitForSeconds wait = new WaitForSeconds(2.0f);
         yield return wait;
         player.IsHypeHit = false;

@@ -10,6 +10,7 @@ using UnityEngine;
 [RequireComponent(typeof(Movement))]
 [RequireComponent(typeof(AnimationManager))]
 public class Player : MonoBehaviour{
+    internal bool CanDash;
 
     //Universal Player variables
     [SerializeField]
@@ -141,14 +142,17 @@ public class Player : MonoBehaviour{
         set { damageType = value; }
     }
 
-    public bool IsTaunting { get;  set; }
-    public bool IsWinner { get;  set; }
+    public bool IsTaunting { get; internal set; }
+    public bool IsDashing { get; set; }
+    public int DashCounter { get; set; }
+    public bool IsHypeAttack { get; internal set; }
 
     //Unity Methods
     private void Awake()
     {
         
         canMove = true;
+        CanDash = true;
         foreach (var item in GameObject.FindGameObjectsWithTag("Player"))
         {
             if (item.GetComponent<Player>() != this)
