@@ -28,7 +28,7 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private Text matchTimerText;
     [SerializeField]
-    private float rounds;
+    private Rounds rounds;
     [SerializeField]
     private float match;
     [SerializeField]
@@ -57,10 +57,11 @@ public class GameManager : MonoBehaviour
     private AudioClip[] playersHypeTheme;
 
     public float Match { get { return match; } set { match = value; } }
-    public float Rounds { get { return rounds; } set { rounds = value; } }
+    public Rounds Rounds { get { return rounds; } set { rounds = value; } }
 
     private void Awake()
     {
+        rounds = GameObject.Find("Round").GetComponent<Rounds>();
         stageTheme = GetComponent<AudioSource>().clip;
         ringOut.enabled = false;
         audioSource = GetComponent<AudioSource>();
@@ -109,7 +110,7 @@ public class GameManager : MonoBehaviour
                 // playersTheme[1] = player.GetComponent<AudioManager>();
             }
                
-            rounds = 0;
+            //rounds = 0;
 
         }
         
@@ -236,6 +237,14 @@ public class GameManager : MonoBehaviour
 
 
     }
+
+    private void RoundTracker()
+    {
+        if(rounds.round == 1)
+        {
+
+        }
+    }
     
     private void PauseMenu()
     {
@@ -310,8 +319,12 @@ public class GameManager : MonoBehaviour
             }
             else 
             {
-                if(isMatchOver)
+                if (isMatchOver)
+                {
+                    rounds.ClearRounds();
                     SceneManager.LoadScene("RingMap");
+                }
+                   
                 Time.timeScale = 1.0f;
                 isPaused = false;
                 pauseMenuObject.SetActive(false);
@@ -387,12 +400,14 @@ public class GameManager : MonoBehaviour
                 audioSource.clip = playerOneTheme;
             else
                 audioSource.clip = playerTwoTheme;
-            
+                StartCoroutine("MatchSetDelay");
+           
 
             //Wait X seconds
-            StartCoroutine("MatchSetDelay");
+            
         }
     }
+    
     IEnumerator MatchSetDelay()
     {
         Debug.Log("Match");
@@ -407,12 +422,12 @@ public class GameManager : MonoBehaviour
         matchSetcamera.fieldOfView = 20.0f;
         if (isPlayerOneVictory)
         {
-            //players[0].IsWinner = true;
+            
             StartCoroutine("VictoryTaunt", 0);
         }
         else if (!isPlayerOneVictory)
         {
-           // players[1].IsWinner = true;
+           
             StartCoroutine("VictoryTaunt", 1);
         }
     }
@@ -467,9 +482,24 @@ public class GameManager : MonoBehaviour
         matchSetcamera.transform.LookAt(players[player].transform.position);
         players[player].transform.LookAt(matchSetcamera.transform.position);
         players[player].IsTaunting = true;
+        
         WaitForSeconds delay = new WaitForSeconds(2.0f);
         yield return delay;
-        StartCoroutine("MatchSetNavigation");
+        if (rounds.round >= 3)
+            StartCoroutine("MatchSetNavigation");
+        else if(rounds.playerVictories[0] >=1 && rounds.playerVictories[1] <= 1)
+            StartCoroutine("MatchSetNavigation");
+        else if(rounds.playerVictories[1] >= 1 && rounds.playerVictories[0] <= 1)
+            StartCoroutine("MatchSetNavigation");
+        else
+        {
+            rounds.round++;
+            rounds.playerVictories[player]++;
+            // isMatchOver = false;
+
+            SceneManager.LoadScene("RingMap");
+        }
+
     }
 
     private void SetPlayerTheme(AudioClip AudioClip)

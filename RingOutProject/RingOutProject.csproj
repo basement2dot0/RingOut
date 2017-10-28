@@ -80,6 +80,7 @@
   <ItemGroup>
     <Compile Include="Assets\ButtonAnimation.cs" />
     <Compile Include="Assets\CameraOrbit.cs" />
+    <Compile Include="Assets\Rounds.cs" />
     <Compile Include="Assets\Scripts\Archived\ComboSystem.cs" />
     <Compile Include="Assets\Scripts\Archived\PlayerAnim.cs" />
     <Compile Include="Assets\Scripts\Audio\AudioManager.cs" />
