@@ -139,7 +139,7 @@ public class AnimationManager : MonoBehaviour
     {
         if ((inputManager.AttackButtonDown(player.ID)))
         {
-            if (player.IsHyped && player.IsGrounded && !player.IsDashing && !player.IsKnockedBack && !player.IsTaunting && !player.IsWalking && !player.IsDefending)
+            if (player.IsHyped && player.IsGrounded && !player.IsDashing && !player.IsKnockedBack && !player.IsTaunting && !player.IsDefending)
             {
                 
                 anim.Play("HypeAttack");
