@@ -144,14 +144,14 @@ public class GameManager : MonoBehaviour
             {
                 if (audioSource.clip != stageTheme)
                 {
-                    audioSource.volume = 0.05f;
+                    audioSource.volume = 0.5f;
                     audioSource.clip = stageTheme;
                     audioSource.time = BGMLastTime;
                     audioSource.Play();
                 }
                 else
                 {
-                    audioSource.volume = 0.05f;
+                    audioSource.volume = 0.5f;
                     if (!audioSource.isPlaying)
                         audioSource.Play();
 
@@ -159,7 +159,7 @@ public class GameManager : MonoBehaviour
             }
             else if (!audioSource.isPlaying)
             {
-                audioSource.volume = 0.05f;
+                audioSource.volume = 0.5f;
                 audioSource.Play();
             }
         }
